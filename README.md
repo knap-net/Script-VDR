@@ -1,4 +1,4 @@
-# ~~~ Script-VDR ~~~ Complete Installer ~~~
+# ~~ Script-VDR ~~ Complete Installer ~~
                                                                         
     This file is part of VDR Complete Installer (VCI).                   
                                                                         
