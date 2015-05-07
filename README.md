@@ -31,12 +31,7 @@
     Mr Cool Span, fusibile73, ceo16, Asgarot, Mld Team e tanti ... 
     tanti altri.                              
                                                                               
-    =====================================                     " 0 0
-    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey
-    
-    #
-    #    
-    dialog --title " VDR Complete Installer V.5.4 " --infobox "Copyright (C) 2010
+    ==============================================================
     
 
     Nome Script : Scriptvdr-2.2.0_V.5.4 
@@ -72,3 +67,6 @@
     Da terminale:                                                                         
     date il comando sudo chmod 755 Scriptvdr-2.2.0_V.5.4                                
     avviate lo script con il comando: sudo sh ./Scriptvdr-2.2.0_V.5.4
+    
+    
+    
