@@ -1,13 +1,13 @@
 # Rev. 5.4
-° Modifica e Aggiornamento del Plugin IPTV - Configurazione e Test Funzionalita' - By Fiveten_59
-° Adattamento Release V.5.3 al nuovo Mod.
+- Modifica e Aggiornamento del Plugin IPTV - Configurazione e Test Funzionalita' - By Fiveten_59
+- Adattamento Release V.5.3 al nuovo Mod.
 
 
 # Rev. 5.3 
-° Modifica dei Menu nella skin dello script - integrazione con 'Dialog'.
-° Modifica al codice di Kodi per una corretta esecuzione.
-° Modifica del codice e dei sotto menu - separatori interni.
-° Altre modifiche minori al codice.
+- Modifica dei Menu nella skin dello script - integrazione con 'Dialog'.
+- Modifica al codice di Kodi per una corretta esecuzione.
+- Modifica del codice e dei sotto menu - separatori interni.
+- Altre modifiche minori al codice.
 
 
 # Rev. 5.2 
