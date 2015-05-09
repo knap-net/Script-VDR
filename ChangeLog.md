@@ -3,11 +3,13 @@
 - Adattamento Release V.5.3 al nuovo Mod.
 
 
+
 ## Rev. 5.3 
 - Modifica dei Menu nella skin dello script - integrazione con 'Dialog'.
 - Modifica al codice di Kodi per una corretta esecuzione.
 - Modifica del codice e dei sotto menu - separatori interni.
 - Altre modifiche minori al codice.
+
 
 
 ## Rev. 5.2 
@@ -17,11 +19,13 @@
 - Modifica al Codice per adattarlo alla nuova Release.
 
 
+
 ## Rev. 5.1 
 - Aggiunto al Punto 13 Plugin Vdr-manager & Test Funzionalità
 - Aggiunto al Punto 13 Plugin Vdr-streamdev & Test Funzionalità
 - Modifica al logo di Tux e Upgrade Progressivo.
 - Modifica al Codice per adattarlo alla nuova Release.
+
 
 
 ## Rev. 5.0 
