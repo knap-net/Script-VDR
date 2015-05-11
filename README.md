@@ -70,11 +70,15 @@
     
     ==============================================================   
     
+    
+    
+    
     Per chi non usa la Scheda DVB-S - Skystar2 PCI ver. 2.3P
     Potrebbe creare problemi la patch con la Skystar2 HD PCIe
     Commentare le righe al codice:
     #echo "*** 90 ***"
     # patch -p1 < 90_dvbdevice.patch; sleep 1;
+
 
 
 
@@ -112,8 +116,7 @@
     https://play.google.com/store/apps/details?id=de.bjusystems.vdrmanager
 
     Per Utilizzare il plugin VDR-Streamdev come Server ...
-    e il plugin VDR-Manager Attraverso il Client "Gestore VDR" da piattaforme Android ...
-    avviarlo cosi:
+    e il plugin VDR-Manager Attraverso il Client "Gestore VDR" da piattaforme Android ... avviarlo cosi:
     #> sudo ./vdr -P 'vdrmanager -p 6420 -P change' -P'streamdev-server'
 
 
@@ -122,7 +125,6 @@
     Per Avviare Diversamente VDR in Caso di Differenze Hardware ... Provare cosi :
     #> cd /usr/local/src/vdr-2.2.0
     #> sudo ./vdr -P"xineliboutput --local=sxfe --video=vaapi --audio=alsa --remote=none"
-
     Driver video da provare in Opzione "--video=xxxx" »» vaapi , vdpau . xv , xshm , ecc...
 
 
@@ -135,7 +137,7 @@
 
     Dal Punto 1 al Punto 4 - Schede Video ATI -
     Per Chi Utilizza Le ATI Solo Test Funzionalità Con Librerie Vaapi ....
-    Installare Driver Tramite Installer 1.0.3 - Schede Video Intel - Riavvio Del PC Al termine             Installazione ...
+    Installare Driver Tramite Installer 1.0.3 - Schede Video Intel - Riavvio Del PC Al termine Installazione ...
     Download: https://01.org/linuxgraphics/downloads
 
 
@@ -149,15 +151,15 @@
     sudo ./vdr -P"xineliboutput --local=none --remote=127.0.0.1:37890 --primary"
 
     Eseguire Questo Comando in Shell 2
-    export LIBVA_DRIVER_NAME=vdpau && export LIBVA_DRIVER_NAME="i965" && export                            LIBVA_DRIVERS_PATH="/usr/lib/x86_64-linux-gnu/dri/" && vdr-sxfe --video=vaapi
+    export LIBVA_DRIVER_NAME=vdpau && export LIBVA_DRIVER_NAME="i965" && export LIBVA_DRIVERS_PATH="/usr/lib/x86_64-linux-gnu/dri/" && vdr-sxfe --video=vaapi
 
 
 
 
 
-    Per Avviare VDR 2.2.0 Sfruttando il Supporto Vdpau Con Softhddevice, skindesigner e altri Plugin       ....
+    Per Avviare VDR 2.2.0 Sfruttando il Supporto Vdpau Con Softhddevice, skindesigner e altri Plugin ....
     #> cd /usr/local/src/vdr-2.2.0
-    #> sudo ./vdr -P'sc -B 0' -P'softhddevice' -P'osdteletext' -P'epgsearch' -P'skindesigner               --logopath=/etc/vdr/logos/' -P'femon'
+    #> sudo ./vdr -P'sc -B 0' -P'softhddevice' -P'osdteletext' -P'epgsearch' -P'skindesigner --logopath=/etc/vdr/logos/' -P'femon'
 
 
 
