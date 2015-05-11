@@ -73,7 +73,7 @@
     
     
     
-    ## Per chi non usa la Scheda DVB-S - Skystar2 PCI ver. 2.3P
+    Per chi non usa la Scheda DVB-S - Skystar2 PCI ver. 2.3P
     Potrebbe creare problemi la patch con la Skystar2 HD PCIe
     Commentare le righe al codice:
     #echo "*** 90 ***"
