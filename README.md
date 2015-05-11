@@ -1,6 +1,8 @@
 # ~~ Script-VDR ~~ Complete Installer ~~
-                                                                        
+
 ###    This file is part of VDR Complete Installer (VCI).                   
+           
+           
                                                                         
     VCI is free software: you can redistribute it and/or modify          
     it under the terms of the GNU General Public License as published by 
@@ -35,7 +37,8 @@
                                                                               
 
 
-### Altre Mod.
+
+###    Altre Mod.
 
     Aggiornato da Knap -  ultima modifica Aprile 2015                              
     Aggiornato da fiveten_59 -  ultima modifica febbraio 2015
@@ -44,13 +47,11 @@
     Modificato da Knap per Debian 7.0   32-64 Bit                                         
     Modificato da Knap per Linux Mint 15 - 16 Mate   32-64 Bit                            
                                                                                       
-                                                                                       
     Nuova Release Adattata per OS a 32 Bit                                                
     Compilazione Test eseguita con Vmware e Lubuntu 32 bit                                                            
                                                                                       
     Ottimizzato per CPU a 64 bit Quad Core - make -j4                                     
     Per Compilare con altre CPU Modificare il Make -jx 
-    
     x= CPU 1 Core: make                                                                                                                          
     x= CPU 2 Core: make -j2    -    x= CPU 4 Core: make -j4                               
     x= CPU 6 Core: make -j6    -    x= CPU 8 Core: make -j8                               
@@ -69,10 +70,10 @@
     date il comando sudo chmod 755 Scriptvdr-2.2.0_V.5.4                                
     avviate lo script con il comando: sudo sh ./Scriptvdr-2.2.0_V.5.4
     
+
+
   
-  
-    
-### Other Info    
+###     Other Info    
     
     Per chi non usa la Scheda DVB-S - Skystar2 PCI ver. 2.3P
     Potrebbe creare problemi la patch con la Skystar2 HD PCIe
