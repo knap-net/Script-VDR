@@ -1,0 +1,3278 @@
+--- Download_5/Scriptvdr_softhddevice-2.2.0	2015-05-07 17:27:59.838603932 +0200
++++ Script_VDR/Scriptvdr-2.2.0_V.5.3	2015-05-04 18:19:58.454587419 +0200
+@@ -1,37 +1,38 @@
+ #!/bin/bash
+ ############################## !!! IMPORTANTE !!! #######################################
+ #                                                                                       #
+-# Nome Script : Scriptvdr-2.2.0                                                         #
++# Nome Script : Scriptvdr-2.2.0_V.5.3                                                   #
+ #                                                                                       #
++# Aggiornato da Knap -  ultima modifica Aprile 2015                                     #
+ # Aggiornato da fiveten_59 -  ultima modifica febbraio 2015                             #
+ #                                                                                       #
+ # Modificato da Knap per Kubuntu 13.04 - 13.10 - 14.04   32-64 Bit                      #
+ # Modificato da Knap per Debian 7.0   32-64 Bit                                         #
+ # Modificato da Knap per Linux Mint 15 - 16 Mate   32-64 Bit                            #
+ #                                                                                       #
+-#                                                                                       #
+ # Nuova Release Adattata per OS a 32 Bit                                                #
+ # Compilazione Test eseguita con Vmware e Lubuntu 32 bit                                #                            
+ #                                                                                       #
+ # Ottimizzato per CPU a 64 bit Quad Core - make -j4                                     #
+ # Per Compilare con altre CPU Modificare il Make -jx                                    #
+ # x= CPU 1 Core: make                                                                   #
+-# x= CPU 2 Core: make -j2                                                               #
+-# x= CPU 6 Core: make -j6                                                               #
++# x= CPU 2 Core: make -j2    -    x= CPU 4 Core: make -j4                               #
++# x= CPU 6 Core: make -j6    -    x= CPU 8 Core: make -j8                               #
++# x= CPU 10 Core: make -j10  -    x= CPU 12 Core: make -j12                             #
+ #                                                                                       #
+ # Configurazione PC:                                                                    #
+-# Motherboard - Asus Rampage Formula - Chipset Intel X48                                #
+-# CPU - Intel Core2 - Quad Core Q9300                                                   #
+-# Scheda Video - Gainward GTX285                                                        #
++# Motherboard - Asus P9X79 - Chipset Intel X79                                          #
++# CPU - Intel Xeon E5-2658 V.2 - 2100Mhz - 8 core/16 thread -                           #
++# Scheda Video - NVIDIA GTX 750 Ti                                                      #
+ # Scheda DVB-S - Skystar2 PCI   ver 2.3P                                                #
+ #                                                                                       #
+-# Driver Video - Nvidia 334.16 Installato - http://www.nvidia.it                        #
++# Driver Video - Nvidia 343.22 Installato - http://www.nvidia.it                        #
+ #                                                                                       #
+ # Per Configurazioni diverse questo Script puo' risultare non funzionante !             #
+ #                                                                                       #
+ # Da terminale:                                                                         #
+-# date il comando sudo chmod 755 Scriptvdr-2.2.0                                        #
+-# avviate lo script con il comando: sudo sh ./Scriptvdr-2.2.0                           #
++# date il comando sudo chmod 755 Scriptvdr-2.2.0_V.5.3                                  #
++# avviate lo script con il comando: sudo sh ./Scriptvdr-2.2.0_V.5.3                     #
+ #                                                                                       #
+ #########################################################################################
+ #
+@@ -57,7 +58,7 @@
+ SRCVDR='/usr/local/src/vdr-2.2.0'
+ VDRSRC=''$SRC'/vdr/PLUGINS/src'
+ VDR='vdr-2.2.0'
+-VXINE='xine-0.9.4'
++VXINE='xine-0.9.9'
+ PACKAGES=""$SRC"/packages"
+ ARCHIVES=""$SRC"/archives"
+ SCRIPTS=""$SRC"/archives/scripts"
+@@ -245,10 +246,23 @@
+     # User
+     useradd vdr -g video -d /home/vdr -s /bin/bash -m
+     # Some folders
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++                                          #########################################
++                                          #                  MENU'                #
++                                          #########################################
++
++
+     mkdir $SRC/packages $SRC/archives $SRC/scripts $SRC/READ_THIS
+     while :
+     do
+-    dialog --title "VDR Complete Installer V3" --infobox "Copyright (C) 2010
++    dialog --title " VDR Complete Installer V.5.3 " --infobox "Copyright (C) 2010
+                                                                         
+     This file is part of VDR Complete Installer (VCI).                   
+                                                                         
+@@ -281,18 +295,19 @@
+     Mr Cool Span, fusibile73, ceo16, Asgarot, Mld Team e tanti ... 
+     tanti altri.                              
+                                                                               
+-    =====================================                     " 200 300
++    =====================================                     " 0 0
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey
+     
+     #
+     #    
+-    dialog --title "VDR Complete Installer V4" --infobox "Copyright (C) 2010
++    dialog --title " VDR Complete Installer V.5.3 " --infobox "Copyright (C) 2010
+     
+ 
+-    Nome Script : Scriptvdr-2.2.0 
++    Nome Script : Scriptvdr-2.2.0_V.5.3 
+ 
+-    Aggiornato da fiveten_59 -  ultima modifica febbraio 2015                              
+-                                                                                       
++    Aggiornato da Knap -  ultima modifica Aprile 2015                              
++    Aggiornato da fiveten_59 -  ultima modifica febbraio 2015
++    
+     Modificato da Knap per Kubuntu 13.04 - 13.10 - 14.04   32-64 Bit      
+     Modificato da Knap per Debian 7.0   32-64 Bit                                         
+     Modificato da Knap per Linux Mint 15 - 16 Mate   32-64 Bit                            
+@@ -302,110 +317,114 @@
+     Compilazione Test eseguita con Vmware e Lubuntu 32 bit                                                            
+                                                                                       
+     Ottimizzato per CPU a 64 bit Quad Core - make -j4                                     
+-    Per Compilare con altre CPU Modificare il Make -jx                                    
+-    x= CPU 1 Core: make                                                                   
+-    x= CPU 2 Core: make -j2                                                               
+-    x= CPU 6 Core: make -j6                                                               
+-                                                                                      
++    Per Compilare con altre CPU Modificare il Make -jx 
++    
++    x= CPU 1 Core: make                                                                                                                          
++    x= CPU 2 Core: make -j2    -    x= CPU 4 Core: make -j4                               
++    x= CPU 6 Core: make -j6    -    x= CPU 8 Core: make -j8                               
++    x= CPU 10 Core: make -j10  -    x= CPU 12 Core: make -j12 
++    
+     Configurazione PC:                                                                    
+-    Motherboard - Asus Rampage Formula - Chipset Intel X48                                
+-    CPU - Intel Core2 - Quad Core Q9300                                                   
+-    Scheda Video - Gainward GTX285                                                        
+-    Scheda DVB-S - Skystar2 PCI   ver 2.3P                                                
+-                                                                                      
+-    Driver Video - Nvidia 334.16 Installato - http://www.nvidia.it                        
++    Motherboard - Asus P9X79 - Chipset Intel X79                                          
++    CPU - Intel Xeon E5-2658 V.2 - 2100Mhz - 8 core/16 thread -                           
++    Scheda Video - NVIDIA GTX 750 Ti                                                      
++    Scheda DVB-S - Skystar2 PCI   ver 2.3P                                                                                                                                     
++    Driver Video - Nvidia 343.22 Installato - http://www.nvidia.it                      
+                                                                                       
+     Per Configurazioni diverse questo Script puo' risultare non funzionante !             
+                                                                                       
+     Da terminale:                                                                         
+-    date il comando sudo chmod 755 Scriptvdr-2.2.0                                
+-    avviate lo script con il comando: sudo sh ./Scriptvdr-2.2.0                    
++    date il comando sudo chmod 755 Scriptvdr-2.2.0_V.5.3                                
++    avviate lo script con il comando: sudo sh ./Scriptvdr-2.2.0_V.5.3                    
+                                                                                        
+     
+-    =====================================                     " 200 300
++    =====================================                     " 0 0
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey
+-    
+- 
+-
+-    					#############################  
+-    					#            Menu           #
+-    					#############################
++    #
++    #
+     clear
+     echo ""
+-    echo ""
+-    echo ""
+-    echo ""
+-    echo "   ╭=========================================================================================╮"
+-    echo "   |        ♦♦♦          Script Installazione VDR 2.2.0 - Librerie & Codec          ♦♦♦      |"
+-    echo "   |=========================================================================================|"
+-    echo "   |                             ♦♦ Installazione Repository ♦♦                              |"
+-    echo "   |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''   |"   
+-    echo "   |   ---- Installa - Crea Directory ----   |   ---- Disinstalla - Rimuove Directory ----   |"
+-    echo "   |   [1]    Directory Repository Locale    |   [R1]    Directory Repository Locale         |"
+-    echo "   |   ===================================================================================   |"
+-    echo "   |     ♦♦ Libreria Di Supporto Per Schede Grafiche ATI - {Test Softhddevice Vaapi} ♦♦      |"
+-    echo "   |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''   |"
+-    echo "   |   ---- Installa - Crea Directory ----   |   ---- Disinstalla - Rimuove Directory ----   |"
+-    echo "   |   [2]  YASM 1.3.0                       |   [R2]  YASM 1.3.0                            |"
+-    echo "   |   [3]  LIBDRM 2.4.59                    |   [R3]  LIBDRM 2.4.59                         |"
+-    echo "   |   [4]  LIBVA 1.5.0                      |   [R4]  LIBVA 1.5.0                           |"
+-    echo "   |   ===================================================================================   |"
+-    echo "   |                ♦♦ Librerie & Codec - FFMPEG - FDK-AAC - X264 - LIBVPX  ♦♦               |"
+-    echo "   |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''   |"
+-    echo "   |   ---- Installa - Crea Directory ----   |   ---- Disinstalla - Rimuove Directory ----   |"
+-    echo "   |   [5]   X264 18.12.2014                 |   [R5]   X264 18.12.2014                      |"
+-    echo "   |   [6]   FDK-AAC Git                     |   [R6]   FDK-AAC Git                          |"
+-    echo "   |   [7]   LIBVPX 1.3.0                    |   [R7]   LIBVPX 1.3.0                         |"
+-    echo "   |   [8]   FFMPEG 2.6                      |   [R8]   FFMPEG 2.6                           |"
+-    echo "   |   ===================================================================================   |"
+-    echo "   |                   ♦♦ Installazione XINE-LIB - XINE-UI - VDR & PLUGINS ♦♦                |"
+-    echo "   |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''   |"
+-    echo "   |   [9]    XINE-LIB 1.2.6                 |   [R9]    XINE-LIB 1.2.6                      |"
+-    echo "   |   [10]   XINE-UI 0.99.9                 |   [R10]   XINE-UI 0.99.9                      |"
+-    echo "   |   [11]   VDR 2.2.0 & Plugins Base       |   [R11]   VDR 2.2.0 & Plugins Base            |"
+-    echo "   |   [12]   Prima Configurazione VDR       |   [R12]   Rimozione Configurazione VDR        |"
+-    echo "   |   [13]   Installazione Altri Plugins    |   [   ]                                       |"
+-    echo "   |   [14]   Installazione Skin             |   [R13]   Disinstallazione Skin               |"
+-    echo "   |   [15]   Aggiornamento dei Plugins      |   [   ]                                       |"
+-    echo "   |   ===================================================================================   |"
+-    echo "   |                         ♦♦ Creazione liste canali  ♦♦                                               |"
+-    echo "   |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''   |"
+-    echo "   |   [16]   Creazione liste canali         |   [R16]   Rimozione liste canali              |"
+-    echo "   |   ===================================================================================   |"
+-    echo "   |                              ♦♦  Installazione KODI  ♦♦                                              |"
+-    echo "   |   ---- Installa - Crea Directory ----   |   ---- Disinstalla - Rimuove Directory ----   |"
+-    echo "   |   [17]   KODI                           |   [   ]                                       |"
+-    echo "   |   ===================================================================================   |"
+-    echo "   |                              ♦♦ Installazione Utility ♦♦                                            |"
+-    echo "   |   [18]   Verifica file configurazione   |   [   ]                                       |"
+-    echo "   |   ===================================================================================   |"
+-    echo "   |                              ♦♦  Rimuovere Componenti ♦♦                                            |"
+-    echo "   |   [19]   Plugins - XINE - VDR - XMBC    |   [   ]                                       |"
+-    echo "   |   ===================================================================================   |"
+-    echo "   |   [20]   Esci                                                                           |"
+-    echo "   ╰=========================================================================================╯"
+-    echo -n "       Scegli  =  Installa [ 1 ~ 20 ]  --  Rimuove [ R1 ~ R16 ]:        "
++    dialog --title "   ♦♦♦♦♦  Script Installazione VDR 2.2.0 V.5.3 - Librerie & Codec  ♦♦♦♦♦   " --infobox "
++          ╭=========================================================================================╮    
++          |  ----- Installa - Crea Directory ------  |  ------ Disinstalla - Rimuove Directory ---- |
++          |=========================================================================================|
++          |  ....................... ♦♦♦   Download & Update Repository   ♦♦♦ ......................  |
++          |   [1]    Directory Repository Locale  ..... |   [R1]    Directory Repository Locale ........  |
++          |   =====================================================================================   |
++          |    ...♦♦♦   Libreria Di Supporto Schede Grafiche ATI - {Test  Softhddevice Vaapi}   ♦♦♦...  |
++          |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
++          |   [2]    YASM 1.3.0  .....................  |   [R2]    YASM 1.3.0   ........................  |
++          |   [3]    LIBDRM 2.4.60   ..................  |   [R3]    LIBDRM 2.4.60   .....................  |
++          |   [4]    LIBVA 1.5.1  ....................  |   [R4]    LIBVA 1.5.1  .......................   |
++          |   =====================================================================================   |
++          |   ............♦♦♦   Librerie & Codec - FFMPEG - FDK-AAC - X264 - LIBVPX   ♦♦♦............  |
++          |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
++          |   [5]    X264 18.12.2014  ................   |   [R5]    X264 18.12.2014   ...................  |
++          |   [6]    FDK-AAC Git  ....................  |   [R6]    FDK-AAC Git   .......................   |
++          |   [7]    LIBVPX 1.3.0   ...................  |   [R7]    LIBVPX 1.3.0  ......................   |
++          |   [8]    FFMPEG 2.6    .....................  |   [R8]    FFMPEG 2.6   ........................   |
++          |   =====================================================================================   |
++          |   ..............♦♦♦   Installazione XINE-LIB - XINE-UI - VDR & PLUGINS   ♦♦♦.............  |
++          |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
++          |   [9]    XINE-LIB 1.2.6  .................  |   [R9]    XINE-LIB 1.2.6   ....................  |
++          |   [10]   XINE-UI 0.99.9  ................  |   [R10]   XINE-UI 0.99.9   ...................   |
++          |   [11]   VDR 2.2.0 & Plugins Base  ......  |   [R11]   VDR 2.2.0 & Plugins Base  .........  |
++          |   [12]   Prima Configurazione VDR  ......  |   [R12]   Rimozione Configurazione VDR  .....  |
++          |   [13]   Installa Altri Plugins  ........  |   [R13]   ...................................  |    
++          |   [14]   Installa Skin   .................  |   [R14]   Disinstalla Skin  .................  |
++          |   [15]   Aggiornamento dei Plugins  .....  |   [R15]    ...................................  |
++          |   =====================================================================================   |
++          |   .....♦♦♦   Aggiornamento Lista Canali 13.0E Tramite Script GetChannels 0.7.0   ♦♦♦.....  |
++          |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
++          |   [16]   Creazione lista canali  ........  |   [R16]   Rimozione lista canali  ...........  |
++          |   =====================================================================================   |
++          |   ............................♦♦♦   Installazione  KODI   ♦♦♦............................  |
++          |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
++          |   [17]   Installa KODI  .................  |   [R17]   Rimozione KODI  ...................  |
++          |   =====================================================================================   |
++          |   ............................♦♦♦   Installazione Utility   ♦♦♦..........................  |
++          |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |    
++          |   [18]   Verifica file configurazione  ..  |   [R18]   ...................................  |
++          |   =====================================================================================   |
++          |   ............................♦♦♦   Rimuovere Componenti   ♦♦♦...........................  |
++          |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |    
++          |   [19]   Plugins - XINE - VDR - KODI  ...  |   [R19]   ...................................  |
++          |   =====================================================================================   |
++          |   [20]   Esci  .........................................................................  |
++          ╰=========================================================================================╯" 0 0
++
++    echo -n "              Scegli = Installa [1~19] -- Rimuove [R1~R19] -- Esci [20] :        "
+     read yourch
+     case $yourch in
+ 
+-    ###################################
+-1)  #   Creazione Repository locale   #
+-    ###################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++1)                                        #########################################
++                                          #      CREAZIONE REPOSITORY LOCALE      #
++                                          #########################################
++
+ 
+-    # Creo il repo locale
+     clear
+-    echo "        ** Creazione/Aggiornamento repository locale **"; 
+-    echo "        -----------------------------------------------"
+-    echo "                     Repository locale                 " 
+-    echo "        -----------------------------------------------"
+-    echo "        [a]  Creazione  -  Crea File Se Non Presente   "
+-    echo "        [b]  Aggiornamento  -  Funzione Tradizionale   "
+-    echo "        -----------------------------------------------"
++    dialog --title "   ** Download & Update Repository Locale **   " --infobox "
++   ----------------------------------------------
++           Cartella Repository in Locale             
++   ----------------------------------------------
++          
++   [a]  Creazione  -  Crea File Se Non Presente   
++   [b]  Aggiornamento  -  Funzione Tradizionale   
++          
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-b]:      "
+     read yourch
+     case $yourch in
+ 
+-    a) cd /home/`logname`; mkdir -p sifinstallrepo;
++    a) clear; cd /home/`logname`; mkdir -p sifinstallrepo;
+     chmod -R 777 sifinstallrepo;
+     cd sifinstallrepo;
+     
+@@ -416,23 +435,20 @@
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+     wget https://www.dropbox.com/s/jtk3ax8hj7dmf2h/yasm-1.3.0.tar.gz;
+-    # git clone git://github.com/yasm/yasm.git;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/libdrm-2.4.59.tar.gz ]; then
++if [ -s /home/`logname`/sifinstallrepo/libdrm-2.4.60.tar.gz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/6hcmte2d3jllgsx/libdrm-2.4.59.tar.gz;
+-    # wget http://dri.freedesktop.org/libdrm/libdrm-2.4.59.tar.gz;
++    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.60.tar.gz;
+   fi    
+ 
+-if [ -s /home/`logname`/sifinstallrepo/libva-1.5.0.tar.bz2 ]; then
++if [ -s /home/`logname`/sifinstallrepo/libva-1.5.1.tar.bz2 ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/fcuvgdi8ra57zgc/libva-1.5.0.tar.bz2;
+-    # wget http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.5.0.tar.bz2;
++    wget http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.5.1.tar.bz2;
+   fi    
+ 
+  if [ -s /home/`logname`/sifinstallrepo/x264-snapshot-20141218-2245.tar.bz2 ]; then
+@@ -440,14 +456,12 @@
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+     wget https://www.dropbox.com/s/nf9fz22f8pmlcrg/x264-snapshot-20141218-2245.tar.bz2;
+-    # wget http://download.videolan.org/x264/snapshots/x264-snapshot-20141218-2245.tar.bz2;
+   fi 
+ 
+  if [ -s /home/`logname`/sifinstallrepo/fdk-aac ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    #wget https://www.dropbox.com/s/5x35zanhlawnng6/fdk-aac;
+      git clone https://github.com/mstorsjo/fdk-aac.git;
+   fi  
+ 
+@@ -456,14 +470,12 @@
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+     wget https://www.dropbox.com/s/22u8nukke7o0iqm/libvpx-v1.3.0.tar.bz2;
+-    # wget https://webm.googlecode.com/files/libvpx-v1.3.0.tar.bz2;
+   fi   
+ 
+ if [ -s /home/`logname`/sifinstallrepo/ffmpeg ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    #wget https://www.dropbox.com/s/3fwddin77z2mlzm/ffmpeg-2.5.tar.gz;
+     git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg
+   fi    
+ 
+@@ -473,7 +485,6 @@
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    #wget http://projects.vdr-developer.org/git/xine-lib.git/snapshot/xine-lib-1.2.6.tar.gz;
+     git clone git://projects.vdr-developer.org/xine-lib.git;
+   fi
+ 
+@@ -488,7 +499,6 @@
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    #wget http://www.mplayerhq.hu/MPlayer/releases/codecs/all-20110131.tar.bz2
+     wget https://www.dropbox.com/s/c9ymx04gjsf12r7/all-20110131.tar.bz2;
+   fi 
+  
+@@ -578,7 +588,7 @@
+     wget https://www.dropbox.com/s/qa0674d9l9mgzzf/patch_softhddevice.tar.gz;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-streamdev ]; then
++if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-streamdev-f1dbdd0.tar.gz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+@@ -634,6 +644,13 @@
+     git clone git://projects.vdr-developer.org/vdr-manager.git;
+   fi
+ 
++if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-sc ]; then
++  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
++else
++  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
++    git clone https://github.com/3PO/vdr-plugin-sc.git;
++  fi
++
+ if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-xvdr ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+@@ -666,7 +683,7 @@
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/0fpr5q0jf85haen/vdr-patches.2.2.0.tar.gz;
++    wget https://www.dropbox.com/s/i2syzegiwy7gvex/vdr-patches.2.2.0.tar.gz;
+   fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/Make.config.2.2.0 ]; then
+@@ -774,18 +791,18 @@
+     wget https://www.dropbox.com/s/knps7b8q2udary6/vdr-text2skin-EgalT2-0.3.3.tar.gz;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/vdr-iptv-2.2.1.tgz ]; then
++if [ -s /home/`logname`/sifinstallrepo/vdr-iptv-2.2.0.tgz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget http://www.saunalahti.fi/~rahrenbe/vdr/iptv/files/vdr-iptv-2.2.1.tgz; 
++    wget http://www.saunalahti.fi/~rahrenbe/vdr/iptv/files/vdr-iptv-2.2.0.tgz; 
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/vdr-femon-2.2.1.tgz ]; then
++if [ -s /home/`logname`/sifinstallrepo/vdr-femon-2.2.0.tgz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget http://www.saunalahti.fi/rahrenbe/vdr/femon/files/vdr-femon-2.2.1.tgz;
++    wget http://www.saunalahti.fi/rahrenbe/vdr/femon/files/vdr-femon-2.2.0.tgz;
+   fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/dvbapi.patch.tar.gz ]; then
+@@ -802,11 +819,11 @@
+     git clone git://projects.vdr-developer.org/vdr-plugin-weatherforecast.git  
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/vdr-satip-2.2.1.tgz ]; then
++if [ -s /home/`logname`/sifinstallrepo/vdr-satip-2.2.0.tgz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/vdr-satip-2.2.1.tgz;
++    wget http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/vdr-satip-2.2.0.tgz;
+ fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/vdr-cecremote-0.6.0.tgz ]; then
+@@ -829,21 +846,7 @@
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+     wget https://www.dropbox.com/s/xe2hrg73a591t0z/patch_setup.tar.gz;
+ fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/patch_iptv.tar.gz ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/nof5ydmxrplw2b0/patch_iptv.tar.gz;
+-fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/iptv_conf.tar.gz ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/1ujtklnct0nqq6q/iptv_conf.tar.gz;
+-fi
+-
++  
+ ################################# caricamento skin ########################################
+ 
+ if [ -s /home/`logname`/sifinstallrepo/skin-narrowhd ]; then
+@@ -1006,11 +1009,11 @@
+     wget https://www.dropbox.com/s/ff3vb3tv15z5l2r/vdr-skinelchi-0.2.8.tar.bz2;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/vdr-skinsoppalusikka-2.2.1.tgz ]; then
++if [ -s /home/`logname`/sifinstallrepo/vdr-skinsoppalusikka-2.2.0.tgz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget http://www.saunalahti.fi/~rahrenbe/vdr/soppalusikka/files/vdr-skinsoppalusikka-2.2.1.tgz;
++    wget http://www.saunalahti.fi/~rahrenbe/vdr/soppalusikka/files/vdr-skinsoppalusikka-2.2.0.tgz;
+   fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/yaepghd-0.0.3-ce-themes.tar.gz ]; then
+@@ -1041,7 +1044,7 @@
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/8c2jbepadme00yw/getchannels.tar.gz;
++    wget https://www.dropbox.com/s/os0dz379o9rdtk3/getchannels.tar.gz;
+   fi
+ 
+ 
+@@ -1157,36 +1160,22 @@
+     wget https://www.dropbox.com/s/2mezs18wcvtr66c/w_scan-20141122.tar.bz2;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/Sif_appswitcher.tar.gz ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/tmau76kla19w5o9/Sif_appswitcher.tar.gz;
+-  fi
+-
+   cd ..
+   chmod -R 777 *;;
+-
++  
+ ######################################################################################  
+ 
+-    b) cd /home/`logname`/sifinstallrepo; rm -rf *;
++    b) clear; cd /home/`logname`/sifinstallrepo; rm -rf *;
+ 
+ ######################################################################################  
+ ############################ caricamento librerie ####################################
+ 
+     wget https://www.dropbox.com/s/jtk3ax8hj7dmf2h/yasm-1.3.0.tar.gz;
+-    # git clone git://github.com/yasm/yasm.git;
+-    wget https://www.dropbox.com/s/6hcmte2d3jllgsx/libdrm-2.4.59.tar.gz;
+-    # wget http://dri.freedesktop.org/libdrm/libdrm-2.4.59.tar.gz;
+-    wget https://www.dropbox.com/s/fcuvgdi8ra57zgc/libva-1.5.0.tar.bz2;
+-    # wget http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.5.0.tar.bz2;
+-    #wget https://www.dropbox.com/s/5x35zanhlawnng6/fdk-aac;
++    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.60.tar.gz;
++    wget https://www.dropbox.com/s/fcuvgdi8ra57zgc/libva-1.5.1.tar.bz2;
+     git clone https://github.com/mstorsjo/fdk-aac.git;
+     wget https://www.dropbox.com/s/nf9fz22f8pmlcrg/x264-snapshot-20141218-2245.tar.bz2;
+-    # wget http://download.videolan.org/x264/snapshots/x264-snapshot-20141218-2245.tar.bz2;
+     wget https://www.dropbox.com/s/22u8nukke7o0iqm/libvpx-v1.3.0.tar.bz2;
+-    # wget https://webm.googlecode.com/files/libvpx-v1.3.0.tar.bz2;
+-    #wget https://www.dropbox.com/s/3fwddin77z2mlzm/ffmpeg-2.5.tar.gz;
+     git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg
+ 
+ 
+@@ -1230,23 +1219,21 @@
+     wget https://www.dropbox.com/s/i0i0m7bqqs954nc/vdr-menuorg-0.5.1.tar.gz;
+     wget https://www.dropbox.com/s/mog7nwhd3ihliqx/vdr-radio-1.0.0.tgz;
+     wget https://www.dropbox.com/s/e7qq71v5yjslao6/vdr-remote-0.5.0.tgz;
+-    wget http://www.saunalahti.fi/~rahrenbe/vdr/iptv/files/vdr-iptv-2.2.1.tgz; 
+-    wget http://www.saunalahti.fi/rahrenbe/vdr/femon/files/vdr-femon-2.2.1.tgz;
++    wget http://www.saunalahti.fi/~rahrenbe/vdr/iptv/files/vdr-iptv-2.2.0.tgz; 
++    wget http://www.saunalahti.fi/rahrenbe/vdr/femon/files/vdr-femon-2.2.0.tgz;
+     git clone git://projects.vdr-developer.org/vdr-plugin-streamdev.git;
+     wget https://www.dropbox.com/s/bx13km4g9ogvgb8/menuorg.tar.gz;
+     wget https://www.dropbox.com/s/hsp66258srhwa1d/mce-remote.conf.tar.gz;
+-    wget https://www.dropbox.com/s/0fpr5q0jf85haen/vdr-patches.2.2.0.tar.gz;
++    wget https://www.dropbox.com/s/i2syzegiwy7gvex/vdr-patches.2.2.0.tar.gz;
+     wget https://www.dropbox.com/s/mgg1lfyjbx9li7p/Make.config.2.2.0;
+     wget https://www.dropbox.com/s/c2ikz2od9s2hd0j/reelchannellist.tar.xz;
+     wget https://www.dropbox.com/s/odj5b2w1y3sedsp/ReelMakefile.tar.gz;
+     git clone git://projects.vdr-developer.org/vdr-plugin-weatherforecast.git
+-    wget http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/vdr-satip-2.2.1.tgz;
++    wget http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/vdr-satip-2.2.0.tgz;
+     git clone git://projects.vdr-developer.org/vdr-plugin-scraper2vdr.git;
+     wget https://www.dropbox.com/s/xe2hrg73a591t0z/patch_setup.tar.gz;
+     wget https://www.dropbox.com/s/8f635z72gomjfw0/vdr-setup-0.3.1.tar.gz;
+     wget https://www.dropbox.com/s/7cou9src7w7htzj/vdr-cecremote-0.6.0.tgz;
+-    wget https://www.dropbox.com/s/nof5ydmxrplw2b0/patch_iptv.tar.gz;
+-    wget https://www.dropbox.com/s/1ujtklnct0nqq6q/iptv_conf.tar.gz;
+ 
+ ############################ caricamento skin ########################################
+ 
+@@ -1262,7 +1249,7 @@
+     wget https://www.dropbox.com/s/pydva1r0iafh5hy/skinenigmang-fonts-20080225.tgz;
+     wget https://www.dropbox.com/s/ff3vb3tv15z5l2r/vdr-skinelchi-0.2.8.tar.bz2;
+     wget https://www.dropbox.com/s/knps7b8q2udary6/vdr-text2skin-EgalT2-0.3.3.tar.gz;
+-    wget http://www.saunalahti.fi/~rahrenbe/vdr/soppalusikka/files/vdr-skinsoppalusikka-2.2.1.tgz;
++    wget http://www.saunalahti.fi/~rahrenbe/vdr/soppalusikka/files/vdr-skinsoppalusikka-2.2.0.tgz;
+     wget https://www.dropbox.com/s/y4jiosfxinkh2e1/Basic_skin.tar.gz;
+     wget https://www.dropbox.com/s/66eowrn57bj74du/coolHD_0.2.tar.gz;
+     wget https://www.dropbox.com/s/5l69u5htqsge852/elchiHD-logos-v3.tar.bz2;
+@@ -1274,7 +1261,7 @@
+ 
+ ############################ caricamento varie #######################################
+ 
+-    wget https://www.dropbox.com/s/8c2jbepadme00yw/getchannels.tar.gz;
++    wget https://www.dropbox.com/s/os0dz379o9rdtk3/getchannels.tar.gz;
+     wget https://www.dropbox.com/s/jrizzen5q8o07uv/01_Add_language_It.patch.tar.gz;
+     wget http://www.vdr-italia.org/channels/17x/channels-nohd-tivusat-skyno.conf;
+     wget https://www.dropbox.com/s/z3czcyw5za82utc/channels.conf.dual.tar.gz;
+@@ -1299,18 +1286,23 @@
+     wget https://www.dropbox.com/s/bbi09cxti2wa8r2/yaepghd-0.0.3-ce-themes.tar.gz;
+     wget https://www.dropbox.com/s/2mezs18wcvtr66c/w_scan-20141122.tar.bz2;
+     wget https://www.dropbox.com/s/omrs8wwh5jbz46e/logos.tar.gz; tar -zxvf logos.tar.gz; rm -rf logos.tar.gz;
+-    wget https://www.dropbox.com/s/tmau76kla19w5o9/Sif_appswitcher.tar.gz;
+     cd ..
+     chmod -R 777 *;;
+     esac
+-    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;    
++
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++2)                                        #########################################
++                                          #                   YASM                #
++                                          #########################################
+ 
+-######################################################################################  
+-######################################################################################
+-  
+-                        ###################################
+-2)                      #              Yasm               #
+-                        ###################################
+ 
+     apt-get update && apt-get upgrade;
+     apt-get install libpciaccess-dev checkinstall xserver-xorg-dev vainfo gcc build-essential pkg-config automake autoconf make autoproject;
+@@ -1321,74 +1313,94 @@
+     cd /usr/local/src; 
+     rm -rf yasm;
+     cp /home/`logname`/sifinstallrepo/yasm-1.3.0.tar.gz /usr/local/src/;
+-    #wget http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
+     tar -zxvf yasm-1.3.0.tar.gz; mv yasm-1.3.0 yasm; rm -r yasm-1.3.0.tar.gz; cd yasm
+     ./configure
+     checkinstall --pkgname=yasm --pkgversion="1.3.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R2)                                       #########################################
++                                          #             Rimozione YASM            #
++                                          #########################################
+ 
+-    ###################################
+-R2) #         Rimozione Yasm          #
+-    ###################################
+ 
+     clear
+     echo "                    Adesso Rimuovo Yasm 1.3.0"; sleep 4
+     apt-get purge -y yasm; rm -r /usr/local/src/yasm; rm /usr/local/src/packages/yasm*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++3)                                        #########################################
++                                          #                  LIBDRM               #
++                                          #########################################
+ 
+-                           ###################################
+-3)                         #              Libdrm             #
+-                           ###################################
+ 
+     apt-get remove -y libdrm-dev;
+ 
+     clear
+-    echo "                    Adesso Installo Libdrm 2.4.59"; sleep 4
+-    #cp /home/`logname`/sifinstallrepo/libdrm-2.4.59.tar.gz /usr/local/src/;
++    echo "                    Adesso Installo Libdrm 2.4.60"; sleep 4
+     cd /usr/local/src
+-    rm - rf libdrm;
+-    cp /home/`logname`/sifinstallrepo/libdrm-2.4.59.tar.gz /usr/local/src/;  
+-    #wget http://dri.freedesktop.org/libdrm/libdrm-2.4.59.tar.gz
+-    tar -zxvf libdrm-2.4.59.tar.gz; mv libdrm-2.4.59 libdrm; rm -r libdrm-2.4.59.tar.gz; cd libdrm
++    rm -rf libdrm;
++    cp /home/`logname`/sifinstallrepo/libdrm-2.4.60.tar.gz /usr/local/src/;  
++    tar -zxvf libdrm-2.4.60.tar.gz; mv libdrm-2.4.60 libdrm; rm -r libdrm-2.4.60.tar.gz; cd libdrm
+     ./configure --enable-silent-rules --enable-libkms --enable-udev --enable-largefile --enable-intel --enable-radeon
+-    checkinstall --pkgname=libdrm --pkgversion="2.4.59-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=libdrm --pkgversion="2.4.60-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R3)                                       #########################################
++                                          #           Rimozione LIBDRM            #
++                                          #########################################
+ 
+-                       ###################################
+-R3)                    #        Rimozione Libdrm         #
+-                       ###################################
+ 
+     clear
+-    echo "                    Adesso Rimuovo Libdrm 2.4.59"; sleep 4
++    echo "                    Adesso Rimuovo Libdrm 2.4.60"; sleep 4
+     apt-get purge -y libdrm; rm -r /usr/local/src/libdrm; rm /usr/local/src/packages/libdrm*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++4)                                        #########################################
++                                          #                  LIBVA                #
++                                          #########################################
+ 
+-                      ###################################
+-4)                    #              Libva              #
+-                      ###################################
+ 
+     clear
+-    echo "                    Adesso Installo Libva 1.5.0"; sleep 4
++    echo "                    Adesso Installo Libva 1.5.1"; sleep 4
+     cd /usr/local/src;
+     rm -r libva;
+-    cp /home/`logname`/sifinstallrepo/libva-1.5.0.tar.bz2 /usr/local/src/;
+-    #wget http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.5.0.tar.bz2;
+-    tar xjf libva-1.5.0.tar.bz2; mv libva-1.5.0 libva; rm -r libva-1.5.0.tar.bz2;
++    cp /home/`logname`/sifinstallrepo/libva-1.5.1.tar.bz2 /usr/local/src/;
++    tar xjf libva-1.5.1.tar.bz2; mv libva-1.5.1 libva; rm -r libva-1.5.1.tar.bz2;
+     cd libva
+     ./configure
+-    checkinstall --pkgname=libva --pkgversion="1.5.0-git" --pkgrelease=VAAPI-0.34.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=libva --pkgversion="1.5.1-git" --pkgrelease=VAAPI-0.34.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     rm /etc/ld.so.conf;
+     touch /etc/ld.so.conf;
+     echo 'include /etc/ld.so.conf.d/*.conf
+@@ -1396,24 +1408,36 @@
+ /usr/local/lib/dri' >> /etc/ld.so.conf  
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R4)                                       #########################################
++                                          #            Rimozione LIBVA            #
++                                          #########################################
+ 
+-                     ###################################
+-R4)                  #        Rimozione Libva          #
+-                     ###################################
+ 
+     clear
+-    echo "                    Adesso Rimuovo Libva 1.5.0"; sleep 4
++    echo "                    Adesso Rimuovo Libva 1.5.1"; sleep 4
+     apt-get purge -y libva; rm -r /usr/local/src/libva; rm /usr/local/src/packages/libva*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++5)                                        #########################################
++                                          #                   X264                #
++                                          #########################################
+ 
+-                     ###################################
+-5)                   #               X264              #
+-                     ###################################
+ 
+     apt-get remove -y x264 libx264-dev;
+     apt-get update;
+@@ -1433,7 +1457,6 @@
+     cd /usr/local/src;
+     rm -Rf $SRC/x264;
+     cp /home/`logname`/sifinstallrepo/x264-snapshot-20141218-2245.tar.bz2 /usr/local/src/;
+-    #wget ftp://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-20141218-2245.tar.bz2;
+     tar xjf x264-snapshot-20141218-2245.tar.bz2; mv x264-snapshot-20141218-2245 x264;
+     rm -r x264-snapshot-20141218-2245.tar.bz2; cd x264;
+ 
+@@ -1443,24 +1466,36 @@
+     ldconfig -v
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;  
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R5)                                       #########################################
++                                          #             Rimozione X264            #
++                                          #########################################
+ 
+-                      ###################################
+-R5)                   #         Rimozione X264          #
+-                      ###################################
+ 
+     clear
+     echo "                    Adesso Rimuovo X264 18.12.2014"; sleep 4
+     apt-get purge -y x264; rm -r /usr/local/src/x264; rm /usr/local/src/packages/x264*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++5a)                                       #########################################
++                                          #                  X265                 #
++                                          #########################################
+ 
+-                      ###################################
+-5a)                   #               X265              #
+-                      ###################################
+ 
+     apt-get remove -y x265
+ 
+@@ -1476,55 +1511,78 @@
+     ldconfig -v
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R5a)                                      #########################################
++                                          #             Rimozione X265            #
++                                          #########################################
+ 
+-                   ###################################
+-R5a)               #         Rimozione X265          #
+-                   ###################################
+ 
+     clear
+     echo "                    Adesso Rimuovo X265 - Git"; sleep 4
+     apt-get purge -y x265; rm -r /usr/local/src/x265; rm /usr/local/src/packages/x265*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++6)                                        #########################################
++                                          #                 FDK-AAC               #
++                                          #########################################
+ 
+-                   ###################################
+-6)                 #              Fdk-aac            #
+-                   ###################################
+ 
+     clear
+     echo "                    Adesso Installo Fdk-aac - Git"; sleep 4
+     cd /usr/local/src
+     rm -Rf fdk-aac
+     cp -Rf /home/`logname`/sifinstallrepo/fdk-aac /usr/local/src/; cd fdk-aac;  
+-    #git clone https://github.com/mstorsjo/fdk-aac.git; cd fdk-aac
+     autoreconf -fiv
+     ./configure --disable-shared --with-pic
+     make -j4
+     checkinstall --pkgname=fdk-aac --pkgversion="0.1.x-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R6)                                       #########################################
++                                          #             Rimozione FDK-AAC         #
++                                          #########################################
+ 
+-                   ###################################
+-R6)                #        Rimozione Fdk-aac        #
+-                   ###################################
+ 
+     clear
+     echo "                    Adesso Rimuovo Fdk-aac - Git"; sleep 4
+     apt-get purge -y fdk-aac; rm -r /usr/local/src/fdk-aac; rm /usr/local/src/packages/fdk-aac*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++7)                                        #########################################
++                                          #                 LIBVPX                #
++                                          #########################################
+ 
+-                   ###################################
+-7)                 #              Libvpx             #
+-                   ###################################
+ 
+     apt-get remove -y libav-tools libvpx-dev
+ 
+@@ -1533,7 +1591,6 @@
+     cd /usr/local/src
+     rm -R libvpx
+     cp /home/`logname`/sifinstallrepo/libvpx-v1.3.0.tar.bz2 /usr/local/src/;
+-    #wget https://webm.googlecode.com/files/libvpx-v1.3.0.tar.bz2
+     tar xjf libvpx-v1.3.0.tar.bz2; mv libvpx-v1.3.0 libvpx;
+     rm -r libvpx-v1.3.0.tar.bz2; cd libvpx
+     ./configure --enable-pic --enable-shared --enable-runtime_cpu_detect
+@@ -1541,30 +1598,42 @@
+     checkinstall --pkgname=libvpx --pkgversion="1.3.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R7)                                       #########################################
++                                          #             Rimozione LIBVPX         #
++                                          #########################################
+ 
+-                  ###################################
+-R7)               #        Rimozione Libvpx         #
+-                  ###################################   
+ 
+     clear
+     echo "                    Adesso Rimuovo Libvpx 1.3.0"; sleep 4
+     apt-get purge -y libvpx; rm -r /usr/local/src/libvpx; rm /usr/local/src/packages/libvpx*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-###################################################################################### 
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           # 
++8)                                        #########################################
++                                          #                  FFMPEG               #
++                                          #########################################
+ 
+-                  ###################################
+-8)                #              FFmpeg             #
+-                  ################################### 
+ 
+     apt-get remove -y ffmpeg
+ 
+     clear
+     echo "                    Adesso Installo FFmpeg 2.6"; sleep 4
+-    apt-get install -y libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev
++    apt-get install -y libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
+     cd /usr/local/src;
+     rm -R ffmpeg
+     cp -rf /home/`logname`/sifinstallrepo/ffmpeg /usr/local/src/;
+@@ -1575,24 +1644,36 @@
+     ldconfig -v
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R8)                                       #########################################
++                                          #             Rimozione FFMPEG          #
++                                          #########################################
+ 
+-                      ###################################
+-R8)                   #        Rimozione FFmpeg         #
+-                      ###################################
+ 
+     clear
+     echo "                    Adesso Rimuovo FFmpeg 2.6"; sleep 4
+     apt-get purge -y ffmpeg; rm -r /usr/local/src/ffmpeg; rm /usr/local/src/packages/ffmpeg*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;; 
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++9)                                        #########################################
++                                          #              XINE-LIB 1.2.6           #
++                                          #########################################
+ 
+-                      ###############################
+-9)                    #        XINE LIB 1.2.6       #
+-                      ###############################
+ 
+     if [ -f $PACKAGES/libxine2*.deb ]; then
+     echo "Il pacchetto è presente, Compilazione non eseguita [... rinominare il file .deb per bypassare il check... ]"; press_enter
+@@ -1626,24 +1707,36 @@
+     checkinstall --fstrans=no --install=yes --pkgname=libxine2 --pkgversion "1.2.6-git" --pakdir=$PACKAGES --default
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R9)                                       #########################################
++                                          #           Rimozione XINE-LIB          #
++                                          #########################################
+ 
+-                       ###################################
+-R9)                    #       Rimozione Xine-lib2       #
+-                       ###################################
+ 
+     clear
+     echo "                    Adesso Rimuovo Xine-lib2 1.2.6"; sleep 4
+     apt-get purge -y libxine2-vdpau; rm -r /usr/local/src/xine-lib*; rm /usr/local/src/packages/libxine2*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++10)                                       #########################################
++                                          #                 XINE-UI               #
++                                          #########################################
+ 
+-                       ###################################
+-10)                    #             Xine-ui             #
+-                       ###################################
+ 
+     clear
+     echo "                    Adesso Installo Xine-ui 0.99.9"; sleep 4
+@@ -1661,32 +1754,44 @@
+     fi
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R10)                                      #########################################
++                                          #            Rimozione XINE-UI          #
++                                          #########################################
+ 
+-                           ###################################
+-R10)                       #        Rimozione Xine-ui        #
+-                           ###################################
+ 
+     clear
+     echo "                    Adesso Rimuovo Xine-ui 0.99.9"; sleep 4
+     apt-get purge -y xine-ui; rm -r /usr/local/src/xine-ui; rm /usr/local/src/packages/xine-ui*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
+ 
+-                           ################################
+-11)                        #    VDR-2.2.0 & Plugins Base  #
+-                           ################################
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++11)                                       #########################################
++                                          #        VDR-2.2.0 & Plugins Base       #
++                                          #########################################
+ 
++    clear
+     echo "vdr ALL=(ALL) ALL" >> /etc/sudoers; 
+     echo "*** Installazione librerie ***"; sleep 4 
+     cd $SRC; apt-get install -y build-essential checkinstall libfreetype6-dev libfontconfig1-dev libjpeg62-dev libcap-dev libfribidi-dev libncurses5-dev libncursesw5-dev git-core gettext
+     apt-get install -y libx11-xcb-dev libxcb-dpms0-dev libxcb-glx0-dev libxcb-randr0-dev libxcb-screensaver0-dev libxcb-xv0-dev libxcb-image0-dev libxcb-util0-dev libxcb-icccm4-dev libxcb-keysyms1-dev
+     apt-get -y install libpcre++0 libpcre++-dev python-libxml2 python-libxslt1 python-pycurl python-simplejson mimms libxml2-dev python-all-dev python-central cdbs libglib2.0-dev debhelper txt2man
+     apt-get -y install libcurl3 libcurl4-gnutls-dev cvs libxcb-icccm4 libxcb-icccm4-dev libx11-xcb-dev libxcb-screensaver0-dev libxcb-dpms0-dev libxcb-ewmh-dev 
+-    
++    clear    
+     echo "               Adesso Installo VDR 2.2.0      "; sleep 4 
+ 
+     cp /home/`logname`/sifinstallrepo/$VDR.tar.bz2 $SRC/; tar xivf $VDR.tar.bz2;
+@@ -1736,6 +1841,8 @@
+     patch -p1 < 84_reelchannels.patch; sleep 1;
+ echo "*** 87 ***"
+     patch -p1 < 87_pin.patch; sleep 1;
++echo "*** 90 ***"
++    patch -p1 < 90_dvbdevice.patch; sleep 1;   
+ echo "*** 91 ***"
+     patch -p1 < 91_doubleChannels.patch; sleep 1;
+ echo "*** 99 ***"
+@@ -1745,18 +1852,21 @@
+     cp /home/`logname`/sifinstallrepo/Make.config.2.2.0 $SRC/vdr/; mv Make.config.2.2.0 Make.config; sleep 1;
+     sed -i 's/|| DVB_API_VERSION_MINOR != 0//' dvbdevice.h
+     #
+-    #rm -rf /usr/local/src/vdr/PLUGINS/src/dvbsddevice
+-    #rm -rf /usr/local/src/vdr/PLUGINS/src/dvbhddevice
++    rm -rf /usr/local/src/vdr/PLUGINS/src/dvbsddevice
++    rm -rf /usr/local/src/vdr/PLUGINS/src/dvbhddevice
+     make && make plugins
+-    exit_status_check; 
++    exit_status_check;
++    clear
+     echo ""; echo "*** Final compilation ***"; echo ""
+     cd /usr/local/src/vdr
+     apt-get purge -y vdr
+     checkinstall --fstrans=no --install=yes --pkgname=vdr --pkgversion "2.2.0-git" --pakdir=$PACKAGES --default
+     rm -r /media/video; mkdir /media/video; mkdir -p /usr/lib/vdr/scripts;
+     mkdir -p /etc/vdr/plugins; cp *.conf /etc/vdr; mkdir -p /usr/lib/vdr/plugins;
++    clear    
+     echo "*** keymacros.conf setup ***";
+     rm /etc/vdr/keymacros.conf; cd $SRCVDR; cp vdr /usr/local/bin/; touch /etc/vdr/keymacros.conf
++    clear
+     echo "# Remote control key macros for VDR
+ #
+ # Format:
+@@ -1776,6 +1886,7 @@
+ #
+ 
+ # Ora installo i Plugins base
++clear
+ echo "                        "
+ echo "                        "
+ echo "                        "
+@@ -1785,13 +1896,12 @@
+ mkdir -p /usr/lib/vdr/plugins; mkdir -p /usr/lib/vdr/scripts; mkdir -p /etc/vdr/plugins; mkdir -p /etc/vdr/themes; cd $PLUGINS; mkdir -p tvguide;
+ #
+ #
++clear
+ echo ""; echo "*** Text2skin ***"; echo ""; sleep 3
+ apt-get install -y imagemagick git-core libmagick++-dev
+ cd $VDRSRC; 
+-# git clone git://projects.vdr-developer.org/vdr-plugin-text2skin.git;
+ cp -r /home/`logname`/sifinstallrepo/vdr-plugin-text2skin /$VDRSRC/;
+ mv vdr-plugin-text2skin text2skin; cd text2skin; 
+-# wget https://www.dropbox.com/s/h2114fton87spyh/text2skin.patch.tar.gz;
+ cp /home/`logname`/sifinstallrepo/text2skin.patch.tar.gz /$VDRSRC/text2skin/;
+ tar -zxvf text2skin.patch.tar.gz; rm -r text2skin.patch.tar.gz;
+ patch -p1 < 0002-symbols.patch; sleep 1;
+@@ -1804,20 +1914,20 @@
+ cd ../../..; make plugins
+ #
+ #
++clear
+ echo ""; echo "*** Menuorg ***"; echo ""; sleep 3
+ cd $VDRSRC; apt-get install -y libxml++2.6-2 libglibmm-2.4-1c2a libxml++2.6-dev libglibmm-2.4-dev; 
+ # wget https://www.dropbox.com/s/i0i0m7bqqs954nc/vdr-menuorg-0.5.1.tar.gz; 
+ cp /home/`logname`/sifinstallrepo/vdr-menuorg-0.5.1.tar.gz /$VDRSRC/; tar -zxvf vdr-menuorg-0.5.1.tar.gz;
+ mv menuorg-0.5.1 menuorg; rm -r vdr-menuorg-0.5.1.tar.gz; cd ../..; make plugins; cd /etc/vdr/plugins;  
+-# wget https://www.dropbox.com/s/bx13km4g9ogvgb8/menuorg.tar.gz; 
+ cp /home/`logname`/sifinstallrepo/menuorg.tar.gz /etc/vdr/plugins;
+ tar xzvf menuorg.tar.gz; rm -r menuorg.tar.gz
+ #
+ #
++clear
+ echo ""; echo "*** OSDTeletext ***"; echo ""; sleep 3
+ apt-get install git-core;
+ cd $VDRSRC; 
+-# git clone git://projects.vdr-developer.org/vdr-plugin-osdteletext.git;
+ cp -r /home/`logname`/sifinstallrepo/vdr-plugin-osdteletext /$VDRSRC/;
+ mv vdr-plugin-osdteletext osdteletext; cd osdteletext;
+ cp /home/`logname`/sifinstallrepo/patch_osdteletext.tar.gz /$VDRSRC/osdteletext/;
+@@ -1826,9 +1936,16 @@
+ cd ../../..; make plugins; mkdir -p /vtx
+ #
+ #
++clear
++echo ""; echo "*** Femon ***"; echo ""; sleep 3
++cd $VDRSRC; 
++cp /home/`logname`/sifinstallrepo/vdr-femon-2.2.0.tgz /$VDRSRC/; tar xzvf vdr-femon-2.2.0.tgz;
++mv femon-2.2.0 femon; rm -r vdr-femon-2.2.0.tgz; cd ../../; make plugins
++#
++#
++clear
+ echo ""; echo "*** Dvbapi ***"; echo ""; sleep 3
+ cd $VDRSRC; 
+-# git clone git://github.com/manio/vdr-plugin-dvbapi.git; 
+ cp -r /home/`logname`/sifinstallrepo/vdr-plugin-dvbapi /$VDRSRC/;
+ mv vdr-plugin-dvbapi dvbapi; cd dvbapi;
+ cp /home/`logname`/sifinstallrepo/dvbapi.patch.tar.gz /$VDRSRC/dvbapi/
+@@ -1837,16 +1954,16 @@
+ cd ../../..; make plugins
+ #
+ #
++clear
+ echo ""; echo "*** Softhddevice ***"; echo ""; sleep 3
+ cd $VDRSRC;
+-# git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git;
+ cp -r /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice /$VDRSRC; mv vdr-plugin-softhddevice softhddevice; cd softhddevice; cp -r /home/`logname`/sifinstallrepo/patch_softhddevice.tar.gz /$VDRSRC/softhddevice; tar -zxvf patch_softhddevice.tar.gz; rm -r patch_softhddevice.tar.gz; patch -p1 < 11_Makefile.patch; sleep 1; patch -p1 < 12_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_vdpauqueue.patch; sleep 1;
+ make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1; make install; 
+ # 
+ #
++clear
+ echo ""; echo "*** Epgsearch ***"; echo ""; sleep 3
+ cd $VDRSRC;
+-# git clone http://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git; 
+ cp -r /home/`logname`/sifinstallrepo/vdr-plugin-epgsearch /$VDRSRC/;
+ mv vdr-plugin-epgsearch epgsearch; cd epgsearch;
+ cp /home/`logname`/sifinstallrepo/patch_epgsearch.tar.gz /$VDRSRC/epgsearch/
+@@ -1855,27 +1972,26 @@
+ cd ../../..; make plugins; 
+ #
+ #
++clear
+ echo ""; echo "*** Reelchannellist ***"; echo ""; sleep 3
+ cd $VDRSRC; 
+-# wget https://www.dropbox.com/s/c2ikz2od9s2hd0j/reelchannellist.tar.xz;
+ cp /home/`logname`/sifinstallrepo/reelchannellist.tar.xz /$VDRSRC/;
+ tar -xJf reelchannellist.tar.xz; rm -r reelchannellist.tar.xz; cd reelchannellist; sed -i "s|/root/openbricks/build/build.i386.eglibc/vdr-1.7.27|/usr/local/src/vdr-2.2.0|" *.c; sed -i "s|/root/openbricks/build/build.i386.eglibc/vdr-1.7.27|/usr/local/src/vdr-2.2.0|" *.h; rm -r Makefile; 
+-# wget https://www.dropbox.com/s/odj5b2w1y3sedsp/ReelMakefile.tar.gz; 
+ cp /home/`logname`/sifinstallrepo/ReelMakefile.tar.gz /$VDRSRC/reelchannellist; 
+ tar -zxvf ReelMakefile.tar.gz; rm -r ReelMakefile.tar.gz; 
+-# wget https://www.dropbox.com/s/jrizzen5q8o07uv/01_Add_language_It.patch.tar.gz;
+ cp /home/`logname`/sifinstallrepo/01_Add_language_It.patch.tar.gz /$VDRSRC/reelchannellist; 
+ tar -zxvf 01_Add_language_It.patch.tar.gz ; rm -r 01_Add_language_It.patch.tar.gz; patch -p1 < 01_Add_language_It.patch; 
+ cd ../../..; make plugins
+ #
+ #    
++clear
+ echo ""; echo "*** Xvdr ***"; echo ""; sleep 3
+ cd $VDRSRC; 
+-# git clone https://github.com/pipelka/vdr-plugin-xvdr.git; 
+ cp -r /home/`logname`/sifinstallrepo/vdr-plugin-xvdr /$VDRSRC/;
+ mv vdr-plugin-xvdr xvdr; mkdir -p /etc/vdr/plugins/xvdr/; cd ../..; make plugins; echo "*** allowed_hosts.conf setup ***"; echo "$ALLOWED" >> /etc/vdr/plugins/xvdr/allowed_hosts.conf
+ #
+ #
++clear
+ echo ""; echo "*** Loadepg ***"; echo ""; sleep 3
+ cd $VDRSRC; 
+ cp -r /home/`logname`/sifinstallrepo/vdr-loadepg-0.2.6.tgz /$VDRSRC;
+@@ -1884,56 +2000,73 @@
+ cp -r $VDRSRC/loadepg/conf/* $PLUGINS/loadepg/; 
+ #
+ #sudo -apt get install lm-sensors
++clear
+ echo "*** Skindesigner ***"; echo ""; sleep 3
+ echo "*** Carico prima  le api di Skindesigner ***"; echo ""; sleep 3
+ cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && cd vdr-plugin-skindesigner/libskindesignerapi && make clean && make install;
+ sleep 3
++clear
+ echo "*** Ora Carico Skindesigner ***"; echo ""; sleep 3
+ cd $VDRSRC; sudo apt-get install lm-sensors;
+-# git clone git://projects.vdr-developer.org/vdr-plugin-skindesigner.git;
+ cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && cd vdr-plugin-skindesigner && make && make install && cp -r /home/`logname`/sifinstallrepo/blackholefrodo /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glassy /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/vectraskin /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady_KISS /usr/share/vdr/plugins/skindesigner/skins/ && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
+ #
+ #
++clear
+ echo "*** Skin Flatplus ***"; echo ""; sleep 3
+ cd $VDRSRC;
+-# git clone http://projects.vdr-developer.org/git/skin-flatplus.git;
+ cp -r /home/`logname`/sifinstallrepo/skin-flatplus /$VDRSRC/ && cd skin-flatplus && make install && cd /usr/lib/vdr/plugins/skinflatplus/widgets/temperatures/ && ln -s temperatures.default temperatures && cd ../system_information && ln -s system_information.ubuntu system_information && cd ../weather && cp update_weather.config.sample update_weather.config;
+ #
+ #
++clear
+ echo ""; echo "*** TvGuideng ***"; echo ""; sleep 3
+ cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-tvguideng /$VDRSRC; mv vdr-plugin-tvguideng tvguideng; cd ../..; make plugins;
+ #
+ #
++clear
+ echo ""; echo "*** Tvguide ***";  sleep 3
+ cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-tvguide /$VDRSRC; mv vdr-plugin-tvguide tvguide; cd ../..; make plugins; cp $VDRSRC/tvguide/themes/* /etc/vdr/themes/;
+ #
+ #
++clear
+ echo ""; echo "*** Weatherforecast ***";  sleep 3
+ cd $VDRSRC; apt-get install -y libjansson4 libjansson-dev; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-weatherforecast /$VDRSRC; mv vdr-plugin-weatherforecast weatherforecast; cd ../..; make plugins; 
+ #
+ #
+ cd /usr/local/src/vdr; make plugins install;
+ #
++clear
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R11)                                      #########################################
++                                          #           Rimozione VDR-2.2.0         #
++                                          #########################################
+ 
+-                       ################################
+-R11)                   #         Rimozione VDR        #
+-                       ################################
+ 
+     clear
+     echo "                    Adesso Rimuovo VDR 2.2.0"; sleep 4
+     apt-get purge -y vdr; rm /usr/local/src/vdr; rm -r /usr/local/src/vdr-2.2.0; rm /usr/local/src/packages/vdr*; rm -r /usr/lib/vdr; rm /usr/share/locale/ca_ES/LC_MESSAGES;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++12)                                       #########################################
++                                          #        Configurazione VDR-2.2.0       #
++                                          #########################################
+ 
+-                      ################################
+-12)                   #      Configurazione VDR      #
+-                      ################################
+ 
+     clear
+     echo "                    Adesso Configuro VDR 2.2.0"; sleep 3
+@@ -1991,7 +2124,6 @@
+         echo -n "Chiusura di VDR "
+        killall vdrrun
+        killall vdr
+-       killall vdr-sxfe
+         # Remember status and be verbose
+         ;;
+     restart)
+@@ -2023,15 +2155,18 @@
+ chmod 755 /usr/local/bin/vdrpoweroff
+ #
+ # script avvio xinelib & scrittura setup.conf
+-echo "*** monitor setup ***"; sleep 3
++#
++#
++#    echo "*** monitor setup ***"; sleep 3
+     clear
+-    echo "        --------------------------------------"
+-    echo "                    Che monitor hai?          " 
+-    echo "        --------------------------------------"
+-    echo "        --------------------------------------"
+-    echo "        [a]  16:9                    "
+-    echo "        [b]  4:3                  "
+-    echo "        --------------------------------------"
++    dialog --title "   ** monitor setup **   " --infobox "
++   ----------------------------------------------
++                 Che monitor hai ?             
++   ----------------------------------------------          
++	[a]  16:9	
++	[b]  4:3   
++          
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-b]:      "
+     read yourch
+     case $yourch in
+@@ -2084,6 +2219,7 @@
+ esac
+ #
+ #
++clear
+ echo "*** Creazione icone ***"; sleep 3
+ ##################################################
+ #  Creazione icona avvio vdr con softhddevice    #
+@@ -2249,22 +2385,23 @@
+ ##################################################
+ rm -r /etc/vdr/diseqc.conf;
+ rm -r /etc/vdr/channels.conf;
+-echo "*** diseqc.conf setup ***"; sleep 3
+-    clear
+-    echo "        --------------------------------------"
+-    echo "                    Che impianto hai?         " 
+-    echo "        --------------------------------------"
+-    echo "        --------------------------------------"
+-    echo "        [a]  Hot Bird 13°E                    "
+-    echo "        [b]  Astra 19.2°E                     "
+-    echo "        [c]  Dual 13, 19.2°E                  "
+-    echo "        [d]  Trial 9, 13, 19.2°E              "
+-    echo "        [e]  Trial 13, 16, 19°E               "
+-    echo "        [f]  Quadri 13, 19, 23.5, 28.2°E      "
+-    echo "        [g]  Quadri 9, 13, 16, 19°E           "
+-    echo "        [h]  Terrestre                        "
+-    echo "        [i]  Skip                             "
+-    echo "        --------------------------------------"
++#echo "*** diseqc.conf setup ***"; sleep 3
++    clear        
++    dialog --title "   ** diseqc.conf setup **   " --infobox "
++   ----------------------------------------------
++                Che impianto hai?             
++   ----------------------------------------------
++        [a]    Hot Bird 13°E                    
++        [b]    Astra 19.2°E                    
++        [c]    Dual 13, 19.2°E                  
++        [d]    Trial 9, 13, 19.2°E              
++        [e]    Trial 13, 16, 19°E               
++        [f]    Quadri 13, 19, 23.5, 28.2°E      
++        [g]    Quadri 9, 13, 16, 19°E           
++        [h]    Terrestre                        
++        [i]    Skip                             
++        
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-i]:      "
+     read yourch
+     case $yourch in
+@@ -2281,6 +2418,7 @@
+ ##################################################
+ #       Caricamento W_scan e Getchannels         #
+ ##################################################
++clear
+ echo "*** Caricamento Getchannels ***"; sleep 3
+ if [ -f /$SRC/getchannels/getchannels.py ];
+   then  echo "Getchannels $Remind3"
+@@ -2288,6 +2426,7 @@
+ cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz /$SRC;
+ cd /$SRC && tar -zxvf getchannels.tar.gz && rm -r getchannels.tar.gz;
+ fi
++clear
+ echo "*** Caricamento W_scan ***"; sleep 3
+ cd /usr/local/src; 
+ # wget http://wirbel.htpc-forum.de/w_scan/w_scan-20141122.tar.bz2;
+@@ -2299,26 +2438,19 @@
+ cd w_scan; ./configure; make; make install;
+ fi
+ ##################################################
+-#       Caricamento Sif Appswitcher (prova)      #
+-##################################################
+-cd /usr/bin; rm -r menuorg-appswitcher, rm -r kodi.sh;
+-cp -r /home/`logname`/sifinstallrepo/Sif_appswitcher.tar.gz /$SRC;
+-cd /$SRC && tar -zxvf Sif_appswitcher.tar.gz && rm -r Sif_appswitcher.tar.gz;
+-mv menuorg-appswitcher /usr/bin;
+-mv kodi.sh /usr/bin;
+-##################################################
+ #          Creazione remote per lirc             # 
+ ################################################## 
+-echo "*** remote lirc setup ***"; sleep 3
+-    clear
+-    echo "        --------------------------------------"
+-    echo "                    Che remote hai?           " 
+-    echo "        --------------------------------------"
+-    echo "        --------------------------------------"
+-    echo "        [a]  Mce                    "
+-    echo "        [b]  Hauppauge                  "
+-    echo "        [c]  Skip                    "
+-    echo "        --------------------------------------"
++#echo "*** remote lirc setup ***"; sleep 3
++    clear        
++    dialog --title "   ** remote lirc setup **   " --infobox "
++   ----------------------------------------------
++                Che remote hai?             
++   ----------------------------------------------
++        [a]    Mce                   
++        [b]    Hauppauge                   
++        [c]    Skip                             
++        
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -2398,24 +2530,31 @@
+ #sudo /usr/local/bin/start-xinelib-vdr.sh
+ ;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R12)                                      #########################################
++                                          #      Rimozione Configurazione VDR     #
++                                          #########################################
+ 
+-                   ################################
+-R12)               # Rimozione Configurazione VDR #
+-                   ################################
+ 
+     clear
+-    echo ""; echo "   Rimozione File Configurazione VDR 2.2.0   "; sleep 4 
+-    echo "        ----------------------------------------------"
+-    echo "         Che cosa vuoi rimuovere dalla Configurazione " 
+-    echo "        ----------------------------------------------"
+-    echo "        [a]  Setup.conf                               "
+-    echo "        [b]  Channels.conf                            "
+-    echo "        [c]  Keymacros.conf                           "
+-    echo "        [d]  Tutto il contenuto di /etc/vdr           "
+-    echo "        [e]  Skip                                     "
+-    echo "        ----------------------------------------------"
++    dialog --title "   ** Rimozione File Configurazione VDR 2.2.0 **   " --infobox "
++   ----------------------------------------------
++   Che cosa vuoi rimuovere dalla Configurazione ?
++   ----------------------------------------------
++        [a]    Setup.conf                    
++        [b]    Channels.conf                    
++        [c]    Keymacros.conf                 
++        [d]    Tutto il contenuto di /etc/vdr              
++        [e]    Skip                                 
++        
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-e]:      "
+     read yourch
+     case $yourch in
+@@ -2427,31 +2566,40 @@
+     esac
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
+     
+-                    ###############################################
+-13)             #   Installazione altri Vdr Plugins   #
+-                ###############################################    
++    
+ 
+-clear             
+-echo "     Installazione o Aggiornamento Altri Plugins  "
+-echo "     ---------------------------------------------"
+-echo "     XINELIBOUTPUT                                "
+-echo "     YAEPGHD                                      "
+-echo "     Femon                                        "
+-echo "     Live                                         "
+-echo "     ZapPilot                                     "
+-echo "     Scraper2vdr                                  "  
+-echo "     Ttxtsubs                                     "
+-echo "     Iptv                                         "
+-echo "     Sat-Ip                                       "
+-echo "     StreamDev                                    "
+-echo "     Neutrinoepg                                  "
+-echo "     Extrecmenu                                   "
+-echo "     CecRemote  (sperimentale)                    "
+-echo "     Remote                                       "
+-echo "     ---------------------------------------------"
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++13)                                       #########################################
++                                          #    Installazione altri Vdr Plugins    #
++                                          #########################################
++ 
++       
++    clear        
++    dialog --title " ** Installazione o Aggiornamento Altri Plugins ** " --infobox "
++   ----------------------------------------------
++		XINELIBOUTPUT                                
++		YAEPGHD                                      
++		Femon                                        
++		Live                                         
++		ZapPilot                                     
++		Scraper2vdr                                    
++		Ttxtsubs                                     
++		Iptv                                         
++		Sat-Ip                                       
++		Vdr-StreamDev                                
++		Vdr-Plugin-Sc                                
++		Vdr-Manager                                  
++		Neutrinoepg                                  
++		Extrecmenu                                   
++		CecRemote  (sperimentale)                    
++		Remote                             
++
++   ---------------------------------------------- " 0 0
+ echo "     premere il tasto [Invio] per continuare. . .    " ;read enterKey
+ #
+ #
+@@ -2460,13 +2608,16 @@
+ cd $VDRSRC;
+ 
+     clear
+-    echo "                  Vdr-Plugin-XINELIBOUTPUT       "
+-    echo "        -----------------------------------------"
+-    echo "        [a]  Installare il plugin XINELIBOUTPUT  "
+-    echo "        [b]  Aggiornare il plugin XINELIBOUTPUT  "
+-    echo "        [c]  Rimuovere il plugin XINELIBOUTPUT   "
+-    echo "        [d]  Skip                                "
+-    echo "        -----------------------------------------"
++    dialog --title "   ** VDR-Plugin-XINELIBOUTPUT **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin XINELIBOUTPUT                  
++        [b]    Aggiornare il plugin XINELIBOUTPUT                   
++        [c]    Rimuovere il plugin XINELIBOUTPUT                
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in
+@@ -2519,15 +2670,18 @@
+ d) ;;
+ esac
+ #
+-echo "*** YaepgHd ***"; echo ""; 
++#echo "*** YaepgHd ***"; echo "";
+     clear
+-    echo "                  Vdr-Plugin-YaepgHd          "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Installare il plugin YaepgHd       "
+-    echo "        [b]  Aggiornare il plugin YaepgHd     "
+-    echo "        [c]  Rimuovere il plugin YaepgHd      "
+-    echo "        [d]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugin-YaepgHd **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin YaepgHd                 
++        [b]    Aggiornare il plugin YaepgHd                   
++        [c]    Rimuovere il plugin YaepgHd                
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in
+@@ -2537,49 +2691,49 @@
+     fi || echo "$Remind7 YaepgHd"
+     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ b) cd $VDRSRC && rm -r yaepghd && git clone https://github.com/lucianm/vdr-plugin-yaepghd.git && cp -r vdr-plugin-yaepghd /home/`logname`/sifinstallrepo/ && mv vdr-plugin-yaepghd yaepghd && cd $PLUGINS && rm -r yaepghd  && cp -R $VDRSRC/yaepghd/yaepghd /etc/vdr/plugins/ && cd $SRC/vdr && make plugins;;
+-c) cd $VDRSRC && if [ -f femon/Makefile ];
+-   then rm -r yaepghd && cd $PLUGINS && rm -r yaepghd && sed -i "s|-P'yaepghd'||" /usr/local/bin/vdrrun
+-   else echo "YaepgHd $Remind5" 
+-      fi
+-    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
++c) cd $VDRSRC && rm -r yaepghd && cd $PLUGINS && rm -r yaepghd && sed -i "s|-P'yaepghd'||" /usr/local/bin/vdrrun;;
++d) ;;
+ esac
+ #
+ #
+-echo "*** Femon ***"; echo ""; 
++#echo "*** Femon ***"; echo "";
+     clear
+-    echo "                  Vdr-Plugin-Femon            "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Installare il plugin Femon       "
+-    echo "        [b]  Aggiornare il plugin Femon       "
+-    echo "        [c]  Rimuovere il plugin Femon        "
+-    echo "        [d]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugin-Femon **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin Femon                
++        [b]    Aggiornare il plugin Femon                  
++        [c]    Rimuovere il plugin Femon               
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in
+ a) cd $VDRSRC && if [ -f femon/Makefile ];
+   then  echo "Femon $Remind"
+-else cp -r /home/`logname`/sifinstallrepo/vdr-femon-2.2.1.tgz  /$VDRSRC && tar xzvf vdr-femon-2.2.1.tgz && mv femon-2.2.1 femon && rm -r vdr-femon-2.2.1.tgz && cd ../../ && make plugins && sed -i "s|-P'dvbapi'|& -P'femon'|" /usr/local/bin/vdrrun
++else cp -r /home/`logname`/sifinstallrepo/vdr-femon-2.2.0.tgz  /$VDRSRC && tar xzvf vdr-femon-2.2.0.tgz && mv femon-2.2.0 femon && rm -r vdr-femon-2.2.0.tgz && cd ../../ && make plugins && sed -i "s|-P'dvbapi'|& -P'femon'|" /usr/local/bin/vdrrun
+     fi || echo "$Remind7 Femon"
+     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-b)  cd $VDRSRC && rm -r femon && cp -r /home/`logname`/sifinstallrepo/vdr-femon-2.2.1.tgz /$VDRSRC && tar xzvf vdr-femon-2.2.1.tgz && mv femon-2.2.1 femon && rm -r vdr-femon-2.2.1.tgz && cd ../../ && make plugins;;
+-c) cd $VDRSRC && if [ -f femon/Makefile ];
+-   then rm -r femon && sed -i "s|-P'femon'||" /usr/local/bin/vdrrun
+-   else echo "Femon $Remind5" 
+-      fi
+-    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
++b)  cd $VDRSRC && rm -r femon && cp -r /home/`logname`/sifinstallrepo/vdr-femon-2.2.0.tgz /$VDRSRC && tar xzvf vdr-femon-2.2.0.tgz && mv femon-2.2.0 femon && rm -r vdr-femon-2.2.0.tgz && cd ../../ && make plugins;;
++c) cd $VDRSRC && rm -r femon && sed -i "s|-P'femon'||" /usr/local/bin/vdrrun;;
++d) ;;
+ esac
+ #
+ #
+-echo "*** Live ***"; echo ""; 
++#echo "*** Live ***"; echo "";
+     clear
+-    echo "                  Vdr-Plugin-Live             "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Installare il plugin Live        "
+-    echo "        [b]  Aggiornare il plugin Live        "
+-    echo "        [c]  Rimuovere il plugin Live         "
+-    echo "        [d]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugin-Live **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin Live                
++        [b]    Aggiornare il plugin Live                 
++        [c]    Rimuovere il plugin Live               
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in 
+@@ -2590,23 +2744,23 @@
+     fi || echo "$Remind7 Live"
+     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ b) cd $VDRSRC && rm -r live && git clone http://projects.vdr-developer.org/git/vdr-plugin-live.git && cd /home/`logname`/sifinstallrepo && rm -r vdr-plugin-live && cd $VDRSRC && cp -r vdr-plugin-live /home/`logname`/sifinstallrepo/ && mv vdr-plugin-live live && cd live && cp -r /home/`logname`/sifinstallrepo/livepatch.tar.gz /$VDRSRC/live/ && tar -zxvf livepatch.tar.gz && rm -r livepatch.tar.gz && patch -p1 < timeformat-it_IT-fix.patch && mkdir -p /etc/vdr/plugins/live && cp -a $VDRSRC/live/live /etc/vdr/plugins && cd ../../.. && make plugins;; 
+-c) cd $VDRSRC && if [ -f live/Makefile ];
+-  then rm -r live && cd $PLUGINS && rm -r live && sed -i "s|-P'live'||" /usr/local/bin/vdrrun
+-  else echo "Live $Remind5" 
+-      fi
+-    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey
++c) cd $VDRSRC && rm -r live && cd $PLUGINS && rm -r live && sed -i "s|-P'live'||" /usr/local/bin/vdrrun;;
++d) ;;
+ esac
+ #
+ #
+-echo "*** ZapPilot ***"; echo ""; 
++#echo "*** ZapPilot ***"; echo ""; 
+     clear
+-    echo "                  Vdr-Plugin-ZapPilot         "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Installare il plugin ZapPilot    "
+-    echo "        [b]  Aggiornare il plugin ZapPilot    "
+-    echo "        [c]  Rimuovere il plugin ZapPilot     "
+-    echo "        [d]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugin-ZapPilot **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin ZapPilot                
++        [b]    Aggiornare il plugin ZapPilot                
++        [c]    Rimuovere il plugin ZapPilot             
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in
+@@ -2625,15 +2779,18 @@
+ esac
+ #
+ #
+-echo "*** Scraper2vdr ***"; 
++#echo "*** Scraper2vdr ***"; 
+     clear
+-    echo "                  Vdr-Plugin-Scraper2vdr      "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Installare il plugin Scraper2vdr "
+-    echo "        [b]  Aggiornare il plugin Scraper2vdr "
+-    echo "        [c]  Rimuovere il plugin Scraper2vdr  "
+-    echo "        [d]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugin-Scraper2vdr **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin Scraper2vdr                
++        [b]    Aggiornare il plugin Scraper2vdr                
++        [c]    Rimuovere il plugin Scraper2vdr            
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in 
+@@ -2655,15 +2812,18 @@
+ esac
+ #
+ #
+-echo "*** Ttxtsubs ***"; echo ""; 
++#echo "*** Ttxtsubs ***"; echo ""; 
+     clear
+-    echo "                  Vdr-Plugin-Ttxtsubs         "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Installare il plugin Ttxtsubs    "
+-    echo "        [b]  Aggiornare il plugin Ttxtsubs    "
+-    echo "        [c]  Rimuovere il plugin Ttxtsubs     "
+-    echo "        [d]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugin-Ttxtsubs **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin Ttxtsubs                
++        [b]    Aggiornare il plugin Ttxtsubs                
++        [c]    Rimuovere il plugin Ttxtsubs            
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in 
+@@ -2685,24 +2845,27 @@
+ esac
+ #
+ #
+-echo "*** Sat-Ip ***";
++#echo "*** Sat-Ip ***";
+     clear
+-    echo "                  Vdr Sat-Ip         "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Installare il plugin Sat-Ip      "
+-    echo "        [b]  Aggiornare il plugin Sat-Ip      "
+-    echo "        [c]  Rimuovere il plugin Sat-Ip       "
+-    echo "        [d]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugin-Sat-Ip **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin Sat-Ip                
++        [b]    Aggiornare il plugin Sat-Ip                
++        [c]    Rimuovere il plugin Sat-Ip            
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in 
+ a) cd $VDRSRC && if [ -f satip/Makefile ];
+ then  echo "Webvideo $Remind"
+- else apt-get -y install libpugixml1 libpugixml-dev && cp -r /home/`logname`/sifinstallrepo/vdr-satip-2.2.1.tgz /$VDRSRC && tar xzvf vdr-satip-2.2.1.tgz && rm -r vdr-satip-2.2.1.tgz && mv satip-2.2.1 satip && cd satip && make && make install && sed -i "s|-P'dvbapi'|& -P 'satip'|" /usr/local/bin/vdrrun 
++ else apt-get -y install libpugixml1 libpugixml-dev && cp -r /home/`logname`/sifinstallrepo/vdr-satip-2.2.0.tgz /$VDRSRC && tar xzvf vdr-satip-2.2.0.tgz && rm -r vdr-satip-2.2.0.tgz && mv satip-2.2.0 satip && cd satip && make && make install && sed -i "s|-P'dvbapi'|& -P 'satip'|" /usr/local/bin/vdrrun 
+ fi || echo "$Remind7 Sat-Ip"
+ echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-b) cd $VDRSRC && rm -r satip && wget http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/vdr-satip-2.2.1.tgz && cp -r vdr-satip-2.2.1.tgz /home/`logname`/sifinstallrepo/ && tar xzvf vdr-satip-2.2.1.tgz && rm -r vdr-satip-2.2.1.tgz && mv satip-2.2.1 satip && cd satip && make && make install
++b) cd $VDRSRC && rm -r satip && wget http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/vdr-satip-2.2.0.tgz && cp -r vdr-satip-2.2.0.tgz /home/`logname`/sifinstallrepo/ && tar xzvf vdr-satip-2.2.0.tgz && rm -r vdr-satip-2.2.0.tgz && mv satip-2.2.0 satip && cd satip && make && make install
+ echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ c) cd $VDRSRC && if [ -f satip/Makefile ];
+   then rm -r satip && sed -i "s|-P'satip'||" /usr/local/bin/vdrrun
+@@ -2712,21 +2875,24 @@
+ esac
+ #
+ #
+-echo "*** IPTV ***"; 
++#echo "*** IPTV ***"; 
+     clear
+-    echo "                  Vdr-Plugin-IPTV             "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Installare il plugin IPTV        "
+-    echo "        [b]  Aggiornare il plugin IPTV        "
+-    echo "        [c]  Rimuovere il plugin IPTV         "
+-    echo "        [d]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugin-IPTV **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin IPTV                
++        [b]    Aggiornare il plugin IPTV                
++        [c]    Rimuovere il plugin IPTV            
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in 
+ a) cd $VDRSRC && if [ -f iptv/Makefile ];
+   then  echo "IPTV $Remind"
+-  else cp -r /home/`logname`/sifinstallrepo/vdr-iptv-2.2.1.tgz /$VDRSRC && tar -zxvf vdr-iptv-2.2.1.tgz && mv iptv-2.2.1 iptv && rm -r vdr-iptv-2.2.1.tgz && cd iptv && cp -r /home/`logname`/sifinstallrepo/patch_iptv.tar.gz /$VDRSRC/iptv && tar -zxvf patch_iptv.tar.gz && rm -r patch_iptv.tar.gz && patch -p1 < iptv.patch && make && cd ../../.. && make plugins && mkdir -p /etc/vdr/plugins/iptv/vlcinput && cp -r /home/`logname`/sifinstallrepo/iptv_conf.tar.gz /$PLUGINS/iptv/vlcinput/ && cd $PLUGINS/iptv/vlcinput && tar -zxvf iptv_conf.tar.gz && rm -r iptv_conf.tar.gz && sed -i "s|-P'dvbapi'|& -P'iptv'|" /usr/local/bin/vdrrun 
++  else cp -r /home/`logname`/sifinstallrepo/vdr-iptv-2.2.0.tgz /$VDRSRC && tar -zxvf vdr-iptv-2.2.0.tgz && mv iptv-2.2.0 iptv && rm -r vdr-iptv-2.2.0.tgz && cd iptv && make && cp -R /usr/local/src/vdr/PLUGINS/src/iptv/iptv /etc/vdr/plugins/ && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'iptv'|" /usr/local/bin/vdrrun 
+     fi || echo "$Remind7 IPTV"
+     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ b) echo "*** plugin IPTV ***"; 
+@@ -2734,28 +2900,31 @@
+     echo "Il plugin IPTV è già aggiornato."
+     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ c) cd $VDRSRC && if [ -f iptv/Makefile ];
+-  then rm -r iptv && rm -rf $PLUGINS/iptv && rm -r /usr/share/vdr/plugins/iptv && sed -i "s|-P'iptv'||" /usr/local/bin/vdrrun
++  then rm -r iptv && rm -rf $PLUGINS/iptv && sed -i "s|-P'iptv'||" /usr/local/bin/vdrrun
+   else echo "IPTV $Remind5" 
+   fi
+     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ esac
+ #
+ #
+-echo "*** StreamDev ***"; echo ""; 
++#echo "*** StreamDev ***"; echo ""; 
+     clear
+-    echo "                  Vdr-Plugin-StreamDev        "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Installare il plugin StreamDev   "
+-    echo "        [b]  Aggiornare il plugin StreamDev   "
+-    echo "        [c]  Rimuovere il plugin StreamDev    "
+-    echo "        [d]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugin-StreamDev **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin StreamDev                
++        [b]    Aggiornare il plugin StreamDev                
++        [c]    Rimuovere il plugin StreamDev            
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in
+ a) cd $VDRSRC && if [ -f streamdev/Makefile ];
+   then  echo "StreamDev $Remind"
+-  else git clone git://projects.vdr-developer.org/vdr-plugin-streamdev.git && mv vdr-plugin-streamdev streamdev &&  mkdir -p /etc/vdr/plugins/streamdev-server && cd streamdev && cp streamdev-server/*  /etc/vdr/plugins/streamdev-server/  && cd ../../../ && make plugins && make install && echo "*** streamdevhosts.conf setup ***" && rm -r /etc/vdr/plugins/streamdev-server/streamdevhosts.conf && touch /etc/vdr/plugins/streamdev-server/streamdevhosts.conf && echo "$ALLOWED" >> /etc/vdr/plugins/streamdev-server/streamdevhosts.conf && sed -i "s|-P'dvbapi'|& -P'streamdev-server'|" /usr/local/bin/vdrrun 
++  else git clone git://projects.vdr-developer.org/vdr-plugin-streamdev.git; mv vdr-plugin-streamdev streamdev &&  mkdir -p /etc/vdr/plugins/streamdev-server && cd streamdev && cp streamdev-server/*  /etc/vdr/plugins/streamdev-server/  && cd ../../../ && make plugins && make install && echo "*** streamdevhosts.conf setup ***" && rm -r /etc/vdr/plugins/streamdev-server/streamdevhosts.conf && touch /etc/vdr/plugins/streamdev-server/streamdevhosts.conf && echo "$ALLOWED" >> /etc/vdr/plugins/streamdev-server/streamdevhosts.conf && sed -i "s|-P'dvbapi'|& -P'streamdev-server'|" /usr/local/bin/vdrrun 
+     fi || echo "$Remind7 StreamDev"
+     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ b) cd $VDRSRC && if [ -f streamdev/Makefile ];
+@@ -2771,15 +2940,107 @@
+ esac
+ #
+ #
+-echo "*** Neutrinoepg ***"; echo ""; 
++#echo "*** Vdr-Plugin-Sc ***"; 
+     clear
+-    echo "                  Vdr-Plugin-Neutrinoepg        "
+-    echo "        ----------------------------------------"
+-    echo "        [a]  Installare il plugin Neutrinoepg   "
+-    echo "        [b]  Aggiornare il plugin Neutrinoepg   "
+-    echo "        [c]  Rimuovere il plugin Neutrinoepg    "
+-    echo "        [d]  Skip                               "
+-    echo "        ----------------------------------------"
++    dialog --title "   ** VDR-Plugin-Sc **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin Sc                            
++        [b]    Rimuovere il plugin Sc            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-c]:      "
++    read yourch
++    case $yourch in
++a) cd $VDRSRC;  apt-get install -y libssl-dev subversion libdvbcsa-dev
++ if [ -f $VDRSRC/sc/Makefile ];
++  then  echo "sc $Remind"
++ else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-sc/ /$VDRSRC && mv vdr-plugin-sc sc
++    #else hg clone -r trunk http://85.17.209.13:6100/sc 
++if uname -m  | grep "x86_64"; then
++    echo "64bit detected"; 
++sed -i ' 
++s/CPUOPT     ?= pentium/CPUOPT     ?= athlon64/
++s/PARALLEL   ?= PARALLEL_32_INT/PARALLEL   ?= PARALLEL_128_SSE2/' $VDRSRC/sc/Makefile
++    else
++       echo "32bit" 
++    fi
++cd ../..; make plugins; mkdir -p /etc/vdr/plugins/sc; cd /etc/vdr/plugins/sc; touch cardclient.conf;
++echo "cccam:127.0.0.1:port:0/0000/0000:/tmp/camd.socket
++cccam2:192.168.x.x:port:0/0000/0000:username:password
++newcamd:127.0.0.1:port:0/0000/0000:username:password:0102030405060708091011121314" >> cardclient.conf
++cp -r /home/`logname`/sifinstallrepo/SoftCam.Key.tar.gz $PLUGINS/sc; tar -xzvf SoftCam.Key.tar.gz; rm -r SoftCam.Key.tar.gz;
++#
++#
++#echo "*** dvb-card setup ***"; 
++    clear
++    dialog --title "   ** dvb-card setup **   " --infobox "
++   ----------------------------------------------
++                Che scheda dvb hai ?
++   ----------------------------------------------
++        [a]    budget (es. skystar)                
++        [b]    altre                            
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-b]:      "
++    read yourch
++    case $yourch in
++a) sed -i 's|root |&-P'sc -B 0' |' /usr/local/bin/vdrrun;;
++b) sed -i 's|root |&-P'sc' |' /usr/local/bin/vdrrun;;
++esac 
++fi || echo "$Remind7 Sc";;
++b) cd $VDRSRC;rm -r sc; cd $PLUGINS; rm -r sc; sed -i 's|-P'sc'||' /usr/local/bin/vdrrun; sed -i 's|-P'sc -B 0'||' /usr/local/bin/vdrrun ;;
++c) ;;
++esac
++#
++#
++#echo "*** VDR-Manager ***"; echo "";
++    clear
++    dialog --title "   ** VDR-Plugin-Manager **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin VDR-Manager                
++        [b]    Aggiornare il plugin VDR-Manager                
++        [c]    Rimuovere il plugin VDR-Manager            
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-d]:      "
++    read yourch
++    case $yourch in 
++a) cd $VDRSRC && if [ -f vdrmanager/Makefile ];
++then  echo "VDR-Manager $Remind"
++ else cp -r /home/`logname`/sifinstallrepo/vdr-manager/vdr-vdrmanager/ /$VDRSRC && mv vdr-vdrmanager vdrmanager && cd ../.. && make plugins && make install && echo "*** vdrmanager.conf setup ***" && cp $VDRSRC/vdrmanager/examples/*.conf /etc/vdr/plugins && sed -i "s|-P'femon'|& -P'vdrmanager -p 6420 -P change'|" /usr/local/bin/vdrrun
++    fi || echo "$Remind7 VDR-Manager"
++    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
++b) cd $VDRSRC && if [ -f vdrmanager/Makefile ];
++  then rm -r vdrmanager && git clone git://projects.vdr-developer.org/vdr-manager.git && cp -r vdr-manager /home/`logname`/sifinstallrepo && cp -r /home/`logname`/sifinstallrepo/vdr-manager/vdr-vdrmanager/ /$VDRSRC && mv vdr-vdrmanager vdrmanager && cd ../.. && make plugins && make install
++else echo "VDR-Manager $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-manager/vdr-vdrmanager/ /$VDRSRC && mv vdr-manager vdrmanager && cd ../.. && make plugins && echo "*** vdrmanager.conf setup ***" && cp $VDRSRC/vdrmanager/examples/*.conf /etc/vdr/plugins && sed -i "s|-P'femon'|& -P'vdrmanager -p 6420 -P change'|" /usr/local/bin/vdrrun 
++      fi
++    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;    
++c) cd $VDRSRC && if [ -f vdrmanager/Makefile ];
++  then rm -r vdrmanager && sed -i "s|-P'vdrmanager -p 6420 -P change'||" /usr/local/bin/vdrrun
++  else echo "VDR-Manager $Remind5" 
++      fi
++    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
++esac
++#
++#
++#echo "*** Neutrinoepg ***"; echo ""; 
++    clear
++    dialog --title "   ** VDR-Plugin-Neutrinoepg **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin Neutrinoepg                
++        [b]    Aggiornare il plugin Neutrinoepg                
++        [c]    Rimuovere il plugin Neutrinoepg            
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in 
+@@ -2801,15 +3062,18 @@
+ esac
+ #
+ #
+-echo "*** Extrecmenu ***"; echo ""; 
++#echo "*** Extrecmenu ***"; echo ""; 
+     clear
+-    echo "                  Vdr-Plugin-Extrecmenu         "
+-    echo "        ----------------------------------------"
+-    echo "        [a]  Installare il plugin Extrecmenu    "
+-    echo "        [b]  Aggiornare il plugin Extrecmenu    "
+-    echo "        [c]  Rimuovere il plugin Extrecmenu     "
+-    echo "        [d]  Skip                               "
+-    echo "        ----------------------------------------"
++    dialog --title "   ** VDR-Plugin-Extrecmenu **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin Extrecmenu                
++        [b]    Aggiornare il plugin Extrecmenu                
++        [c]    Rimuovere il plugin Extrecmenu            
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in 
+@@ -2831,15 +3095,18 @@
+ esac
+ #
+ #
+-echo "*** CecRemote (sperimentale) ***"; echo ""; 
++#echo "*** CecRemote (sperimentale) ***"; echo ""; 
+     clear
+-    echo "                  Vdr-Plugin-CecRemote          "
+-    echo "        ----------------------------------------"
+-    echo "        [a]  Installare il plugin CecRemote     "
+-    echo "        [b]  Aggiornare il plugin CecRemote     "
+-    echo "        [c]  Rimuovere il plugin CecRemote      "
+-    echo "        [d]  Skip                               "
+-    echo "        ----------------------------------------"
++    dialog --title "   ** VDR-Plugin-CecRemote (sperimentale) **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin CecRemote                
++        [b]    Aggiornare il plugin CecRemote                
++        [c]    Rimuovere il plugin CecRemote            
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-d]:      "
+     read yourch
+     case $yourch in 
+@@ -2861,14 +3128,17 @@
+ esac
+ #
+ #
+-echo "*** Remote ***"; echo ""; 
++#echo "*** Remote ***"; echo ""; 
+     clear
+-    echo "                  Vdr-Plugin-Remote           "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Installare il plugin Remote      "
+-    echo "        [b]  Aggiornare il plugin Remote      "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugin-Remote **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin Remote                
++        [b]    Aggiornare il plugin Remote                
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -2893,12 +3163,18 @@
+ #cd $VDRSRC/streamdev; make install;
+ ;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++14)                                       #########################################
++                                          #         Installare Skin di Vdr        #
++                                          #########################################
+ 
+-              ######################################
+-14)           #       Installare Skin di Vdr       #
+-              ######################################
+ 
+     clear
+     echo " Adesso Installo altre Skin di VDR (obsolete)"; sleep 4
+@@ -2907,141 +3183,163 @@
+ apt-get -y install libpcre++0 libpcre++-dev python-libxml2 python-libxslt1 python-pycurl python-simplejson mimms libxml2-dev python-all-dev python-central cdbs libglib2.0-dev debhelper txt2man
+ apt-get -y install libcurl3 libcurl4-gnutls-dev cvs libxcb-icccm4 libxcb-icccm4-dev libx11-xcb-dev libxcb-screensaver0-dev libxcb-dpms0-dev libmagick++-dev
+ ###
+-clear                 
+-echo "     Gestione Skin proposte:                "
+-echo "     ---------------------------------------"
+-echo "     Skin NarrowHD                          "
+-echo "     Skin Enigma                            "
+-echo "     Skin Elchi                             "
+-echo "     Skin Soppalusikka                      "
+-echo "     Skin EgalT2                            "
+-
+-echo "     ---------------------------------------"
+-echo "     premere il tasto [Invio] per continuare. . .    " ;read enterKey
++    clear        
++    dialog --title "   ** Altre Skin di VDR (obsolete) **   " --infobox "
++   ----------------------------------------------
++                Gestione Skin proposte:             
++   ----------------------------------------------
++            Skin NarrowHD                     
++            Skin Enigma                  
++            Skin Elchi                   
++            Skin Soppalusikka              
++            Skin EgalT2                                          
++        
++   ---------------------------------------------- " 0 0
++    echo "     premere il tasto [Invio] per continuare. . .    " ;read enterKey
+ #
+ #
+-echo "*** Skin NarrowHD ***"; 
+-    clear
+-    echo "	        Vuoi installare le Skin NarrowHD ?  "
+-    echo "		--------------------------------------"
+-    echo "		[y]  Si   "
+-    echo "		[n]  No   "
+-    echo "		--------------------------------------"
+-    echo -n "		Scegli   [y-n]: "
++#    echo "*** Skin NarrowHD ***"; 
++    clear        
++    dialog --title "   ** Vuoi installare le Skin NarrowHD ? **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Si                
++        [b]    No                            
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-b]:      "  
+     read yourch
+     case $yourch in
+-y) cd $VDRSRC && if [ -f narrowhd/Makefile ];
++a) cd $VDRSRC && if [ -f narrowhd/Makefile ];
+   then  echo "NarrowHD $Remind1"
+   else cp -r /home/`logname`/sifinstallrepo/skin-narrowhd /$VDRSRC/ && mv skin-narrowhd narrowhd && cd narrowhd && make && make install && cd $SKIN/NarrowHD && rm -r logos && ln -s /etc/vdr/plugins/picon /etc/vdr/logos 
+ fi
+   echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-n) echo "Avete scelto di non installare la Skin NarrowHD."
++b) echo "Avete scelto di non installare la Skin NarrowHD."
+   echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ esac
+ ###
+-echo "*** Skin Enigma ***"; 
+-    clear
+-    echo "	        Vuoi installare la skin Skin Enigma ? "
+-    echo "		--------------------------------------"
+-    echo "		[y]  Si   "
+-    echo "		[n]  No   "
+-    echo "		--------------------------------------"
+-    echo -n "		Scegli   [y-n]: "
++#echo "*** Skin Enigma ***"; 
++    clear        
++    dialog --title "   ** Vuoi installare le Skin Enigma ? **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Si                
++        [b]    No                            
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-b]:      " 
+     read yourch
+     case $yourch in
+-y) cd $VDRSRC && if [ -f skinenigmang/Makefile ];
++a) cd $VDRSRC && if [ -f skinenigmang/Makefile ];
+   then  echo "Skin Enigma $Remind1"
+   else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skinenigmang /$VDRSRC/ && mv vdr-plugin-skinenigmang skinenigmang &&  cd skinenigmang && cp -df themes/*.theme /etc/vdr/themes/ && cd ../../.. && make plugins && mkdir -p /etc/vdr/plugins/skinenigmang && cd /etc/vdr/plugins && cp /home/`logname`/sifinstallrepo/skinenigmang-logos-xpm-hi-20070702.tgz /etc/vdr/plugins/ && cp /home/`logname`/sifinstallrepo/skinenigmang-channellogos-xpm-hi-20070702.tgz /etc/vdr/plugins/ && cp /home/`logname`/sifinstallrepo/skinenigmang-fonts-20080225.tgz /etc/vdr/plugins/ && tar xzvf skinenigmang-channellogos-xpm-hi-20070702.tgz && tar xzvf skinenigmang-fonts-20080225.tgz && tar xzvf skinenigmang-fonts-20080225.tgz && rm -r skinenigmang-channellogos-xpm-hi-20070702.tgz && rm -r skinenigmang-fonts-20080225.tgz && rm -r skinenigmang-logos-xpm-hi-20070702.tgz && sed -i "s|-P'dvbapi'|& -P'skinenigmang'|" /usr/local/bin/vdrrun 
+ fi
+   echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-n) echo "Avete scelto di non installare la Skin Enigma."
++b) echo "Avete scelto di non installare la Skin Enigma."
+   echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ esac
+ ###
+-echo "*** Skin Elchi ***"; 
+-    clear
+-    echo "	        Vuoi installare la Skin Elchi? "
+-    echo "		--------------------------------------"
+-    echo "		[y]  Si   "
+-    echo "		[n]  No   "
+-    echo "		--------------------------------------"
+-    echo -n "		Scegli   [y-n]: "
++#echo "*** Skin Elchi ***"; 
++    clear        
++    dialog --title "   ** Vuoi installare le Skin Elchi ? **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Si                
++        [b]    No                            
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-b]:      "
+     read yourch
+     case $yourch in
+-y) cd $VDRSRC && if [ -f skinelchi/Makefile ];
++a) cd $VDRSRC && if [ -f skinelchi/Makefile ];
+   then  echo "SkinElchi $Remind1"
+   else cp /home/`logname`/sifinstallrepo/vdr-skinelchi-0.2.8.tar.bz2 /$VDRSRC/ && tar xjf vdr-skinelchi-0.2.8.tar.bz2 && mv skinelchi-0.2.8 skinelchi && rm -r vdr-skinelchi-0.2.8.tar.bz2 && cd ../.. && make plugins && mkdir -p /etc/vdr/plugins/skinelchi && cp $VDRSRC/skinelchi/themes/* /etc/vdr/themes/ && cd /etc/vdr/plugins/skinelchi && cp /home/`logname`/sifinstallrepo/elchiHD-logos-v3.tar.bz2 /etc/vdr/plugins/skinelchi/ && tar xjf elchiHD-logos-v3.tar.bz2 && rm -r elchiHD-logos-v3.tar.bz2 && sed -i "s|-P'dvbapi'|& -P'skinelchi'|" /usr/local/bin/vdrrun 
+ fi
+   echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-n) echo "Avete scelto di non installare la Skin Elchi."
++b) echo "Avete scelto di non installare la Skin Elchi."
+   echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ esac
+ ###
+-echo "*** Skin Soppalusikka ***"; 
+-    clear
+-    echo "	        Vuoi installare la Skin Soppalusikka? "
+-    echo "		--------------------------------------"
+-    echo "		[y]  Si   "
+-    echo "		[n]  No   "
+-    echo "		--------------------------------------"
+-    echo -n "		Scegli   [y-n]: "
++#echo "*** Skin Soppalusikka ***"; 
++    clear        
++    dialog --title "   ** Vuoi installare le Skin Soppalusikka ? **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Si                
++        [b]    No                            
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-b]:      "
+     read yourch
+     case $yourch in
+-y) cd $VDRSRC && if [ -f skinsoppalusikka/Makefile ];
++a) cd $VDRSRC && if [ -f skinsoppalusikka/Makefile ];
+   then  echo "Soppalusikka Skin $Remind1"
+-  else cp /home/`logname`/sifinstallrepo/vdr-skinsoppalusikka-2.2.1.tgz /$VDRSRC/ && tar -xzf vdr-skinsoppalusikka-2.2.1.tgz &&  mv skinsoppalusikka-2.2.1 skinsoppalusikka && rm -r vdr-skinsoppalusikka-2.2.1.tgz && mkdir /etc/vdr/plugins/skinsoppalusikka && cp -d skinsoppalusikka/themes/*.theme /etc/vdr/themes &&  cd ../../ && make plugins && sed -i "s|-P'dvbapi'|& -P'skinsoppalusikka'|" /usr/local/bin/vdrrun  
++  else cp /home/`logname`/sifinstallrepo/vdr-skinsoppalusikka-2.2.0.tgz /$VDRSRC/ && tar -xzf vdr-skinsoppalusikka-2.2.0.tgz &&  mv skinsoppalusikka-2.2.0 skinsoppalusikka && rm -r vdr-skinsoppalusikka-2.2.0.tgz && mkdir /etc/vdr/plugins/skinsoppalusikka && cp -d skinsoppalusikka/themes/*.theme /etc/vdr/themes &&  cd ../../ && make plugins && sed -i "s|-P'dvbapi'|& -P'skinsoppalusikka'|" /usr/local/bin/vdrrun  
+ fi
+   echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-n) echo "Avete scelto di non installare la Skin Soppalusikka."
++b) echo "Avete scelto di non installare la Skin Soppalusikka."
+   echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ esac
+ ###
+-echo "*** Skin EgalT2 ***"; 
+-    clear
+-    echo "	        Vuoi installare la Skin EgalT2 ? "
+-    echo "		--------------------------------------"
+-    echo "		[y]  Si   "
+-    echo "		[n]  No   "
+-    echo "		--------------------------------------"
+-    echo -n "		Scegli   [y-n]: "
++#echo "*** Skin EgalT2 ***"; 
++    clear        
++    dialog --title "   ** Vuoi installare le Skin EgalT2 ? **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Si                
++        [b]    No                            
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-b]:      "
+     read yourch
+     case $yourch in
+-y) cd $VDRSRC && if [ -f EgalT2/Makefile ];
++a) cd $VDRSRC && if [ -f EgalT2/Makefile ];
+   then  echo "EgalT2 $Remind1"
+   else cp /home/`logname`/sifinstallrepo/vdr-text2skin-EgalT2-0.3.3.tar.gz /$VDRSRC/ && tar -zxvf vdr-text2skin-EgalT2-0.3.3.tar.gz && rm -r vdr-text2skin-EgalT2-0.3.3.tar.gz && cd EgalT2 && make install && cd .. 
+ fi
+   echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-n) echo "Avete scelto di non installare la Skin EgalT2."
++b) echo "Avete scelto di non installare la Skin EgalT2."
+   echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ esac
+ ###
+ cd $SRC/vdr; make plugins install
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
+     
+-                 ######################################
+-R14)         #       Rimozione Skin di Vdr       #
+-             ######################################    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R14)                                      #########################################
++                                          #         Rimozione Skin di Vdr         #
++                                          #########################################
+ 
+ 
+-    clear
+-    echo ""; echo "                    Rimozione Skin di VDR"; sleep 4 
+-    clear
+-    echo "        ----------------------------------------------"
+-    echo "         Quale Skin vuoi Rimuovere  " 
+-    echo "        ----------------------------------------------"
+-    echo "        [a]  Skin Skindesigner                        "
+-    echo "        [b]  Skin Flatplus                            "
+-    echo "        [c]  Skin NarrowHD                            "
+-    echo "        [d]  Skin Enigma                              "
+-    echo "        [e]  Skin Elchi                               "
+-    echo "        [f]  Skin Soppalusikka                        "
+-    echo "        [g]  Skin EgalT2                              "
+-    echo "        [h]  Skip                                     "
+-    echo "        ----------------------------------------------"
+-    echo -n "        Scegli  [a-h]:      "
++    clear        
++    dialog --title "   ** Rimozione Skin di VDR **   " --infobox "
++   ----------------------------------------------
++             Quale Skin vuoi Rimuovere ?             
++   ----------------------------------------------
++        [a]    Skin Skindesigner                   
++        [b]    Skin Flatplus                      
++        [c]    Skin NarrowHD                 
++        [d]    Skin Enigma               
++        [e]    Skin Elchi               
++        [f]    Skin Soppalusikka  
++        [g]    Skin EgalT2            
++        [h]    Skip                                                  
++        
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-h]:      "                   
+     read yourch
+     case $yourch in
+     a) rm -r $VDRSRC/vdr-plugin-skindesigner; rm -rf /usr/share/vdr/plugins/skindesigner; rm -r $PLUGINS/skindesigner;;
+@@ -3056,42 +3354,52 @@
+     cd $SRCVDR; make plugins install
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
+ 
+-          ####################################################
+-15)       #   Aggiornamento Vdr Plugins  caricati di default #
+-          ####################################################
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++15)                                       #########################################
++                                          #   Agg. Plugins  caricati di default   #
++                                          #########################################
+ 
+     
+-clear                 
+-echo "     Aggiornamento dei plugins caricati di default   "
+-echo "     --------------------------------------------    "
+-echo "     Skindesigner (skin)                             "
+-echo "     Tvguideng                                       "
+-echo "     Tvguide                                         "
+-echo "     Weatherforecast                                 "
+-echo "     Skinflatplus (skin)                             "
+-echo "     Text2skin                                       "
+-echo "     Softhddevice                                    "                    
+-echo "     OSDTeletext                                     "
+-echo "     Epgsearch                                       "
+-echo "     Reelchannellist                                 "
+-echo "     Menuorg                                         "
+-echo "     Dvbapi                                          "
+-echo "     Xvdr                                            "
+-echo "     --------------------------------------------    "
++    clear        
++    dialog --title "   ** Aggiorn. Plug. & Skin di VDR **   " --infobox "
++   ----------------------------------------------
++    Aggiornamento dei plugins caricati di default             
++   ----------------------------------------------
++        Skindesigner (skin)                   
++        Tvguideng                      
++        Tvguide               
++        Weatherforecast              
++        Skinflatplus (skin)              
++        Text2skin   
++        Softhddevice             
++        OSDTeletext                                                  
++        Epgsearch   
++        Reelchannellist 
++        Menuorg
++        Dvbapi
++        Xvdr
++   ---------------------------------------------- " 0 0                 
+ echo "     premere il tasto [Invio] per continuare. . .    " ;read enterKey
+ #
+ #
+-echo "*** Skindesigner (skin) ***"; 
++#echo "*** Skindesigner (skin) ***"; 
+     clear
+-    echo "                  Skindesigner (skin)          "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Aggiornare Skindesigner   "
+-    echo "        [b]  Rimuovere Skindesigner    "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Skin-Skindesigner **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare Skindesigner                
++        [b]    Rimuovere Skindesigner                
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -3101,14 +3409,17 @@
+ esac
+ #
+ #
+-echo "*** TvGuideng ***"; 
++#echo "*** TvGuideng ***"; 
+     clear
+-    echo "                  Vdr-Plugin-TvGuideng          "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Aggiornare il plugin TvGuideng     "
+-    echo "        [b]  Rimuovere il plugin TvGuideng      "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugins-TvGuideng **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin TvGuideng                
++        [b]    Rimuovere il plugin TvGuideng            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in 
+@@ -3118,14 +3429,17 @@
+ esac 
+ #
+ #
+-echo "*** TvGuide ***"; 
++#echo "*** TvGuide ***"; 
+     clear
+-    echo "                  Vdr-Plugin-TvGuide          "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Aggiornare il plugin TvGuide     "
+-    echo "        [b]  Rimuovere il plugin TvGuide      "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugins-TvGuide **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin TvGuide                
++        [b]    Rimuovere il plugin TvGuide            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in 
+@@ -3134,14 +3448,18 @@
+ c) ;;
+ esac 
+ #
+-echo "*** Weatherforecast ***"; echo ""; 
++#
++#echo "*** Weatherforecast ***"; echo ""; 
+     clear
+-    echo "                  Vdr-Plugin-Weatherforecast          "
+-    echo "        ----------------------------------------------"
+-    echo "        [a]  Aggiornare il plugin Weatherforecast     "
+-    echo "        [b]  Rimuovere il plugin Weatherforecast      "
+-    echo "        [c]  Skip                                     "
+-    echo "        ----------------------------------------------"
++    dialog --title "   ** VDR-Plugins-Weatherforecast **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin Weatherforecast                
++        [b]    Rimuovere il plugin Weatherforecast            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -3151,14 +3469,17 @@
+ esac
+ #
+ #
+-echo "*** Skinflatplus (skin) ***"; 
++#echo "*** Skinflatplus (skin) ***"; 
+     clear
+-    echo "                  Skinflatplus (skin)         "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Aggiornare Skinflatplus   "
+-    echo "        [b]  Rimuovere Skinflatplus    "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Skin-Skinflatplus **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare  Skinflatplus                
++        [b]    Rimuovere  Skinflatplus            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -3167,14 +3488,18 @@
+ c) ;;
+ esac
+ #
+-echo "*** Text2skin ***"; 
++#
++#echo "*** Text2skin ***"; 
+     clear
+-    echo "                  Vdr-Plugin-Text2skin          "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Aggiornare il plugin Text2skin   "
+-    echo "        [b]  Rimuovere il plugin Text2skin    "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugins-Text2skin **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin Text2skin                
++        [b]    Rimuovere il plugin Text2skin            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -3183,32 +3508,38 @@
+ c) ;;
+ esac
+ #
+-echo "*** Softhddevice ***"; 
++#
++#echo "*** Softhddevice ***"; 
+     clear
+-    echo "                  Vdr-Plugin-Softhddevice        "
+-    echo "        -----------------------------------------"
+-    echo "        [a]  Aggiornare il plugin Softhddevice   "
+-    echo "        [b]  Rimuovere il plugin Softhddevice    "
+-    echo "        [c]  Skip                                "
+-    echo "        -----------------------------------------"
++    dialog --title "   ** VDR-Plugins-Softhddevice **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin Softhddevice                
++        [b]    Rimuovere il plugin Softhddevice            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-
+ a) cd $VDRSRC; rm -rf softhddevice; git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git; cp -r vdr-plugin-softhddevice /home/`logname`/sifinstallrepo/; mv vdr-plugin-softhddevice softhddevice; cd softhddevice; cp -r /home/`logname`/sifinstallrepo/patch_softhddevice.tar.gz /$VDRSRC/softhddevice; tar -zxvf patch_softhddevice.tar.gz; rm -r patch_softhddevice.tar.gz; patch -p1 < 11_Makefile.patch; sleep 1; patch -p1 < 12_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_vdpauqueue.patch; sleep 1; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1; make install; cd ../../..;; 
+ b) cd $VDRSRC; rm -r softhddevice; rm -rf $PLUGINS/softhddevice; rm -r /home/`logname`/Scrivania/Vdr-Softhddevice.desktop; rm -r /home/`logname`/start-softhddevice-vdr.sh; sed -i "s|-P'softhddevice'||" /usr/local/bin/vdrrun; sed -i "s|--lirc|& -P'xineliboutput -l none -r 37890 -p'|" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+ #
+ #
+-echo "*** OSDTeletext ***"; 
++#echo "*** OSDTeletext ***"; 
+     clear
+-    echo "                  Vdr-Plugin-OSDTeletext          "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Aggiornare il plugin OSDTeletext "
+-    echo "        [b]  Rimuovere il plugin OSDTeletext  "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugins-OSDTeletext **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin OSDTeletext                
++        [b]    Rimuovere il plugin OSDTeletext            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -3218,14 +3549,17 @@
+ esac
+ #
+ #
+-echo "*** Epgsearch ***"; 
++#echo "*** Epgsearch ***"; 
+     clear
+-    echo "                  Vdr-Plugin-Epgsearch            "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Aggiornare il plugin Epgsearch   "
+-    echo "        [b]  Rimuovere il plugin Epgsearch    "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugins-Epgsearch **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin Epgsearch                
++        [b]    Rimuovere il plugin Epgsearch            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -3235,14 +3569,17 @@
+ esac
+ #
+ #
+-echo "*** Reelchannellist ***"; 
++#echo "*** Reelchannellist ***"; 
+     clear
+-    echo "                  Vdr-Plugin-Reelchannellist      "
+-    echo "        ------------------------------------------"
+-    echo "        [a]  Aggiornare il plugin Reelchannellist "
+-    echo "        [b]  Rimuovere il plugin Reelchannellist  "
+-    echo "        [c]  Skip                                 "
+-    echo "        ------------------------------------------"
++    dialog --title "   ** VDR-Plugins-Reelchannellist **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin Reelchannellist                
++        [b]    Rimuovere il plugin Reelchannellist            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -3252,14 +3589,17 @@
+ esac
+ #
+ #
+-echo "*** Menuorg ***"; 
++#echo "*** Menuorg ***"; 
+     clear
+-    echo "                  Vdr-Plugin-Menuorg          "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Aggiornare il plugin Menuorg     "
+-    echo "        [b]  Rimuovere il plugin Menuorg      "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugins-Menuorg **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin Menuorg                
++        [b]    Rimuovere il plugin Menuorg            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -3269,14 +3609,17 @@
+ esac
+ #
+ #
+-echo "*** Dvbapi ***"; 
++#echo "*** Dvbapi ***"; 
+     clear
+-    echo "                  Vdr-Plugin-Dvbapi           "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Aggiornare il plugin Dvbapi      "
+-    echo "        [b]  Rimuovere il plugin Dvbapi       "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugins-Dvbapi **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin Dvbapi                
++        [b]    Rimuovere il plugin Dvbapi            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -3287,14 +3630,17 @@
+ esac
+ #
+ #
+-echo "*** Loadepg ***"; 
++#echo "*** Loadepg ***"; 
+     clear
+-    echo "                  Vdr-Plugin-Loadepg          "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Aggiornare il plugin Loadepg     "
+-    echo "        [b]  Rimuovere il plugin Loadepg      "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugins-Loadepg **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin Loadepg                
++        [b]    Rimuovere il plugin Loadepg            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in 
+@@ -3304,14 +3650,17 @@
+ esac
+ #
+ #
+-echo "*** Xvdr ***"; 
++#echo "*** Xvdr ***"; 
+     clear
+-    echo "                  Vdr-Plugin-Xvdr             "
+-    echo "        --------------------------------------"
+-    echo "        [a]  Aggiornare il plugin Xvdr        "
+-    echo "        [b]  Rimuovere il plugin Xvdr         "
+-    echo "        [c]  Skip                             "
+-    echo "        --------------------------------------"
++    dialog --title "   ** VDR-Plugins-Xvdr **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Aggiornare il plugin Xvdr                
++        [b]    Rimuovere il plugin Xvdr            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -3323,83 +3672,110 @@
+ cd $SRC/vdr; make plugins install;
+ ;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
+ 
+-              ####################################################
+-16)           #     Creazione liste con Getchannels o W_scan     #
+-              ####################################################
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++16)                                       #########################################
++                                          #   Creaz. liste Getchannels o W_scan   #
++                                          #########################################
+ 
+ 
+-   clear
+-    echo "                       *** Creazione liste canali ***                 "; 
+-    echo "        ----------------------------------------------------------------"
+-    echo "        ----------------------------------------------------------------"
+-    echo "        [a]  Creazione Settings  9.0E - Download da Kingofsat           "
+-    echo "        [b]  Creazione Settings 13.0E - Download da Kingofsat           "
+-    echo "        [c]  Creazione Settings 19.2E - Download da Kingofsat           "
+-    echo "        [d]  Creazione Settings  9.0E - utilizzo W_scan                 "
+-    echo "        [e]  Creazione Settings 13.0E - utilizzo W_scan                 "
+-    echo "        [f]  Creazione Settings 19.2E - utilizzo W_scan                 "
+-    echo "        [g]  Creazione Settings Digitale - utilizzo W_scan              "
+-    echo "        [h]  Edit Getchannels.conf (solo 13E)                           "
+-    echo "        [i]  Skip                                                       "
+-    echo "        ----------------------------------------------------------------"
+-    echo -n "        Scegli  [a-i]:      "
++    clear        
++    dialog --title "   ** Creazione && Aggiornamento Settings 13.0E By Getchannels 0.7.0 **   " --infobox "
++   ----------------------------------------------
++                Creazione lista canali
++   ----------------------------------------------
++        [a]    Creazione Settings 13.0E - Download da Kingofsat                  
++        [b]    Creazione Settings  9.0E - utilizzo W_scan                   
++        [c]    Creazione Settings 13.0E - utilizzo W_scan              
++        [d]    Creazione Settings 19.2E - utilizzo W_scan             
++        [e]    Creazione Settings Digitale - utilizzo W_scan           
++        [f]    Edit Getchannels.conf - Gnome      
++        [g]    Edit Getchannels.conf - Mate              
++        [h]    Edit Getchannels.conf - Kde                         
++        [i]    Edit Channels.conf - Gnome    
++        [l]    Edit Channels.conf - Mate  
++        [m]    Edit Channels.conf - Kde   
++        [n]    Skip 
++        
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-n]:      "
+     read yourch
+     case $yourch in
+-    a) rm -r /$SRC/getchannels/output/channels-King-9.0E.conf; rm -r /etc/vdr/channels-King-9.0E.conf;  # --useconfig va messo prima di output nel comando python
+-cd $SRC/getchannels && python getchannels.py --list 9.0E --output /$SRC/getchannels/output/channels-King-9.0E.conf; sleep  4; cp $SRC/getchannels/output/channels-King-9.0E.conf /etc/vdr/;;
+-    b) rm -r /$SRC/getchannels/output/channels-King-13.0E.conf; rm -r /etc/vdr/channels-King-13.0E.conf;
+-cd $SRC/getchannels && python getchannels.py --list 13.0E --output /$SRC/getchannels/output/channels-King-13.0E.conf; sleep  4; cp $SRC/getchannels/output/channels-King-13.0E.conf /etc/vdr/;;
+-    c) rm -r /$SRCC/getchannels/output/channels-King-19.2E.conf; rm -r /etc/vdr/channels-King-19.2E.conf;
+-cd $SRC/getchannels && python getchannels.py --list 19.2E --output /$SRC/getchannels/output/channels-King-19.2E.conf; sleep  4; cp $SRC/getchannels/output/channels-King-19.2E.conf /etc/vdr/;;
+-    d) rm -r /etc/vdr/channels-w_scan-9E0.conf; w_scan -fs -s S9E0 -D0c -o2 >> /etc/vdr/channels-w_scan-9E0.conf;; 
+-    e) rm -r /etc/vdr/channels-w_scan-13E0.conf; w_scan -fs -s S13E0 -D1c -o2 >> /etc/vdr/channels-w_scan-13E0.conf;;
+-    f) rm -r /etc/vdr/channels-w_scan-19E2.conf; w_scan -fs -s S19E2 -D2c -o2 >> /etc/vdr/channels-w_scan-19E2.conf;;
+-    g) rm -r /etc/vdr/channels-dtt.conf; w_scan -ft -c IT >> /etc/vdr/channels-dtt.conf;;  # w_scan -f t -o 7 -a /dev/dvb/adapter1 -c IT > /etc/vdr/channelsdtt.conf;;
+-    h) gedit /etc/vdr/channels-King-13.0E.conf & gedit /etc/vdr/channels-w_scan-13E0.conf & gedit /etc/vdr/channels.conf;;
+-    i) ;;
++    a) cd $SRC/getchannels && python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/getchannels/output/channels.conf; sleep  4; cp $SRC/getchannels/output/channels.conf /etc/vdr/;;
++    b) rm -r /etc/vdr/channels-w_scan-9E0.conf; w_scan -fs -s S9E0 -D0c -o2 >> /etc/vdr/channels-w_scan-9E0.conf;; 
++    c) rm -r /etc/vdr/channels-w_scan-13E0.conf; w_scan -fs -s S13E0 -D1c -o2 >> /etc/vdr/channels-w_scan-13E0.conf;;
++    d) rm -r /etc/vdr/channels-w_scan-19E2.conf; w_scan -fs -s S19E2 -D2c -o2 >> /etc/vdr/channels-w_scan-19E2.conf;;
++    e) rm -r /etc/vdr/channels-dtt.conf; w_scan -ft -c IT >> /etc/vdr/channels-dtt.conf;;
++    f) gedit $SRC/getchannels/getchannels.conf;;
++    g) pluma $SRC/getchannels/getchannels.conf;;
++    h) kate $SRC/getchannels/getchannels.conf;;
++    i) gedit /etc/vdr/channels.conf;;
++    l) pluma /etc/vdr/channels.conf;;
++    m) kate /etc/vdr/channels.conf;;  
++    n) ;;
+     esac
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
++    
++    
+ 
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R16)                                      #########################################
++                                          #           Rimozione Settings          #
++                                          #########################################
+ 
+-######################################################################################  
+-######################################################################################
+-
+-              ###################################
+-R16)          #     Rimozione Settings          #
+-              ###################################
+ 
+     clear
+     echo "                    Adesso Rimuovo tutti i Settings "; sleep 4
+     cd /etc/vdr; rm -r channels*
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;; 
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
+ 
+-              ###################################
+-17)           #              KODI               #
+-              ###################################
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++17)                                       #########################################
++                                          #                  KODI                 #
++                                          #########################################
+ 
++              
++    clear        
++    dialog --title "   ** Configurazione & Installazione KODI **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare KODI  (ex xmbc)             
++        [b]    Skip                            
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-b]:      "
++    read yourch
++    case $yourch in
++    a) cd $SRC  && if [ -f /usr/local/bin/xbmc ];
++    then  echo "Xbmc $Remind3"
++    else 
++    apt-get install -y python-software-properties pkg-config
++    apt-get install -y software-properties-common
++    sudo add-apt-repository ppa:team-xbmc/ppa
++    sudo apt-get update
++    sudo apt-get install -y kodi
+ #
+-echo ""; echo "*** KODI ***"; echo ""
+-read -n1 -p "Vuoi installare KODI? (y/n) Ci impiega un pò ..."
+-echo 
+-[[ $REPLY = [yY] ]] && 
+-cd $SRC  && if [ -f /usr/local/bin/xbmc ];
+-  then  echo "Xbmc $Remind3"
+-  else 
+-apt-get install -y python-software-properties pkg-config
+-apt-get install -y software-properties-common
+-sudo add-apt-repository ppa:team-xbmc/ppa
+-sudo apt-get update
+-sudo apt-get install -y kodi
+-#
+-rm -rf /home/`logname`/Scrivania/Kodi.desktop; touch /home/`logname`/Scrivania/Kodi.desktop; 
+-chmod 777 /home/`logname`/Scrivania/Kodi.desktop;
++    rm -rf /home/`logname`/Scrivania/Kodi.desktop; touch /home/`logname`/Scrivania/Kodi.desktop; 
++    chmod 777 /home/`logname`/Scrivania/Kodi.desktop;
+ echo "[Desktop Entry]
+ Version=1.0
+ Encoding=UTF-8
+@@ -3417,34 +3793,64 @@
+ ' >> /usr/local/bin/start-kodi-vdr.sh; chmod a+x /usr/local/bin/start-kodi-vdr.sh;
+ # cd /home/`logname`/.xbmc/userdata; rm -r guisettings.xml; 
+ # wget https://www.dropbox.com/s/hn5uwwflwmm5no8/guisettings.xml.tar.gz;
+-fi || echo "Avete scelto di non installare KODI."
++fi || echo "        Avete scelto di non installare KODI."
++    echo "        Premere il tasto [Invio] per continuare. . ."; read enterKey;;
++b) echo ""; echo ""; echo "        Avete scelto di non installare KODI."
++echo ""; echo "        Premere il tasto [Invio] per continuare. . ."; read enterKey;;
++esac
+ ;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
+ 
+-          ###################################
+-18)       #             Utility             #
+-          ###################################
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++R17)                                      #########################################
++                                          #             Rimozione KODI            #
++                                          #########################################
+ 
+-clear 
+-echo "         Utility                    "
+-echo "    --------------------------------"
+-echo "    [a]  Utilizzare Xineliboutput   "
+-echo "    [b]  Utilizzare Softhddevice    "
+-echo "    [c]  Modifica Vdrrun            "
+-echo "    [d]  Modifica Start-xinelib     "
+-echo "    [e]  Modifica lista canali      "
+-echo "    [f]  Modifica setup.conf        "
+-echo "    [g]  Modifica oscam             "
+-echo "    [h]  Riconfigura lirc           "
+-echo "    [i]  Nautilus                   "
+-echo "    [l]  Skip                       "
+-echo "    ---------------------------     "
+-echo -n "        Scegli  [a-l]:      "
++
++    clear
++    echo "                    Adesso Rimuovo KODI"; sleep 4
++    apt-get purge -y kodi; apt-get autoremove -y;
++    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++18)                                       #########################################
++                                          #                Utility                #
++                                          #########################################
++
++
++    clear        
++    dialog --title "   ** Utility **   " --infobox "
++   ----------------------------------------------
++                Utility
++   ----------------------------------------------
++        [a]    Utilizzare Xineliboutput                
++        [b]    Utilizzare Softhddevice                  
++        [c]    Modifica Vdrrun               
++        [d]    Modifica Start-xinelib            
++        [e]    Modifica lista canali           
++        [f]    Modifica setup.conf    
++        [g]    Modifica oscam              
++        [h]    Riconfigura lirc                        
++        [i]    Nautilus  
++        [l]    Skip    
++        
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-l]:      " 
+     read yourch
+     case $yourch in
+-#
+ a) if cat /usr/local/bin/vdrrun | grep -q "xineliboutput";
+ then echo "Stai gia usando Xineliboupt"
+ else sudo sed -i "s|--lirc|& -P'xineliboutput -l none -r 37890 -p'|" /usr/local/bin/vdrrun & sudo sed -i "s|-P'softhddevice -f'||" /usr/local/bin/vdrrun
+@@ -3467,34 +3873,44 @@
+ esac
+ ;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
+ 
+-                       ###############################
+-19)                    #     RIMUOVERE COMPONENTI    #
+-                       ###############################
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++19)                                       #########################################
++                                          #          RIMUOVERE COMPONENTI         #
++                                          #########################################
+ 
+-clear                 
+-echo "          RIMUOVERE COMPONENTI              "
+-echo "     ---------------------------------------"
+-echo "     Plugins                                "  
+-echo "     Xine                                   "
+-echo "     Vdr                                    "
+-echo "     Xbmc                                   "
+-echo "     Oscam                                  "
+-echo "     ---------------------------------------"
++
++    clear        
++    dialog --title "   ** RIMUOVERE COMPONENTI **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?             
++   ----------------------------------------------
++        Plugins                  
++        Xine                      
++        Vdr               
++        Kodi              
++        Oscam              
++
++   ---------------------------------------------- " 0 0                 
+ echo "     premere il tasto [Invio] per continuare. . .    " ;read enterKey
+ #
++#
+     clear
+-    echo "                    Rimuovere Plugins              " 
+-    echo "        ------------------------------------------ "
+-    echo "           Rimozione e reinstallazione plugins     " 
+-    echo "        ------------------------------------------ "
+-    echo "        ------------------------------------------ "
+-    echo "        [a]  Rimozione plugins                     "
+-    echo "        [b]  Rimozione e reinstallazione plugins   "
+-    echo "        [c]  Skip                                  "
+-    echo "        ------------------------------------------ "
++    dialog --title "   ** Rimozione e reinstallazione plugins **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Rimozione plugins               
++        [b]    Rimozione e reinstallazione plugins            
++        [c]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+@@ -3533,42 +3949,67 @@
+ ( cd /usr/local/bin; rm -r oscam; cd /usr/local/etc; rm -r oscam.*; rm -rf /home/`logname`/Scrivania/Oscam.desktop; rm -rf /home/`logname`/Scrivania/KillOscam.desktop; rm -rf /home/`logname`/start-oscam.sh; rm -rf /home/`logname`/killOscam.sh) || echo "Hai fatto cosa buona e giusta"
+ ;;
+ 
+-######################################################################################  
+-######################################################################################
++    
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++20)                                       #########################################
++                                          #                Exit/Stop              #
++                                          #########################################
+ 
+-                            ###################################
+-20)                         #             Exit/Stop           # 
+-                            ###################################
+ 
+     clear
+     echo ""
+     echo ""
+     echo ""
+     echo ""
+-    echo "                         .-----,        ,.----."
+-    echo "                  .-----'       '------'       ',"
+-    echo "                ,'  First ed. by mona66 ® 2010   ',"
+-    echo "                '  Updated by fiveten_59 ® 2013   '"
+-    echo "                ',   Revision by knap ® 2013     ,'"
+-    echo "                  ,                               ,"
+-    echo "                 '  Updated by fiveten_59 ® 2014  '"
+-    echo "                  '           & 2015             '"
+-    echo "                  '----,      ,----,       ,----'"
+-    echo "                        '----'      '-----'"
+-    echo "                                  O"
+-    echo "                                   o "
+-    echo "                                    o  "
+-    echo "                                     °"
+-    echo "                                      °"
+-    echo "                                       .---."
+-    echo "                                      |o_o | "
+-    echo "                                      |:_/ |"
+-    echo "                                     //    \\`` "
+-    echo "                                    (|      |)"
+-    echo "                                   /'\__   _/'\  "
+-    echo "                                   \____)=(___/   "
+-    echo "                                "
+-    echo "                       Grazie a tutti e buon divertimento"
++    echo "                                                       .-----,        ,.----."
++    echo "                                                .-----'       '------'       ',"
++    echo "                                              ,'  First ed. by mona66 ® 2010   ',"
++    echo "                                              '  Updated by fiveten_59 ® 2013   '"
++    echo "                                              ',   Revision by knap ® 2013     ,'"
++    echo "                                              ,'   Updated by knap ® 2014      ',"
++    echo "                                              '  Updated by fiveten_59 ® 2015   '"
++    echo "                                              ',   Revision by knap ® 2015     ,'"
++    echo "                                                '----,      ,----,       ,----'"
++    echo "                                                      '----'      '-----'"
++    echo "                                                                O"
++    echo "                                                                 o "
++    echo "                                                                  o  "
++    echo "                                                                   °"
++    echo "                                                                    °"
++    echo "                                                                .88888888:.          "
++    echo "                                                              88888888.88888.          "
++    echo "                                                            .8888888888888888.          "
++    echo "                                                            888888888888888888          "
++    echo "                                                            88'..'888'..'88888          "
++    echo "                                                            88'  '888'  '88888          "
++    echo "                                                            88'..':::'..':8888          "
++    echo "                                                            88:::,::,:::::8888          "
++    echo "                                                            88':::::::::''8888          "
++    echo "                                                           .88  '::::'    8:88.          "
++    echo "                                                          8888            '8:888.          "
++    echo "                                                        .8888'             '888888.          "
++    echo "                                                       .8888:..  .::.  ...:'8888888:.          "
++    echo "                                                      .8888.'     :'     ''::'88:88888          "
++    echo "                                                     .8888        '         '.888:8888.          "
++    echo "                                                    888:8         .           888:88888          "
++    echo "                                                  .888:88        .:           888:88888:          "
++    echo "                                                  8888888.       ::           88:888888          "
++    echo "                                                  '.::.888.      ::          .88888888          "
++    echo "                                                 .::::::.888.    ::         :::'8888'.:.          "
++    echo "                                                ::::::::::.888   '         .::::::::::::          "
++    echo "                                                ::::::::::::.8    '      .:8::::::::::::.          "
++    echo "                                              .::::::::::::::.        .:888:::::::::::::          "
++    echo "                                              :::::::::::::::88:.__..:88888:::::::::::'          "
++    echo "                                               ''.:::::::::::88888888888.88:::::::::'          "
++    echo "                                                     '':::_:' -- '' -'-' '':_::::''          "
++    echo ""
++    echo "                                                     Grazie a tutti e buon divertimento"
+     echo ""
+     echo ""
+     exit 0
