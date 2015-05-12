@@ -90,8 +90,8 @@
     
 ####    Per chi non usa la Scheda DVB-S - Skystar2 PCI ver. 2.3P
     Potrebbe creare problemi la patch con la Skystar2 HD PCIe
-    Commentare le righe al codice:
-    #echo "*** 90 ***"
+    Commentare con # le righe al codice cosi:
+    # echo "*** 90 ***"
     # patch -p1 < 90_dvbdevice.patch; sleep 1;
 
 
