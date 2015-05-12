@@ -32,20 +32,18 @@
 
     IN PARTICOLARE :                                
     Mona, unixer, fiveten_59, Knap, jackblow33, Alez, Shalafi, Homer314, 
-    Mr Cool Span, fusibile73, ceo16, Asgarot, Mld Team e tanti ... 
+    Mr Cool Span, fusibile73, ceo16, Asgarot, Armando Basile,  Mld Team e tanti ... 
     tanti altri.                              
                                                                               
 
 
 
-####    Altre Mod.
+####    Altre iNFO
 
-    Aggiornato da Knap -  ultima modifica Aprile 2015                              
-    Aggiornato da fiveten_59 -  ultima modifica febbraio 2015
     
-    Modificato da Knap per Kubuntu 13.04 - 13.10 - 14.04   32-64 Bit      
-    Modificato da Knap per Debian 7.0   32-64 Bit                                         
-    Modificato da Knap per Linux Mint 15 - 16 Mate   32-64 Bit                            
+    Modificato per Kubuntu 13.04 - 13.10 - 14.04   32-64 Bit      
+    Modificato per Debian 7.0   32-64 Bit                                         
+    Modificato per Linux Mint 15 - 16 Mate   32-64 Bit                            
                                                                                       
     Nuova Release Adattata per OS a 32 Bit                                                
     Compilazione Test eseguita con Vmware e Lubuntu 32 bit                                                            
@@ -57,7 +55,7 @@
     x= CPU 6 Core: make -j6    -    x= CPU 8 Core: make -j8                               
     x= CPU 10 Core: make -j10  -    x= CPU 12 Core: make -j12 
     
-    Configurazione PC:                                                                    
+    Configurazione Workstation:                                                                    
     Motherboard - Asus P9X79 - Chipset Intel X79                                          
     CPU - Intel Xeon E5-2658 V.2 - 2100Mhz - 8 core/16 thread -                           
     Scheda Video - NVIDIA GTX 750 Ti                                                      
