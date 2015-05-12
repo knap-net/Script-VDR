@@ -95,7 +95,7 @@
 
 
 
-####    Testato in compilazione con OS Installato e virtuale con VMware in:
+####    Testato in compilazione con OS Installato e virtuale in VMware:
     ° Kubuntu 13.04 - 13.10 - 14.04 - 14.10 - 15.04 - 64 Bit
     ° Debian Wheezy 7.0 - 64 Bit
     ° Lubuntu 13.10 - 32 Bit
@@ -108,7 +108,7 @@
 
 ####    AGGIORNAMENTO:
     Per chi ha installato o non ha installato lo Script VDR 2.2.x precedentemente ...
-    Adesso Puo' Eseguire Individualmente Upgrade dei Pacchetti ...
+    Adesso Puo' Eseguire Individualmente Upgrade o Rimozione dei Pacchetti ...
 
 
 
