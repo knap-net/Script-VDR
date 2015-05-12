@@ -38,7 +38,7 @@
 
 
 
-####    Altre iNFO
+####    Altre Info
 
     
     Modificato per Kubuntu 13.04 - 13.10 - 14.04   32-64 Bit      
