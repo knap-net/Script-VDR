@@ -1,6 +1,6 @@
 ## Rev. 5.4.1
 - Allineamento Ultima Release fiveten_59 con Release 5.4 - Update release da 5.4 a 5.4.1
-- aAggiunte lib supporto e Test Fisico in Linux Mint 16 Mate
+- Aggiunte librerie di supporto compilazione e Test Fisico in Linux Mint 16 Mate
 - Applicate Notificazioni Errori e divergenze in Github Segnalate
 - Rinominato Script e Sorgenti 
 - altri minor Fix Applicati
