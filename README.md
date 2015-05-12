@@ -67,8 +67,8 @@
     Per Configurazioni diverse questo Script puo' risultare non funzionante !             
                                                                                       
     Da terminale:                                                                         
-    date il comando sudo chmod 755 Scriptvdr-2.2.0_V.5.4                                
-    avviate lo script con il comando: sudo sh ./Scriptvdr-2.2.0_V.5.4
+    date il comando sudo chmod 755 installer                                
+    avviate lo script con il comando: sudo sh ./installer
     
 
 
@@ -88,7 +88,7 @@
     ° Kubuntu 13.04 - 13.10 - 14.04 - 14.10 - 15.04 - 64 Bit
     ° Debian Wheezy 7.0 - 64 Bit
     ° Lubuntu 13.10 - 32 Bit
-    ° Linux Mint 15 Maya - 32 Bit
+    ° Linux Mint 15 - 16 Maya - Mate - 32 Bit
     ° Linux Mint 16 Maya - 64 Bit
 
 
