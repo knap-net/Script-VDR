@@ -1,6 +1,6 @@
 ## ~~ Script-VDR ~~ Complete Installer Github Repository ~~
 
-###    This file is part of VDR Complete Installer (VCI).                   
+####    This file is part of VDR Complete Installer (VCI).                   
            
            
                                                                         
@@ -22,7 +22,7 @@
 
 
     
-###    Credit                                                                                
+####    Credit                                                                                
     Questo script e' stato creato per installare VDR in ambiente grafico        
     con l'aiuto di tutta la comunità vdr che conosco e tutta la loro esperienza   
     percio e' molto importante dare a loro credito          
@@ -38,7 +38,7 @@
 
 
 
-###    Altre Mod.
+####    Altre Mod.
 
     Aggiornato da Knap -  ultima modifica Aprile 2015                              
     Aggiornato da fiveten_59 -  ultima modifica febbraio 2015
@@ -73,7 +73,6 @@
 
 
   
-###     Other Info    
     
 ####    Per usare lo script basta semplicemente
     git clone https://github.com/knap-net/Script-VDR.git
