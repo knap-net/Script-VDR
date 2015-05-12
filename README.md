@@ -89,7 +89,7 @@
     
     
     
-    Per chi non usa la Scheda DVB-S - Skystar2 PCI ver. 2.3P
+####    Per chi non usa la Scheda DVB-S - Skystar2 PCI ver. 2.3P
     Potrebbe creare problemi la patch con la Skystar2 HD PCIe
     Commentare le righe al codice:
     #echo "*** 90 ***"
@@ -98,7 +98,7 @@
 
 
 
-    Testato in compilazione con OS Installato e virtuale con VMware in:
+####    Testato in compilazione con OS Installato e virtuale con VMware in:
     ° Kubuntu 13.04 - 13.10 - 14.04 - 14.10 - 15.04 - 64 Bit
     ° Debian Wheezy 7.0 - 64 Bit
     ° Lubuntu 13.10 - 32 Bit
@@ -109,7 +109,7 @@
 
 
 
-    AGGIORNAMENTO:
+####    AGGIORNAMENTO:
     Per chi ha installato o non ha installato lo Script VDR 2.2.x precedentemente ...
     Adesso Puo' Eseguire Individualmente Upgrade dei Pacchetti ...
 
@@ -118,7 +118,7 @@
 
 
 
-    Per Evitare Errori in Compilazione Rimuovere
+####    Per Evitare Errori in Compilazione Rimuovere
     Dalla Directory Repository Locale Precedenti Versioni di:
     vdr-patches-2.2.0
     getchannels.tar.gz
@@ -127,7 +127,7 @@
 
 
 
-    Plugin VDR-Manager Utilizzabile da Piattaforme Android come Client ...
+####    Plugin VDR-Manager Utilizzabile da Piattaforme Android come Client ...
     Installare sul Dispositivo Android da ... Play Store "Gestore VDR" ...
     https://play.google.com/store/apps/details?id=de.bjusystems.vdrmanager
 
@@ -138,7 +138,7 @@
 
 
 
-    Per Avviare Diversamente VDR in Caso di Differenze Hardware ... Provare cosi :
+####    Per Avviare Diversamente VDR in Caso di Differenze Hardware ... Provare cosi :
     #> cd /usr/local/src/vdr-2.2.0
     #> sudo ./vdr -P"xineliboutput --local=sxfe --video=vaapi --audio=alsa --remote=none"
     Driver video da provare in Opzione "--video=xxxx" »» vaapi , vdpau . xv , xshm , ecc...
@@ -148,7 +148,7 @@
 
 
 
-    Per un Corretto Funzionamento Dello Script si Deve Utilizzare:
+####    Per un Corretto Funzionamento Dello Script si Deve Utilizzare:
     Dal Punto 1 si passa al Punto 4 fino al Punto 17 - Schede Video Nvidia ...
 
     Dal Punto 1 al Punto 4 - Schede Video ATI -
@@ -162,7 +162,7 @@
 
 
 
-    Per Avviare VDR con Scheda Video Intel ... Provare cosi :
+####    Per Avviare VDR con Scheda Video Intel ... Provare cosi :
     Eseguire Questo Comando in Shell 1
     sudo ./vdr -P"xineliboutput --local=none --remote=127.0.0.1:37890 --primary"
 
@@ -173,7 +173,7 @@
 
 
 
-    Per Avviare VDR 2.2.0 Sfruttando il Supporto Vdpau Con Softhddevice, skindesigner e altri Plugin ....
+####    Per Avviare VDR 2.2.0 Sfruttando il Supporto Vdpau Con Softhddevice, skindesigner e altri Plugin ....
     #> cd /usr/local/src/vdr-2.2.0
     #> sudo ./vdr -P'sc -B 0' -P'softhddevice' -P'osdteletext' -P'epgsearch' -P'skindesigner --logopath=/etc/vdr/logos/' -P'femon'
 
@@ -181,12 +181,12 @@
 
 
 
-    Resta Sempre Valido Quanto Scritto da "S_P" .... Per Installare Driver Intel ....
+####    Resta Sempre Valido Quanto Scritto da "S_P" .... Per Installare Driver Intel ....
     http://forum.sifteam.eu/886359-post2.html
 
 
 
-    Per release datate ( Debian Based - 12.04 ) si devono abilitare i repository non-free ( medibuntu )...
+####    Per release datate ( Debian Based - 12.04 ) si devono abilitare i repository non-free ( medibuntu )...
     Per avere tutte le dipendenze disponibili e installate dallo script.
 
 
