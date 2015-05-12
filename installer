@@ -1,7 +1,8 @@
 #!/bin/bash
 ############################## !!! IMPORTANTE !!! #######################################
 #                                                                                       #
-# Nome Script : Scriptvdr-2.2.0_V.5.4                                                   #
+# Nome Script : installer                                                               #
+# Versione: Github Repository                                                           #
 #                                                                                       #
 # Aggiornato da Knap -  ultima modifica Aprile 2015                                     #
 # Aggiornato da fiveten_59 -  ultima modifica febbraio 2015                             #
@@ -31,8 +32,8 @@
 # Per Configurazioni diverse questo Script puo' risultare non funzionante !             #
 #                                                                                       #
 # Da terminale:                                                                         #
-# date il comando sudo chmod 755 Scriptvdr-2.2.0_V.5.4                                  #
-# avviate lo script con il comando: sudo sh ./Scriptvdr-2.2.0_V.5.4                     #
+# date il comando sudo chmod 755 installer                                              #
+# avviate lo script con il comando: sudo sh ./installer                                 #
 #                                                                                       #
 #########################################################################################
 #
@@ -262,7 +263,7 @@ S19.2E  99999 H 10600  t V W15 [E0 10 38 FF] W15 B W15 T
     mkdir $SRC/packages $SRC/archives $SRC/scripts $SRC/READ_THIS
     while :
     do
-    dialog --title " VDR Complete Installer V.5.4 " --infobox "Copyright (C) 2010
+    dialog --title " VDR Complete Installer Github Repository " --infobox "Copyright (C) 2010
                                                                         
     This file is part of VDR Complete Installer (VCI).                   
                                                                         
@@ -300,10 +301,11 @@ S19.2E  99999 H 10600  t V W15 [E0 10 38 FF] W15 B W15 T
     
     #
     #    
-    dialog --title " VDR Complete Installer V.5.4 " --infobox "Copyright (C) 2010
+    dialog --title " VDR Complete Installer Github Repository " --infobox "Copyright (C) 2010
     
 
-    Nome Script : Scriptvdr-2.2.0_V.5.4 
+    Nome Script: installer
+    Versione: Github Repository
 
     Aggiornato da Knap -  ultima modifica Aprile 2015                              
     Aggiornato da fiveten_59 -  ultima modifica febbraio 2015
@@ -334,8 +336,8 @@ S19.2E  99999 H 10600  t V W15 [E0 10 38 FF] W15 B W15 T
     Per Configurazioni diverse questo Script puo' risultare non funzionante !             
                                                                                       
     Da terminale:                                                                         
-    date il comando sudo chmod 755 Scriptvdr-2.2.0_V.5.4                                
-    avviate lo script con il comando: sudo sh ./Scriptvdr-2.2.0_V.5.4                    
+    date il comando sudo chmod 755 installer                                
+    avviate lo script con il comando: sudo sh ./installer                   
                                                                                        
     
     =====================================                     " 0 0
@@ -344,7 +346,7 @@ S19.2E  99999 H 10600  t V W15 [E0 10 38 FF] W15 B W15 T
     #
     clear
     echo ""
-    dialog --title "   ♦♦♦♦♦  Script Installazione VDR 2.2.0 V.5.4 - Librerie & Codec  ♦♦♦♦♦   " --infobox "
+    dialog --title "   ♦♦♦♦♦  Script Installazione VDR 2.2.0 - Github Repository - Librerie & Codec  ♦♦♦♦♦   " --infobox "
           ╭=========================================================================================╮    
           |  ----- Installa - Crea Directory ------  |  ------ Disinstalla - Rimuove Directory ---- |
           |=========================================================================================|
@@ -353,25 +355,25 @@ S19.2E  99999 H 10600  t V W15 [E0 10 38 FF] W15 B W15 T
           |   =====================================================================================   |
           |    ...♦♦♦   Libreria Di Supporto Schede Grafiche ATI - {Test  Softhddevice Vaapi}   ♦♦♦...  |
           |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
-          |   [2]    YASM 1.3.0  .....................  |   [R2]    YASM 1.3.0   ........................  |
-          |   [3]    LIBDRM 2.4.60   ..................  |   [R3]    LIBDRM 2.4.60   .....................  |
+          |   [2]    YASM 1.3.0  .....................  |   [R2]    YASM 1.3.0  ........................  |
+          |   [3]    LIBDRM 2.4.60  ..................  |   [R3]    LIBDRM 2.4.60  .....................  |
           |   [4]    LIBVA 1.5.1  ....................  |   [R4]    LIBVA 1.5.1  .......................   |
           |   =====================================================================================   |
           |   ............♦♦♦   Librerie & Codec - FFMPEG - FDK-AAC - X264 - LIBVPX   ♦♦♦............  |
           |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
-          |   [5]    X264 18.12.2014  ................   |   [R5]    X264 18.12.2014   ...................  |
-          |   [6]    FDK-AAC Git  ....................  |   [R6]    FDK-AAC Git   .......................   |
-          |   [7]    LIBVPX 1.3.0   ...................  |   [R7]    LIBVPX 1.3.0  ......................   |
-          |   [8]    FFMPEG 2.6    .....................  |   [R8]    FFMPEG 2.6   ........................   |
+          |   [5]    X264 18.12.2014  ................   |   [R5]    X264 18.12.2014  ...................  |
+          |   [6]    FDK-AAC Git  ....................  |   [R6]    FDK-AAC Git  .......................   |
+          |   [7]    LIBVPX 1.3.0  ...................  |   [R7]    LIBVPX 1.3.0  ......................   |
+          |   [8]    FFMPEG 2.6.2  ...................  |   [R8]    FFMPEG 2.6.2  ......................   |
           |   =====================================================================================   |
           |   ..............♦♦♦   Installazione XINE-LIB - XINE-UI - VDR & PLUGINS   ♦♦♦.............  |
           |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
-          |   [9]    XINE-LIB 1.2.6  .................  |   [R9]    XINE-LIB 1.2.6   ....................  |
-          |   [10]   XINE-UI 0.99.9  ................  |   [R10]   XINE-UI 0.99.9   ...................   |
+          |   [9]    XINE-LIB 1.2.6  .................  |   [R9]    XINE-LIB 1.2.6  ....................  |
+          |   [10]   XINE-UI 0.99.9  ................  |   [R10]   XINE-UI 0.99.9  ...................   |
           |   [11]   VDR 2.2.0 & Plugins Base  ......  |   [R11]   VDR 2.2.0 & Plugins Base  .........  |
           |   [12]   Prima Configurazione VDR  ......  |   [R12]   Rimozione Configurazione VDR  .....  |
           |   [13]   Installa Altri Plugins  ........  |   [R13]   ...................................  |    
-          |   [14]   Installa Skin   .................  |   [R14]   Disinstalla Skin  .................  |
+          |   [14]   Installa Skin  .................  |   [R14]   Disinstalla Skin  .................  |
           |   [15]   Aggiornamento dei Plugins  .....  |   [R15]    ...................................  |
           |   =====================================================================================   |
           |   .....♦♦♦   Aggiornamento Lista Canali 13.0E Tramite Script GetChannels 0.7.0   ♦♦♦.....  |
@@ -588,7 +590,7 @@ else
     wget https://www.dropbox.com/s/qa0674d9l9mgzzf/patch_softhddevice.tar.gz;
   fi
 
-if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-streamdev-f1dbdd0.tar.gz ]; then
+if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-streamdev ]; then
   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
@@ -1267,6 +1269,7 @@ else
     git clone http://projects.vdr-developer.org/git/vdr-plugin-skinenigmang.git;
     git clone http://projects.vdr-developer.org/git/skin-flatplus.git;
     git clone https://github.com/FrodoVDR/blackholefrodo.git;
+    git clone https://github.com/Vectra130/skindesigner_vectraskin.git; mv skindesigner_vectraskin vectraskin;
     wget https://www.dropbox.com/s/odv30s0a22mau60/skinenigmang-logos-xpm-hi-20070702.tgz;
     wget https://www.dropbox.com/s/weh6c53bg9363ey/skinenigmang-channellogos-xpm-hi-20070702.tgz;
     wget https://www.dropbox.com/s/pydva1r0iafh5hy/skinenigmang-fonts-20080225.tgz;
@@ -1317,7 +1320,43 @@ else
 
     
     
+    
+#############################################################################################################################  
+#############################################################################################################################
+###                                                                                                                       ###
+##                                                                                                                         ##
+#                                                                                                                           #
+R1)                                       #########################################
+                                          # Rimozione Directory Repository Locale #
+                                          #########################################
 
+   
+    clear
+    dialog --title "   ** Rimozione Directory Repository Locale **   " --infobox "
+   ----------------------------------------------
+        Che cosa vuoi rimuovere dai repository             
+   ----------------------------------------------
+          
+   [a]  Sorgenti di VDR   
+   [b]  Sorgenti di DVBAPI
+   [c]  Sorgenti di SC  
+   [d]  Tutto il contenuto
+   [e]  Skip
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-e]:      "
+    read yourch
+    case $yourch in
+    a) rm /home/logname/sifinstallrepo/vdr-2.2.0.tar.bz2;;
+    b) rm -r /home/logname/sifinstallrepo/vdr-plugin-dvbapi;;
+    c) rm -r /home/logname/sifinstallrepo/sc;;
+    d) rm -r /home/logname/sifinstallrepo;;
+    e) ;;
+    esac
+    echo " Premere il tasto [Invio] per continuare. . . "; read enterKey;;
+    
+    
+    
+    
 #############################################################################################################################  
 #############################################################################################################################
 ###                                                                                                                       ###
@@ -1609,6 +1648,11 @@ R6)                                       ######################################
 
 
     apt-get remove -y libav-tools libvpx-dev
+    apt-get update
+    ### Aggiunto Supporto per Linux Mint 16 Mate ###
+    apt-get install -y build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
+    apt-get install -y libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+    apt-get install -y mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
 
     clear
     echo "                    Adesso Installo Libvpx 1.3.0"; sleep 4
@@ -1654,16 +1698,24 @@ R7)                                       ######################################
 
 
     apt-get remove -y ffmpeg
-
+    apt-get update
+    ### Aggiunto Supporto per Linux Mint 16 Mate ###
+    apt-get install -y build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
+    apt-get install -y libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+    apt-get install -y mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
     clear
-    echo "                    Adesso Installo FFmpeg 2.6"; sleep 4
+    echo "                    Adesso Installo FFmpeg 2.6.2"; sleep 4
+    echo ""; echo "                    Attendere qualche secondo la configurazione ..."; sleep 4
     apt-get install -y libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
+    clear
     cd /usr/local/src;
     rm -R ffmpeg
     cp -rf /home/`logname`/sifinstallrepo/ffmpeg /usr/local/src/;
-    cd ffmpeg; ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
+    cd ffmpeg 
+    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
+    #./configure --extra-libs="-ldl" --enable-gpl --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libspeex --enable-librtmp --enable-libtheora --enable-libvorbis --disable-libvpx --enable-x11grab --enable-nonfree --enable-version3 --enable-pic --enable-shared --enable-vaapi --enable-vdpau
     make -j4
-    checkinstall --pkgname=ffmpeg --pkgversion="6:2.5" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+    checkinstall --pkgname=ffmpeg --pkgversion="6:2.6.2" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
     hash -r
     ldconfig -v
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
@@ -1682,7 +1734,7 @@ R8)                                       ######################################
 
 
     clear
-    echo "                    Adesso Rimuovo FFmpeg 2.6"; sleep 4
+    echo "                    Adesso Rimuovo FFmpeg 2.6.2"; sleep 4
     apt-get purge -y ffmpeg; rm -r /usr/local/src/ffmpeg; rm /usr/local/src/packages/ffmpeg*;
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;; 
 
@@ -1703,9 +1755,11 @@ R8)                                       ######################################
     echo "Il pacchetto è presente, Compilazione non eseguita [... rinominare il file .deb per bypassare il check... ]"; press_enter
     else # compile
     cd $SRC
-    apt-get install -y freeglut3-dev
+    ### Aggiunto Supporto per Linux Mint 16 Mate ###
+    apt-get install -y freeglut3-dev libvpx-dev libgl1-mesa-dev
     apt-get install -y autoconf libtool subversion gettext cvs zlib1g-dev libncurses-dev libxinerama-dev 
     apt-get install -y libcdio-dev libvcdinfo-dev libavcodec-dev libpostproc-dev checkinstall libfaad-dev libavutil52 libavutil-dev libdc1394-22-dev libgsm1-dev libraw1394-dev libschroedinger-dev libspeex-dev libjpeg-dev
+
     clear
     echo "                    Adesso Installo Xine-lib2 1.2.6"; sleep 4
     cp /home/`logname`/sifinstallrepo/all-20110131.tar.bz2 /usr/local/src/
@@ -1915,13 +1969,13 @@ echo "                        "
 echo "                        "
 echo "                        "
 echo "Ora installo i Plugins base (Text2skin - Menuorg - OSDTeletext - Dvbapi - Softhddevice - Epgsearch - Reelchannellist - Xvdr - Loadepg - Skindesigner - TvGuideng - Skinflatplus - TvGuide)"
-echo "  premere il tasto [Invio] per continuare "; read enterKey
+echo "                 premere il tasto [Invio] per continuare "; read enterKey
 cd $SRC;
 mkdir -p /usr/lib/vdr/plugins; mkdir -p /usr/lib/vdr/scripts; mkdir -p /etc/vdr/plugins; mkdir -p /etc/vdr/themes; cd $PLUGINS; mkdir -p tvguide;
 #
 #
 clear
-echo ""; echo "*** Text2skin ***"; echo ""; sleep 3
+echo ""; echo "               *** Text2skin ***"; echo ""; sleep 3
 apt-get install -y imagemagick git-core libmagick++-dev
 cd $VDRSRC; 
 cp -r /home/`logname`/sifinstallrepo/vdr-plugin-text2skin /$VDRSRC/;
@@ -1939,7 +1993,7 @@ cd ../../..; make plugins
 #
 #
 clear
-echo ""; echo "*** Menuorg ***"; echo ""; sleep 3
+echo ""; echo "               *** Menuorg ***"; echo ""; sleep 3
 cd $VDRSRC; apt-get install -y libxml++2.6-2 libglibmm-2.4-1c2a libxml++2.6-dev libglibmm-2.4-dev; 
 # wget https://www.dropbox.com/s/i0i0m7bqqs954nc/vdr-menuorg-0.5.1.tar.gz; 
 cp /home/`logname`/sifinstallrepo/vdr-menuorg-0.5.1.tar.gz /$VDRSRC/; tar -zxvf vdr-menuorg-0.5.1.tar.gz;
@@ -1949,8 +2003,8 @@ tar xzvf menuorg.tar.gz; rm -r menuorg.tar.gz
 #
 #
 clear
-echo ""; echo "*** OSDTeletext ***"; echo ""; sleep 3
-apt-get install git-core;
+echo ""; echo "               *** OSDTeletext ***"; echo ""; sleep 3
+apt-get install -y git-core;
 cd $VDRSRC; 
 cp -r /home/`logname`/sifinstallrepo/vdr-plugin-osdteletext /$VDRSRC/;
 mv vdr-plugin-osdteletext osdteletext; cd osdteletext;
@@ -1961,14 +2015,14 @@ cd ../../..; make plugins; mkdir -p /vtx
 #
 #
 clear
-echo ""; echo "*** Femon ***"; echo ""; sleep 3
+echo ""; echo "               *** Femon ***"; echo ""; sleep 3
 cd $VDRSRC; 
 cp /home/`logname`/sifinstallrepo/vdr-femon-2.2.0.tgz /$VDRSRC/; tar xzvf vdr-femon-2.2.0.tgz;
 mv femon-2.2.0 femon; rm -r vdr-femon-2.2.0.tgz; cd ../../; make plugins
 #
 #
 clear
-echo ""; echo "*** Dvbapi ***"; echo ""; sleep 3
+echo ""; echo "               *** Dvbapi ***"; echo ""; sleep 3
 cd $VDRSRC; 
 cp -r /home/`logname`/sifinstallrepo/vdr-plugin-dvbapi /$VDRSRC/;
 mv vdr-plugin-dvbapi dvbapi; cd dvbapi;
@@ -1979,14 +2033,14 @@ cd ../../..; make plugins
 #
 #
 clear
-echo ""; echo "*** Softhddevice ***"; echo ""; sleep 3
+echo ""; echo "               *** Softhddevice ***"; echo ""; sleep 3
 cd $VDRSRC;
 cp -r /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice /$VDRSRC; mv vdr-plugin-softhddevice softhddevice; cd softhddevice; cp -r /home/`logname`/sifinstallrepo/patch_softhddevice.tar.gz /$VDRSRC/softhddevice; tar -zxvf patch_softhddevice.tar.gz; rm -r patch_softhddevice.tar.gz; patch -p1 < 11_Makefile.patch; sleep 1; patch -p1 < 12_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_vdpauqueue.patch; sleep 1;
 make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1; make install; 
 # 
 #
 clear
-echo ""; echo "*** Epgsearch ***"; echo ""; sleep 3
+echo ""; echo "               *** Epgsearch ***"; echo ""; sleep 3
 cd $VDRSRC;
 cp -r /home/`logname`/sifinstallrepo/vdr-plugin-epgsearch /$VDRSRC/;
 mv vdr-plugin-epgsearch epgsearch; cd epgsearch;
@@ -1997,7 +2051,7 @@ cd ../../..; make plugins;
 #
 #
 clear
-echo ""; echo "*** Reelchannellist ***"; echo ""; sleep 3
+echo ""; echo "               *** Reelchannellist ***"; echo ""; sleep 3
 cd $VDRSRC; 
 cp /home/`logname`/sifinstallrepo/reelchannellist.tar.xz /$VDRSRC/;
 tar -xJf reelchannellist.tar.xz; rm -r reelchannellist.tar.xz; cd reelchannellist; sed -i "s|/root/openbricks/build/build.i386.eglibc/vdr-1.7.27|/usr/local/src/vdr-2.2.0|" *.c; sed -i "s|/root/openbricks/build/build.i386.eglibc/vdr-1.7.27|/usr/local/src/vdr-2.2.0|" *.h; rm -r Makefile; 
@@ -2009,14 +2063,14 @@ cd ../../..; make plugins
 #
 #    
 clear
-echo ""; echo "*** Xvdr ***"; echo ""; sleep 3
+echo ""; echo "               *** Xvdr ***"; echo ""; sleep 3
 cd $VDRSRC; 
 cp -r /home/`logname`/sifinstallrepo/vdr-plugin-xvdr /$VDRSRC/;
 mv vdr-plugin-xvdr xvdr; mkdir -p /etc/vdr/plugins/xvdr/; cd ../..; make plugins; echo "*** allowed_hosts.conf setup ***"; echo "$ALLOWED" >> /etc/vdr/plugins/xvdr/allowed_hosts.conf
 #
 #
 clear
-echo ""; echo "*** Loadepg ***"; echo ""; sleep 3
+echo ""; echo "               *** Loadepg ***"; echo ""; sleep 3
 cd $VDRSRC; 
 cp -r /home/`logname`/sifinstallrepo/vdr-loadepg-0.2.6.tgz /$VDRSRC;
 tar -zxvf vdr-loadepg-0.2.6.tgz; mv loadepg-0.2.6 loadepg; rm -r vdr-loadepg-0.2.6.tgz;
@@ -2025,34 +2079,34 @@ cp -r $VDRSRC/loadepg/conf/* $PLUGINS/loadepg/;
 #
 #sudo -apt get install lm-sensors
 clear
-echo "*** Skindesigner ***"; echo ""; sleep 3
-echo "*** Carico prima  le api di Skindesigner ***"; echo ""; sleep 3
+echo "               *** Skindesigner ***"; echo ""; sleep 3
+echo "               *** Carico prima  le api di Skindesigner ***"; echo ""; sleep 3
 cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && cd vdr-plugin-skindesigner/libskindesignerapi && make clean && make install;
 sleep 3
 clear
-echo "*** Ora Carico Skindesigner ***"; echo ""; sleep 3
-cd $VDRSRC; sudo apt-get install lm-sensors;
+echo "***                Ora Carico Skindesigner ***"; echo ""; sleep 3
+cd $VDRSRC; sudo apt-get install -y lm-sensors;
 cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && cd vdr-plugin-skindesigner && make && make install && cp -r /home/`logname`/sifinstallrepo/blackholefrodo /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glassy /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/vectraskin /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady_KISS /usr/share/vdr/plugins/skindesigner/skins/ && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
 #
 #
 clear
-echo "*** Skin Flatplus ***"; echo ""; sleep 3
+echo "               *** Skin Flatplus ***"; echo ""; sleep 3
 cd $VDRSRC;
 cp -r /home/`logname`/sifinstallrepo/skin-flatplus /$VDRSRC/ && cd skin-flatplus && make install && cd /usr/lib/vdr/plugins/skinflatplus/widgets/temperatures/ && ln -s temperatures.default temperatures && cd ../system_information && ln -s system_information.ubuntu system_information && cd ../weather && cp update_weather.config.sample update_weather.config;
 #
 #
 clear
-echo ""; echo "*** TvGuideng ***"; echo ""; sleep 3
+echo ""; echo "               *** TvGuideng ***"; echo ""; sleep 3
 cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-tvguideng /$VDRSRC; mv vdr-plugin-tvguideng tvguideng; cd ../..; make plugins;
 #
 #
 clear
-echo ""; echo "*** Tvguide ***";  sleep 3
+echo ""; echo "               *** Tvguide ***";  sleep 3
 cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-tvguide /$VDRSRC; mv vdr-plugin-tvguide tvguide; cd ../..; make plugins; cp $VDRSRC/tvguide/themes/* /etc/vdr/themes/;
 #
 #
 clear
-echo ""; echo "*** Weatherforecast ***";  sleep 3
+echo ""; echo "               *** Weatherforecast ***";  sleep 3
 cd $VDRSRC; apt-get install -y libjansson4 libjansson-dev; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-weatherforecast /$VDRSRC; mv vdr-plugin-weatherforecast weatherforecast; cd ../..; make plugins; 
 #
 #
@@ -3976,7 +4030,7 @@ echo ""; echo "*** Rimuovere Vdr ***"; echo ""
 read -n1 -p "Sei proprio sicuro di rimuovere Vdr? (y/n) "
 echo 
 [[ $REPLY = [yY] ]] &&
-( dpkg -r vdr; rm -r /etc/vdr; rm -r /usr/lib/vdr; cd $SRC; rm -r vdr vdr-*; cd packages; rm -r vdr*.deb; rm -r /usr/local/bin/vdrpoweroff; rm -r /usr/local/bin/vdrrun;  rm -rf /usr/local/bin/start-xine-vdr.sh; rm -rf /usr/local/bin/start-xinelib-vdr.sh; rm -rf /usr/local/bin/start-softhddevice-vdr.sh; rm -rf /home/`logname`/Scrivania/Xinelib.desktop; rm -rf /home/`logname`/Scrivania/Vdr-Softhddevice.desktop; rm -rf /home/`logname`/Scrivania/KillVdr.desktop; cd $PACKAGES; rm -rf vdr*.deb ) || echo "Hai fatto cosa buona e giusta"
+( dpkg -r vdr; rm -r /etc/vdr; rm -r /usr/lib/vdr; cd $SRC; rm -r vdr vdr-*; cd packages; rm -r vdr*.deb; rm -r /usr/local/bin/vdrpoweroff; rm -r /usr/local/bin/vdrrun;  rm -rf /usr/local/bin/start-xine-vdr.sh; rm -rf /usr/local/bin/start-xinelib-vdr.sh; rm -rf /usr/share/vdr; rm -rf /usr/local/bin/start-softhddevice-vdr.sh; rm -rf /home/`logname`/Scrivania/Xinelib.desktop; rm -rf /home/`logname`/Scrivania/Vdr-Softhddevice.desktop; rm -rf /home/`logname`/Scrivania/KillVdr.desktop; cd $PACKAGES; rm -rf vdr*.deb ) || echo "Hai fatto cosa buona e giusta"
 #
 echo ""; echo "*** Rimuovere KODI ***"; echo ""
 read -n1 -p "Sei proprio sicuro di rimuovere KODI? (y/n) "
