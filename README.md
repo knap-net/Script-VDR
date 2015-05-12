@@ -1,5 +1,4 @@
-## ~~~~~~ Script-VDR ~~~~~~ 
-## ~~~~ Complete Installer Github Repository ~~~~
+### ~~ Script-VDR ~ Complete Installer Github Repository ~~
 
 ####    This file is part of VDR Complete Installer (VCI).                   
            
