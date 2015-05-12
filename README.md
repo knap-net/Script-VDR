@@ -75,6 +75,20 @@
   
 ###     Other Info    
     
+####    Per usare lo script basta semplicemente
+    git clone https://github.com/knap-net/Script-VDR.git
+    cd Script-VDR/
+    chmod +x installer && chmod 755 installer
+    sudo sh ./installer
+####    Per aggiornare lo script basta fare
+    cd Script-VDR/
+    git pull
+####    Dopo l' aggiornamento si puo' lanciare lo script
+    sudo sh ./installer
+    
+    
+    
+    
     Per chi non usa la Scheda DVB-S - Skystar2 PCI ver. 2.3P
     Potrebbe creare problemi la patch con la Skystar2 HD PCIe
     Commentare le righe al codice:
