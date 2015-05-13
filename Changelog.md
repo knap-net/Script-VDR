@@ -12,7 +12,8 @@
 ## Rev. 5.4
 - Modifica e Aggiornamento del Plugin IPTV - Configurazione e Test Funzionalita' - By Fiveten_59
 - Adattamento Release V.5.3 al nuovo Mod.
-
+- Aggiornamento Librerie Libdrm - Libva - successive release
+- Altre modifiche minori 
 
 
 ## Rev. 5.3 
