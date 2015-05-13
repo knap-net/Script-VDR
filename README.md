@@ -51,6 +51,7 @@
     x= CPU 2 Core: make -j2    -    x= CPU 4 Core: make -j4                               
     x= CPU 6 Core: make -j6    -    x= CPU 8 Core: make -j8                               
     x= CPU 10 Core: make -j10  -    x= CPU 12 Core: make -j12 
+    
     Configurazione Workstation:                                                                    
     Motherboard - Asus P9X79 - Chipset Intel X79                                          
     CPU - Intel Xeon E5-2658 V.2 - 2100Mhz - 8 core/16 thread -                           
@@ -131,6 +132,7 @@
 
     Installare sul Dispositivo Android da ... Play Store "Gestore VDR" ...
     https://play.google.com/store/apps/details?id=de.bjusystems.vdrmanager
+    
     Per Utilizzare il plugin VDR-Streamdev come Server ...
     e il plugin VDR-Manager Attraverso il Client "Gestore VDR" da piattaforme Android ... avviarlo cosi:
     #> sudo ./vdr -P 'vdrmanager -p 6420 -P change' -P'streamdev-server'
@@ -142,6 +144,7 @@
 
     #> cd /usr/local/src/vdr-2.2.0
     #> sudo ./vdr -P"xineliboutput --local=sxfe --video=vaapi --audio=alsa --remote=none"
+    
     Driver video da provare in Opzione "--video=xxxx" »» vaapi , vdpau . xv , xshm , ecc...
 
 
@@ -154,6 +157,7 @@
     Dal Punto 1 si passa al Punto 4 fino al Punto 17 - Schede Video Nvidia ...
     Dal Punto 1 al Punto 4 - Schede Video ATI -
     Per Chi Utilizza Le ATI Solo Test Funzionalità Con Librerie Vaapi ....
+    
     Installare Driver Tramite Installer 1.0.3 - Schede Video Intel - Riavvio Del PC Al termine Installazione ...
     Download: https://01.org/linuxgraphics/downloads
 
@@ -167,6 +171,7 @@
 
     Eseguire Questo Comando in Shell 1
     sudo ./vdr -P"xineliboutput --local=none --remote=127.0.0.1:37890 --primary"
+    
     Eseguire Questo Comando in Shell 2
     export LIBVA_DRIVER_NAME=vdpau && export LIBVA_DRIVER_NAME="i965" && export LIBVA_DRIVERS_PATH="/usr/lib/x86_64-linux-gnu/dri/" && vdr-sxfe --video=vaapi
 
