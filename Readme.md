@@ -38,9 +38,9 @@
 
 ####    Altre Info
 
-    Modificato per Kubuntu 13.04 - 13.10 - 14.04   32-64 Bit      
+    Modificato per Kubuntu 13.04 ~ 15.04   32-64 Bit      
     Modificato per Debian 7.0   32-64 Bit                                         
-    Modificato per Linux Mint 15 - 16 Mate   32-64 Bit                            
+    Modificato per Linux Mint 15 ~ 16 Mate   32-64 Bit                            
                                                                                       
     Nuova Release Adattata per OS a 32 Bit                                                
     Compilazione Test eseguita con Vmware e Lubuntu 32 bit                                                            
