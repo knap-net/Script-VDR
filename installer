@@ -4,9 +4,9 @@
 # Nome Script : installer                                                               #
 # Versione: Github Repository                                                           #
 #                                                                                       #
-# Modificato per Kubuntu 13.04 - 13.10 - 14.04   32-64 Bit                              #
+# Modificato per Kubuntu 13.04 ~ 15.04   32-64 Bit                                      #
 # Modificato per Debian 7.0   32-64 Bit                                                 #
-# Modificato per Linux Mint 15 - 16 Mate   32-64 Bit                                    #
+# Modificato per Linux Mint 15 ~ 16 Mate   32-64 Bit                                    #
 #                                                                                       #
 # Nuova Release Adattata per OS a 32 Bit                                                #
 # Compilazione Test eseguita con Vmware e Lubuntu 32 bit                                #                            
@@ -305,9 +305,9 @@ S19.2E  99999 H 10600  t V W15 [E0 10 38 FF] W15 B W15 T
     Nome Script: installer
     Versione: Github Repository
 
-    Modificato per Kubuntu 13.04 - 13.10 - 14.04   32-64 Bit      
+    Modificato per Kubuntu 13.04 ~ 15.04   32-64 Bit      
     Modificato per Debian 7.0   32-64 Bit                                         
-    Modificato per Linux Mint 15 - 16 Mate   32-64 Bit                            
+    Modificato per Linux Mint 15 ~ 16 Mate   32-64 Bit                            
                                                                                       
                                                                                        
     Nuova Release Adattata per OS a 32 Bit                                                
