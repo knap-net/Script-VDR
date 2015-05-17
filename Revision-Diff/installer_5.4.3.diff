@@ -1,0 +1,175 @@
+--- Script-VDR-Scriptvdr-2.2.0_V.5.4.2/installer	2015-05-17 10:49:31.000000000 +0200
++++ Script-VDR-Scriptvdr-2.2.0_V.5.4.3/installer	2015-05-17 21:53:25.000000000 +0200
+@@ -351,7 +351,7 @@
+           |    ...♦♦♦   Libreria Di Supporto Schede Grafiche ATI - {Test  Softhddevice Vaapi}   ♦♦♦...  |
+           |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
+           |   [2]    YASM 1.3.0  .....................  |   [R2]    YASM 1.3.0  ........................  |
+-          |   [3]    LIBDRM 2.4.60  ..................  |   [R3]    LIBDRM 2.4.60  .....................  |
++          |   [3]    LIBDRM 2.4.61  ..................  |   [R3]    LIBDRM 2.4.61  .....................  |
+           |   [4]    LIBVA 1.5.1  ....................  |   [R4]    LIBVA 1.5.1  .......................   |
+           |   =====================================================================================   |
+           |   ............♦♦♦   Librerie & Codec - FFMPEG - FDK-AAC - X264 - LIBVPX   ♦♦♦............  |
+@@ -359,7 +359,7 @@
+           |   [5]    X264 18.12.2014  ................  |   [R5]    X264 18.12.2014  ...................  |
+           |   [6]    X265 HG  ........................  |   [R6]    X265 HG  ...........................  |
+           |   [7]    FDK-AAC Git  ....................  |   [R7]    FDK-AAC Git  .......................  |
+-          |   [8]    LIBVPX 1.3.0  ...................  |   [R8]    LIBVPX 1.3.0  ......................  |
++          |   [8]    LIBVPX 1.4.0  ...................  |   [R8]    LIBVPX 1.4.0  ......................  |
+           |   [9]    FFMPEG 2.6.2  ...................  |   [R9]    FFMPEG 2.6.2  ......................  |
+           |   =====================================================================================   |
+           |   ..............♦♦♦   Installazione XINE-LIB - XINE-UI - VDR & PLUGINS   ♦♦♦.............  |
+@@ -434,11 +434,11 @@
+     wget https://www.dropbox.com/s/jtk3ax8hj7dmf2h/yasm-1.3.0.tar.gz;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/libdrm-2.4.60.tar.gz ]; then
++if [ -s /home/`logname`/sifinstallrepo/libdrm-2.4.61.tar.gz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.60.tar.gz;
++    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.61.tar.gz;
+   fi    
+ 
+ if [ -s /home/`logname`/sifinstallrepo/libva-1.5.1.tar.bz2 ]; then
+@@ -462,11 +462,12 @@
+      git clone https://github.com/mstorsjo/fdk-aac.git;
+   fi  
+ 
+- if [ -s /home/`logname`/sifinstallrepo/libvpx-v1.3.0.tar.bz2 ]; then
++ if [ -s /home/`logname`/sifinstallrepo/libvpx-1.4.0.tar.bz2 ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/22u8nukke7o0iqm/libvpx-v1.3.0.tar.bz2;
++    #wget https://www.dropbox.com/s/22u8nukke7o0iqm/libvpx-v1.3.0.tar.bz2;
++    wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.4.0.tar.bz2;
+   fi   
+ 
+ if [ -s /home/`logname`/sifinstallrepo/ffmpeg ]; then
+@@ -1189,11 +1190,11 @@
+ ############################ caricamento librerie ####################################
+ 
+     wget https://www.dropbox.com/s/jtk3ax8hj7dmf2h/yasm-1.3.0.tar.gz;
+-    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.60.tar.gz;
++    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.61.tar.gz;
+     wget https://www.dropbox.com/s/fcuvgdi8ra57zgc/libva-1.5.1.tar.bz2;
+     git clone https://github.com/mstorsjo/fdk-aac.git;
+     wget https://www.dropbox.com/s/nf9fz22f8pmlcrg/x264-snapshot-20141218-2245.tar.bz2;
+-    wget https://www.dropbox.com/s/22u8nukke7o0iqm/libvpx-v1.3.0.tar.bz2;
++    wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.4.0.tar.bz2;
+     git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg
+ 
+ 
+@@ -1364,10 +1365,8 @@
+ 
+     apt-get update && apt-get upgrade;
+     apt-get install libpciaccess-dev checkinstall xserver-xorg-dev vainfo gcc build-essential pkg-config automake autoconf make autoproject;
+-
+     clear
+     echo "                    Adesso Installo Yasm 1.3.0"; sleep 4
+-
+     cd /usr/local/src; 
+     rm -rf yasm;
+     cp /home/`logname`/sifinstallrepo/yasm-1.3.0.tar.gz /usr/local/src/;
+@@ -1410,13 +1409,13 @@
+     apt-get remove -y libdrm-dev;
+ 
+     clear
+-    echo "                    Adesso Installo Libdrm 2.4.60"; sleep 4
++    echo "                    Adesso Installo Libdrm 2.4.61"; sleep 4
+     cd /usr/local/src
+     rm -rf libdrm;
+-    cp /home/`logname`/sifinstallrepo/libdrm-2.4.60.tar.gz /usr/local/src/;  
+-    tar -zxvf libdrm-2.4.60.tar.gz; mv libdrm-2.4.60 libdrm; rm -r libdrm-2.4.60.tar.gz; cd libdrm
++    cp /home/`logname`/sifinstallrepo/libdrm-2.4.61.tar.gz /usr/local/src/;  
++    tar -zxvf libdrm-2.4.61.tar.gz; mv libdrm-2.4.61 libdrm; rm -r libdrm-2.4.61.tar.gz; cd libdrm
+     ./configure --enable-silent-rules --enable-libkms --enable-udev --enable-largefile --enable-intel --enable-radeon
+-    checkinstall --pkgname=libdrm --pkgversion="2.4.60-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=libdrm --pkgversion="2.4.61-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1433,7 +1432,7 @@
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo Libdrm 2.4.60"; sleep 4
++    echo "                    Adesso Rimuovo Libdrm 2.4.61"; sleep 4
+     apt-get purge -y libdrm; rm -r /usr/local/src/libdrm; rm /usr/local/src/packages/libdrm*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+@@ -1499,25 +1498,17 @@
+ 
+     apt-get remove -y x264 libx264-dev;
+     apt-get update;
+-    
+     apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
+-
+     apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+-
+     apt-get install -y mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
+-  
+     apt-get -y install cmake cmake-curses-gui 
+-  
+-
+     clear
+     echo "                    Adesso Installo X264 18.12.2014"; sleep 4
+-
+     cd /usr/local/src;
+     rm -Rf $SRC/x264;
+     cp /home/`logname`/sifinstallrepo/x264-snapshot-20141218-2245.tar.bz2 /usr/local/src/;
+     tar xjf x264-snapshot-20141218-2245.tar.bz2; mv x264-snapshot-20141218-2245 x264;
+     rm -r x264-snapshot-20141218-2245.tar.bz2; cd x264;
+-
+     ./configure --enable-pic --enable-shared --extra-cflags="-mtune=native -march=native -mfpmath=sse -O4 -pipe"
+     make -j4
+     checkinstall --pkgname=x264 --pkgversion="2:18.12.2014-git" --bk --default --deldoc=yes --pakdir=$PACKAGES
+@@ -1556,7 +1547,6 @@
+ 
+ 
+     apt-get remove -y x265
+-
+     clear
+     echo "                    Adesso Installo X265 - Git"; sleep 4
+     cd /usr/local/src
+@@ -1648,17 +1638,16 @@
+     apt-get install -y build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
+     apt-get install -y libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+     apt-get install -y mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
+-
+     clear
+-    echo "                    Adesso Installo Libvpx 1.3.0"; sleep 4
++    echo "                    Adesso Installo Libvpx 1.4.0"; sleep 4
+     cd /usr/local/src
+     rm -R libvpx
+-    cp /home/`logname`/sifinstallrepo/libvpx-v1.3.0.tar.bz2 /usr/local/src/;
+-    tar xjf libvpx-v1.3.0.tar.bz2; mv libvpx-v1.3.0 libvpx;
+-    rm -r libvpx-v1.3.0.tar.bz2; cd libvpx
++    cp /home/`logname`/sifinstallrepo/libvpx-1.4.0.tar.bz2 /usr/local/src/;
++    tar xjf libvpx-1.4.0.tar.bz2; mv libvpx-1.4.0 libvpx;
++    rm -r libvpx-1.4.0.tar.bz2; cd libvpx
+     ./configure --enable-pic --enable-shared --enable-runtime_cpu_detect
+     make -j4
+-    checkinstall --pkgname=libvpx --pkgversion="1.3.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=libvpx --pkgversion="1.4.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1675,7 +1664,7 @@
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo Libvpx 1.3.0"; sleep 4
++    echo "                    Adesso Rimuovo Libvpx 1.4.0"; sleep 4
+     apt-get purge -y libvpx; rm -r /usr/local/src/libvpx; rm /usr/local/src/packages/libvpx*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+@@ -1894,7 +1883,6 @@
+     apt-get -y install libcurl3 libcurl4-gnutls-dev cvs libxcb-icccm4 libxcb-icccm4-dev libx11-xcb-dev libxcb-screensaver0-dev libxcb-dpms0-dev libxcb-ewmh-dev 
+     clear    
+     echo "               Adesso Installo VDR 2.2.0      "; sleep 4 
+-
+     cp /home/`logname`/sifinstallrepo/$VDR.tar.bz2 $SRC/; tar xivf $VDR.tar.bz2;
+     ln -s $VDR vdr; rm -r $VDR.tar.bz2
+     cd vdr/PLUGINS; mkdir lib; cd ..;
