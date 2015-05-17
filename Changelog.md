@@ -1,3 +1,10 @@
+## Rev. 5.4.3
+- Aggiornato Librerie Libdrm versione 2.4.61
+- Aggiornato Librerie Libvpx versione 1.4.0
+- Modifica codice e adattamento
+
+
+
 ## Rev. 5.4.2
 - Aggiunto al Punto 6 Librerie X265 HEVC Encoder - ** Premere Q per eseguire compilazione ** -
 - Aggiunto Sottomenu in FFmpeg selezione configurazione con supporto X265
