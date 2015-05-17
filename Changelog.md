@@ -1,3 +1,10 @@
+## Rev. 5.4.2
+- Aggiunto al Punto 6 Librerie X265 HEVC Encoder - ** Premere Q per eseguire compilazione ** -
+- Aggiunto Sottomenu in FFmpeg selezione configurazione con supporto X265
+- Modifica Skin Menu' Script per adattamento nuova release
+
+
+
 ## Rev. 5.4.1
 - Allineamento Ultima Release fiveten_59 con Release 5.4 - Update release da 5.4 a 5.4.1
 - Aggiunte librerie di supporto compilazione e Test Fisico in Linux Mint 16 Mate
