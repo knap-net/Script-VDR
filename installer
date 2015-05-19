@@ -1363,6 +1363,8 @@ R1)                                       ######################################
                                           #########################################
 
 
+    apt-get remove -y yasm
+    clear
     apt-get update && apt-get upgrade;
     apt-get install libpciaccess-dev checkinstall xserver-xorg-dev vainfo gcc build-essential pkg-config automake autoconf make autoproject;
     clear
@@ -1406,8 +1408,7 @@ R2)                                       ######################################
                                           #########################################
 
 
-    apt-get remove -y libdrm-dev;
-
+    apt-get remove -y libdrm
     clear
     echo "                    Adesso Installo Libdrm 2.4.61"; sleep 4
     cd /usr/local/src
@@ -1449,6 +1450,7 @@ R3)                                       ######################################
                                           #########################################
 
 
+    apt-get remove -y libva
     clear
     echo "                    Adesso Installo Libva 1.5.1"; sleep 4
     cd /usr/local/src;
@@ -1496,7 +1498,8 @@ R4)                                       ######################################
                                           #########################################
 
 
-    apt-get remove -y x264 libx264-dev;
+    apt-get remove -y x264
+    clear
     apt-get update;
     apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
     apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
@@ -1590,6 +1593,7 @@ R6)                                       ######################################
                                           #########################################
 
 
+    apt-get remove -y fdk-aac
     clear
     echo "                    Adesso Installo Fdk-aac - Git"; sleep 4
     cd /usr/local/src
@@ -1632,7 +1636,8 @@ R7)                                       ######################################
                                           #########################################
 
 
-    apt-get remove -y libav-tools libvpx-dev
+    apt-get remove -y libvpx
+    clear
     apt-get update
     ### Aggiunto Supporto per Linux Mint 16 Mate ###
     apt-get install -y build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
@@ -1682,6 +1687,7 @@ R8)                                       ######################################
 
 
     apt-get remove -y ffmpeg
+    clear
     apt-get update
     ### Aggiunto Supporto per Linux Mint 16 Mate ###
     apt-get install -y build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
@@ -1812,7 +1818,7 @@ R10)                                      ######################################
 
     clear
     echo "                    Adesso Rimuovo Xine-lib2 1.2.6"; sleep 4
-    apt-get purge -y libxine2-vdpau; rm -r /usr/local/src/xine-lib*; rm /usr/local/src/packages/libxine2*;
+    apt-get purge -y libxine2; rm -r /usr/local/src/xine-lib*; rm /usr/local/src/packages/libxine2*;
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 
     
@@ -1828,7 +1834,9 @@ R10)                                      ######################################
                                           #########################################
 
 
+    apt-get remove -y xine-ui
     clear
+    apt-get update
     echo "                    Adesso Installo Xine-ui 0.99.9"; sleep 4
     apt-get install -y lirc lirc-x liblircclient-dev
     if [ -f $SRC/xine-ui/xine-ui*.deb ]; then
