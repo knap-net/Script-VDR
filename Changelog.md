@@ -1,3 +1,8 @@
+## Rev. 5.4.4
+- Update Minox Fix
+
+
+
 ## Rev. 5.4.3
 - Aggiornato Librerie Libdrm versione 2.4.61
 - Aggiornato Librerie Libvpx versione 1.4.0
