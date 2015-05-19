@@ -1,5 +1,5 @@
 ## Rev. 5.4.4
-- Update Minox Fix
+- Update Minor Fix
 
 
 
