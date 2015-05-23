@@ -1,9 +1,18 @@
+## Rev. 5.4.6
+- Aggiunto Plugin by fiveteen_59 - mp3 - play - externalplayer
+- Effettuare il Punto 1 - [A] Creazione - Download locale repository nuovi plugins
+- Aggiunto al Punto 14 selezione dei plugins - per usarli in vdr (-P'mp3' -P'play' -P'externalplayer')
+
+
+
 ## Rev. 5.4.5
+- Modifiche al codice e risoluzione di alcuni errori
 - Altre modifiche minori al codice.
 
 
 
 ## Rev. 5.4.4
+- Revisione codice per errore in compilazione libdrm
 - Update Minor Fix
 
 
