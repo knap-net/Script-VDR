@@ -1,0 +1,556 @@
+--- installer	2015-05-22 08:37:00.538082655 +0200
++++ Script-VDR-Scriptvdr-2.2.0_V.5.4.5/installer	2015-05-20 08:25:09.717820353 +0200
+@@ -859,49 +859,6 @@
+     wget https://www.dropbox.com/s/1ujtklnct0nqq6q/iptv_conf.tar.gz;
+ fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/vdr-mp3-0.10.2.tar.gz ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/rjh3vpj3b2q3dxz/vdr-mp3-0.10.2.tar.gz;
+-fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/patch_mplayer.tar.gz ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/puuh92l42vsq9g4/patch_mplayer.tar.gz;
+-fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/vdr-play ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-      #git clone https://github.com/maniacgit/vdr-play
+-      git clone http://projects.vdr-developer.org/git/vdr-plugin-play.git/
+-fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/patch_play.tar.gz ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/ond4cpofj5yxhp8/patch_play.tar.gz
+-fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/externalplayer.tar.gz ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/9c7s5nob4ocgsya/externalplayer.tar.gz;
+-fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/vhz1fz68159s0qg/externalplayer.conf.tar.gz;
+-fi
+-
+ ################################# caricamento skin ########################################
+ 
+ if [ -s /home/`logname`/sifinstallrepo/skin-narrowhd ]; then
+@@ -1298,12 +1255,6 @@
+     wget https://www.dropbox.com/s/7cou9src7w7htzj/vdr-cecremote-0.6.0.tgz;
+     wget https://www.dropbox.com/s/nof5ydmxrplw2b0/patch_iptv.tar.gz;
+     wget https://www.dropbox.com/s/1ujtklnct0nqq6q/iptv_conf.tar.gz;
+-    wget https://www.dropbox.com/s/rjh3vpj3b2q3dxz/vdr-mp3-0.10.2.tar.gz;
+-    wget https://www.dropbox.com/s/puuh92l42vsq9g4/patch_mplayer.tar.gz;
+-    git clone https://github.com/maniacgit/vdr-play;
+-    wget https://www.dropbox.com/s/ond4cpofj5yxhp8/patch_play.tar.gz;
+-    wget https://www.dropbox.com/s/9c7s5nob4ocgsya/externalplayer.tar.gz;
+-    wget https://www.dropbox.com/s/vhz1fz68159s0qg/externalplayer.conf.tar.gz;
+ 
+ ############################ caricamento skin ########################################
+ 
+@@ -1412,7 +1363,7 @@
+                                           #########################################
+ 
+ 
+-    apt-get remove -y yasm
++    apt-get -y remove yasm
+     clear
+     apt-get update && apt-get upgrade;
+     apt-get install libpciaccess-dev checkinstall xserver-xorg-dev vainfo gcc build-essential pkg-config automake autoconf make autoproject;
+@@ -1441,7 +1392,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo Yasm 1.3.0"; sleep 4
+-    apt-get purge -y yasm; rm -r /usr/local/src/yasm; rm /usr/local/src/packages/yasm*;
++    apt-get -y purge yasm; rm -r /usr/local/src/yasm; rm /usr/local/src/packages/yasm*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1457,7 +1408,7 @@
+                                           #########################################
+ 
+ 
+-    apt-get remove -y libdrm
++    apt-get -y remove libdrm
+     clear
+     echo "                    Adesso Installo Libdrm 2.4.61"; sleep 4
+     cd /usr/local/src
+@@ -1483,7 +1434,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo Libdrm 2.4.61"; sleep 4
+-    apt-get purge -y libdrm; rm -r /usr/local/src/libdrm; rm /usr/local/src/packages/libdrm*;
++    apt-get -y purge libdrm; rm -r /usr/local/src/libdrm; rm /usr/local/src/packages/libdrm*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1499,7 +1450,7 @@
+                                           #########################################
+ 
+ 
+-    apt-get remove -y libva
++    apt-get -y remove libva
+     clear
+     echo "                    Adesso Installo Libva 1.5.1"; sleep 4
+     cd /usr/local/src;
+@@ -1531,7 +1482,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo Libva 1.5.1"; sleep 4
+-    apt-get purge -y libva; rm -r /usr/local/src/libva; rm /usr/local/src/packages/libva*;
++    apt-get -y purge libva; rm -r /usr/local/src/libva; rm /usr/local/src/packages/libva*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1547,12 +1498,12 @@
+                                           #########################################
+ 
+ 
+-    apt-get remove -y x264
++    apt-get -y remove x264
+     clear
+     apt-get update;
+     apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
+     apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+-    apt-get install -y mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
++    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
+     apt-get -y install cmake cmake-curses-gui 
+     clear
+     echo "                    Adesso Installo X264 18.12.2014"; sleep 4
+@@ -1582,7 +1533,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo X264 18.12.2014"; sleep 4
+-    apt-get purge -y x264; rm -r /usr/local/src/x264; rm /usr/local/src/packages/x264*;
++    apt-get -y purge x264; rm -r /usr/local/src/x264; rm /usr/local/src/packages/x264*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1598,7 +1549,7 @@
+                                           #########################################
+ 
+ 
+-    apt-get remove -y x265
++    apt-get -y remove x265
+     clear
+     echo "                    Adesso Installo X265 - Git"; sleep 4
+     cd /usr/local/src
+@@ -1626,7 +1577,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo X265 - Git"; sleep 4
+-    apt-get purge -y x265; rm -r /usr/local/src/x265; rm /usr/local/src/packages/x265*;
++    apt-get -y purge x265; rm -r /usr/local/src/x265; rm /usr/local/src/packages/x265*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1642,7 +1593,7 @@
+                                           #########################################
+ 
+ 
+-    apt-get remove -y fdk-aac
++    apt-get -y remove fdk-aac
+     clear
+     echo "                    Adesso Installo Fdk-aac - Git"; sleep 4
+     cd /usr/local/src
+@@ -1669,7 +1620,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo Fdk-aac - Git"; sleep 4
+-    apt-get purge -y fdk-aac; rm -r /usr/local/src/fdk-aac; rm /usr/local/src/packages/fdk-aac*;
++    apt-get -y purge fdk-aac; rm -r /usr/local/src/fdk-aac; rm /usr/local/src/packages/fdk-aac*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1685,13 +1636,13 @@
+                                           #########################################
+ 
+ 
+-    apt-get remove -y libvpx
++    apt-get -y remove libvpx
+     clear
+     apt-get update
+     ### Aggiunto Supporto per Linux Mint 16 Mate ###
+-    apt-get install -y build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
+-    apt-get install -y libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+-    apt-get install -y mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
++    apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
++    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
++    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
+     clear
+     echo "                    Adesso Installo Libvpx 1.4.0"; sleep 4
+     cd /usr/local/src
+@@ -1719,7 +1670,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo Libvpx 1.4.0"; sleep 4
+-    apt-get purge -y libvpx; rm -r /usr/local/src/libvpx; rm /usr/local/src/packages/libvpx*;
++    apt-get -y purge libvpx; rm -r /usr/local/src/libvpx; rm /usr/local/src/packages/libvpx*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1735,15 +1686,15 @@
+                                           #########################################
+ 
+ 
+-    apt-get remove -y ffmpeg
++    apt-get -y remove ffmpeg
+     clear
+     apt-get update
+     ### Aggiunto Supporto per Linux Mint 16 Mate ###
+-    apt-get install -y build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
+-    apt-get install -y libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+-    apt-get install -y mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
++    apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
++    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
++    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
+     clear
+-    apt-get install -y libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
++    apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
+     clear
+     dialog --title "   ** Installazione FFmpeg 2.6.2 Git **   " --infobox "
+    ----------------------------------------------------
+@@ -1801,7 +1752,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo FFmpeg 2.6.2"; sleep 4
+-    apt-get purge -y ffmpeg; rm -r /usr/local/src/ffmpeg; rm /usr/local/src/packages/ffmpeg*;
++    apt-get -y purge ffmpeg; rm -r /usr/local/src/ffmpeg; rm /usr/local/src/packages/ffmpeg*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;; 
+ 
+     
+@@ -1822,9 +1773,9 @@
+     else # compile
+     cd $SRC
+     ### Aggiunto Supporto per Linux Mint 16 Mate ###
+-    apt-get install -y freeglut3-dev libvpx-dev libgl1-mesa-dev
+-    apt-get install -y autoconf libtool subversion gettext cvs zlib1g-dev libncurses-dev libxinerama-dev 
+-    apt-get install -y libcdio-dev libvcdinfo-dev libavcodec-dev libpostproc-dev checkinstall libfaad-dev libavutil52 libavutil-dev libdc1394-22-dev libgsm1-dev libraw1394-dev libschroedinger-dev libspeex-dev libjpeg-dev
++    apt-get -y install freeglut3-dev libvpx-dev libgl1-mesa-dev
++    apt-get -y install autoconf libtool subversion gettext cvs zlib1g-dev libncurses-dev libxinerama-dev 
++    apt-get -y install libcdio-dev libvcdinfo-dev libavcodec-dev libpostproc-dev checkinstall libfaad-dev libavutil52 libavutil-dev libdc1394-22-dev libgsm1-dev libraw1394-dev libschroedinger-dev libspeex-dev libjpeg-dev
+ 
+     clear
+     echo "                    Adesso Installo Xine-lib2 1.2.6"; sleep 4
+@@ -1867,7 +1818,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo Xine-lib2 1.2.6"; sleep 4
+-    apt-get purge -y libxine2; rm -r /usr/local/src/xine-lib*; rm /usr/local/src/packages/libxine2*;
++    apt-get -y purge libxine2; rm -r /usr/local/src/xine-lib*; rm /usr/local/src/packages/libxine2*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1883,11 +1834,11 @@
+                                           #########################################
+ 
+ 
+-    apt-get remove -y xine-ui
++    apt-get -y remove xine-ui
+     clear
+     apt-get update
+     echo "                    Adesso Installo Xine-ui 0.99.9"; sleep 4
+-    apt-get install -y lirc lirc-x liblircclient-dev
++    apt-get -y install lirc lirc-x liblircclient-dev
+     if [ -f $SRC/xine-ui/xine-ui*.deb ]; then
+     echo "Package is there, skip compilation"
+     else
+@@ -1916,7 +1867,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo Xine-ui 0.99.9"; sleep 4
+-    apt-get purge -y xine-ui; rm -r /usr/local/src/xine-ui; rm /usr/local/src/packages/xine-ui*;
++    apt-get -y purge xine-ui; rm -r /usr/local/src/xine-ui; rm /usr/local/src/packages/xine-ui*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1934,8 +1885,8 @@
+     clear
+     echo "vdr ALL=(ALL) ALL" >> /etc/sudoers; 
+     echo "*** Installazione librerie ***"; sleep 4 
+-    cd $SRC; apt-get install -y build-essential checkinstall libfreetype6-dev libfontconfig1-dev libjpeg62-dev libcap-dev libfribidi-dev libncurses5-dev libncursesw5-dev git-core gettext
+-    apt-get install -y libx11-xcb-dev libxcb-dpms0-dev libxcb-glx0-dev libxcb-randr0-dev libxcb-screensaver0-dev libxcb-xv0-dev libxcb-image0-dev libxcb-util0-dev libxcb-icccm4-dev libxcb-keysyms1-dev
++    cd $SRC; apt-get -y install build-essential checkinstall libfreetype6-dev libfontconfig1-dev libjpeg62-dev libcap-dev libfribidi-dev libncurses5-dev libncursesw5-dev git-core gettext
++    apt-get -y install libx11-xcb-dev libxcb-dpms0-dev libxcb-glx0-dev libxcb-randr0-dev libxcb-screensaver0-dev libxcb-xv0-dev libxcb-image0-dev libxcb-util0-dev libxcb-icccm4-dev libxcb-keysyms1-dev
+     apt-get -y install libpcre++0 libpcre++-dev python-libxml2 python-libxslt1 python-pycurl python-simplejson mimms libxml2-dev python-all-dev python-central cdbs libglib2.0-dev debhelper txt2man
+     apt-get -y install libcurl3 libcurl4-gnutls-dev cvs libxcb-icccm4 libxcb-icccm4-dev libx11-xcb-dev libxcb-screensaver0-dev libxcb-dpms0-dev libxcb-ewmh-dev 
+     clear    
+@@ -2005,7 +1956,7 @@
+     clear
+     echo ""; echo "*** Final compilation ***"; echo ""
+     cd /usr/local/src/vdr
+-    apt-get purge -y vdr
++    apt-get -y purge vdr
+     checkinstall --fstrans=no --install=yes --pkgname=vdr --pkgversion "2.2.0-git" --pakdir=$PACKAGES --default
+     rm -r /media/video; mkdir /media/video; mkdir -p /usr/lib/vdr/scripts;
+     mkdir -p /etc/vdr/plugins; cp *.conf /etc/vdr; mkdir -p /usr/lib/vdr/plugins;
+@@ -2044,7 +1995,7 @@
+ #
+ clear
+ echo ""; echo "               *** Text2skin ***"; echo ""; sleep 3
+-apt-get install -y imagemagick git-core libmagick++-dev
++apt-get -y install imagemagick git-core libmagick++-dev
+ cd $VDRSRC; 
+ cp -r /home/`logname`/sifinstallrepo/vdr-plugin-text2skin /$VDRSRC/;
+ mv vdr-plugin-text2skin text2skin; cd text2skin; 
+@@ -2062,7 +2013,7 @@
+ #
+ clear
+ echo ""; echo "               *** Menuorg ***"; echo ""; sleep 3
+-cd $VDRSRC; apt-get install -y libxml++2.6-2 libglibmm-2.4-1c2a libxml++2.6-dev libglibmm-2.4-dev; 
++cd $VDRSRC; apt-get -y install libxml++2.6-2 libglibmm-2.4-1c2a libxml++2.6-dev libglibmm-2.4-dev; 
+ # wget https://www.dropbox.com/s/i0i0m7bqqs954nc/vdr-menuorg-0.5.1.tar.gz; 
+ cp /home/`logname`/sifinstallrepo/vdr-menuorg-0.5.1.tar.gz /$VDRSRC/; tar -zxvf vdr-menuorg-0.5.1.tar.gz;
+ mv menuorg-0.5.1 menuorg; rm -r vdr-menuorg-0.5.1.tar.gz; cd ../..; make plugins; cd /etc/vdr/plugins;  
+@@ -2072,7 +2023,7 @@
+ #
+ clear
+ echo ""; echo "               *** OSDTeletext ***"; echo ""; sleep 3
+-apt-get install -y git-core;
++apt-get -y install git-core;
+ cd $VDRSRC; 
+ cp -r /home/`logname`/sifinstallrepo/vdr-plugin-osdteletext /$VDRSRC/;
+ mv vdr-plugin-osdteletext osdteletext; cd osdteletext;
+@@ -2153,7 +2104,7 @@
+ sleep 3
+ clear
+ echo "***                Ora Carico Skindesigner ***"; echo ""; sleep 3
+-cd $VDRSRC; sudo apt-get install -y lm-sensors;
++cd $VDRSRC; sudo apt-get -y install lm-sensors;
+ cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && cd vdr-plugin-skindesigner && make && make install && cp -r /home/`logname`/sifinstallrepo/blackholefrodo /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glassy /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/vectraskin /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady_KISS /usr/share/vdr/plugins/skindesigner/skins/ && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
+ #
+ #
+@@ -2175,7 +2126,7 @@
+ #
+ clear
+ echo ""; echo "               *** Weatherforecast ***";  sleep 3
+-cd $VDRSRC; apt-get install -y libjansson4 libjansson-dev; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-weatherforecast /$VDRSRC; mv vdr-plugin-weatherforecast weatherforecast; cd ../..; make plugins; 
++cd $VDRSRC; apt-get -y install libjansson4 libjansson-dev; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-weatherforecast /$VDRSRC; mv vdr-plugin-weatherforecast weatherforecast; cd ../..; make plugins; 
+ #
+ #
+ cd /usr/local/src/vdr; make plugins install;
+@@ -2198,7 +2149,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo VDR 2.2.0"; sleep 4
+-    apt-get purge -y vdr; rm /usr/local/src/vdr; rm -r /usr/local/src/vdr-2.2.0; rm /usr/local/src/packages/vdr*; rm -r /usr/lib/vdr; rm /usr/share/locale/ca_ES/LC_MESSAGES;
++    apt-get -y purge vdr; rm /usr/local/src/vdr; rm -r /usr/local/src/vdr-2.2.0; rm /usr/local/src/packages/vdr*; rm -r /usr/lib/vdr; rm /usr/share/locale/ca_ES/LC_MESSAGES;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -2744,10 +2695,7 @@
+ 		ZapPilot                                     
+ 		Scraper2vdr                                    
+ 		Ttxtsubs                                     
+-		Iptv
+-		Mp3
+-		Play 
+-		Externalplayer                       
++		Iptv                                         
+ 		Sat-Ip                                       
+ 		Vdr-StreamDev                                
+ 		Vdr-Plugin-Sc                                
+@@ -2762,7 +2710,7 @@
+ #
+ #
+ 
+-apt-get install -y libextractor-dev
++apt-get -y install libextractor-dev
+ cd $VDRSRC;
+ 
+     clear
+@@ -2802,7 +2750,7 @@
+ sed -i "s|-P'softhddevice -f'||" /usr/local/bin/vdrrun;
+ echo "*** allowed_hosts.conf setup ***"; touch /etc/vdr/plugins/xineliboutput/allowed_hosts.conf
+ echo "$ALLOWED" >> /etc/vdr/plugins/xineliboutput/allowed_hosts.conf;
+-#  Creazione icona avvio vdr con xineliboutput   #externalplayer.conf.tar.gz
++#  Creazione icona avvio vdr con xineliboutput   #
+ rm -rf /home/`logname`/Scrivania/Xinelib.desktop
+ if [ -e /etc/vdr/plugins/xineliboutput/remote.conf ]
+   then 
+@@ -2902,7 +2850,7 @@
+     case $yourch in
+ a) cd $VDRSRC && if [ -f live/Makefile ];
+   then  echo "Live $Remind"
+-else apt-get install -y libtntnet-dev tntnet && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-live /$VDRSRC/ && mv vdr-plugin-live live && cd live && cp -r /home/`logname`/sifinstallrepo/livepatch.tar.gz /$VDRSRC/live/ && tar -zxvf livepatch.tar.gz && rm -r livepatch.tar.gz && patch -p1 < timeformat-it_IT-fix.patch && mkdir -p /etc/vdr/plugins/live && cp -a $VDRSRC/live/live /etc/vdr/plugins && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'live'|" /usr/local/bin/vdrrun
++else apt-get -y install libtntnet-dev tntnet && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-live /$VDRSRC/ && mv vdr-plugin-live live && cd live && cp -r /home/`logname`/sifinstallrepo/livepatch.tar.gz /$VDRSRC/live/ && tar -zxvf livepatch.tar.gz && rm -r livepatch.tar.gz && patch -p1 < timeformat-it_IT-fix.patch && mkdir -p /etc/vdr/plugins/live && cp -a $VDRSRC/live/live /etc/vdr/plugins && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'live'|" /usr/local/bin/vdrrun
+     fi || echo "$Remind7 Live"
+         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ b) cd $VDRSRC && rm -r live && git clone http://projects.vdr-developer.org/git/vdr-plugin-live.git && cd /home/`logname`/sifinstallrepo && rm -r vdr-plugin-live && cd $VDRSRC && cp -r vdr-plugin-live /home/`logname`/sifinstallrepo/ && mv vdr-plugin-live live && cd live && cp -r /home/`logname`/sifinstallrepo/livepatch.tar.gz /$VDRSRC/live/ && tar -zxvf livepatch.tar.gz && rm -r livepatch.tar.gz && patch -p1 < timeformat-it_IT-fix.patch && mkdir -p /etc/vdr/plugins/live && cp -a $VDRSRC/live/live /etc/vdr/plugins && cd ../../.. && make plugins;; 
+@@ -3072,99 +3020,6 @@
+     esac
+ #
+ #
+-#echo ""; echo "*** Mp3  ***"; echo ""
+-    clear
+-    dialog --title "   **  Vdr-Plugin-Mp3 **   " --infobox "
+-   ----------------------------------------------
+-                Che cosa vuoi fare ?
+-   ----------------------------------------------
+-          [a]  Installare il plugin Mp3         
+-          [b]  Aggiornare il plugin Mp3         
+-          [c]  Rimuovere il plugin Mp3          
+-          [d]  Skip                             
+-   ---------------------------------------------- " 0 0
+-    echo -n "        Scegli  [a-d]:      "
+-    read yourch
+-    case $yourch in
+-a) cd $VDRSRC && if [ -f mp3/Makefile ];
+-  then  echo "Mp3 $Remind"
+-  else sudo apt-get install -y libsndfile1 libsndfile-dev libid3tag0 libid3tag0-dev libmad0-dev && cp -r /home/`logname`/sifinstallrepo/vdr-mp3-0.10.2.tar.gz /$VDRSRC && tar -zxvf vdr-mp3-0.10.2.tar.gz && rm -r vdr-mp3-0.10.2.tar.gz && mv mp3-0.10.2 mp3 && cd mp3 && cp -r /home/`logname`/sifinstallrepo/patch_mplayer.tar.gz /$VDRSRC/mp3 && tar -zxvf patch_mplayer.tar.gz && rm -r patch_mplayer.tar.gz && patch -p1 < 10_mplayer_vdr2.1.2.patch && cp mp3sources.conf /etc/vdr/plugins/mp3sources.conf && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'mp3'|" /usr/local/bin/vdrrun
+-    fi || echo "$Remind7 Mp3"
+-    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-b) echo "*** plugin Mp3 ***"; 
+-    clear
+-    echo "Il plugin Mp3 è già aggiornato."
+-        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+-c) cd $VDRSRC && if [ -f mp3/Makefile ];
+-  then rm -r mp3 && rm -rf $PLUGINS/streamdev-server && /etc/vdr/plugins/mp3sources.conf && sed -i "s|-P'mp3'||" /usr/local/bin/vdrrun
+-    else echo "Mp3 $Remind5" 
+-  fi
+-    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-esac
+-#
+-#echo ""; echo "*** Play  ***"; echo ""
+-    clear
+-    dialog --title "   **  Vdr-Plugin-Play **   " --infobox "
+-   ----------------------------------------------
+-                Che cosa vuoi fare ?
+-   ----------------------------------------------
+-          [a]  Installare il plugin Play         
+-          [b]  Aggiornare il plugin Play         
+-          [c]  Rimuovere il plugin Play          
+-          [d]  Skip                            
+-   ---------------------------------------------- " 0 0
+-    echo -n "        Scegli  [a-d]:      "
+-    read yourch
+-    case $yourch in
+-a) cd $VDRSRC && if [ -f play/Makefile ];
+-  then  echo "Play $Remind"
+-  else sudo apt-get install -y mplayer2 && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-play /$VDRSRC &&  mv vdr-plugin-play play && cd play && cp -r /home/`logname`/sifinstallrepo/patch_play.tar.gz /$VDRSRC/play && tar -zxvf patch_play.tar.gz && rm -r patch_play.tar.gz && patch -p1 < 10_play_pixmap.patch && cd ../../.. && make && make plugins && sed -i "s|-P'dvbapi'|& -P'play -fs'|" /usr/local/bin/vdrrun
+-#&& make install 
+-    fi || echo "$Remind7 Play"
+-    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-b) echo "*** plugin Play ***"; 
+-    clear
+-    echo "Il plugin Play è già aggiornato."
+-        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+-c) cd $VDRSRC && if [ -f play/Makefile ];
+-  then rm -r play && rm -rf $PLUGINS/streamdev-server && /etc/vdr/plugins/mp3sources.conf && sed -i "s|-P'play'||" /usr/local/bin/vdrrun
+-    else echo "Play $Remind5" 
+-  fi
+-    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-esac
+-#
+-#echo ""; echo "*** Externalplayer  ***"; echo ""
+-    clear
+-    dialog --title "   **  Vdr-Plugin-Externalplayer **   " --infobox "
+-   ----------------------------------------------
+-                Che cosa vuoi fare ?
+-   ----------------------------------------------
+-          [a]  Installare il plugin Externalplayer         
+-          [b]  Aggiornare il plugin Externalplayer         
+-          [c]  Rimuovere il plugin Externalplayer          
+-          [d]  Skip                             
+-
+-   ---------------------------------------------- " 0 0 
+-    echo -n "        Scegli  [a-d]:      "
+-    read yourch
+-    case $yourch in
+-a) cd $VDRSRC && if [ -f externalplayer/Makefile ];
+-  then  echo "Externalplayer $Remind"
+-  else cp -r /home/`logname`/sifinstallrepo/externalplayer.tar.gz /$VDRSRC && tar -zxvf externalplayer.tar.gz && rm -r externalplayer.tar.gz && mv externalplayer-4078eddc1cb3 externalplayer && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'externalplayer'|" /usr/local/bin/vdrrun && cp -r /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz /etc/vdr/plugins/ && cd /etc/vdr/plugins && tar -zxvf externalplayer.conf.tar.gz && rm -r externalplayer.conf.tar.gz 
+-    fi || echo "$Remind7 Externalplayer"
+-    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-b) echo "*** plugin Externalplayer ***"; 
+-    clear
+-    echo "Il plugin Externalplayer è già aggiornato."
+-        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+-c) cd $VDRSRC && if [ -f externalplayer/Makefile ];
+-  then rm -r externalplayer && rm -rf $PLUGINS/externalplayer && /etc/vdr/plugins/externalplayer.conf && sed -i "s|-P'externalplayer'||" /usr/local/bin/vdrrun
+-    else echo "Externalplayer $Remind5" 
+-  fi
+-    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+-esac
+-#
+-#
+ #echo "*** StreamDev ***"; echo ""; 
+     clear
+     dialog --title "   ** VDR-Plugin-StreamDev **   " --infobox "
+@@ -3212,7 +3067,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC;  apt-get install -y libssl-dev subversion libdvbcsa-dev
++a) cd $VDRSRC;  apt-get -y install libssl-dev subversion libdvbcsa-dev
+  if [ -f $VDRSRC/sc/Makefile ];
+   then  echo "sc $Remind"
+  else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-sc/ /$VDRSRC && mv vdr-plugin-sc sc
+@@ -3370,7 +3225,7 @@
+     case $yourch in 
+ a) cd $VDRSRC && if [ -f cecremote/Makefile ];
+   then  echo "CecRemote $Remind"
+-  else apt-get install -y libcec libcec-dev libpugixml1 libpugixml-dev cec-utils && cp -r /home/`logname`/sifinstallrepo/vdr-cecremote-0.6.0.tgz /$VDRSRC && tar -zxvf vdr-cecremote-0.6.0.tgz && mv cecremote-0.6.0 cecremote && cd ../.. && make plugins # && sed -i "s|-P'dvbapi'|& -P'cecremote'|" /usr/local/bin/vdrrun 
++  else apt-get -y install libcec libcec-dev libpugixml1 libpugixml-dev cec-utils && cp -r /home/`logname`/sifinstallrepo/vdr-cecremote-0.6.0.tgz /$VDRSRC && tar -zxvf vdr-cecremote-0.6.0.tgz && mv cecremote-0.6.0 cecremote && cd ../.. && make plugins # && sed -i "s|-P'dvbapi'|& -P'cecremote'|" /usr/local/bin/vdrrun 
+     fi || echo "$Remind7 CecRemote"
+         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ b) cd $VDRSRC && if [ -f cecremote/Makefile ];
+@@ -3436,8 +3291,8 @@
+ 
+     clear
+     echo " Adesso Installo altre Skin di VDR (obsolete)"; sleep 4
+-cd $SRC; apt-get install -y build-essential checkinstall libfreetype6-dev libfontconfig1-dev libjpeg62-dev libcap-dev libfribidi-dev libncurses5-dev libncursesw5-dev git-core gettext
+-apt-get install -y libx11-xcb-dev libxcb-dpms0-dev libxcb-glx0-dev libxcb-randr0-dev libxcb-screensaver0-dev libxcb-xv0-dev libxcb-image0-dev libxcb-util0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-ewmh-dev
++cd $SRC; apt-get -y install build-essential checkinstall libfreetype6-dev libfontconfig1-dev libjpeg62-dev libcap-dev libfribidi-dev libncurses5-dev libncursesw5-dev git-core gettext
++apt-get -y install libx11-xcb-dev libxcb-dpms0-dev libxcb-glx0-dev libxcb-randr0-dev libxcb-screensaver0-dev libxcb-xv0-dev libxcb-image0-dev libxcb-util0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-ewmh-dev
+ apt-get -y install libpcre++0 libpcre++-dev python-libxml2 python-libxslt1 python-pycurl python-simplejson mimms libxml2-dev python-all-dev python-central cdbs libglib2.0-dev debhelper txt2man
+ apt-get -y install libcurl3 libcurl4-gnutls-dev cvs libxcb-icccm4 libxcb-icccm4-dev libx11-xcb-dev libxcb-screensaver0-dev libxcb-dpms0-dev libmagick++-dev
+ ###
+@@ -4026,11 +3881,11 @@
+     a) cd $SRC  && if [ -f /usr/local/bin/xbmc ];
+     then  echo "Xbmc $Remind3"
+     else 
+-    apt-get install -y python-software-properties pkg-config
+-    apt-get install -y software-properties-common
++    apt-get -y install python-software-properties pkg-config
++    apt-get -y install software-properties-common
+     sudo add-apt-repository ppa:team-xbmc/ppa
+     sudo apt-get update
+-    sudo apt-get install -y kodi
++    sudo apt-get -y install kodi
+ #
+     rm -rf /home/`logname`/Scrivania/Kodi.desktop; touch /home/`logname`/Scrivania/Kodi.desktop; 
+     chmod 777 /home/`logname`/Scrivania/Kodi.desktop;
+@@ -4073,7 +3928,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo KODI"; sleep 4
+-    apt-get purge -y kodi; apt-get autoremove -y;
++    apt-get -y purge kodi; apt-get -y autoremove;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -4186,7 +4041,7 @@
+ read -n1 -p "Sei proprio sicuro di rimuovere Xine-ui? (y/n) "
+ echo 
+ [[ $REPLY = [yY] ]] &&
+-( dpkg -r xine-ui; apt-get remove --purge -y lirc lirc-modules-source lirc-x liblircclient-dev; cd $SRC; rm -rf xine-ui xine-ui*.tar.bz2; cd $PACKAGES; rm -rf xine-ui*.deb ) || echo "Hai fatto cosa buona e giusta"
++( dpkg -r xine-ui; apt-get -y purge lirc lirc-modules-source lirc-x liblircclient-dev; cd $SRC; rm -rf xine-ui xine-ui*.tar.bz2; cd $PACKAGES; rm -rf xine-ui*.deb ) || echo "Hai fatto cosa buona e giusta"
+ #
+ echo ""; echo "*** Rimuovere Vdr ***"; echo ""
+ read -n1 -p "Sei proprio sicuro di rimuovere Vdr? (y/n) "
