@@ -859,6 +859,49 @@ else
     wget https://www.dropbox.com/s/1ujtklnct0nqq6q/iptv_conf.tar.gz;
 fi
 
+if [ -s /home/`logname`/sifinstallrepo/vdr-mp3-0.10.2.tar.gz ]; then
+  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+    wget https://www.dropbox.com/s/rjh3vpj3b2q3dxz/vdr-mp3-0.10.2.tar.gz;
+fi
+
+if [ -s /home/`logname`/sifinstallrepo/patch_mplayer.tar.gz ]; then
+  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+    wget https://www.dropbox.com/s/puuh92l42vsq9g4/patch_mplayer.tar.gz;
+fi
+
+if [ -s /home/`logname`/sifinstallrepo/vdr-play ]; then
+  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+      #git clone https://github.com/maniacgit/vdr-play
+      git clone http://projects.vdr-developer.org/git/vdr-plugin-play.git/
+fi
+
+if [ -s /home/`logname`/sifinstallrepo/patch_play.tar.gz ]; then
+  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+    wget https://www.dropbox.com/s/ond4cpofj5yxhp8/patch_play.tar.gz
+fi
+
+if [ -s /home/`logname`/sifinstallrepo/externalplayer.tar.gz ]; then
+  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+    wget https://www.dropbox.com/s/9c7s5nob4ocgsya/externalplayer.tar.gz;
+fi
+
+if [ -s /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz ]; then
+  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+    wget https://www.dropbox.com/s/vhz1fz68159s0qg/externalplayer.conf.tar.gz;
+fi
+
 ################################# caricamento skin ########################################
 
 if [ -s /home/`logname`/sifinstallrepo/skin-narrowhd ]; then
@@ -1255,6 +1298,12 @@ else
     wget https://www.dropbox.com/s/7cou9src7w7htzj/vdr-cecremote-0.6.0.tgz;
     wget https://www.dropbox.com/s/nof5ydmxrplw2b0/patch_iptv.tar.gz;
     wget https://www.dropbox.com/s/1ujtklnct0nqq6q/iptv_conf.tar.gz;
+    wget https://www.dropbox.com/s/rjh3vpj3b2q3dxz/vdr-mp3-0.10.2.tar.gz;
+    wget https://www.dropbox.com/s/puuh92l42vsq9g4/patch_mplayer.tar.gz;
+    git clone https://github.com/maniacgit/vdr-play;
+    wget https://www.dropbox.com/s/ond4cpofj5yxhp8/patch_play.tar.gz;
+    wget https://www.dropbox.com/s/9c7s5nob4ocgsya/externalplayer.tar.gz;
+    wget https://www.dropbox.com/s/vhz1fz68159s0qg/externalplayer.conf.tar.gz;
 
 ############################ caricamento skin ########################################
 
@@ -2695,7 +2744,10 @@ R13)                                      ######################################
 		ZapPilot                                     
 		Scraper2vdr                                    
 		Ttxtsubs                                     
-		Iptv                                         
+		Iptv
+		Mp3
+		Play 
+		Externalplayer                       
 		Sat-Ip                                       
 		Vdr-StreamDev                                
 		Vdr-Plugin-Sc                                
@@ -2750,7 +2802,7 @@ sed -i "s|--lirc|-P'xineliboutput -l none -r 37890 -p'|" /usr/local/bin/vdrrun;
 sed -i "s|-P'softhddevice -f'||" /usr/local/bin/vdrrun;
 echo "*** allowed_hosts.conf setup ***"; touch /etc/vdr/plugins/xineliboutput/allowed_hosts.conf
 echo "$ALLOWED" >> /etc/vdr/plugins/xineliboutput/allowed_hosts.conf;
-#  Creazione icona avvio vdr con xineliboutput   #
+#  Creazione icona avvio vdr con xineliboutput   #externalplayer.conf.tar.gz
 rm -rf /home/`logname`/Scrivania/Xinelib.desktop
 if [ -e /etc/vdr/plugins/xineliboutput/remote.conf ]
   then 
@@ -3018,6 +3070,99 @@ c) cd $VDRSRC && if [ -f iptv/Makefile ];
   fi
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
     esac
+#
+#
+#echo ""; echo "*** Mp3  ***"; echo ""
+    clear
+    dialog --title "   **  Vdr-Plugin-Mp3 **   " --infobox "
+   ----------------------------------------------
+                Che cosa vuoi fare ?
+   ----------------------------------------------
+          [a]  Installare il plugin Mp3         
+          [b]  Aggiornare il plugin Mp3         
+          [c]  Rimuovere il plugin Mp3          
+          [d]  Skip                             
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-d]:      "
+    read yourch
+    case $yourch in
+a) cd $VDRSRC && if [ -f mp3/Makefile ];
+  then  echo "Mp3 $Remind"
+  else sudo apt-get install -y libsndfile1 libsndfile-dev libid3tag0 libid3tag0-dev libmad0-dev && cp -r /home/`logname`/sifinstallrepo/vdr-mp3-0.10.2.tar.gz /$VDRSRC && tar -zxvf vdr-mp3-0.10.2.tar.gz && rm -r vdr-mp3-0.10.2.tar.gz && mv mp3-0.10.2 mp3 && cd mp3 && cp -r /home/`logname`/sifinstallrepo/patch_mplayer.tar.gz /$VDRSRC/mp3 && tar -zxvf patch_mplayer.tar.gz && rm -r patch_mplayer.tar.gz && patch -p1 < 10_mplayer_vdr2.1.2.patch && cp mp3sources.conf /etc/vdr/plugins/mp3sources.conf && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'mp3'|" /usr/local/bin/vdrrun
+    fi || echo "$Remind7 Mp3"
+    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+b) echo "*** plugin Mp3 ***"; 
+    clear
+    echo "Il plugin Mp3 è già aggiornato."
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+c) cd $VDRSRC && if [ -f mp3/Makefile ];
+  then rm -r mp3 && rm -rf $PLUGINS/streamdev-server && /etc/vdr/plugins/mp3sources.conf && sed -i "s|-P'mp3'||" /usr/local/bin/vdrrun
+    else echo "Mp3 $Remind5" 
+  fi
+    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+esac
+#
+#echo ""; echo "*** Play  ***"; echo ""
+    clear
+    dialog --title "   **  Vdr-Plugin-Play **   " --infobox "
+   ----------------------------------------------
+                Che cosa vuoi fare ?
+   ----------------------------------------------
+          [a]  Installare il plugin Play         
+          [b]  Aggiornare il plugin Play         
+          [c]  Rimuovere il plugin Play          
+          [d]  Skip                            
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-d]:      "
+    read yourch
+    case $yourch in
+a) cd $VDRSRC && if [ -f play/Makefile ];
+  then  echo "Play $Remind"
+  else sudo apt-get install -y mplayer2 && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-play /$VDRSRC &&  mv vdr-plugin-play play && cd play && cp -r /home/`logname`/sifinstallrepo/patch_play.tar.gz /$VDRSRC/play && tar -zxvf patch_play.tar.gz && rm -r patch_play.tar.gz && patch -p1 < 10_play_pixmap.patch && cd ../../.. && make && make plugins && sed -i "s|-P'dvbapi'|& -P'play -fs'|" /usr/local/bin/vdrrun
+#&& make install 
+    fi || echo "$Remind7 Play"
+    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+b) echo "*** plugin Play ***"; 
+    clear
+    echo "Il plugin Play è già aggiornato."
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+c) cd $VDRSRC && if [ -f play/Makefile ];
+  then rm -r play && rm -rf $PLUGINS/streamdev-server && /etc/vdr/plugins/mp3sources.conf && sed -i "s|-P'play'||" /usr/local/bin/vdrrun
+    else echo "Play $Remind5" 
+  fi
+    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+esac
+#
+#echo ""; echo "*** Externalplayer  ***"; echo ""
+    clear
+    dialog --title "   **  Vdr-Plugin-Externalplayer **   " --infobox "
+   ----------------------------------------------
+                Che cosa vuoi fare ?
+   ----------------------------------------------
+          [a]  Installare il plugin Externalplayer         
+          [b]  Aggiornare il plugin Externalplayer         
+          [c]  Rimuovere il plugin Externalplayer          
+          [d]  Skip                             
+
+   ---------------------------------------------- " 0 0 
+    echo -n "        Scegli  [a-d]:      "
+    read yourch
+    case $yourch in
+a) cd $VDRSRC && if [ -f externalplayer/Makefile ];
+  then  echo "Externalplayer $Remind"
+  else cp -r /home/`logname`/sifinstallrepo/externalplayer.tar.gz /$VDRSRC && tar -zxvf externalplayer.tar.gz && rm -r externalplayer.tar.gz && mv externalplayer-4078eddc1cb3 externalplayer && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'externalplayer'|" /usr/local/bin/vdrrun && cp -r /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz /etc/vdr/plugins/ && cd /etc/vdr/plugins && tar -zxvf externalplayer.conf.tar.gz && rm -r externalplayer.conf.tar.gz 
+    fi || echo "$Remind7 Externalplayer"
+    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+b) echo "*** plugin Externalplayer ***"; 
+    clear
+    echo "Il plugin Externalplayer è già aggiornato."
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+c) cd $VDRSRC && if [ -f externalplayer/Makefile ];
+  then rm -r externalplayer && rm -rf $PLUGINS/externalplayer && /etc/vdr/plugins/externalplayer.conf && sed -i "s|-P'externalplayer'||" /usr/local/bin/vdrrun
+    else echo "Externalplayer $Remind5" 
+  fi
+    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+esac
 #
 #
 #echo "*** StreamDev ***"; echo ""; 
