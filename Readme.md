@@ -27,10 +27,13 @@
 
     Ringraziamenti :                             
     a tutti gli user del sifteam forum e di vdritalia
+    
+    Ringraziamento Speciale :
+    Klaus Schmidinger Sviluppatore VDR e Team 
 
     IN PARTICOLARE :                                
     Mona, unixer, fiveten_59, Grazymax, Knap, jackblow33, Alez, Shalafi, Homer314, 
-    Mr Cool Span, fusibile73, ceo16, Asgarot, Armando Basile,  Mld Team e tanti ... 
+    Mr Cool Span, fusibile73, ceo16, Asgarot, Armando Basile, Dadevil87 , il Mld Team e tanti ... 
     tanti altri.                              
                                                                               
 
