@@ -1,0 +1,407 @@
+--- installer	2015-05-30 10:17:13.410865954 +0200
++++ installer_new	2015-05-30 09:18:44.000000000 +0200
+@@ -3927,44 +3939,374 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+ 17)                                       #########################################
+-                                          #   Creaz. liste Getchannels o W_scan   #
++                                          #         Creazione lista canali        #
+                                           #########################################
+ 
+ 
+     clear        
+-    dialog --title "   ** Creazione && Aggiornamento Settings 13.0E By Getchannels 0.7.0 **   " --infobox "
+-   ----------------------------------------------
+-                Creazione lista canali
+-   ----------------------------------------------
+-        [a]    Creazione Settings 13.0E - Download da Kingofsat                  
+-        [b]    Creazione Settings  9.0E - utilizzo W_scan                   
+-        [c]    Creazione Settings 13.0E - utilizzo W_scan              
+-        [d]    Creazione Settings 19.2E - utilizzo W_scan             
+-        [e]    Creazione Settings Digitale - utilizzo W_scan           
+-        [f]    Edit Getchannels.conf - Gnome      
+-        [g]    Edit Getchannels.conf - Mate              
+-        [h]    Edit Getchannels.conf - Kde                         
+-        [i]    Edit Channels.conf - Gnome    
+-        [l]    Edit Channels.conf - Mate  
+-        [m]    Edit Channels.conf - Kde   
+-        [n]    Skip 
++    dialog --title "   ** Creazione && Aggiornamento Settings - Diversi Metodi **   " --infobox "
++   --------------------------------------------------------------
++                     Creazione lista canali
++   --------------------------------------------------------------
++   
++             *** Sezione Getchannels ***
++        [a]    Creazione Settings 13.0E - Download da Kingofsat
++        [b]    Edit Getchannels.conf - Gnome      
++        [c]    Edit Getchannels.conf - Mate              
++        [d]    Edit Getchannels.conf - Kde                         
++        [e]    Edit Channels.conf - Gnome    
++        [f]    Edit Channels.conf - Mate  
++        [g]    Edit Channels.conf - Kde
+         
+-   ---------------------------------------------- " 0 0
+-    echo -n "        Scegli  [a-n]:      "
++             *** Sezione W_Scan ***
++        [l]    Creazione Settings  9.0E - utilizzo W_scan                   
++        [m]    Creazione Settings 13.0E - utilizzo W_scan              
++        [n]    Creazione Settings 19.2E - utilizzo W_scan             
++        [o]    Creazione Settings Digitale - utilizzo W_scan
++        
++             *** Sezione Lamedb2vdr.sh ~ Vhannibal ***
++        [q]    Accedi al Sottomenu - Converte Settings Enigma2
++        
++             *** Sezione Lamedb2vdr.sh ~ Morpheus ***
++        [s]    Accedi al Sottomenu - Converte Settings Enigma2
++        
++        [u]    Skip 
++        
++   -------------------------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-u]:      "
+     read yourch
+     case $yourch in
++    ###
++    ##### Sezione Getchannels #####
+     a) cd $SRC/getchannels && python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/getchannels/output/channels.conf; sleep  4; cp $SRC/getchannels/output/channels.conf /etc/vdr/;;
+-    b) rm -r /etc/vdr/channels-w_scan-9E0.conf; w_scan -fs -s S9E0 -D0c -o2 >> /etc/vdr/channels-w_scan-9E0.conf;; 
+-    c) rm -r /etc/vdr/channels-w_scan-13E0.conf; w_scan -fs -s S13E0 -D1c -o2 >> /etc/vdr/channels-w_scan-13E0.conf;;
+-    d) rm -r /etc/vdr/channels-w_scan-19E2.conf; w_scan -fs -s S19E2 -D2c -o2 >> /etc/vdr/channels-w_scan-19E2.conf;;
+-    e) rm -r /etc/vdr/channels-dtt.conf; w_scan -ft -c IT >> /etc/vdr/channels-dtt.conf;;
+-    f) gedit $SRC/getchannels/getchannels.conf;;
+-    g) pluma $SRC/getchannels/getchannels.conf;;
+-    h) kate $SRC/getchannels/getchannels.conf;;
+-    i) gedit /etc/vdr/channels.conf;;
+-    l) pluma /etc/vdr/channels.conf;;
+-    m) kate /etc/vdr/channels.conf;;  
+-    n) ;;
++    b) gedit $SRC/getchannels/getchannels.conf;;
++    c) pluma $SRC/getchannels/getchannels.conf;;
++    d) kate $SRC/getchannels/getchannels.conf;;
++    e) gedit /etc/vdr/channels.conf;;
++    f) pluma /etc/vdr/channels.conf;;
++    g) kate /etc/vdr/channels.conf;;
++    ###
++    ##### Sezione W_Scan #####
++    l) rm -r /etc/vdr/channels-w_scan-9E0.conf; w_scan -fs -s S9E0 -D0c -o2 >> /etc/vdr/channels-w_scan-9E0.conf;; 
++    m) rm -r /etc/vdr/channels-w_scan-13E0.conf; w_scan -fs -s S13E0 -D1c -o2 >> /etc/vdr/channels-w_scan-13E0.conf;;
++    n) rm -r /etc/vdr/channels-w_scan-19E2.conf; w_scan -fs -s S19E2 -D2c -o2 >> /etc/vdr/channels-w_scan-19E2.conf;;
++    o) rm -r /etc/vdr/channels-dtt.conf; w_scan -ft -c IT >> /etc/vdr/channels-dtt.conf;;
++    ###
++    ##### Sezione Lamedb2vdr.sh ~ Vhannibal  #####
++    q) clear        
++    dialog --title "   ** Conversione Settings Enigma2 Vhannibal By Lamedb2vdr.sh **   " --infobox "
++   --------------------------------------------------------------
++                     Creazione lista canali
++   --------------------------------------------------------------
++        
++             *** Setting Per Enigma2 ***
++        [a]    Vhannibal Hot Bird 13°E
++        [b]    Vhannibal Dual 13, 19°E
++        [c]    Vhannibal Motor 68°E-45°W
++        [d]    Vhannibal Quadri 9, 13, 16, 19°E
++        [e]    Vhannibal Quadri 13, 19, 23, 28°E
++        [f]    Vhannibal Quadri 7, 13, 19, 42°E
++        [g]    Vhannibal Quadri Sirius Thor
++        [h]    Vhannibal Trial 13, 19°E, 30°W
++
++             *** Setting Per Enigma2 + DTT ***
++        [i]    Vhannibal Hot Bird + DTT Italia
++        [j]    Vhannibal Dual + DTT Italia
++        [k]    Vhannibal Motor + DTT Italia
++        [l]    Vhannibal Hot Bird + DTT Roma
++        [m]    Vhannibal Dual + DTT Roma
++        [n]    Vhannibal Motor + DTT Roma
++        [o]    Vhannibal Hot Bird + DTT Milano
++        [p]    Vhannibal Dual + DTT Milano
++        [q]    Vhannibal Motor + DTT Milano
++        [r]    Vhannibal Hot Bird + DTT Napoli
++        [s]    Vhannibal Dual + DTT Napoli
++        [t]    Vhannibal Motor + DTT Napoli
++        [u]    Vhannibal Hot Bird + DTT Torino
++        [v]    Vhannibal Dual + DTT Torino
++        [x]    Vhannibal Motor + DTT Torino
++        [y]    Vhannibal Motor + DTT Forli'
++        
++        [z]    Skip 
++        
++   -------------------------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-z]:      "
++    read yourch
++    case $yourch in
++    ###
++    ### Enigma2 ###
++    a) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=9&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    b) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=10&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    c) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=11&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    d) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=12&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    e) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=13&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    f) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=14&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    g) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=15&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    h) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=16&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    ###
++    ### Enigma2 + DTT ###
++    i) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=17&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    j) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=18&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    k) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=19&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    l) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=20&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    m) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=21&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    n) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=22&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    o) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=23&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    p) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=24&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    q) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=25&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    r) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=26&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    s) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=27&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    t) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=28&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    u) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=29&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    v) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=30&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    x) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=31&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    y) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget "http://www.vhannibal.net/settingd/download.php?id=32&action=download&clicked=y" -O Vhannibal.zip;
++    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    z) ;;
++    esac
++    ;;
++    ###
++    ##### Sezione Lamedb2vdr.sh ~ Morpheus  #####
++    s) clear        
++    dialog --title "   ** Conversione Settings Enigma2 Morpheus By Lamedb2vdr.sh **   " --infobox "
++   --------------------------------------------------------------
++                     Creazione lista canali
++   --------------------------------------------------------------
++        
++             *** Setting Per Enigma2 *** 
++        [a]    MONOFeed (13°E)
++        [b]    DUALFeed (13°E + 19.2°E)
++        [c]    HISPASAT 1D/1E DUALFeed (30°W + 13°E)
++        [d]    HISPASAT 1D/1E TRIALFeed (30°W + 13°E + 19.2°E)
++        [e]    THOR 5/6 DUALFeed (0.8°W + 13°E)
++        [f]    THOR 5/6 TRIALFeed (0.8°W + 13°E + 19.2°E)
++        [g]    ASTRA 4A DUALFeed (4.8°E + 13°E)
++        [h]    ASTRA 4A TRIALFeed (4.8°E + 13°E + 19.2°E)
++        [i]    EUTELSAT 9A DUALFeed (9°E + 13°E)
++        [j]    EUTELSAT 9A TRIALFeed (9°E + 13°E + 19.2°E)
++        [k]    EUTELSAT 16 DUALFeed (13°E + 16°E)
++        [l]    EUTELSAT 16 TRIALFeed (13°E + 16°E + 19.2°E)
++        [m]    ASTRA 3B DUALFeed (13°E + 23.5°E)
++        [n]    ASTRA 3B TRIALFeed (13°E + 19.2°E + 23.5°E)
++        [o]    ASTRA 2A/2E/2F EUTELSAT 28A DUALFeed (13°E + 28.2°E)
++        [p]    ASTRA 2A/2E/2F EUTELSAT 28A TRIAL (13°E + 19.2°E + 28.2°E)
++        [q]    TURKSAT 2A/3A/4A DUALFeed (13°E + 42.0°E)
++        [r]    TURKSAT 2A/3A/4A TRIALFeed (13°E + 19.2°E + 42.0°E)
++        [s]    THOR 5/6 ASTRA 4A TRIALFeed (0.8°W + 4.8°E + 13°E)
++        [t]    THOR 5/6 ASTRA 2A/2E/2F QUAD (0.8°W + 13°E + 19.2°E + 28.2°E)
++        [u]    Motor - FULLFeed (45.0°W - 76.5°E)
++        
++        [z]    Skip 
++        
++   -------------------------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-z]:      "
++    read yourch
++    case $yourch in
++    ### Enigma2 ###    
++    a) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_13E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    b) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    c) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_30W-13E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    d) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_30W-13E-19.2E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    e) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-13E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    f) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-13E-19.2E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    g) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_4.8E-13E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    h) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_4.8E-13E-19.2E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    i) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_9E-13E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    j) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_9E-13E-19.2E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    k) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-16E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    l) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-16E-19.2E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    m) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-23.5E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    n) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E-23.5E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    o) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-28.2E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    p) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E-28.2E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    q) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-42.0E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    r) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E-42.0E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;   
++    s) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-4.8E-13E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
++    t) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-13E-19.2E-28.2E.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    u) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
++    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
++    wget morpheus883.altervista.org/settings/Settings_Morph883_Motor.tar.gz;
++    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
++    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
++    z) ;;
++    esac
++    ;;
++    u) ;;
+     esac
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
