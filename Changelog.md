@@ -1,5 +1,5 @@
 ## Rev. 5.4.8
-- Implementazione Codice Al Punto 17 Integrazione Script Lamedb2vdr.sh - Converte Setting Enigma2
+- Implementazione Codice Al Punto 17 Integrazione Script Lamedb2vdr.sh (Autore daredavil87) - Converte Setting Enigma2
 - Modifica Skin Script Menu' & Creazione Sub-menu per Selezionare settings Vhannibal - Morpheus
 - Settare in VDR dal menu "F1" / "Opzioni" / "Scheda DVB" / Aggiornamento canali / "Solo Pid" 
 - Setting E2 convertiti dallo Script Lamedb2vdr.sh al primo utilizzo richiedono un attesa di 10~60 Secondi
@@ -94,7 +94,7 @@
 
 
 ## Rev. 5.0 
-- Aggiornato Getchannel - Vers. 0.7.0 - Download 13.0E - Crea Settings da Kingofsat
+- Aggiornato Getchannel (Autore Armando Basile) - Vers. 0.7.0 - Download 13.0E - Crea Settings da Kingofsat
 - Aggiornato Patch VDR 2.2.0 - Patch - dvbdevice.c - Modifica Segnale & Qualità (Skystar 2 dvb-s pci rev.2.3)
 - Aggiunto VDR-Plugin-SC - GIT - al Punto 13 & 15 - Utile a molti Utenti ;D
 - Aggiornato Librerie - LIBDRM 2.4.60
