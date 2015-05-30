@@ -40,7 +40,7 @@ Xinelib1='sudo /etc/init.d/vdr start > /dev/null 2>&1; while ! netcat -z localho
 #
 PLUGIN="--lirc -P'xineliboutput -l none -r 37890 -p' -P'dvbapi' -P'text2skin' -P'osdteletext' -P'loadepg' -P'menuorg' -P'reelchannellist' -P'epgsearch' -P'xvdr'"
 #
-PLUGIN1="--lirc -P'softhddevice -f' -P'dvbapi' -P'skindesigner -l /etc/vdr/logos/' -P'skinflatplus -l /etc/vdr/logos/' -P'tvguideng' -P'tvguide -l /etc/vdr/logos/' -P'weatherforecast' -P'text2skin' -P'osdteletext' -P'loadepg' -P'menuorg' -P'reelchannellist' -P'epgsearch' -P'xvdr'"
+PLUGIN1="--lirc -P'softhddevice -f' -P'dvbapi' -P'skindesigner -l /etc/vdr/logos/' -P'skinflatplus -l /etc/vdr/logos/' -P'tvguideng' -P'tvguide -l /etc/vdr/logos/' -P'weatherforecast' -P'text2skin' -P'osdteletext' -P'loadepg' -P'menuorg' -P'reelchannellist' -P'epgsearch' -P'xvdr' -P'externalplayer'"
 #
 Remind='è già installato... avete dimenticato di aggiungere il comando al vdrrun?'
 Remind1='è già installata... avete dimenticato di aggiungere il comando al vdrrun?'
@@ -372,7 +372,7 @@ S19.2E  99999 H 10600  t V W15 [E0 10 38 FF] W15 B W15 T
           |   [15]   Installa Skin  .................  |   [R15]   Disinstalla Skin  .................  |
           |   [16]   Aggiornamento dei Plugins  .....  |   [R16]    ...................................  |
           |   =====================================================================================   |
-          |   .....♦♦♦   Aggiornamento Lista Canali 13.0E Tramite Script GetChannels 0.7.0   ♦♦♦.....  |
+          |   ..♦♦♦  Creazione - Conversione - Aggiornamento - Lista Canali - Diversi Metodi  ♦♦♦..  |
           |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
           |   [17]   Creazione lista canali  ........  |   [R17]   Rimozione lista canali  ...........  |
           |   =====================================================================================   |
@@ -824,11 +824,11 @@ else
     wget http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/vdr-satip-2.2.1.tgz;
 fi
 
-if [ -s /home/`logname`/sifinstallrepo/vdr-cecremote-0.6.0.tgz ]; then
+if [ -s /home/`logname`/sifinstallrepo/vdr-cecremote-1.2.0.tgz ]; then
   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
-    wget https://www.dropbox.com/s/7cou9src7w7htzj/vdr-cecremote-0.6.0.tgz;
+    wget https://www.dropbox.com/s/ya4mrmjoyehbggz/vdr-cecremote-1.2.0.tgz;
 fi
 
 if [ -s /home/`logname`/sifinstallrepo/vdr-setup-0.3.1.tar.gz ]; then
@@ -848,14 +848,14 @@ fi
 if [ -s /home/`logname`/sifinstallrepo/patch_iptv.tar.gz ]; then
   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
 else
-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░"; 
     wget https://www.dropbox.com/s/nof5ydmxrplw2b0/patch_iptv.tar.gz;
 fi
 
 if [ -s /home/`logname`/sifinstallrepo/iptv_conf.tar.gz ]; then
   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
 else
-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░"; 
     wget https://www.dropbox.com/s/1ujtklnct0nqq6q/iptv_conf.tar.gz;
 fi
 
@@ -866,14 +866,14 @@ else
     wget https://www.dropbox.com/s/rjh3vpj3b2q3dxz/vdr-mp3-0.10.2.tar.gz;
 fi
 
-if [ -s /home/`logname`/sifinstallrepo/patch_mplayer.tar.gz ]; then
+if [ -s /home/`logname`/sifinstallrepo/patch_mp3.tar.gz ]; then
   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
-    wget https://www.dropbox.com/s/puuh92l42vsq9g4/patch_mplayer.tar.gz;
+    wget https://www.dropbox.com/s/tlb8bfpb2wj59mf/patch_mp3.tar.gz;
 fi
 
-if [ -s /home/`logname`/sifinstallrepo/vdr-play ]; then
+if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-play ]; then
   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
@@ -902,6 +902,12 @@ else
     wget https://www.dropbox.com/s/vhz1fz68159s0qg/externalplayer.conf.tar.gz;
 fi
 
+if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-scraper2vdr ]; then
+  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+    git clone git://projects.vdr-developer.org/vdr-plugin-scraper2vdr.git;
+fi
 ################################# caricamento skin ########################################
 
 if [ -s /home/`logname`/sifinstallrepo/skin-narrowhd ]; then
@@ -967,11 +973,11 @@ else
 	git clone https://github.com/BooStars/glassy
   fi
 
-if [ -s /home/`logname`/sifinstallrepo/tryouts ]; then
+if [ -s /home/`logname`/sifinstallrepo/glasslike ]; then
   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
-        git clone https://github.com/BooStars/tryouts.git
+        git clone https://github.com/Vectra130/skindesigner_glasslike.git; mv skindesigner_glasslike glasslike;
   fi
 
 if [ -s /home/`logname`/sifinstallrepo/vectraskin ]; then
@@ -1295,11 +1301,11 @@ else
     git clone git://projects.vdr-developer.org/vdr-plugin-scraper2vdr.git;
     wget https://www.dropbox.com/s/xe2hrg73a591t0z/patch_setup.tar.gz;
     wget https://www.dropbox.com/s/8f635z72gomjfw0/vdr-setup-0.3.1.tar.gz;
-    wget https://www.dropbox.com/s/7cou9src7w7htzj/vdr-cecremote-0.6.0.tgz;
+    wget https://www.dropbox.com/s/ya4mrmjoyehbggz/vdr-cecremote-1.2.0.tgz;
     wget https://www.dropbox.com/s/nof5ydmxrplw2b0/patch_iptv.tar.gz;
     wget https://www.dropbox.com/s/1ujtklnct0nqq6q/iptv_conf.tar.gz;
     wget https://www.dropbox.com/s/rjh3vpj3b2q3dxz/vdr-mp3-0.10.2.tar.gz;
-    wget https://www.dropbox.com/s/puuh92l42vsq9g4/patch_mplayer.tar.gz;
+    wget https://www.dropbox.com/s/tlb8bfpb2wj59mf/patch_mp3.tar.gz;
     git clone https://github.com/maniacgit/vdr-play;
     wget https://www.dropbox.com/s/ond4cpofj5yxhp8/patch_play.tar.gz;
     wget https://www.dropbox.com/s/9c7s5nob4ocgsya/externalplayer.tar.gz;
@@ -1314,6 +1320,7 @@ else
     git clone http://projects.vdr-developer.org/git/vdr-plugin-skinenigmang.git;
     git clone http://projects.vdr-developer.org/git/skin-flatplus.git;
     git clone https://github.com/FrodoVDR/blackholefrodo.git;
+    git clone https://github.com/Vectra130/skindesigner_glasslike.git; mv skindesigner_glasslike glasslike;
     git clone https://github.com/Vectra130/skindesigner_vectraskin.git; mv skindesigner_vectraskin vectraskin;
     wget https://www.dropbox.com/s/odv30s0a22mau60/skinenigmang-logos-xpm-hi-20070702.tgz;
     wget https://www.dropbox.com/s/weh6c53bg9363ey/skinenigmang-channellogos-xpm-hi-20070702.tgz;
@@ -2036,7 +2043,7 @@ clear
 echo "                        "
 echo "                        "
 echo "                        "
-echo "Ora installo i Plugins base (Text2skin - Menuorg - OSDTeletext - Dvbapi - Softhddevice - Epgsearch - Reelchannellist - Xvdr - Loadepg - Skindesigner - TvGuideng - Skinflatplus - TvGuide)"
+echo "Ora installo i Plugins base (Text2skin - Menuorg - OSDTeletext - Dvbapi - Softhddevice - Epgsearch - Reelchannellist - Xvdr - Loadepg - Skindesigner - TvGuideng - Weatherforecast - Skinflatplus - TvGuide - ExternalPlayer)"
 echo "                 premere il tasto [Invio] per continuare "; read enterKey
 cd $SRC;
 mkdir -p /usr/lib/vdr/plugins; mkdir -p /usr/lib/vdr/scripts; mkdir -p /etc/vdr/plugins; mkdir -p /etc/vdr/themes; cd $PLUGINS; mkdir -p tvguide;
@@ -2080,13 +2087,6 @@ cp /home/`logname`/sifinstallrepo/patch_osdteletext.tar.gz /$VDRSRC/osdteletext/
 tar -zxvf patch_osdteletext.tar.gz; rm -r patch_osdteletext.tar.gz;
 patch -p1 < 10_osdteletext_pixmap.patch; sleep 1;
 cd ../../..; make plugins; mkdir -p /vtx
-#
-#
-clear
-echo ""; echo "               *** Femon ***"; echo ""; sleep 3
-cd $VDRSRC; 
-cp /home/`logname`/sifinstallrepo/vdr-femon-2.2.0.tgz /$VDRSRC/; tar xzvf vdr-femon-2.2.0.tgz;
-mv femon-2.2.0 femon; rm -r vdr-femon-2.2.0.tgz; cd ../../; make plugins
 #
 #
 clear
@@ -2154,7 +2154,17 @@ sleep 3
 clear
 echo "***                Ora Carico Skindesigner ***"; echo ""; sleep 3
 cd $VDRSRC; sudo apt-get -y install lm-sensors;
-cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && cd vdr-plugin-skindesigner && make && make install && cp -r /home/`logname`/sifinstallrepo/blackholefrodo /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glassy /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/vectraskin /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady_KISS /usr/share/vdr/plugins/skindesigner/skins/ && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
+cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && mv vdr-plugin-skindesigner skindesigner && cd skindesigner && make && make install && cp -r /home/`logname`/sifinstallrepo/blackholefrodo /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glassy /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/vectraskin /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glasslike /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady_KISS /usr/share/vdr/plugins/skindesigner/skins/ && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
+# qui sopra c'è da mettere le icone di menù mancanti che sono dentro le skin del vdr-plugin-skindesigner traducendole e comprimendole
+#
+clear
+echo ""; echo "               *** TvGuideng ***"; echo ""; sleep 3
+cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-tvguideng /$VDRSRC; mv vdr-plugin-tvguideng tvguideng; cd ../..; make plugins;
+#
+#
+clear
+echo ""; echo "               *** Weatherforecast ***";  sleep 3
+cd $VDRSRC; apt-get -y install libjansson4 libjansson-dev; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-weatherforecast /$VDRSRC; mv vdr-plugin-weatherforecast weatherforecast; cd ../..; make plugins; 
 #
 #
 clear
@@ -2164,27 +2174,19 @@ cp -r /home/`logname`/sifinstallrepo/skin-flatplus /$VDRSRC/ && cd skin-flatplus
 #
 #
 clear
-echo ""; echo "               *** TvGuideng ***"; echo ""; sleep 3
-cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-tvguideng /$VDRSRC; mv vdr-plugin-tvguideng tvguideng; cd ../..; make plugins;
-#
-#
-clear
 echo ""; echo "               *** Tvguide ***";  sleep 3
 cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-tvguide /$VDRSRC; mv vdr-plugin-tvguide tvguide; cd ../..; make plugins; cp $VDRSRC/tvguide/themes/* /etc/vdr/themes/;
 #
 #
 clear
-echo ""; echo "               *** Weatherforecast ***";  sleep 3
-cd $VDRSRC; apt-get -y install libjansson4 libjansson-dev; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-weatherforecast /$VDRSRC; mv vdr-plugin-weatherforecast weatherforecast; cd ../..; make plugins; 
-#
-#
-cd /usr/local/src/vdr; make plugins install;
-#
+echo ""; echo "               *** Externalplayer ***";  sleep 3
+cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/externalplayer.tar.gz /$VDRSRC && tar -zxvf externalplayer.tar.gz && rm -r externalplayer.tar.gz && mv externalplayer-4078eddc1cb3 externalplayer && cd ../.. && make plugins && cp -r /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz /etc/vdr/plugins/ && cd /etc/vdr/plugins && tar -zxvf externalplayer.conf.tar.gz && rm -r externalplayer.conf.tar.gz;
 clear
-    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 
-    
-    
+cd /usr/local/src/vdr; make plugins install;
+
+    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+     
 
 #############################################################################################################################  
 #############################################################################################################################
@@ -2587,11 +2589,11 @@ fi
 ##################################################
 #       Caricamento Sif Appswitcher (prova)      #
 ##################################################
-cd /usr/bin; rm -r menuorg-appswitcher, rm -r kodi.sh;
-cp -r /home/`logname`/sifinstallrepo/Sif_appswitcher.tar.gz /$SRC;
-cd /$SRC && tar -zxvf Sif_appswitcher.tar.gz && rm -r Sif_appswitcher.tar.gz;
-mv menuorg-appswitcher /usr/bin;
-mv kodi.sh /usr/bin;
+#cd /usr/bin; rm -r menuorg-appswitcher, rm -r kodi.sh;
+#cp -r /home/`logname`/sifinstallrepo/Sif_appswitcher.tar.gz /$SRC;
+#cd /$SRC && tar -zxvf Sif_appswitcher.tar.gz && rm -r Sif_appswitcher.tar.gz;
+#mv menuorg-appswitcher /usr/bin;
+#mv kodi.sh /usr/bin;
 ##################################################
 #          Creazione remote per lirc             # 
 ################################################## 
@@ -2729,9 +2731,9 @@ R13)                                      ######################################
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-14)                                       #########################################
-                                          #    Installazione altri Vdr Plugins    #
-                                          #########################################
+14)                                #################################################################
+                                   #    Installazione/Aggiornamento/Rimozopne altri Vdr Plugins    #
+                                   #################################################################
  
        
     clear        
@@ -2745,9 +2747,8 @@ R13)                                      ######################################
 		Scraper2vdr                                    
 		Ttxtsubs                                     
 		Iptv
-		Mp3
+		Mp3/Mplayer
 		Play 
-		Externalplayer                       
 		Sat-Ip                                       
 		Vdr-StreamDev                                
 		Vdr-Plugin-Sc                                
@@ -3026,7 +3027,7 @@ c) cd $VDRSRC && if [ -f ttxtsubs/Makefile ];
     read yourch
     case $yourch in 
 a) cd $VDRSRC && if [ -f satip/Makefile ];
-then  echo "Webvideo $Remind"
+then  echo "Sat-Ip $Remind"
  else apt-get -y install libpugixml1 libpugixml-dev && cp -r /home/`logname`/sifinstallrepo/vdr-satip-2.2.1.tgz /$VDRSRC && tar xzvf vdr-satip-2.2.1.tgz && rm -r vdr-satip-2.2.1.tgz && mv satip-2.2.1 satip && cd satip && make && make install && sed -i "s|-P'dvbapi'|& -P 'satip'|" /usr/local/bin/vdrrun 
 fi || echo "$Remind7 Sat-Ip"
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
@@ -3057,7 +3058,7 @@ c) cd $VDRSRC && if [ -f satip/Makefile ];
     case $yourch in 
 a) cd $VDRSRC && if [ -f iptv/Makefile ];
   then  echo "IPTV $Remind"
-  else cp -r /home/`logname`/sifinstallrepo/vdr-iptv-2.2.1.tgz /$VDRSRC && tar -zxvf vdr-iptv-2.2.1.tgz && mv iptv-2.2.1 iptv && rm -r vdr-iptv-2.2.1.tgz && cd iptv && cp -r /home/`logname`/sifinstallrepo/patch_iptv.tar.gz /$VDRSRC/iptv && tar -zxvf patch_iptv.tar.gz && rm -r patch_iptv.tar.gz && patch -p1 < iptv.patch && make && cd ../../.. && make plugins && mkdir -p /etc/vdr/plugins/iptv/vlcinput && cp -r /home/`logname`/sifinstallrepo/iptv_conf.tar.gz /$PLUGINS/iptv/vlcinput/ && cd $PLUGINS/iptv/vlcinput && tar -zxvf iptv_conf.tar.gz && rm -r iptv_conf.tar.gz && sed -i "s|-P'dvbapi'|& -P'iptv'|" /usr/local/bin/vdrrun 
+  else cp -r /home/`logname`/sifinstallrepo/vdr-iptv-2.2.1.tgz /$VDRSRC && tar -zxvf vdr-iptv-2.2.1.tgz && mv iptv-2.2.1 iptv && rm -r vdr-iptv-2.2.1.tgz && cd iptv && cp -r /home/`logname`/sifinstallrepo/patch_iptv.tar.gz /$VDRSRC/iptv && tar -zxvf patch_iptv.tar.gz && rm -r patch_iptv.tar.gz && patch -p1 < iptv.patch && make && cd ../../.. && make plugins && mkdir -p /etc/vdr/plugins/iptv/vlcinput && cp -r /home/`logname`/sifinstallrepo/iptv_conf.tar.gz /$PLUGINS/iptv/vlcinput/ && cd $PLUGINS/iptv/vlcinput && tar -zxvf iptv_conf.tar.gz && mv channels.conf.iptv /etc/vdr/ && rm -r iptv_conf.tar.gz && sed -i "s|-P'dvbapi'|& -P'iptv'|" /usr/local/bin/vdrrun 
     fi || echo "$Remind7 IPTV"
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 b) echo "*** plugin IPTV ***"; 
@@ -3074,30 +3075,30 @@ c) cd $VDRSRC && if [ -f iptv/Makefile ];
 #
 #echo ""; echo "*** Mp3  ***"; echo ""
     clear
-    dialog --title "   **  Vdr-Plugin-Mp3 **   " --infobox "
+    dialog --title "   **  Vdr-Plugin-Mp3/Mplayer **   " --infobox "
    ----------------------------------------------
                 Che cosa vuoi fare ?
    ----------------------------------------------
-          [a]  Installare il plugin Mp3         
-          [b]  Aggiornare il plugin Mp3         
-          [c]  Rimuovere il plugin Mp3          
+          [a]  Installare il plugin Mp3/Mplayer         
+          [b]  Aggiornare il plugin Mp3/Mplayer         
+          [c]  Rimuovere il plugin Mp3/Mplayer          
           [d]  Skip                             
    ---------------------------------------------- " 0 0
     echo -n "        Scegli  [a-d]:      "
     read yourch
     case $yourch in
 a) cd $VDRSRC && if [ -f mp3/Makefile ];
-  then  echo "Mp3 $Remind"
-  else sudo apt-get install -y libsndfile1 libsndfile-dev libid3tag0 libid3tag0-dev libmad0-dev && cp -r /home/`logname`/sifinstallrepo/vdr-mp3-0.10.2.tar.gz /$VDRSRC && tar -zxvf vdr-mp3-0.10.2.tar.gz && rm -r vdr-mp3-0.10.2.tar.gz && mv mp3-0.10.2 mp3 && cd mp3 && cp -r /home/`logname`/sifinstallrepo/patch_mplayer.tar.gz /$VDRSRC/mp3 && tar -zxvf patch_mplayer.tar.gz && rm -r patch_mplayer.tar.gz && patch -p1 < 10_mplayer_vdr2.1.2.patch && cp mp3sources.conf /etc/vdr/plugins/mp3sources.conf && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'mp3'|" /usr/local/bin/vdrrun
-    fi || echo "$Remind7 Mp3"
+  then  echo "Mp3/Mplayer $Remind"
+  else sudo apt-get install -y libsndfile1 libsndfile-dev libid3tag0 libid3tag0-dev libmad0-dev mplayer2 && cp -r /home/`logname`/sifinstallrepo/vdr-mp3-0.10.2.tar.gz /$VDRSRC && tar -zxvf vdr-mp3-0.10.2.tar.gz && rm -r vdr-mp3-0.10.2.tar.gz && mv mp3-0.10.2 mp3 && cd mp3 && cp -r /home/`logname`/sifinstallrepo/patch_mp3.tar.gz /$VDRSRC/mp3 && tar -zxvf patch_mp3.tar.gz && rm -r patch_mp3.tar.gz && patch -p1 < 10_mplayer_vdr2.1.2.patch && cp mp3sources.conf /etc/vdr/plugins/mp3sources.conf && cp mplayersources.conf /etc/vdr/plugins/mplayersources.conf && cp mplayer.sh /usr/bin/ && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'mp3'|" /usr/local/bin/vdrrun && sed -i "s|-P'mp3'|& -P'mplayer'|" /usr/local/bin/vdrrun
+    fi || echo "$Remind7 Mp3/Mplayer"
     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
-b) echo "*** plugin Mp3 ***"; 
+b) echo "*** plugin Mp3/Mplayer ***"; 
     clear
-    echo "Il plugin Mp3 è già aggiornato."
+    echo "Il plugin Mp3/Mplayer è già aggiornato."
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 c) cd $VDRSRC && if [ -f mp3/Makefile ];
-  then rm -r mp3 && rm -rf $PLUGINS/streamdev-server && /etc/vdr/plugins/mp3sources.conf && sed -i "s|-P'mp3'||" /usr/local/bin/vdrrun
-    else echo "Mp3 $Remind5" 
+  then rm -r mp3 && rm -r /etc/vdr/plugins/mp3sources.conf && rm -r /etc/vdr/plugins/mplayersources.conf && rm -r /usr/bin/mplayer.sh && sed -i "s|-P'mp3'||" /usr/local/bin/vdrrun && sed -i "s|-P'mplayer'||" /usr/local/bin/vdrrun
+    else echo "Mp3/Mplayer $Remind5" 
   fi
     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
 esac
@@ -3132,38 +3133,6 @@ c) cd $VDRSRC && if [ -f play/Makefile ];
   fi
     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
 esac
-#
-#echo ""; echo "*** Externalplayer  ***"; echo ""
-    clear
-    dialog --title "   **  Vdr-Plugin-Externalplayer **   " --infobox "
-   ----------------------------------------------
-                Che cosa vuoi fare ?
-   ----------------------------------------------
-          [a]  Installare il plugin Externalplayer         
-          [b]  Aggiornare il plugin Externalplayer         
-          [c]  Rimuovere il plugin Externalplayer          
-          [d]  Skip                             
-
-   ---------------------------------------------- " 0 0 
-    echo -n "        Scegli  [a-d]:      "
-    read yourch
-    case $yourch in
-a) cd $VDRSRC && if [ -f externalplayer/Makefile ];
-  then  echo "Externalplayer $Remind"
-  else cp -r /home/`logname`/sifinstallrepo/externalplayer.tar.gz /$VDRSRC && tar -zxvf externalplayer.tar.gz && rm -r externalplayer.tar.gz && mv externalplayer-4078eddc1cb3 externalplayer && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'externalplayer'|" /usr/local/bin/vdrrun && cp -r /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz /etc/vdr/plugins/ && cd /etc/vdr/plugins && tar -zxvf externalplayer.conf.tar.gz && rm -r externalplayer.conf.tar.gz 
-    fi || echo "$Remind7 Externalplayer"
-    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
-b) echo "*** plugin Externalplayer ***"; 
-    clear
-    echo "Il plugin Externalplayer è già aggiornato."
-        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-c) cd $VDRSRC && if [ -f externalplayer/Makefile ];
-  then rm -r externalplayer && rm -rf $PLUGINS/externalplayer && /etc/vdr/plugins/externalplayer.conf && sed -i "s|-P'externalplayer'||" /usr/local/bin/vdrrun
-    else echo "Externalplayer $Remind5" 
-  fi
-    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
-esac
-#
 #
 #echo "*** StreamDev ***"; echo ""; 
     clear
@@ -3370,11 +3339,11 @@ esac
     case $yourch in 
 a) cd $VDRSRC && if [ -f cecremote/Makefile ];
   then  echo "CecRemote $Remind"
-  else apt-get -y install libcec libcec-dev libpugixml1 libpugixml-dev cec-utils && cp -r /home/`logname`/sifinstallrepo/vdr-cecremote-0.6.0.tgz /$VDRSRC && tar -zxvf vdr-cecremote-0.6.0.tgz && mv cecremote-0.6.0 cecremote && cd ../.. && make plugins # && sed -i "s|-P'dvbapi'|& -P'cecremote'|" /usr/local/bin/vdrrun 
+  else apt-get -y install libcec libcec-dev libpugixml1 libpugixml-dev cec-utils && cp -r /home/`logname`/sifinstallrepo/vdr-cecremote-1.2.0.tgz /$VDRSRC && tar -zxvf vdr-cecremote-1.2.0.tgz && mv cecremote-1.2.0 cecremote && cd ../.. && make plugins # && sed -i "s|-P'dvbapi'|& -P'cecremote'|" /usr/local/bin/vdrrun 
     fi || echo "$Remind7 CecRemote"
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 b) cd $VDRSRC && if [ -f cecremote/Makefile ];
-  then rm -r cecremote && cp -r /home/`logname`/sifinstallrepo/vdr-cecremote-0.6.0.tgz /$VDRSRC && tar -zxvf vdr-cecremote-0.6.0.tgz && mv cecremote-0.6.0 cecremote && cd ../.. && make plugins
+  then rm -r cecremote && cp -r /home/`logname`/sifinstallrepo/vdr-cecremote-1.2.0.tgz /$VDRSRC && tar -zxvf vdr-cecremote-1.2.0.tgz && mv cecremote-1.2.0 cecremote && cd ../.. && make plugins
   else echo "CecRemote $Remind6"  
     fi
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
@@ -3661,8 +3630,8 @@ echo "     premere il tasto [Invio] per continuare. . .    " ;read enterKey
     echo -n "        Scegli  [a-c]:      "
     read yourch
     case $yourch in
-a) cd $VDRSRC && rm -rf vdr-plugin-skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && cd $VDRSRC && git clone git://projects.vdr-developer.org/vdr-plugin-skindesigner.git && cd vdr-plugin-skindesigner && make && make install && cp -r /home/`logname`/sifinstallrepo/blackholefrodo /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glassy /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/vectraskin /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady_KISS /usr/share/vdr/plugins/skindesigner/skins/ && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures ;;
-b) cd $VDRSRC && rm -rf vdr-plugin-skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && sed -i "s|-P 'skindesigner -l /etc/vdr/logos/'||" /usr/local/bin/vdrrun;;
+a) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && cd $VDRSRC && git clone git://projects.vdr-developer.org/vdr-plugin-skindesigner.git && mv vdr-plugin-skindesigner skindesigner && cd skindesigner && make && make install && cp -r /home/`logname`/sifinstallrepo/blackholefrodo /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glassy /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/vectraskin /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady_KISS /usr/share/vdr/plugins/skindesigner/skins/ && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures ;;
+b) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && sed -i "s|-P 'skindesigner -l /etc/vdr/logos/'||" /usr/local/bin/vdrrun;;
 c) ;;
 esac
 #
@@ -3866,6 +3835,25 @@ b) cd $VDRSRC && rm -r menuorg && cd $PLUGINS && rm -r menuorg.xml && sed -i "s|
 c) ;;
 esac
 #
+#echo ""; echo "*** Externalplayer  ***"; echo ""
+    clear
+    dialog --title "   **  Vdr-Plugin-Externalplayer **   " --infobox "
+   ----------------------------------------------
+                Che cosa vuoi fare ?
+   ----------------------------------------------
+          [a]  Aggiornare il plugin Externalplayer         
+          [b]  Rimuovere il plugin Externalplayer          
+          [c]  Skip                             
+
+   ---------------------------------------------- " 0 0 
+    echo -n "        Scegli  [a-c]:      "
+    read yourch
+    case $yourch in
+a) cd $VDRSRC && rm -r externalplayer && rm -rf $PLUGINS/externalplayer && rm -rf /etc/vdr/plugins/externalplayer.conf && cp -r /home/`logname`/sifinstallrepo/externalplayer.tar.gz /$VDRSRC && tar -zxvf externalplayer.tar.gz && rm -r externalplayer.tar.gz && mv externalplayer-4078eddc1cb3 externalplayer && cd ../.. && make plugins && cp -r /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz /etc/vdr/plugins/ && cd /etc/vdr/plugins && tar -zxvf externalplayer.conf.tar.gz && rm -r externalplayer.conf.tar.gz;; 
+b) cd $VDRSRC; rm -r externalplayer && rm -rf $PLUGINS/externalplayer && rm -rf /etc/vdr/plugins/externalplayer.conf && sed -i "s|-P'externalplayer'||" /usr/local/bin/vdrrun;;
+c) ;;
+esac
+#
 #
 #echo "*** Dvbapi ***"; 
     clear
@@ -3939,44 +3927,374 @@ cd $SRC/vdr; make plugins install;
 ##                                                                                                                         ##
 #                                                                                                                           #
 17)                                       #########################################
-                                          #   Creaz. liste Getchannels o W_scan   #
+                                          #         Creazione lista canali        #
                                           #########################################
 
 
     clear        
-    dialog --title "   ** Creazione && Aggiornamento Settings 13.0E By Getchannels 0.7.0 **   " --infobox "
-   ----------------------------------------------
-                Creazione lista canali
-   ----------------------------------------------
-        [a]    Creazione Settings 13.0E - Download da Kingofsat                  
-        [b]    Creazione Settings  9.0E - utilizzo W_scan                   
-        [c]    Creazione Settings 13.0E - utilizzo W_scan              
-        [d]    Creazione Settings 19.2E - utilizzo W_scan             
-        [e]    Creazione Settings Digitale - utilizzo W_scan           
-        [f]    Edit Getchannels.conf - Gnome      
-        [g]    Edit Getchannels.conf - Mate              
-        [h]    Edit Getchannels.conf - Kde                         
-        [i]    Edit Channels.conf - Gnome    
-        [l]    Edit Channels.conf - Mate  
-        [m]    Edit Channels.conf - Kde   
-        [n]    Skip 
+    dialog --title "   ** Creazione && Aggiornamento Settings - Diversi Metodi **   " --infobox "
+   --------------------------------------------------------------
+                     Creazione lista canali
+   --------------------------------------------------------------
+   
+             *** Sezione Getchannels ***
+        [a]    Creazione Settings 13.0E - Download da Kingofsat
+        [b]    Edit Getchannels.conf - Gnome      
+        [c]    Edit Getchannels.conf - Mate              
+        [d]    Edit Getchannels.conf - Kde                         
+        [e]    Edit Channels.conf - Gnome    
+        [f]    Edit Channels.conf - Mate  
+        [g]    Edit Channels.conf - Kde
         
-   ---------------------------------------------- " 0 0
-    echo -n "        Scegli  [a-n]:      "
+             *** Sezione W_Scan ***
+        [l]    Creazione Settings  9.0E - utilizzo W_scan                   
+        [m]    Creazione Settings 13.0E - utilizzo W_scan              
+        [n]    Creazione Settings 19.2E - utilizzo W_scan             
+        [o]    Creazione Settings Digitale - utilizzo W_scan
+        
+             *** Sezione Lamedb2vdr.sh ~ Vhannibal ***
+        [q]    Accedi al Sottomenu - Converte Settings Enigma2
+        
+             *** Sezione Lamedb2vdr.sh ~ Morpheus ***
+        [s]    Accedi al Sottomenu - Converte Settings Enigma2
+        
+        [u]    Skip 
+        
+   -------------------------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-u]:      "
     read yourch
     case $yourch in
+    ###
+    ##### Sezione Getchannels #####
     a) cd $SRC/getchannels && python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/getchannels/output/channels.conf; sleep  4; cp $SRC/getchannels/output/channels.conf /etc/vdr/;;
-    b) rm -r /etc/vdr/channels-w_scan-9E0.conf; w_scan -fs -s S9E0 -D0c -o2 >> /etc/vdr/channels-w_scan-9E0.conf;; 
-    c) rm -r /etc/vdr/channels-w_scan-13E0.conf; w_scan -fs -s S13E0 -D1c -o2 >> /etc/vdr/channels-w_scan-13E0.conf;;
-    d) rm -r /etc/vdr/channels-w_scan-19E2.conf; w_scan -fs -s S19E2 -D2c -o2 >> /etc/vdr/channels-w_scan-19E2.conf;;
-    e) rm -r /etc/vdr/channels-dtt.conf; w_scan -ft -c IT >> /etc/vdr/channels-dtt.conf;;
-    f) gedit $SRC/getchannels/getchannels.conf;;
-    g) pluma $SRC/getchannels/getchannels.conf;;
-    h) kate $SRC/getchannels/getchannels.conf;;
-    i) gedit /etc/vdr/channels.conf;;
-    l) pluma /etc/vdr/channels.conf;;
-    m) kate /etc/vdr/channels.conf;;  
-    n) ;;
+    b) gedit $SRC/getchannels/getchannels.conf;;
+    c) pluma $SRC/getchannels/getchannels.conf;;
+    d) kate $SRC/getchannels/getchannels.conf;;
+    e) gedit /etc/vdr/channels.conf;;
+    f) pluma /etc/vdr/channels.conf;;
+    g) kate /etc/vdr/channels.conf;;
+    ###
+    ##### Sezione W_Scan #####
+    l) rm -r /etc/vdr/channels-w_scan-9E0.conf; w_scan -fs -s S9E0 -D0c -o2 >> /etc/vdr/channels-w_scan-9E0.conf;; 
+    m) rm -r /etc/vdr/channels-w_scan-13E0.conf; w_scan -fs -s S13E0 -D1c -o2 >> /etc/vdr/channels-w_scan-13E0.conf;;
+    n) rm -r /etc/vdr/channels-w_scan-19E2.conf; w_scan -fs -s S19E2 -D2c -o2 >> /etc/vdr/channels-w_scan-19E2.conf;;
+    o) rm -r /etc/vdr/channels-dtt.conf; w_scan -ft -c IT >> /etc/vdr/channels-dtt.conf;;
+    ###
+    ##### Sezione Lamedb2vdr.sh ~ Vhannibal  #####
+    q) clear        
+    dialog --title "   ** Conversione Settings Enigma2 Vhannibal By Lamedb2vdr.sh **   " --infobox "
+   --------------------------------------------------------------
+                     Creazione lista canali
+   --------------------------------------------------------------
+        
+             *** Setting Per Enigma2 ***
+        [a]    Vhannibal Hot Bird 13°E
+        [b]    Vhannibal Dual 13, 19°E
+        [c]    Vhannibal Motor 68°E-45°W
+        [d]    Vhannibal Quadri 9, 13, 16, 19°E
+        [e]    Vhannibal Quadri 13, 19, 23, 28°E
+        [f]    Vhannibal Quadri 7, 13, 19, 42°E
+        [g]    Vhannibal Quadri Sirius Thor
+        [h]    Vhannibal Trial 13, 19°E, 30°W
+
+             *** Setting Per Enigma2 + DTT ***
+        [i]    Vhannibal Hot Bird + DTT Italia
+        [j]    Vhannibal Dual + DTT Italia
+        [k]    Vhannibal Motor + DTT Italia
+        [l]    Vhannibal Hot Bird + DTT Roma
+        [m]    Vhannibal Dual + DTT Roma
+        [n]    Vhannibal Motor + DTT Roma
+        [o]    Vhannibal Hot Bird + DTT Milano
+        [p]    Vhannibal Dual + DTT Milano
+        [q]    Vhannibal Motor + DTT Milano
+        [r]    Vhannibal Hot Bird + DTT Napoli
+        [s]    Vhannibal Dual + DTT Napoli
+        [t]    Vhannibal Motor + DTT Napoli
+        [u]    Vhannibal Hot Bird + DTT Torino
+        [v]    Vhannibal Dual + DTT Torino
+        [x]    Vhannibal Motor + DTT Torino
+        [y]    Vhannibal Motor + DTT Forli'
+        
+        [z]    Skip 
+        
+   -------------------------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-z]:      "
+    read yourch
+    case $yourch in
+    ###
+    ### Enigma2 ###
+    a) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=9&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    b) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=10&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    c) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=11&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    d) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=12&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    e) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=13&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    f) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=14&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    g) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=15&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    h) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=16&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    ###
+    ### Enigma2 + DTT ###
+    i) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=17&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    j) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=18&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    k) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=19&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    l) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=20&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    m) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=21&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    n) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=22&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    o) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=23&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    p) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=24&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    q) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=25&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    r) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=26&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    s) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=27&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    t) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=28&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    u) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=29&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    v) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=30&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    x) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=31&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    y) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget "http://www.vhannibal.net/settingd/download.php?id=32&action=download&clicked=y" -O Vhannibal.zip;
+    unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    z) ;;
+    esac
+    ;;
+    ###
+    ##### Sezione Lamedb2vdr.sh ~ Morpheus  #####
+    s) clear        
+    dialog --title "   ** Conversione Settings Enigma2 Morpheus By Lamedb2vdr.sh **   " --infobox "
+   --------------------------------------------------------------
+                     Creazione lista canali
+   --------------------------------------------------------------
+        
+             *** Setting Per Enigma2 *** 
+        [a]    MONOFeed (13°E)
+        [b]    DUALFeed (13°E + 19.2°E)
+        [c]    HISPASAT 1D/1E DUALFeed (30°W + 13°E)
+        [d]    HISPASAT 1D/1E TRIALFeed (30°W + 13°E + 19.2°E)
+        [e]    THOR 5/6 DUALFeed (0.8°W + 13°E)
+        [f]    THOR 5/6 TRIALFeed (0.8°W + 13°E + 19.2°E)
+        [g]    ASTRA 4A DUALFeed (4.8°E + 13°E)
+        [h]    ASTRA 4A TRIALFeed (4.8°E + 13°E + 19.2°E)
+        [i]    EUTELSAT 9A DUALFeed (9°E + 13°E)
+        [j]    EUTELSAT 9A TRIALFeed (9°E + 13°E + 19.2°E)
+        [k]    EUTELSAT 16 DUALFeed (13°E + 16°E)
+        [l]    EUTELSAT 16 TRIALFeed (13°E + 16°E + 19.2°E)
+        [m]    ASTRA 3B DUALFeed (13°E + 23.5°E)
+        [n]    ASTRA 3B TRIALFeed (13°E + 19.2°E + 23.5°E)
+        [o]    ASTRA 2A/2E/2F EUTELSAT 28A DUALFeed (13°E + 28.2°E)
+        [p]    ASTRA 2A/2E/2F EUTELSAT 28A TRIAL (13°E + 19.2°E + 28.2°E)
+        [q]    TURKSAT 2A/3A/4A DUALFeed (13°E + 42.0°E)
+        [r]    TURKSAT 2A/3A/4A TRIALFeed (13°E + 19.2°E + 42.0°E)
+        [s]    THOR 5/6 ASTRA 4A TRIALFeed (0.8°W + 4.8°E + 13°E)
+        [t]    THOR 5/6 ASTRA 2A/2E/2F QUAD (0.8°W + 13°E + 19.2°E + 28.2°E)
+        [u]    Motor - FULLFeed (45.0°W - 76.5°E)
+        
+        [z]    Skip 
+        
+   -------------------------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-z]:      "
+    read yourch
+    case $yourch in
+    ### Enigma2 ###    
+    a) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_13E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    b) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    c) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_30W-13E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    d) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_30W-13E-19.2E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    e) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-13E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    f) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-13E-19.2E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    g) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_4.8E-13E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    h) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_4.8E-13E-19.2E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    i) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_9E-13E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    j) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_9E-13E-19.2E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    k) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-16E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    l) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-16E-19.2E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    m) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-23.5E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    n) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E-23.5E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    o) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-28.2E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    p) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E-28.2E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    q) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-42.0E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    r) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E-42.0E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;   
+    s) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-4.8E-13E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;    
+    t) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-13E-19.2E-28.2E.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    u) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+    wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
+    wget morpheus883.altervista.org/settings/Settings_Morph883_Motor.tar.gz;
+    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
+    z) ;;
+    esac
+    ;;
+    u) ;;
     esac
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 
@@ -4118,7 +4436,7 @@ then echo "Stai gia usando Softdhdevice"
 else sudo sed -i "s|--lirc|& -P'softhddevice -f'|" /usr/local/bin/vdrrun & sudo sed -i "s|-P'xineliboutput -l none -r 37890 -p'||" /usr/local/bin/vdrrun
 fi;;
 c) gedit /usr/local/bin/vdrrun;;
-e) gedit /home/`logname`/start-xinelib-vdr.sh;;
+d) gedit /usr/local/bin/start-xinelib-vdr.sh;;
 e) gedit /etc/vdr/channels.conf;;
 f) gedit /etc/vdr/setup.conf;;
 g) if [ -f /usr/local/etc/oscam.server ];
@@ -4176,40 +4494,97 @@ a) cd $SRC/vdr; make clean; make clean-plugins;;
 b) cd $SRC/vdr; make clean; make clean-plugins; make plugins; make plugins install;;
 esac
 #
-echo ""; echo "*** Rimuovere Xine ***"; echo ""
-read -n1 -p "Sei proprio sicuro di rimuovere Xine? (y/n) "
-echo 
-[[ $REPLY = [yY] ]] &&
-( dpkg -r libxine2*; cd $SRC; rm -rf xine-lib-1.2 ; cd $PACKAGES; rm -rf libxine2*.deb  ) || echo "Hai fatto cosa buona e giusta"
-
-echo ""; echo "*** Rimuovere Xine-ui ***"; echo ""
-read -n1 -p "Sei proprio sicuro di rimuovere Xine-ui? (y/n) "
-echo 
-[[ $REPLY = [yY] ]] &&
-( dpkg -r xine-ui; apt-get -y purge lirc lirc-modules-source lirc-x liblircclient-dev; cd $SRC; rm -rf xine-ui xine-ui*.tar.bz2; cd $PACKAGES; rm -rf xine-ui*.deb ) || echo "Hai fatto cosa buona e giusta"
 #
-echo ""; echo "*** Rimuovere Vdr ***"; echo ""
-read -n1 -p "Sei proprio sicuro di rimuovere Vdr? (y/n) "
-echo 
-[[ $REPLY = [yY] ]] &&
-( dpkg -r vdr; rm -r /etc/vdr; rm -r /usr/lib/vdr; cd $SRC; rm -r vdr vdr-*; cd packages; rm -r vdr*.deb; rm -r /usr/local/bin/vdrpoweroff; rm -r /usr/local/bin/vdrrun;  rm -rf /usr/local/bin/start-xine-vdr.sh; rm -rf /usr/local/bin/start-xinelib-vdr.sh; rm -rf /usr/share/vdr; rm -rf /usr/local/bin/start-softhddevice-vdr.sh; rm -rf /home/`logname`/Scrivania/Xinelib.desktop; rm -rf /home/`logname`/Scrivania/Vdr-Softhddevice.desktop; rm -rf /home/`logname`/Scrivania/KillVdr.desktop; cd $PACKAGES; rm -rf vdr*.deb ) || echo "Hai fatto cosa buona e giusta"
+    clear
+    dialog --title "   ** Rimozione Xine **   " --infobox "
+   ----------------------------------------------------------
+                Sei proprio sicuro di rimuovere Xine?
+   ----------------------------------------------------------
+        [a]    Si rimuovilo           
+        [b]    No non rimuoverlo             
+                                       
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-b]:      "
+    read yourch
+    case $yourch in
+a) dpkg -r libxine2*; cd $SRC; rm -rf xine-lib-1.2 ; cd $PACKAGES; rm -rf libxine2*.deb ;; 
+b) ;;
+esac
 #
-echo ""; echo "*** Rimuovere KODI ***"; echo ""
-read -n1 -p "Sei proprio sicuro di rimuovere KODI? (y/n) "
-echo 
-[[ $REPLY = [yY] ]] &&
-(apt-get remove kodi*; cd $SRC; rm -rf xbmc; rm -rf /usr/local/bin/kodi; rm -rf /usr/local/bin/kodi-standalone; rm -rf /home/#`logname`/start-kodi-vdr.sh; rm -rf /home/`logname`/Scrivania/kodi.desktop ) || echo "Hai fatto cosa buona e giusta"
 #
-echo ""; echo "*** Rimuovere Oscam ***"; echo ""
-read -n1 -p "Sei proprio sicuro di rimuovere Oscam? (y/n) "
-echo 
-[[ $REPLY = [yY] ]] &&
-( cd /usr/local/bin; rm -r oscam; cd /usr/local/etc; rm -r oscam.*; rm -rf /home/`logname`/Scrivania/Oscam.desktop; rm -rf /home/`logname`/Scrivania/KillOscam.desktop; rm -rf /home/`logname`/start-oscam.sh; rm -rf /home/`logname`/killOscam.sh) || echo "Hai fatto cosa buona e giusta"
+    clear
+    dialog --title "   ** Rimozione Xine-ui **   " --infobox "
+   ----------------------------------------------------------
+                Sei proprio sicuro di rimuovere Xine-ui?
+   ----------------------------------------------------------
+        [a]    Si rimuovilo           
+        [b]    No non rimuoverlo             
+                                       
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-b]:      "
+    read yourch
+    case $yourch in
+a) dpkg -r xine-ui; apt-get -y purge lirc lirc-modules-source lirc-x liblircclient-dev; cd $SRC; rm -rf xine-ui xine-ui*.tar.bz2; cd $PACKAGES; rm -rf xine-ui*.deb;; 
+b) ;;
+esac
+#
+#
+#
+    clear
+    dialog --title "   ** Rimozione Vdr **   " --infobox "
+   ----------------------------------------------------------
+                Sei proprio sicuro di rimuovere Vdr?
+   ----------------------------------------------------------
+        [a]    Si rimuovilo           
+        [b]    No non rimuoverlo             
+                                       
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-b]:      "
+    read yourch
+    case $yourch in
+a)  dpkg -r vdr; rm -rf /etc/vdr; rm -rf /usr/lib/vdr; cd $SRC; rm -r vdr vdr-*; cd packages; rm -r vdr*.deb; rm -r /usr/local/bin/vdrpoweroff; rm -r /usr/local/bin/vdrrun;  rm -rf /usr/local/bin/start-xine-vdr.sh; rm -rf /usr/local/bin/start-xinelib-vdr.sh; rm -rf /usr/share/vdr; rm -rf /usr/local/bin/start-softhddevice-vdr.sh; rm -rf /home/`logname`/Scrivania/Xinelib.desktop; rm -rf /home/`logname`/Scrivania/Vdr-Softhddevice.desktop; rm -r /usr/bin/mplayer.sh; rm -rf /home/`logname`/Scrivania/KillVdr.desktop; cd $PACKAGES; rm -rf vdr*.deb;;
+b) ;;
+esac
+#
+#
+    clear
+    dialog --title "   ** Rimozione KODI **   " --infobox "
+   ----------------------------------------------------------
+                Sei proprio sicuro di rimuovere KODI?
+   ----------------------------------------------------------
+        [a]    Si rimuovilo           
+        [b]    No non rimuoverlo             
+                                       
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-b]:      "
+    read yourch
+    case $yourch in
+a) apt-get remove kodi*; cd $SRC; rm -rf xbmc; rm -rf /usr/local/bin/kodi; rm -rf /usr/local/bin/kodi-standalone; rm -rf /home/#`logname`/start-kodi-vdr.sh; rm -rf /home/`logname`/Scrivania/kodi.desktop;;
+b) ;;
+esac
+#
+#
+    clear
+    dialog --title "   ** Rimozione Oscam **   " --infobox "
+   ----------------------------------------------------------
+                Sei proprio sicuro di rimuovere Oscam?
+   ----------------------------------------------------------
+        [a]    Si rimuovilo           
+        [b]    No non rimuoverlo             
+                                       
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-b]:      "
+    read yourch
+    case $yourch in
+a) cd /usr/local/bin; rm -r oscam; cd /usr/local/etc; rm -r oscam.*; rm -rf /home/`logname`/Scrivania/Oscam.desktop; rm -rf /home/`logname`/Scrivania/KillOscam.desktop; rm -rf /home/`logname`/start-oscam.sh; rm -rf /home/`logname`/killOscam.sh;;
+b) ;;
+esac
 ;;
 
-    
-    
 
+
+#
+#    
 #############################################################################################################################  
 #############################################################################################################################
 ###                                                                                                                       ###
