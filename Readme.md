@@ -29,7 +29,7 @@
     a tutti gli user del sifteam forum e di vdritalia
 
     IN PARTICOLARE :                                
-    Mona, unixer, fiveten_59, Knap, jackblow33, Alez, Shalafi, Homer314, 
+    Mona, unixer, fiveten_59, Grazymax, Knap, jackblow33, Alez, Shalafi, Homer314, 
     Mr Cool Span, fusibile73, ceo16, Asgarot, Armando Basile,  Mld Team e tanti ... 
     tanti altri.                              
                                                                               
