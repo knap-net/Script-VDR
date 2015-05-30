@@ -1,7 +1,7 @@
 ## Rev. 5.4.8
 - Implementazione Codice Al Punto 17 Integrazione Script Lamedb2vdr.sh - Converte Setting Enigma2
 - Modifica Skin Script Menu' & Creazione Sub-menu per Selezionare settings Vhannibal - Morpheus
-- Settatare VDR dal menu "F1" / "Opzioni" / "Scheda DVB" / Aggiornamento canali / "Solo Pid" 
+- Settare in VDR dal menu "F1" / "Opzioni" / "Scheda DVB" / Aggiornamento canali / "Solo Pid" 
 - Setting E2 convertiti dallo Script Lamedb2vdr.sh al primo utilizzo richiedono un attesa di 10~60 Secondi
 - Alcuni canali al primo utilizzo richiedono un attesa di 3~4 minuti per autoaggiornarsi i Pid Audio/Video
 
@@ -9,7 +9,7 @@
 
 ## Rev. 5.4.7
 - Aggiornamento by fiveteen_59 vari plugins e patch - cecremote - play - mp3
-- Rimossa la skin tryout e aggiunto skin glassylike (Eccezzionale)
+- Rimossa la skin tryout e aggiunto skin glassylike (Eccezionale)
 - Aggiunto Externalplayer nei plugin di default
 - Rimosso l' appswitcher
 - Modifica punto 20 adattato con interfaccia dialog
