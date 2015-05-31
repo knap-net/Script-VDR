@@ -1,5 +1,13 @@
+## Rev. 5.5.0
+- Modifica al codice per aggiornamento e modifiche del git Skindesigner
+- Rimossi temi di default aggiunti a skindesigner
+- Aggiunto vdr-plugin-play da git
+- Altre modifiche minori applicate
+
+
+
 ## Rev. 5.4.9
-- Modifica codice aggiornamento Skindesigner e tema glasslike risolti alcuni errori
+- Modifica codice aggiornamento Skindesigner e tema glasslike
 
 
 
@@ -14,7 +22,7 @@
 
 ## Rev. 5.4.7
 - Aggiornamento by fiveteen_59 vari plugins e patch - cecremote - play - mp3
-- Rimossa la skin tryout e aggiunto skin glassylike (Eccezionale)
+- Rimossa la skin tryout e aggiunto skin glassylike
 - Aggiunto Externalplayer nei plugin di default
 - Rimosso l' appswitcher
 - Modifica punto 20 adattato con interfaccia dialog
