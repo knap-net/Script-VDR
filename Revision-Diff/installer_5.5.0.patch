@@ -1,0 +1,284 @@
+--- Script-VDR-Scriptvdr-2.2.0_V.5.4.8/installer_mod	2015-05-31 08:56:27.055295106 +0200
++++ installer	2015-05-31 18:29:44.218144433 +0200
+@@ -40,7 +40,7 @@
+ #
+ PLUGIN="--lirc -P'xineliboutput -l none -r 37890 -p' -P'dvbapi' -P'text2skin' -P'osdteletext' -P'loadepg' -P'menuorg' -P'reelchannellist' -P'epgsearch' -P'xvdr'"
+ #
+-PLUGIN1="--lirc -P'softhddevice -f' -P'dvbapi' -P'skindesigner -l /etc/vdr/logos/' -P'skinflatplus -l /etc/vdr/logos/' -P'tvguideng' -P'tvguide -l /etc/vdr/logos/' -P'weatherforecast' -P'text2skin' -P'osdteletext' -P'loadepg' -P'menuorg' -P'reelchannellist' -P'epgsearch' -P'xvdr' -P'externalplayer'"
++PLUGIN1="--lirc -P'softhddevice -f' -P'dvbapi' -P'skindesigner -l /etc/vdr/logos/ -i /usr/share/vdr/plugins/skindesigner/skins/' -P'skinflatplus -l /etc/vdr/logos/' -P'tvguideng' -P'tvguide -l /etc/vdr/logos/' -P'weatherforecast' -P'text2skin' -P'osdteletext' -P'loadepg' -P'menuorg' -P'reelchannellist' -P'epgsearch' -P'xvdr' -P'externalplayer'"
+ #
+ Remind='è già installato... avete dimenticato di aggiungere il comando al vdrrun?'
+ Remind1='è già installata... avete dimenticato di aggiungere il comando al vdrrun?'
+@@ -63,6 +63,7 @@
+ MANUALS=""$SRC"/READ_THIS"
+ TEMP='/tmp'
+ SKIN='/etc/vdr/plugins/text2skin'
++SKINS='/etc/vdr/plugins/skindesigner/installerskins/'
+ PLUGINS='/etc/vdr/plugins'
+ TIMESTAMP=`date +%Y%m%d.%R`
+ ALLOWED="#
+@@ -917,13 +918,6 @@
+     git clone git://projects.vdr-developer.org/skin-narrowhd.git;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/skin-nopacity ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    git clone git://projects.vdr-developer.org/skin-nopacity.git;
+-  fi
+-
+ if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-skinenigmang ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+@@ -945,48 +939,6 @@
+     wget https://www.dropbox.com/s/omrs8wwh5jbz46e/logos.tar.gz; tar -zxvf logos.tar.gz; rm -rf logos.tar.gz;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/blackholefrodo ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    git clone https://github.com/FrodoVDR/blackholefrodo.git;
+-  fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/shady ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-	git clone https://github.com/tomsax56/shady.git
+-  fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/shady_KISS ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";        
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-        git clone https://github.com/tomsax56/shady_KISS
+-  fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/glassy ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-	git clone https://github.com/BooStars/glassy
+-  fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/glasslike ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-        git clone https://github.com/Vectra130/skindesigner_glasslike.git; mv skindesigner_glasslike glasslike;
+-  fi
+-
+-if [ -s /home/`logname`/sifinstallrepo/vectraskin ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-	git clone https://github.com/Vectra130/skindesigner_vectraskin.git; mv skindesigner_vectraskin vectraskin;
+-  fi  
+-
+ if [ -s /home/`logname`/sifinstallrepo/anthra_pack.tar.gz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+@@ -1063,12 +1015,6 @@
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+     wget https://www.dropbox.com/s/hb2mv9ytz5q6yz7/picon.tar.gz;
+   fi
+-if [ -s /home/`logname`/sifinstallrepo/vdr-skinelchi-0.2.8.tar.bz2 ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget https://www.dropbox.com/s/ff3vb3tv15z5l2r/vdr-skinelchi-0.2.8.tar.bz2;
+-  fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/vdr-skinsoppalusikka-2.2.1.tgz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+@@ -1108,7 +1054,6 @@
+     wget https://www.dropbox.com/s/os0dz379o9rdtk3/getchannels.tar.gz;
+   fi
+ 
+-
+ if [ -s /home/`logname`/sifinstallrepo/channels-nohd-tivusat-skyno.conf ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+@@ -1291,6 +1236,7 @@
+     wget http://www.saunalahti.fi/rahrenbe/vdr/femon/files/vdr-femon-2.2.1.tgz;
+     git clone git://projects.vdr-developer.org/vdr-plugin-streamdev.git;
+     wget https://www.dropbox.com/s/bx13km4g9ogvgb8/menuorg.tar.gz;
++    git clone https://github.com/3PO/vdr-plugin-sc.git;
+     wget https://www.dropbox.com/s/hsp66258srhwa1d/mce-remote.conf.tar.gz;
+     wget https://www.dropbox.com/s/i2syzegiwy7gvex/vdr-patches.2.2.0.tar.gz;
+     wget https://www.dropbox.com/s/mgg1lfyjbx9li7p/Make.config.2.2.0;
+@@ -1306,10 +1252,10 @@
+     wget https://www.dropbox.com/s/1ujtklnct0nqq6q/iptv_conf.tar.gz;
+     wget https://www.dropbox.com/s/rjh3vpj3b2q3dxz/vdr-mp3-0.10.2.tar.gz;
+     wget https://www.dropbox.com/s/tlb8bfpb2wj59mf/patch_mp3.tar.gz;
+-    git clone https://github.com/maniacgit/vdr-play;
+     wget https://www.dropbox.com/s/ond4cpofj5yxhp8/patch_play.tar.gz;
+     wget https://www.dropbox.com/s/9c7s5nob4ocgsya/externalplayer.tar.gz;
+     wget https://www.dropbox.com/s/vhz1fz68159s0qg/externalplayer.conf.tar.gz;
++      git clone http://projects.vdr-developer.org/git/vdr-plugin-play.git/
+ 
+ ############################ caricamento skin ########################################
+ 
+@@ -1319,23 +1265,15 @@
+     git clone git://projects.vdr-developer.org/skin-nopacity.git;
+     git clone http://projects.vdr-developer.org/git/vdr-plugin-skinenigmang.git;
+     git clone http://projects.vdr-developer.org/git/skin-flatplus.git;
+-    git clone https://github.com/FrodoVDR/blackholefrodo.git;
+-    git clone https://github.com/Vectra130/skindesigner_glasslike.git; mv skindesigner_glasslike glasslike;
+-    git clone https://github.com/Vectra130/skindesigner_vectraskin.git; mv skindesigner_vectraskin vectraskin;
+     wget https://www.dropbox.com/s/odv30s0a22mau60/skinenigmang-logos-xpm-hi-20070702.tgz;
+     wget https://www.dropbox.com/s/weh6c53bg9363ey/skinenigmang-channellogos-xpm-hi-20070702.tgz;
+     wget https://www.dropbox.com/s/pydva1r0iafh5hy/skinenigmang-fonts-20080225.tgz;
+-    wget https://www.dropbox.com/s/ff3vb3tv15z5l2r/vdr-skinelchi-0.2.8.tar.bz2;
+     wget https://www.dropbox.com/s/knps7b8q2udary6/vdr-text2skin-EgalT2-0.3.3.tar.gz;
+     wget http://www.saunalahti.fi/~rahrenbe/vdr/soppalusikka/files/vdr-skinsoppalusikka-2.2.1.tgz;
+     wget https://www.dropbox.com/s/y4jiosfxinkh2e1/Basic_skin.tar.gz;
+     wget https://www.dropbox.com/s/66eowrn57bj74du/coolHD_0.2.tar.gz;
+     wget https://www.dropbox.com/s/5l69u5htqsge852/elchiHD-logos-v3.tar.bz2;
+     wget https://www.dropbox.com/s/806odyj5vyco3dg/lcars_pack.tar.gz;
+-    git clone https://github.com/BooStars/tryouts.git;
+-    git clone https://github.com/BooStars/glassy;
+-    git clone https://github.com/tomsax56/shady_KISS;
+-    git clone https://github.com/tomsax56/shady.git;
+ 
+ ############################ caricamento varie #######################################
+ 
+@@ -2145,16 +2083,11 @@
+ cd ../..; make plugins; cd $PLUGINS; mkdir -p loadepg;
+ cp -r $VDRSRC/loadepg/conf/* $PLUGINS/loadepg/; 
+ #
+-#sudo -apt get install lm-sensors
+-clear
+-echo "               *** Skindesigner ***"; echo ""; sleep 3
+-echo "               *** Carico prima  le api di Skindesigner ***"; echo ""; sleep 3
+-cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && cd vdr-plugin-skindesigner/libskindesignerapi && make clean && make install;
+-sleep 3
++#
+ clear
+-echo "***                Ora Carico Skindesigner ***"; echo ""; sleep 3
++echo ""; echo "               *** Skindesigner ***"; echo ""; sleep 3
+ cd $VDRSRC; sudo apt-get -y install lm-sensors;
+-cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && mv vdr-plugin-skindesigner skindesigner && cd skindesigner && make && make install && cp -r /home/`logname`/sifinstallrepo/blackholefrodo /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glassy /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/vectraskin /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glasslike /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady_KISS /usr/share/vdr/plugins/skindesigner/skins/ && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
++cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && mv vdr-plugin-skindesigner skindesigner && cd skindesigner &&  make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
+ # qui sopra c'è da mettere le icone di menù mancanti che sono dentro le skin del vdr-plugin-skindesigner traducendole e comprimendole
+ #
+ clear
+@@ -2171,7 +2104,7 @@
+ echo "               *** Skin Flatplus ***"; echo ""; sleep 3
+ cd $VDRSRC;
+ cp -r /home/`logname`/sifinstallrepo/skin-flatplus /$VDRSRC/ && cd skin-flatplus && make install && cd /usr/lib/vdr/plugins/skinflatplus/widgets/temperatures/ && ln -s temperatures.default temperatures && cd ../system_information && ln -s system_information.ubuntu system_information && cd ../weather && cp update_weather.config.sample update_weather.config;
+-#
++# qui sopra c'è da mettere le icone di menù mancanti che sono dentro le skin del Skin Flatplus traducendole e comprimendole
+ #
+ clear
+ echo ""; echo "               *** Tvguide ***";  sleep 3
+@@ -2222,7 +2155,8 @@
+ #wget https://www.dropbox.com/s/bx97ikp7c1h2qj2/vdrsymbols.tar.gz;
+ cp /home/`logname`/sifinstallrepo/vdrsymbols.tar.gz /usr/share/fonts/truetype/;
+ cd /usr/share/fonts/truetype/
+-tar -zxvf vdrsymbols.tar.gz; rm -r vdrsymbols.tar.gz; 
++tar -zxvf vdrsymbols.tar.gz;
++fc-cache -fv;
+ # Icone Vdr
+ cd $SRC
+ #wget https://www.dropbox.com/s/dhap4gmzd2q77ug/vdr.jpeg.tar.gz;
+@@ -3417,7 +3351,6 @@
+    ----------------------------------------------
+             Skin NarrowHD                     
+             Skin Enigma                  
+-            Skin Elchi                   
+             Skin Soppalusikka              
+             Skin EgalT2                                          
+         
+@@ -3469,28 +3402,6 @@
+       echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ esac
+ ###
+-#echo "*** Skin Elchi ***"; 
+-    clear        
+-    dialog --title "   ** Vuoi installare le Skin Elchi ? **   " --infobox "
+-   ----------------------------------------------
+-                Che cosa vuoi fare ?
+-   ----------------------------------------------
+-        [a]    Si                
+-        [b]    No                            
+-                                       
+-   ---------------------------------------------- " 0 0
+-    echo -n "        Scegli  [a-b]:      "
+-    read yourch
+-    case $yourch in
+-a) cd $VDRSRC && if [ -f skinelchi/Makefile ];
+-  then  echo "SkinElchi $Remind1"
+-  else cp /home/`logname`/sifinstallrepo/vdr-skinelchi-0.2.8.tar.bz2 /$VDRSRC/ && tar xjf vdr-skinelchi-0.2.8.tar.bz2 && mv skinelchi-0.2.8 skinelchi && rm -r vdr-skinelchi-0.2.8.tar.bz2 && cd ../.. && make plugins && mkdir -p /etc/vdr/plugins/skinelchi && cp $VDRSRC/skinelchi/themes/* /etc/vdr/themes/ && cd /etc/vdr/plugins/skinelchi && cp /home/`logname`/sifinstallrepo/elchiHD-logos-v3.tar.bz2 /etc/vdr/plugins/skinelchi/ && tar xjf elchiHD-logos-v3.tar.bz2 && rm -r elchiHD-logos-v3.tar.bz2 && sed -i "s|-P'dvbapi'|& -P'skinelchi'|" /usr/local/bin/vdrrun 
+-fi
+-      echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+-b) echo "Avete scelto di non installare la Skin Elchi."
+-      echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+-esac
+-###
+ #echo "*** Skin Soppalusikka ***"; 
+     clear        
+     dialog --title "   ** Vuoi installare le Skin Soppalusikka ? **   " --infobox "
+@@ -3560,23 +3471,21 @@
+         [b]    Skin Flatplus                      
+         [c]    Skin NarrowHD                 
+         [d]    Skin Enigma               
+-        [e]    Skin Elchi               
+-        [f]    Skin Soppalusikka  
+-        [g]    Skin EgalT2            
+-        [h]    Skip                                                  
++        [e]    Skin Soppalusikka  
++        [f]    Skin EgalT2            
++        [g]    Skip                                                  
+         
+    ---------------------------------------------- " 0 0
+-    echo -n "        Scegli  [a-h]:      "                   
++    echo -n "        Scegli  [a-g]:      "                   
+     read yourch
+     case $yourch in
+-    a) rm -r $VDRSRC/vdr-plugin-skindesigner; rm -rf /usr/share/vdr/plugins/skindesigner; rm -r $PLUGINS/skindesigner;;
++    a) rm -r $VDRSRC/skindesigner; rm -rf /usr/share/vdr/plugins/skindesigner; rm -r $PLUGINS/skindesigner;;
+     b) rm -r $VDRSRC/skin-flatplus; rm -r $PLUGINS/skinflatplus; rm -rf /usr/share/vdr/plugins/skinflatplus;;
+     c) rm -r $VDRSRC/narrowhd; rm -r $SKIN/NarrowHD;;
+     d) rm -r $VDRSRC/skinenigmang;;
+-    e) rm -r $VDRSRC/skinelchi;;
+-    f) rm -r $VDRSRC/skinsoppalusikka; rm -r /etc/vdr/plugins/skinsoppalusikka;;
+-    g) rm -r $VDRSRC/EgalT2;;
+-    h) ;;
++    e) rm -r $VDRSRC/skinsoppalusikka; rm -r /etc/vdr/plugins/skinsoppalusikka;;
++    f) rm -r $VDRSRC/EgalT2;;
++    g) ;;
+     esac
+     cd $SRCVDR; make plugins install
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+@@ -3630,9 +3539,8 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) apt-get -y install lm-sensors libmagick++-dev libmagickwand-dev libmagickcore-dev libdjvulibre-dev libtiff5-dev libjpeg-dev libjpeg8-dev libjpeg-turbo8-dev;
+-cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && cd $VDRSRC && git clone git://projects.vdr-developer.org/vdr-plugin-skindesigner.git && mv vdr-plugin-skindesigner skindesigner && cd skindesigner && make && make install && cp -r /home/`logname`/sifinstallrepo/blackholefrodo /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glassy /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/vectraskin /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/glasslike /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /home/`logname`/sifinstallrepo/shady_KISS /usr/share/vdr/plugins/skindesigner/skins/ && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && cp /usr/share/vdr/plugins/skindesigner/skins/glasslike/vdr_themes/* /etc/vdr/themes/ && cp -r /usr/share/vdr/plugins/skindesigner/skins/glasslike/xmlfiles/ /usr/share/vdr/plugins/skindesigner/skins/ && cp -r /usr/share/vdr/plugins/skindesigner/skins/glasslike//themes/ /usr/share/vdr/plugins/skindesigner/skins/ && cp /usr/share/vdr/plugins/skindesigner/skins/glasslike/vdr_themes/* /usr/share/vdr/plugins/skindesigner/skins/glasslike/themes/ && ln -s temperatures.default temperatures;;
+-b) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && sed -i "s|-P 'skindesigner -l /etc/vdr/logos/'||" /usr/local/bin/vdrrun;;
++a) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && cd $VDRSRC && git clone git://projects.vdr-developer.org/vdr-plugin-skindesigner.git && mv vdr-plugin-skindesigner skindesigner && cd skindesigner && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures ;;
++b) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && sed -i "s|-P'skindesigner -l /etc/vdr/logos/ -i /usr/share/vdr/plugins/skindesigner/skins/'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+ #
+@@ -4342,12 +4250,13 @@
+     echo -n "        Scegli  [a-b]:      "
+     read yourch
+     case $yourch in
+-    a) cd $SRC  && if [ -f /usr/local/bin/xbmc ];
+-    then  echo "Xbmc $Remind3"
++    a) cd $SRC  && if [ -f /usr/local/bin/kodi ];
++    then  echo "KODI $Remind3"
+     else 
+     apt-get -y install python-software-properties pkg-config
+     apt-get -y install software-properties-common
+-    sudo add-apt-repository ppa:team-xbmc/ppa
++#    sudo add-apt-repository ppa:team-xbmc/ppa
++    sudo add-apt-repository ppa:team-xbmc/xbmc-nightly
+     sudo apt-get update
+     sudo apt-get -y install kodi
+ #
