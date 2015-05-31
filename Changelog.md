@@ -1,5 +1,5 @@
 ## Rev. 5.4.9
-- Modifica alla Skindesigner e temi risolti alcuni errori con glasslike
+- Modifica codice aggiornamento Skindesigner e tema glasslike risolti alcuni errori
 
 
 
