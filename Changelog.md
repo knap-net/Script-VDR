@@ -1,3 +1,8 @@
+## Rev. 5.4.9
+- Modifica alla Skindesigner e temi risolti alcuni errori con glasslike
+
+
+
 ## Rev. 5.4.8
 - Implementazione Codice Al Punto 17 Integrazione Script Lamedb2vdr.sh (Autore daredavil87) - Converte Setting Enigma2
 - Modifica Skin Script Menu' & Creazione Sub-menu per Selezionare settings Vhannibal - Morpheus
