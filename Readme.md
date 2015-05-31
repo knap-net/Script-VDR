@@ -33,8 +33,8 @@
 
     IN PARTICOLARE :                                
     Mona, Unixer, fiveten_59, Grazymax, Knap, jackblow33, Alez, Shalafi, Homer314, 
-    Mr Cool Span, fusibile73, ceo16, Asgarot, Armando Basile, daredavil87 , il Mld Team e tanti ... 
-    tanti altri.                              
+    Mr Cool Span, fusibile73, ceo16, Asgarot, Armando Basile, daredavil87, 
+    il Team Mld e tanti ... tanti altri.                              
                                                                               
 
 
