@@ -1,6 +1,10 @@
 ## Rev. 5.5.0
-- Modifica al codice per aggiornamento e modifiche del git Skindesigner
-- Rimossi temi di default aggiunti a skindesigner
+- Eliminare dalla sifinstallrepo - vdrsymbols - setup16 - setup43 - vdr-plugin-skindesigner
+- Effettuare il Punto 1 - [a] Creazione - Download locale repository nuovi plugins
+- Modifica al codice per aggiornamento e modifiche del git vdr-plugin-skindesigner 0.5.0
+- Rimossi temi di default aggiunti a vdr-plugin-skindesigner
+- Per caricare le skin si va in Menu/Opzioni/Plugins/Skindesigner "install new skin"
+- Dopo l' installazione si cambia il tema sempre in Menu/Opzioni/OSD
 - Aggiunto vdr-plugin-play da git
 - Altre modifiche minori applicate
 
