@@ -1,7 +1,7 @@
 ## Rev. 5.5.0
 - Eliminare dalla sifinstallrepo - vdrsymbols - setup16 - setup43 - vdr-plugin-skindesigner
 - Effettuare il Punto 1 - [a] Creazione - Download locale repository nuovi plugins
-- Modifica al codice per aggiornamento e modifiche del git vdr-plugin-skindesigner 0.5.0
+- Modifica al codice per aggiornamento e modifiche del git vdr-plugin-skindesigner 0.5.1
 - Rimossi temi di default aggiunti a vdr-plugin-skindesigner
 - Avviare VDR con opzione: 
 - -P'skindesigner -l /etc/vdr/logos/ -i /usr/share/vdr/plugins/skindesigner/skins/'
