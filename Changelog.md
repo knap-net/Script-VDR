@@ -4,6 +4,8 @@
 - Modifica al codice per aggiornamento e modifiche del git vdr-plugin-skindesigner 0.5.0
 - Rimossi temi di default aggiunti a vdr-plugin-skindesigner
 - Per caricare le skin si va in Menu/Opzioni/Plugins/Skindesigner "install new skin"
+- Avviare VDR con opzione: 
+- -P'skindesigner -l /etc/vdr/logos/ -i /usr/share/vdr/plugins/skindesigner/skins/'
 - Dopo l' installazione si cambia il tema sempre in Menu/Opzioni/OSD
 - Aggiunto vdr-plugin-play da git
 - Altre modifiche minori applicate
