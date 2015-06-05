@@ -1,3 +1,15 @@
+## Rev. 5.5.1
+- Implementazione Codice Al Punto 17 Integrazione *Script Lamedb2vdrgetchannel.sh* (Autore daredavil87)
+- *Mod. By Grazymax* - Converte Setting Enigma2 in File "nome;provider" usati in Getchannel
+- Modifica Skin Script Menu' & Creazione Sub-menu Getchannel Selezione settings Vhannibal - Morpheus
+- Nuovo metodo implementato scarica/converte/aggiorna dati kingofsat compresi Pid Audio/Video
+- Aggiornato x265 - checkinstall --pkgversion="*" - Compatibilita' in Ubuntu 15.04 Repo Update
+- Aggiornato Libreie x264 da Git "Compila da release Stable" - Aggiornato checkinstall --pkgversion="*"
+- Aggiornato ffmpeg - checkinstall --pkgversion="*" - Compatibilita' in Ubuntu 15.04 Repo Update
+- Altre modifiche minori applicate
+
+
+
 ## Rev. 5.5.0
 - Eliminare dalla sifinstallrepo - vdrsymbols - setup16 - setup43 - vdr-plugin-skindesigner
 - Effettuare il Punto 1 - [a] Creazione - Download locale repository nuovi plugins
