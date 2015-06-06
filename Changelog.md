@@ -1,8 +1,8 @@
 ## Rev. 5.5.1
 - Implementazione Codice Al Punto 17 Integrazione **Script Lamedb2vdrgetchannel.sh** (Autore daredavil87)
-- **Mod. By Grazymax** - Converte Setting Enigma2 in File "nome;provider" usati in Getchannel
+- **Mod. By Grazymax** - Converte Setting Enigma2 in File "nome;provider" usati in Getchannel {Beta Test}
 - Modifica Skin Script Menu' & Creazione Sub-menu Getchannel Selezione settings Vhannibal - Morpheus
-- Nuovo metodo implementato scarica/converte/aggiorna dati kingofsat compresi Pid Audio/Video
+- Nuovo metodo implementato scarica/converte/aggiorna dati kingofsat compresi Pid Audio/Video - 13.0E Okay
 - Aggiornato x265 - checkinstall --pkgversion="*" - Compatibilita' in Ubuntu 15.04 Repo Update
 - Aggiornato Libreie x264 da Git "Compila da release Stable" - Aggiornato checkinstall --pkgversion="*"
 - Aggiornato ffmpeg - checkinstall --pkgversion="*" - Compatibilita' in Ubuntu 15.04 Repo Update
