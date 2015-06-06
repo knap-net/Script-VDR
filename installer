@@ -3880,7 +3880,7 @@ cd $SRC/vdr; make plugins install;
    -------------------------------------------------------------------------------------------------------------------------------
            Scarica Settings Vhannibal ~ Morpheus - Crea File (Nome;Provider) con Lamedb2vdr.sh Modificato (By Grazymax)
    -------------------------------------------------------------------------------------------------------------------------------
-                 Aggiorna tramite Getchannel 0.7.0 da Kingofsat - Parametri e PID Audio/Video - Crea Lista Canali 
+           {Beta Test} Aggiorna tramite Getchannel 0.7.0 da Kingofsat - Parametri e PID Audio/Video - Crea Lista Canali 
    -------------------------------------------------------------------------------------------------------------------------------
    
         *****  Vhannibal  ................................  *****  Morpheus
