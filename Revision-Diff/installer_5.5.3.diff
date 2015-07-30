@@ -1,0 +1,308 @@
+--- installer	2015-07-30 09:35:38.983980000 +0200
++++ installer_5.5.3	2015-07-27 13:07:55.536381000 +0200
+@@ -911,6 +911,14 @@
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+     git clone git://projects.vdr-developer.org/vdr-plugin-scraper2vdr.git;
+ fi
++
++if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-mpv ]; then
++  echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
++else
++  echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
++    git clone git://projects.vdr-developer.org/vdr-plugin-mpv.git;
++fi
++
+ ################################# caricamento skin ########################################
+ 
+ if [ -s /home/`logname`/sifinstallrepo/skin-narrowhd ]; then
+@@ -1257,7 +1265,8 @@
+     wget https://www.dropbox.com/s/ond4cpofj5yxhp8/patch_play.tar.gz;
+     wget https://www.dropbox.com/s/9c7s5nob4ocgsya/externalplayer.tar.gz;
+     wget https://www.dropbox.com/s/vhz1fz68159s0qg/externalplayer.conf.tar.gz;
+-      git clone http://projects.vdr-developer.org/git/vdr-plugin-play.git/
++    git clone http://projects.vdr-developer.org/git/vdr-plugin-play.git/;
++    git clone git://projects.vdr-developer.org/vdr-plugin-mpv.git;
+ 
+ ############################ caricamento skin ########################################
+ 
+@@ -1909,6 +1918,8 @@
+     patch -p1 < 18_vdr_wareagleicon.patch; sleep 1;
+ echo "*** 19 ***"
+     patch -p1 < 19_vdr_remoteinstant.patch; sleep 1;
++#echo "*** 20 ***"
++#    patch -p1 < 20_vdr_setup_pin.patch; sleep 1
+ echo "*** 22 ***"
+     patch -p1 < 22_vdr_config.patch; sleep 1;
+ echo "*** 24 ***"
+@@ -2646,13 +2657,15 @@
+    ----------------------------------------------
+ 		XINELIBOUTPUT                                
+ 		YAEPGHD                                      
+-		Femon                                        
++		Femon 
++		Setup (non installabile in questa versione)                                                              
+ 		Live                                         
+ 		ZapPilot                                     
+ 		Scraper2vdr                                    
+ 		Ttxtsubs                                     
+ 		Iptv
+ 		Mp3/Mplayer
++		Mpv (va caricato a mano libmpv)
+ 		Play 
+ 		Sat-Ip                                       
+ 		Vdr-StreamDev                                
+@@ -2704,7 +2717,7 @@
+ cp /usr/local/src/vdr/PLUGINS/src/xineliboutput/*.mpg /etc/vdr/plugins/xineliboutput; 
+ cp /usr/local/src/vdr/PLUGINS/src/xineliboutput/examples/remote.conf.example /etc/vdr/plugins/xineliboutput/remote.conf;
+ cp /etc/vdr/plugins/xineliboutput/remote.conf /etc/vdr/remote.conf;
+-sed -i "s|--lirc|-P'xineliboutput -l none -r 37890 -p'|" /usr/local/bin/vdrrun;
++sed -i "s|--lirc|& -P'xineliboutput -l none -r 37890 -p'|" /usr/local/bin/vdrrun;
+ sed -i "s|-P'softhddevice -f'||" /usr/local/bin/vdrrun;
+ echo "*** allowed_hosts.conf setup ***"; touch /etc/vdr/plugins/xineliboutput/allowed_hosts.conf
+ echo "$ALLOWED" >> /etc/vdr/plugins/xineliboutput/allowed_hosts.conf;
+@@ -2820,6 +2833,38 @@
+     esac
+ #
+ #
++#echo "*** Setup ***"; echo "";
++    clear
++    dialog --title "   ** VDR-Plugin-Setup **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin Setup                
++        [b]    Aggiornare il plugin Setup                  
++        [c]    Rimuovere il plugin Setup               
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-d]:      "
++    read yourch
++    case $yourch in
++a) cd $VDRSRC && if [ -f setup/Makefile ];
++  then  echo "Setup $Remind"
++else cp -r /home/`logname`/sifinstallrepo/vdr-setup-0.3.1.tar.gz  /$VDRSRC && tar -xzvf vdr-setup-0.3.1.tar.gz && mv setup-0.3.1 setup && rm -r vdr-setup-0.3.1.tar.gz && cd setup && make && sed -i "s|-P'dvbapi'|& -P'setup'|" /usr/local/bin/vdrrun
++    fi || echo "$Remind7 Setup"
++        echo "                    Premere il tasto [Invio] per continuare. . .               "; read  enterKey;;
++b) echo "*** plugin Setup ***"; 
++    clear
++    echo "Il plugin Setup è già aggiornato."
++        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++c) cd $VDRSRC && if [ -f setup/Makefile ];
++   then rm -r setup && sed -i "s|-P'setup'||" /usr/local/bin/vdrrun
++   else echo "Setup $Remind5" 
++      fi
++    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++    esac
++
++#
+ #echo "*** ZapPilot ***"; echo ""; 
+     clear
+     dialog --title "   ** VDR-Plugin-ZapPilot **   " --infobox "
+@@ -2840,7 +2885,7 @@
+   else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-zappilot /$VDRSRC && mv vdr-plugin-zappilot zappilot && cd ../.. && make plugins && cd $VDRSRC/zappilot/ && sed -i "s|-P'dvbapi'|& -P'zappilot'|" /usr/local/bin/vdrrun 
+     fi || echo "$Remind7 ZapPilot"
+         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+-b) cd $VDRSRC && rm -r zappilot && git clone git://projects.vdr-developer.org/vdr-plugin-zappilot.git && cp -r vdr-plugin-zappilot /home/`logname`/sifinstallrepo/  && mv vdr-plugin-zappilot zappilot && cd ../.. && make plugins
++b) cd $VDRSRC && rm -r zappilot && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-zappilot && git clone git://projects.vdr-developer.org/vdr-plugin-zappilot.git && cp -r vdr-plugin-zappilot /home/`logname`/sifinstallrepo/  && mv vdr-plugin-zappilot zappilot && cd ../.. && make plugins
+         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ c) cd $VDRSRC && if [ -f zappilot/Makefile ];
+   then rm -r zappilot && rm -rf $PLUGINS/zappilot && sed -i "s|-P'zappilot'||" /usr/local/bin/vdrrun
+@@ -2871,7 +2916,7 @@
+ fi || echo "$Remind7 Scraper2vdr"
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ b) cd $VDRSRC && if [ -f scraper2vdr/Makefile ];
+-  then rm -r scraper2vdr && git clone git://projects.vdr-developer.org/vdr-plugin-scraper2vdr.git && cp -r vdr-plugin-scraper2vdr /home/`logname`/sifinstallrepo/  && mv vdr-plugin-scraper2vdr scraper2vdr && cd epgfixer && cp -R epgfixer /etc/vdr/plugins/ && cd ../../.. && make && make plugins
++  then rm -r scraper2vdr && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-scraper2vdr && git clone git://projects.vdr-developer.org/vdr-plugin-scraper2vdr.git && cp -r vdr-plugin-scraper2vdr /home/`logname`/sifinstallrepo/  && mv vdr-plugin-scraper2vdr scraper2vdr && cd epgfixer && cp -R epgfixer /etc/vdr/plugins/ && cd ../../.. && make && make plugins
+   else echo "Scraper2vdr $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-scraper2vdr /$VDRSRC && mv vdr-plugin-scraper2vdr scraper2vdr && cd scraper2vdr && cp -R epgfixer /etc/vdr/plugins/ && cd ../../.. && make && make plugins && sed -i "s|-P'xvdr'|& -P'scraper2vdr'|" /usr/local/bin/vdrrun
+   fi
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+@@ -2904,7 +2949,7 @@
+ fi || echo "$Remind7 Ttxtsubs" 
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ b) cd $VDRSRC && if [ -f ttxtsubs/Makefile ];
+-  then rm -r ttxtsubs && git clone git://projects.vdr-developer.org/vdr-plugin-ttxtsubs.git && cp -r vdr-plugin-ttxtsubs /home/`logname`/sifinstallrepo/  && mv vdr-plugin-ttxtsubs ttxtsubs && cd ../.. && make plugins
++  then rm -r ttxtsubs && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-ttxtsubs && git clone git://projects.vdr-developer.org/vdr-plugin-ttxtsubs.git && cp -r vdr-plugin-ttxtsubs /home/`logname`/sifinstallrepo/  && mv vdr-plugin-ttxtsubs ttxtsubs && cd ../.. && make plugins
+   else echo "Ttxtsubs $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-ttxtsubs /$VDRSRC && mv vdr-plugin-ttxtsubs ttxtsubs && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'ttxtsubs'|" /usr/local/bin/vdrrun
+   fi
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+@@ -3008,6 +3053,35 @@
+     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ esac
+ #
++#
++#echo ""; echo "*** Mpv  ***"; echo ""
++    clear
++    dialog --title "   **  Vdr-Plugin-Mpv **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++          [a]  Installare il plugin Mpv         
++          [b]  Aggiornare il plugin Mpv         
++          [c]  Rimuovere il plugin Mpv          
++          [d]  Skip                             
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-d]:      "
++    read yourch
++    case $yourch in
++a) cd $VDRSRC && if [ -f mpv/Makefile ];
++  then  echo "Mpv $Remind"
++  else sudo apt-get install -y libsndfile1 libsndfile-dev libid3tag0 libid3tag0-dev libmad0-dev mpv && sudo add-apt-repository http://ppa.launchpad.net/mc3man/mpv-tests/ubuntu && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-mpv /$VDRSRC && cp -r vdr-plugin-mpv /home/`logname`/sifinstallrepo/ && mv vdr-plugin-mpv mpv && cd mpv && make install && sed -i "s|-P'dvbapi'|& -P'mpv'|" /usr/local/bin/vdrrun 
++    fi || echo "$Remind7 Mpv"
++    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
++b) cd $VDRSRC; rm -r mpv; rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-mpv; git clone git://projects.vdr-developer.org/vdr-plugin-mpv.git; mv vdr-plugin-mpv mpv; cd mpv; make install;
++        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++c) cd $VDRSRC && if [ -f mpv/Makefile ];
++  then rm -r mpv && sed -i "s|-P'mpv'||" /usr/local/bin/vdrrun
++    else echo "Mpv $Remind5" 
++  fi
++    echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
++esac
++#
+ #echo ""; echo "*** Play  ***"; echo ""
+     clear
+     dialog --title "   **  Vdr-Plugin-Play **   " --infobox "
+@@ -3309,12 +3383,33 @@
+ 
+ 
+     clear
+-    echo " Adesso Installo altre Skin di VDR (obsolete)"; sleep 4
++#    echo " Adesso Installo altre Skin di VDR (obsolete)"; sleep 4
+ cd $SRC; apt-get -y install build-essential checkinstall libfreetype6-dev libfontconfig1-dev libjpeg62-dev libcap-dev libfribidi-dev libncurses5-dev libncursesw5-dev git-core gettext
+ apt-get -y install libx11-xcb-dev libxcb-dpms0-dev libxcb-glx0-dev libxcb-randr0-dev libxcb-screensaver0-dev libxcb-xv0-dev libxcb-image0-dev libxcb-util0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-ewmh-dev
+ apt-get -y install libpcre++0 libpcre++-dev python-libxml2 python-libxslt1 python-pycurl python-simplejson mimms libxml2-dev python-all-dev python-central cdbs libglib2.0-dev debhelper txt2man
+ apt-get -y install libcurl3 libcurl4-gnutls-dev cvs libxcb-icccm4 libxcb-icccm4-dev libx11-xcb-dev libxcb-screensaver0-dev libxcb-dpms0-dev libmagick++-dev
+ ###
++#
++    clear        
++    dialog --title "   ** Vuoi installare altre skin di Skindesigner ? **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Si                
++        [b]    No                            
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-b]:      "  
++    read yourch
++    case $yourch in
++a) cd /usr/share/vdr/plugins/skindesigner/skins; git clone https://github.com/tomsax56/shady_KISS; git clone https://github.com/BooStars/stillClassic.git;
++find -name *.theme -exec mv {} "/etc/vdr/themes" \ ;
++      echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++b) echo "Avete scelto di non installare altre skin di Skindesigner."
++      echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++esac
++#
++#
+     clear        
+     dialog --title "   ** Altre Skin di VDR (obsolete) **   " --infobox "
+    ----------------------------------------------
+@@ -3510,7 +3605,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && cd $VDRSRC && git clone git://projects.vdr-developer.org/vdr-plugin-skindesigner.git && mv vdr-plugin-skindesigner skindesigner && cd skindesigner && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures ;;
++a) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner && cd $PLUGINS && rm -rf skindesigner && cd $VDRSRC && git clone git://projects.vdr-developer.org/vdr-plugin-skindesigner.git && cp -rf vdr-plugin-skindesigner /home/`logname`/sifinstallrepo/  && mv vdr-plugin-skindesigner skindesigner && cd skindesigner && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures ;;
+ b) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && sed -i "s|-P'skindesigner -l /etc/vdr/logos/ -i /usr/share/vdr/plugins/skindesigner/skins/'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+@@ -3530,7 +3625,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in 
+-a) cd $VDRSRC && rm -r tvguideng && git clone git://projects.vdr-developer.org/vdr-plugin-tvguideng.git && cp -r vdr-plugin-tvguideng /home/`logname`/sifinstallrepo/  && mv vdr-plugin-tvguideng tvguideng && cd ../.. && make plugins;;
++a) cd $VDRSRC && rm -r tvguideng && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-tvguideng && git clone git://projects.vdr-developer.org/vdr-plugin-tvguideng.git && cp -rf vdr-plugin-tvguideng /home/`logname`/sifinstallrepo/  && mv vdr-plugin-tvguideng tvguideng && cd ../.. && make plugins;;
+ b) cd $VDRSRC && rm -r tvguideng && rm -rf $PLUGINS/tvguideng && sed -i "s|-P'tvguideng'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac 
+@@ -3550,7 +3645,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in 
+-a) cd $VDRSRC && rm -r tvguide && git clone git://projects.vdr-developer.org/vdr-plugin-tvguide.git && cp -r vdr-plugin-tvguide /home/`logname`/sifinstallrepo/  && mv vdr-plugin-tvguide tvguide && cd ../.. && make plugins;;
++a) cd $VDRSRC && rm -r tvguide && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-tvguide && git clone git://projects.vdr-developer.org/vdr-plugin-tvguide.git && cp -r vdr-plugin-tvguide /home/`logname`/sifinstallrepo/  && mv vdr-plugin-tvguide tvguide && cd ../.. && make plugins;;
+ b) cd $VDRSRC && rm -r tvguide && rm -rf $PLUGINS/tvguide && sed -i "s|-P'tvguide -l /etc/vdr/logos/'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac 
+@@ -3570,7 +3665,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC && rm -r weatherforecast && git clone git://projects.vdr-developer.org/vdr-plugin-weatherforecast.git && cp -rf vdr-plugin-weatherforecast /home/`logname`/sifinstallrepo/ && mv vdr-plugin-weatherforecast weatherforecast && cd $SRC/vdr && make plugins;;
++a) cd $VDRSRC && rm -r weatherforecast && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-weatherforecast && git clone git://projects.vdr-developer.org/vdr-plugin-weatherforecast.git && cp -rf vdr-plugin-weatherforecast /home/`logname`/sifinstallrepo/ && mv vdr-plugin-weatherforecast weatherforecast && cd $SRC/vdr && make plugins;;
+ b) cd $VDRSRC && rm -r weatherforecast && sed -i "s|-P'weatherforecast'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+@@ -3590,7 +3685,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC && rm -rf skin-flatplus && rm -rf /usr/share/vdr/plugins/skinflatplus && cd $PLUGINS && rm -rf skinflatplus && cd $VDRSRC && git clone http://projects.vdr-developer.org/git/skin-flatplus.git/ && cd skin-flatplus && make && make install ;;
++a) cd $VDRSRC && rm -rf skin-flatplus rm -rf /home/`logname`/sifinstallrepo/skin-flatplus && rm -rf /usr/share/vdr/plugins/skinflatplus && cd $PLUGINS && rm -rf skinflatplus && cd $VDRSRC && git clone http://projects.vdr-developer.org/git/skin-flatplus.git/ && cp -rf skin-flatplus /home/`logname`/sifinstallrepo/ && cd skin-flatplus && make && make install ;;
+ b) cd $VDRSRC && rm -r skin-nopacity && cd $PLUGINS && rm -r skinnopacity && sed -i "s|-P'skinflatplus -l /etc/vdr/logos/'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+@@ -3610,7 +3705,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC && rm -r text2skin && git clone git://projects.vdr-developer.org/vdr-plugin-text2skin.git && cd /home/`logname`/sifinstallrepo/ && rm -r vdr-plugin-text2skin && cd $VDRSRC && cp -r vdr-plugin-text2skin /home/`logname`/sifinstallrepo/ && mv vdr-plugin-text2skin text2skin && cd text2skin && cp /home/`logname`/sifinstallrepo/text2skin.patch.tar.gz /$VDRSRC/text2skin/ && tar -zxvf text2skin.patch.tar.gz && rm -r text2skin.patch.tar.gz && cp /home/`logname`/sifinstallrepo/text2skin30.patch.tar.gz /$VDRSRC/text2skin/ && tar -zxvf text2skin30.patch.tar.gz && rm -r text2skin30.patch.tar.gz && patch -p1 < text2skin30.patch && sleep 1 && patch -p1 < 10_text2skin_livebuffer.patch && sleep 1 && patch -p1 < 11_text2skin_render.patch && sleep 1 && patch -p1 < 12_text2skin_sortname.patch && sleep 1 && patch -p1 < 13_text2skin_noreruns.patch && sleep 1 && patch -p1 < 14_text2skin_status.patch && sleep 1 && cd ../../.. && make plugins;;
++a) cd $VDRSRC && rm -r text2skin && git clone git://projects.vdr-developer.org/vdr-plugin-text2skin.git && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-text2skin && cd $VDRSRC && cp -r vdr-plugin-text2skin /home/`logname`/sifinstallrepo/ && mv vdr-plugin-text2skin text2skin && cd text2skin && cp /home/`logname`/sifinstallrepo/text2skin.patch.tar.gz /$VDRSRC/text2skin/ && tar -zxvf text2skin.patch.tar.gz && rm -r text2skin.patch.tar.gz && sleep 1 && patch -p1 < 10_text2skin_livebuffer.patch && sleep 1 && patch -p1 < 11_text2skin_render.patch && sleep 1 && patch -p1 < 12_text2skin_sortname.patch && sleep 1 && patch -p1 < 13_text2skin_noreruns.patch && sleep 1 && patch -p1 < 14_text2skin_status.patch && sleep 1 && cd ../../.. && make plugins;;
+ b) cd $VDRSRC && rm -r text2skin && cd $PLUGINS && rm -r text2skin && sed -i "s|-P'text2skin'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+@@ -3630,7 +3725,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC; rm -rf softhddevice; git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git; cp -r vdr-plugin-softhddevice /home/`logname`/sifinstallrepo/; mv vdr-plugin-softhddevice softhddevice; cd softhddevice; cp -r /home/`logname`/sifinstallrepo/patch_softhddevice.tar.gz /$VDRSRC/softhddevice; tar -zxvf patch_softhddevice.tar.gz; rm -r patch_softhddevice.tar.gz; patch -p1 < 11_Makefile.patch; sleep 1; patch -p1 < 12_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_vdpauqueue.patch; sleep 1; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1; make install; cd ../../..;; 
++a) cd $VDRSRC; rm -rf softhddevice; git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git; rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice; cp -rf vdr-plugin-softhddevice /home/`logname`/sifinstallrepo/; mv vdr-plugin-softhddevice softhddevice; cd softhddevice; cp -r /home/`logname`/sifinstallrepo/patch_softhddevice.tar.gz /$VDRSRC/softhddevice; tar -zxvf patch_softhddevice.tar.gz; rm -r patch_softhddevice.tar.gz; patch -p1 < 11_Makefile.patch; sleep 1; patch -p1 < 12_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_vdpauqueue.patch; sleep 1; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1; make install; cd ../../..;; 
+ b) cd $VDRSRC; rm -r softhddevice; rm -rf $PLUGINS/softhddevice; rm -r /home/`logname`/Scrivania/Vdr-Softhddevice.desktop; rm -r /home/`logname`/start-softhddevice-vdr.sh; sed -i "s|-P'softhddevice'||" /usr/local/bin/vdrrun; sed -i "s|--lirc|& -P'xineliboutput -l none -r 37890 -p'|" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+@@ -3650,7 +3745,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC && rm -r osdteletext && git clone http://projects.vdr-developer.org/git/vdr-plugin-osdteletext.git && cd /home/`logname`/sifinstallrepo && rm -r vdr-plugin-osdteletext && cd $VDRSRC && cp -r vdr-plugin-osdteletext /home/`logname`/sifinstallrepo/ && mv vdr-plugin-osdteletext osdteletext && cd ../.. && make plugins && mkdir -p /vtx ;;
++a) cd $VDRSRC ; rm -rf osdteletext; rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-osdteletext; git clone http://projects.vdr-developer.org/git/vdr-plugin-osdteletext.git; cd $VDRSRC; cp -r vdr-plugin-osdteletext /home/`logname`/sifinstallrepo/; mv vdr-plugin-osdteletext osdteletext; cd ../..; make plugins; mkdir -p /vtx;;
+ b) cd $VDRSRC && rm -r osdteletext && sed -i "s|-P'osdteletext'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+@@ -3670,7 +3765,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC && rm -r epgsearch && git clone http://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git && cd /home/`logname`/sifinstallrepo && rm -r vdr-plugin-epgsearch && cd $VDRSRC && cp -r vdr-plugin-epgsearch /home/`logname`/sifinstallrepo/ && mv vdr-plugin-epgsearch epgsearch && cd ../.. && make plugins;;
++a) cd $VDRSRC && rm -r epgsearch && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-epgsearch && git clone http://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git && cd $VDRSRC && cp -r vdr-plugin-epgsearch /home/`logname`/sifinstallrepo/ && mv vdr-plugin-epgsearch epgsearch && cd ../.. && make plugins;;
+ b) cd $VDRSRC && rm -r epgsearch && cd $PLUGINS && rm -r epgsearch && sed -i "s|-P'epgsearch'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+@@ -3749,7 +3844,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a)  cd $VDRSRC; rm -rf dvbapi; git clone git://github.com/manio/vdr-plugin-dvbapi.git; mv vdr-plugin-dvbapi dvbapi; cp /home/`logname`/sifinstallrepo/dvbapi.patch.tar.gz /$VDRSRC/dvbapi; cd dvbapi; tar -zxvf dvbapi.patch.tar.gz; rm -r dvbapi.patch.tar.gz; patch -p1 < vdr-plugin-dvbapi-01_crosscompiling.patch; sleep 1; cd ../../..; make plugins;;
++a)  cd $VDRSRC; rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-dvbapi; rm -rf dvbapi; git clone git://github.com/manio/vdr-plugin-dvbapi.git; cp -r vdr-plugin-dvbapi /home/`logname`/sifinstallrepo/; mv vdr-plugin-dvbapi dvbapi; cp /home/`logname`/sifinstallrepo/dvbapi.patch.tar.gz /$VDRSRC/dvbapi; cd dvbapi; tar -zxvf dvbapi.patch.tar.gz; rm -r dvbapi.patch.tar.gz; patch -p1 < vdr-plugin-dvbapi-01_crosscompiling.patch; sleep 1; cd ../../..; make plugins;;
+  
+ b) cd $VDRSRC && rm -r dvbapi && sed -i "s|-P'dvbapi'||" /usr/local/bin/vdrrun;;
+ c) ;;
+@@ -3790,7 +3885,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC && rm -r xvdr && git clone https://github.com/pipelka/vdr-plugin-xvdr.git && cd /home/`logname`/sifinstallrepo && rm -r vdr-plugin-xvdr && cd $VDRSRC && cp -r vdr-plugin-xvdr /home/`logname`/sifinstallrepo/ && mv vdr-plugin-xvdr xvdr && mkdir -p /etc/vdr/plugins/xvdr/ && cd ../.. && make plugins && echo "*** allowed_hosts.conf setup ***" && echo "$ALLOWED" >> /etc/vdr/plugins/xvdr/allowed_hosts.conf ;;
++a) cd $VDRSRC && rm -r xvdr && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-xvdr && git clone https://github.com/pipelka/vdr-plugin-xvdr.git && cd $VDRSRC && cp -r vdr-plugin-xvdr /home/`logname`/sifinstallrepo/ && mv vdr-plugin-xvdr xvdr && mkdir -p /etc/vdr/plugins/xvdr/ && cd ../.. && make plugins && echo "*** allowed_hosts.conf setup ***" && echo "$ALLOWED" >> /etc/vdr/plugins/xvdr/allowed_hosts.conf ;;
+ b) cd $VDRSRC && rm -r xvdr && cd $PLUGINS && rm -r xvdr && sed -i "s|-P'xvdr'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+@@ -4421,7 +4516,7 @@
+     cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+     cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz; 
+     cd $SRC/setting/getchannels && python getchannels.py  --list 19.2E --output output/channels19.conf; sleep  4; cp $SRC/setting/getchannels/output/channels19.conf /etc/vdr/;;
+-    x3) cp /home/`logname`/sifinstallrepo/channels.conf.trial.tar.gz /etc/vdr/;;
++    x3) cp -rf /home/`logname`/sifinstallrepo/channels.conf.trial.tar.gz /etc/vdr/;;
+    
+     z) ;;
+     esac
+     
