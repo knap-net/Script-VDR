@@ -1,6 +1,13 @@
+## Rev. 5.5.3
+- Caricati due plugin a livello sperimentale (Setup e Mpv) utilizzabili dalle prossime versioni.
+- Caricabile tramite script ulteriori skin di skindesigner non gestibili direttamente dal plugin.
+- Eliminare dalla sifinstallrepo - vdrsymbols
+- Effettuare il Punto 1 - [a] Creazione - Download locale repository nuovi plugins
+
+
 ## Rev. 5.5.2
 - Spostata sezione w_scan ed eliminato versione originaria di getchannels ora implementata dalla Rev. 5.5.1
--  Altre modifiche minori applicate
+- Altre modifiche minori applicate
 
 
 
