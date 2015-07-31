@@ -1,3 +1,9 @@
+## Rev. 5.5.2
+- Spostata sezione w_scan ed eliminato versione originaria di getchannels ora implementata dalla Rev.5.5.1
+-  Altre modifiche minori applicate
+
+
+
 ## Rev. 5.5.1
 - Implementazione Codice Al Punto 17 Integrazione **Script Lamedb2vdrgetchannel.sh** (Autore daredavil87)
 - **Mod. By Grazymax** - Converte Setting Enigma2 in File "nome;provider" usati in Getchannel {Beta Test}
