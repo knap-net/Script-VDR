@@ -1,5 +1,5 @@
 ## Rev. 5.5.2
-- Spostata sezione w_scan ed eliminato versione originaria di getchannels ora implementata dalla Rev.5.5.1
+- Spostata sezione w_scan ed eliminato versione originaria di getchannels ora implementata dalla Rev. 5.5.1
 -  Altre modifiche minori applicate
 
 
