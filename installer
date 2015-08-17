@@ -2128,7 +2128,7 @@ cp -r $VDRSRC/loadepg/conf/* $PLUGINS/loadepg/;
 clear
 echo ""; echo "               *** Skindesigner ***"; echo ""; sleep 3
 cd $VDRSRC; sudo apt-get -y install lm-sensors;
-cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && mv vdr-plugin-skindesigner skindesigner && cp -r /$SRC/traduzioni/Skin_it_IT.po /$VDRSRC/skindesigner/po/ && cd skindesigner/po/ && mv Skin_it_IT.po it_IT.po && cp -rf /$SRC/traduzioni/metrixhd/*.xml /$VDRSRC/skindesigner/skins/metrixd/ && cd .. && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
+cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && mv vdr-plugin-skindesigner skindesigner && cp -r /$SRC/traduzioni/Skin_it_IT.po /$VDRSRC/skindesigner/po/ && cd skindesigner/po/ && mv Skin_it_IT.po it_IT.po && cp -rf /$SRC/traduzioni/metrixhd/*.xml /$VDRSRC/skindesigner/skins/metrixhd/ && cd .. && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
 # qui sopra c'è da mettere le icone di menù mancanti che sono dentro le skin del vdr-plugin-skindesigner traducendole e comprimendole
 #
 clear
