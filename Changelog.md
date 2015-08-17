@@ -2,8 +2,8 @@
 - Eliminare e ricaricare con punto 1-a dalla sifinstallrepo i plugin skindesigner - flatplus - softhddevice
 - Caricati altri plugin a livello sperimentale (Epg-daemon in particolare) dove segnalato utilizzabili dalle  prossime versioni
 - I plugin flatplus skindegner tvguideng e weatherforecast hanno ora traduzioni in italiano
-- Eliminato dai plugin caricati in default menuorg e reelchannellist
-- Altri minori
+- Eliminato dai plugin caricati in default menuorg e reelchannellist (spostati al punto 14)
+- Altri minori bug
 
 
 ## Rev. 5.5.3
