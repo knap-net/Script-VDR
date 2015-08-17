@@ -1,13 +1,20 @@
+## Rev. 5.5.4
+- Eliminare e ricaricare con punto 1-a dalla sifinstallrepo i plugin skindesigner - flatplus - softhddevice
+- Caricati altri plugin a livello sperimentale (Epg-daemon in particolare) dove segnalato utilizzabili dalle  prossime versioni
+- I plugin flatplus skindegner tvguideng e weatherforecast hanno ora traduzioni in italiano
+- Eliminato dai plugin caricati in default menuorg e reelchannellist
+- Altri minori
+
+
 ## Rev. 5.5.3
 - Caricati due plugin a livello sperimentale (Setup e Mpv) utilizzabili dalle prossime versioni.
 - Caricabile tramite script ulteriori skin di skindesigner non gestibili direttamente dal plugin.
 - Eliminare dalla sifinstallrepo - vdrsymbols
 - Effettuare il Punto 1 - [a] Creazione - Download locale repository nuovi plugins
 
-
 ## Rev. 5.5.2
 - Spostata sezione w_scan ed eliminato versione originaria di getchannels ora implementata dalla Rev. 5.5.1
-- Altre modifiche minori applicate
+Caricati due plugin a livello sperimentale (Setup e Mpv) utilizzabili dalle prossime versioni
 
 
 
