@@ -1,0 +1,183 @@
+--- installer	2015-08-17 13:13:24.000000000 +0200
++++ installer_5.5.5	2015-08-30 16:58:43.336635912 +0200
+@@ -360,16 +360,16 @@
+           |   ...♦♦♦   Libreria Di Supporto Schede Grafiche ATI -  {Test Softhddevice Vaapi}   ♦♦♦...  |
+           |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
+           |   [2]    YASM 1.3.0  .....................  |   [R2]    YASM 1.3.0  ........................  |
+-          |   [3]    LIBDRM 2.4.61  ..................  |   [R3]    LIBDRM 2.4.61  .....................  |
+-          |   [4]    LIBVA 1.5.1  ....................  |   [R4]    LIBVA 1.5.1  .......................   |
++          |   [3]    LIBDRM 2.4.64  ..................  |   [R3]    LIBDRM 2.4.64  .....................  |
++          |   [4]    LIBVA 1.6.0  ....................  |   [R4]    LIBVA 1.6.0  .......................   |
+           |   =====================================================================================   |
+           |   ............♦♦♦   Librerie & Codec - FFMPEG - FDK-AAC - X264 - LIBVPX   ♦♦♦............  |
+           |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
+-          |   [5]    X264 23.02.2015 Git  ............  |   [R5]    X264 23.02.2015 Git  ...............  |
++          |   [5]    X264 30.08.2015 Git  ............  |   [R5]    X264 30.08.2015 Git  ...............  |
+           |   [6]    X265 HG  ........................  |   [R6]    X265 HG  ...........................  |
+           |   [7]    FDK-AAC Git  ....................  |   [R7]    FDK-AAC Git  .......................  |
+           |   [8]    LIBVPX 1.4.0  ...................  |   [R8]    LIBVPX 1.4.0  ......................  |
+-          |   [9]    FFMPEG 2.6.3 Git  ...............  |   [R9]    FFMPEG 2.6.3 Git  ..................  |
++          |   [9]    FFMPEG 2.7.2 Git  ...............  |   [R9]    FFMPEG 2.7.2 Git  ..................  |
+           |   =====================================================================================   |
+           |   ..............♦♦♦   Installazione XINE-LIB - XINE-UI - VDR & PLUGINS   ♦♦♦.............  |
+           |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
+@@ -443,18 +443,18 @@
+     wget https://www.dropbox.com/s/jtk3ax8hj7dmf2h/yasm-1.3.0.tar.gz;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/libdrm-2.4.61.tar.gz ]; then
++if [ -s /home/`logname`/sifinstallrepo/libdrm-2.4.64.tar.gz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.61.tar.gz;
++    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.64.tar.gz;
+   fi    
+ 
+-if [ -s /home/`logname`/sifinstallrepo/libva-1.5.1.tar.bz2 ]; then
++if [ -s /home/`logname`/sifinstallrepo/libva-1.6.0.tar.bz2 ]; then
+   echo "░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦::::  File Presente ... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░¦¦¦¦¦¦::::  File non Presente ... Eseguo il Download ... ::::¦¦¦¦¦¦░░░░░░";
+-    wget http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.5.1.tar.bz2;
++    wget http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.6.0.tar.bz2;
+   fi    
+ 
+ if [ -s /home/`logname`/sifinstallrepo/x264 ]; then
+@@ -1234,8 +1234,8 @@
+ ############################ caricamento librerie ####################################
+ 
+     wget https://www.dropbox.com/s/jtk3ax8hj7dmf2h/yasm-1.3.0.tar.gz;
+-    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.61.tar.gz;
+-    wget https://www.dropbox.com/s/fcuvgdi8ra57zgc/libva-1.5.1.tar.bz2;
++    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.64.tar.gz;
++    wget http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.6.0.tar.bz2;
+     git clone https://github.com/mstorsjo/fdk-aac.git;
+     git clone git://git.videolan.org/x264.git
+     wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.4.0.tar.bz2;
+@@ -1460,13 +1460,13 @@
+ 
+     apt-get -y remove libdrm
+     clear
+-    echo "                    Adesso Installo Libdrm 2.4.61"; sleep 4
++    echo "                    Adesso Installo Libdrm 2.4.64"; sleep 4
+     cd /usr/local/src
+     rm -rf libdrm;
+-    cp /home/`logname`/sifinstallrepo/libdrm-2.4.61.tar.gz /usr/local/src/;  
+-    tar -zxvf libdrm-2.4.61.tar.gz; mv libdrm-2.4.61 libdrm; rm -r libdrm-2.4.61.tar.gz; cd libdrm
++    cp /home/`logname`/sifinstallrepo/libdrm-2.4.64.tar.gz /usr/local/src/;  
++    tar -zxvf libdrm-2.4.64.tar.gz; mv libdrm-2.4.64 libdrm; rm -r libdrm-2.4.64.tar.gz; cd libdrm
+     ./configure --enable-silent-rules --enable-libkms --enable-udev --enable-largefile --enable-intel --enable-radeon
+-    checkinstall --pkgname=libdrm --pkgversion="2.4.61-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=libdrm --pkgversion="2.4.64-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -1483,7 +1483,7 @@
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo Libdrm 2.4.61"; sleep 4
++    echo "                    Adesso Rimuovo Libdrm 2.4.64"; sleep 4
+     apt-get -y purge libdrm; rm -r /usr/local/src/libdrm; rm /usr/local/src/packages/libdrm*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+@@ -1502,14 +1502,14 @@
+ 
+     apt-get -y remove libva
+     clear
+-    echo "                    Adesso Installo Libva 1.5.1"; sleep 4
++    echo "                    Adesso Installo Libva 1.6.0"; sleep 4
+     cd /usr/local/src;
+     rm -r libva;
+-    cp /home/`logname`/sifinstallrepo/libva-1.5.1.tar.bz2 /usr/local/src/;
+-    tar xjf libva-1.5.1.tar.bz2; mv libva-1.5.1 libva; rm -r libva-1.5.1.tar.bz2;
++    cp /home/`logname`/sifinstallrepo/libva-1.6.0.tar.bz2 /usr/local/src/;
++    tar xjf libva-1.6.0.tar.bz2; mv libva-1.6.0 libva; rm -r libva-1.6.0.tar.bz2;
+     cd libva
+     ./configure
+-    checkinstall --pkgname=libva --pkgversion="1.5.1-git" --pkgrelease=VAAPI-0.34.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=libva --pkgversion="1.6.0-git" --pkgrelease=VAAPI-0.34.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     rm /etc/ld.so.conf;
+     touch /etc/ld.so.conf;
+     echo 'include /etc/ld.so.conf.d/*.conf
+@@ -1531,7 +1531,7 @@
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo Libva 1.5.1"; sleep 4
++    echo "                    Adesso Rimuovo Libva 1.6.0"; sleep 4
+     apt-get -y purge libva; rm -r /usr/local/src/libva; rm /usr/local/src/packages/libva*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+@@ -1556,14 +1556,14 @@
+     apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
+     apt-get -y install cmake cmake-curses-gui 
+     clear
+-    echo "                    Adesso Installo X264 23.02.2015-Git"; sleep 4
++    echo "                    Adesso Installo X264 - Git"; sleep 4
+     cd /usr/local/src;
+     rm -Rf $SRC/x264;
+     cp -r /home/`logname`/sifinstallrepo/x264 /usr/local/src/;
+     cd x264; git checkout stable;
+     ./configure --enable-pic --enable-shared --extra-cflags="-mtune=native -march=native -mfpmath=sse -O4 -pipe"
+     make -j4
+-    checkinstall --pkgname=x264 --pkgversion="2:23.02.2015-git" --bk --default --deldoc=yes --pakdir=$PACKAGES
++    checkinstall --pkgname=x264 --pkgversion="2:30.08.2015-git" --bk --default --deldoc=yes --pakdir=$PACKAGES
+     ldconfig -v
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;  
+ 
+@@ -1581,7 +1581,7 @@
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo X264 18.12.2014"; sleep 4
++    echo "                    Adesso Rimuovo X264 - Git"; sleep 4
+     apt-get -y purge x264; rm -r /usr/local/src/x264; rm /usr/local/src/packages/x264*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+@@ -1745,7 +1745,7 @@
+     clear
+     apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
+     clear
+-    dialog --title "   ** Installazione FFmpeg 2.6.3 Git **   " --infobox "
++    dialog --title "   ** Installazione FFmpeg 2.7.2 Git **   " --infobox "
+    ----------------------------------------------------
+           Seleziona il Tipo di Configurazione ...            
+    ----------------------------------------------------
+@@ -1769,7 +1769,7 @@
+     cd ffmpeg 
+     ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
+     make -j4
+-    checkinstall --pkgname=ffmpeg --pkgversion="7:2.6.3-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=ffmpeg --pkgversion="7:2.7.2-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     hash -r
+     ldconfig -v
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+@@ -1781,7 +1781,7 @@
+     cd ffmpeg 
+     ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
+     make -j4
+-    checkinstall --pkgname=ffmpeg --pkgversion="7:2.6.3-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=ffmpeg --pkgversion="7:2.7.2-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     hash -r
+     ldconfig -v
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+@@ -1800,7 +1800,7 @@
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo FFmpeg 2.6.3"; sleep 4
++    echo "                    Adesso Rimuovo FFmpeg 2.7.2"; sleep 4
+     apt-get -y purge ffmpeg; rm -r /usr/local/src/ffmpeg; rm /usr/local/src/packages/ffmpeg*;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;; 
+ 
+@@ -4205,7 +4205,7 @@
+         [z]    Skip 
+         
+    -------------------------------------------------------------------------------------------------------------------------------" 0 0
+-    echo -n "        Scegli  Vhannibal [a-y]   Morpheus [a1-x2]:        "
++    echo -n "        Scegli  Vhannibal [a-y]   Morpheus [a1-u1]   Getchannels [x1-x2]:        "
+     read yourch
+     case $yourch in
+     
