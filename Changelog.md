@@ -1,3 +1,10 @@
+## Rev. 5.5.6
+- Inserite alcune traduzioni in italiano di plugin e skin
+- Eliminare dalla sifinstallrepo traduzioni.tar.gz e ricaricarle con il Punto 1a
+- Eliminato un bug librerie libva
+
+
+
 ## Rev. 5.5.5
 - Aggiornato Librerie Libdrm versione 2.4.64
 - Aggiornato Librerie Libva versione 1.6.0
