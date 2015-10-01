@@ -1,3 +1,18 @@
+## Rev. 5.5.7
+- Modifica del Menu' Principale Script creati nuovi "Submenu" con diversa numerazione 
+- Creati Nuovi Sottomenu per selezionare i vari pacchetti con Installa/Rimuovi - Aggiunto Relative Note
+- Aggiornato Librerie Libdrm 2.4.65
+- Aggiornato Librerie LIBVA 1.6.1
+- Aggiunto Supporto Librerie LIBVA-INTEL-DRIVER 1.6.1
+- Aggiunto Supporto Librerie LIBVA-VDPAU-DRIVER 0.7.4 + Aggiunto Patch per corretta compilazione
+- Aggiornato repository di x265 con HG Videolan
+- Aggiornato ffmpeg con release stable 2.8
+- Eliminare dalla cartella Repository Locale i pacchetti Obsoleti o Aggiornati
+- Rieseguire il Punto 1,A - Download & Update Repository Locale
+- Eliminato un bug in compilazione xine-lib 1.2.6 - Errore di Libtool
+
+
+
 ## Rev. 5.5.6
 - Inserite alcune traduzioni in italiano di plugin e skin
 - Eliminare dalla sifinstallrepo traduzioni.tar.gz e ricaricarle con il Punto 1a
