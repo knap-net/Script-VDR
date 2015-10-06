@@ -1265,13 +1265,6 @@ else
     wget https://www.dropbox.com/s/81fd2z1ye192lnx/setup43.tar.gz;
   fi
 
-if [ -s /home/`logname`/sifinstallrepo/SoftCam.Key.tar.gz ]; then
-  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
-else
-  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
-    wget https://www.dropbox.com/s/51ycl48ba1vu3jn/SoftCam.Key.tar.gz;
-  fi
-
 if [ -s /home/`logname`/sifinstallrepo/w_scan-20141122.tar.bz2 ]; then
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
 else
@@ -1421,7 +1414,6 @@ else
     wget https://www.dropbox.com/s/hb2mv9ytz5q6yz7/picon.tar.gz;
     wget https://www.dropbox.com/s/873qnh3yxmnzo0o/setup16.tar.gz;
     wget https://www.dropbox.com/s/81fd2z1ye192lnx/setup43.tar.gz;
-    wget https://www.dropbox.com/s/51ycl48ba1vu3jn/SoftCam.Key.tar.gz;
     wget https://www.dropbox.com/s/h2114fton87spyh/text2skin.patch.tar.gz;
     wget https://www.dropbox.com/s/m32a4s23h7r00mg/themes.tar.gz;
     wget https://www.dropbox.com/s/bbi09cxti2wa8r2/yaepghd-0.0.3-ce-themes.tar.gz;
@@ -3770,8 +3762,7 @@ s/PARALLEL   ?= PARALLEL_32_INT/PARALLEL   ?= PARALLEL_128_SSE2/' $VDRSRC/sc/Mak
 cd ../..; make plugins; mkdir -p /etc/vdr/plugins/sc; cd /etc/vdr/plugins/sc; touch cardclient.conf;
 echo "cccam:127.0.0.1:port:0/0000/0000:/tmp/camd.socket
 cccam2:192.168.x.x:port:0/0000/0000:username:password
-newcamd:127.0.0.1:port:0/0000/0000:username:password:0102030405060708091011121314" >> cardclient.conf
-cp -r /home/`logname`/sifinstallrepo/SoftCam.Key.tar.gz $PLUGINS/sc; tar -xzvf SoftCam.Key.tar.gz; rm -r SoftCam.Key.tar.gz;
+newcamd:127.0.0.1:port:0/0000/0000:username:password:0102030405060708091011121314" >> cardclient.conf;
 #
 #
 #echo "*** dvb-card setup ***"; 
