@@ -1,0 +1,202 @@
+--- installer.old	2015-10-21 20:18:53.319965000 +0200
++++ installer	2016-01-17 11:08:15.000000000 +0100
+@@ -1073,11 +1073,11 @@
+     wget https://www.dropbox.com/s/5l69u5htqsge852/elchiHD-logos-v3.tar.bz2;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/skin-flatplus ]; then
++if [ -s /home/`logname`/sifinstallrepo/skinflatplus ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    git clone http://projects.vdr-developer.org/git/skin-flatplus.git/;
++    git clone http://projects.vdr-developer.org/git/skin-flatplus.git skinflatplus;
+   fi
+   
+ if [ -s /home/`logname`/sifinstallrepo/icone.tar.gz ]; then
+@@ -1167,12 +1167,12 @@
+     wget https://www.dropbox.com/s/os0dz379o9rdtk3/getchannels.tar.gz;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/channels-nohd-tivusat-skyno.conf ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    wget http://www.vdr-italia.org/channels/17x/channels-nohd-tivusat-skyno.conf;
+-  fi
++#if [ -s /home/`logname`/sifinstallrepo/channels-nohd-tivusat-skyno.conf ]; then
++#  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++#else
++#  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++#    wget http://www.vdr-italia.org/channels/17x/channels-nohd-tivusat-skyno.conf;
++#  fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/channels.conf.terr.tar.gz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+@@ -1381,7 +1381,7 @@
+     git clone git://projects.vdr-developer.org/skin-narrowhd.git;
+     git clone git://projects.vdr-developer.org/skin-nopacity.git;
+     git clone http://projects.vdr-developer.org/git/vdr-plugin-skinenigmang.git;
+-    git clone http://projects.vdr-developer.org/git/skin-flatplus.git;
++    git clone http://projects.vdr-developer.org/git/skin-flatplus.git skinflatplus;
+     wget https://www.dropbox.com/s/odv30s0a22mau60/skinenigmang-logos-xpm-hi-20070702.tgz;
+     wget https://www.dropbox.com/s/weh6c53bg9363ey/skinenigmang-channellogos-xpm-hi-20070702.tgz;
+     wget https://www.dropbox.com/s/pydva1r0iafh5hy/skinenigmang-fonts-20080225.tgz;
+@@ -1397,7 +1397,7 @@
+     wget https://www.dropbox.com/s/6hzpdx9yv5ypzxv/traduzioni.tar.gz;
+     wget https://www.dropbox.com/s/os0dz379o9rdtk3/getchannels.tar.gz;
+     wget https://www.dropbox.com/s/jrizzen5q8o07uv/01_Add_language_It.patch.tar.gz;
+-    wget http://www.vdr-italia.org/channels/17x/channels-nohd-tivusat-skyno.conf;
++#    wget http://www.vdr-italia.org/channels/17x/channels-nohd-tivusat-skyno.conf;
+     wget https://www.dropbox.com/s/z3czcyw5za82utc/channels.conf.dual.tar.gz;
+     wget https://www.dropbox.com/s/reovn22nauzb2se/channels.conf.trial.tar.gz;
+     wget https://www.dropbox.com/s/4jmjiurewriu1sh/channels.conf.terr.tar.gz;
+@@ -2418,7 +2418,7 @@
+ clear
+ echo "               *** Skin Flatplus ***"; echo ""; sleep 3
+ cd $VDRSRC;
+-cp -r /home/`logname`/sifinstallrepo/skin-flatplus /$VDRSRC/ && cp -r /$SRC/traduzioni/flatplus_it_IT.po /$VDRSRC/skin-flatplus/po/ && cd skin-flatplus/po/ && mv flatplus_it_IT.po it_IT.po && cd .. && make install && cd /usr/lib/vdr/plugins/skinflatplus/widgets/temperatures/ && ln -s temperatures.default temperatures && cd ../system_information && ln -s system_information.ubuntu system_information  && cp -rf /home/`logname`/sifinstallrepo/flat_weather.tar.gz ../weather/ && cd ../weather && tar -zxvf flat_weather.tar.gz && rm -r flat_weather.tar.gz;
++cp -r /home/`logname`/sifinstallrepo/skinflatplus /$VDRSRC/ && cd skinflatplus && make install && cd /usr/lib/vdr/plugins/skinflatplus/widgets/temperatures/ && ln -s temperatures.default temperatures && cd ../system_information && ln -s system_information.ubuntu system_information  && cp -rf /home/`logname`/sifinstallrepo/flat_weather.tar.gz ../weather/ && cd ../weather && tar -zxvf flat_weather.tar.gz && rm -r flat_weather.tar.gz;
+ # qui sopra c'è da mettere le icone di menù mancanti che sono dentro le skin del Skin Flatplus traducendole e comprimendole
+ #
+ clear
+@@ -2676,7 +2676,7 @@
+  Type=Application
+  Name=Vdr-Softhddevice
+  Description=avvio di Vdr-Softhddevice
+- Icon=/usr/local/src/icone/softlogo.png
++ Icon=/usr/local/src/icone/softhddevice.png
+  Exec=/usr/local/bin/start-softhddevice-vdr.sh
+  ">> /home/`logname`/Scrivania/Vdr-Softhddevice.desktop;
+  chmod 777 /home/`logname`/Scrivania/Vdr-Softhddevice.desktop;
+@@ -2801,38 +2801,54 @@
+   then  echo "Oscam $Remind3"
+ else
+ echo "oscam ALL=(ALL) ALL" >> /etc/sudoers; 
+-apt-get install libssl0.9.8 ; rm -r /etc/init.d/oscam: touch /etc/init.d/oscam; echo '
+-#!/bin/sh 
+-
+-DAEMON=/usr/local/bin/oscam
+-DEAMON_OPTS="-b"
+-PIDFILE=/var/run/oscam.pid
++apt-get install libssl0.9.8 ; rm -r /etc/init.d/oscam; touch /etc/init.d/oscam; 
+ 
+-test -x ${DAEMON} || exit 0
++echo '
++#!/bin/sh
++#
++# To be copied to: /etc/init.d
++# And type:
++### BEGIN INIT INFO
++# Provides:          Oscam
++# Required-Start:   
++# Required-Stop:     
++# Default-Start:     0 1 2 3 4 5 6
++# Default-Stop:     
++# Description:       Start, Stop or Restart Oscam
++### END INIT INFO
+ 
+-. /lib/lsb/init-functions
++# Shell functions sourced from /etc/rc.status:
++set -e
+ 
++# Reset status of this service
++# rc_reset
++#
++echo "Vdr init.d script using: $1" >> /var/log/oscam.log &
+ case "$1" in
+     start)
+-    log_daemon_msg "Starting OScam"
+-    start-stop-daemon --start --quiet --background --pidfile ${PIDFILE} --make-pidfile --exec ${DAEMON} -- ${DAEMON_OPTS}
+-    log_end_msg $?
+-    ;;
+-  stop)
+-    log_daemon_msg "Stopping OScam"
+-    start-stop-daemon --stop --exec ${DAEMON}
+-    log_end_msg $?
+-    ;;
+-  force-reload|restart)
+-    $0 stop
+-    $0 start
+-    ;;
+-  *)
+-    echo "Usage: /etc/init.d/oscam {start|stop|restart|force-reload}"
+-    exit 1
+-    ;;
++        echo -n "Avvio Oscam "
++       /usr/local/bin/oscam >> /var/log/oscam.log &
++        # Remember status and be verbose
++        ;;
++    stop)
++        echo -n "Chiusura di Oscam "
++       killall -9 oscam
++        # Remember status and be verbose
++        ;;
++    restart)
++        echo -n "Riavvio di Oscam "
++        $0 stop
++        $0 start
++
++        # Remember status and be quiet
++        ;;
++    *)
++        echo "Usage: $0 {start|stop|restart}"
++        exit 1
++        ;;
+ esac
+-exit 0' >> /etc/init.d/oscam; chmod 755 /etc/init.d/oscam; echo "%`logname` ALL=NOPASSWD: /etc/init.d/oscam" >> /etc/sudoers; cd $SRC; mkdir -p oscam; cd oscam; cp -r /home/`logname`/sifinstallrepo/oscam.tar.gz /$SRC/oscam; tar -zxvf oscam.tar.gz; rm -rf oscam.tar.gz;
++exit 0
++' >> /etc/init.d/oscam; chmod 755 /etc/init.d/oscam; echo "%`logname` ALL=NOPASSWD: /etc/init.d/oscam" >> /etc/sudoers; cd $SRC; mkdir -p oscam; cd oscam; cp -r /home/`logname`/sifinstallrepo/oscam.tar.gz /$SRC/oscam; tar -zxvf oscam.tar.gz; rm -rf oscam.tar.gz;
+ cp -r * /usr/local/etc;
+ fi
+    
+@@ -2844,8 +2860,6 @@
+ chmod 777 oscam;
+  
+  
+- 
+- 
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -2937,7 +2951,7 @@
+     echo -n "        Scegli  [a-i]:      "
+     read yourch
+     case $yourch in
+-a) echo "$MONO13" >> /etc/vdr/diseqc.conf && cp /home/`logname`/sifinstallrepo/channels-nohd-tivusat-skyno.conf /etc/vdr/ && cd /etc/vdr/ && mv channels-nohd-tivusat-skyno.conf channels.conf;;
++a) echo "$MONO13" >> /etc/vdr/diseqc.conf && cd /etc/vdr/ && wget http://www.vdr-italia.org/channels/17x/channels_tivusat_skyitalia_17x.conf && mv channels_tivusat_skyitalia_17x.conf channels.conf;;
+ b) echo "$MONO19" >> /etc/vdr/diseqc.conf && cp /home/`logname`/sifinstallrepo/channels.conf.astra.tar.gz /etc/vdr/ && cd /etc/vdr/ && tar -zxvf channels.conf.astra.tar.gz && rm -r channels.conf.astra.tar.gz;;
+ c) echo "$DUAL" >> /etc/vdr/diseqc.conf && sed -i 's/DiSEqC = 0/DiSEqC = 1/' /etc/vdr/setup.conf && cp /home/`logname`/sifinstallrepo/channels.conf.dual.tar.gz /etc/vdr/ && cd /etc/vdr/ && tar -zxvf channels.conf.dual.tar.gz && rm -r channels.conf.dual.tar.gz;;
+ d) echo "$TRIAL" >> /etc/vdr/diseqc.conf && sed -i 's/DiSEqC = 0/DiSEqC = 1/' /etc/vdr/setup.conf && cp /home/`logname`/sifinstallrepo/channels.conf.trial.tar.gz /etc/vdr/ && cd /etc/vdr/ && tar -zxvf channels.conf.trial.tar.gz && rm -r channels.conf.trial.tar.gz;;
+@@ -3656,7 +3670,7 @@
+     case $yourch in
+ a) cd $VDRSRC && if [ -f mpv/Makefile ];
+   then  echo "Mpv $Remind"
+-  else sudo apt-get install -y libsndfile1 libsndfile-dev libid3tag0 libid3tag0-dev libmad0-dev mpv && sudo add-apt-repository http://ppa.launchpad.net/mc3man/mpv-tests/ubuntu && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-mpv /$VDRSRC && mv vdr-plugin-mpv mpv && cp -r /$SRC/traduzioni/mpv_it_IT.po /$VDRSRC/mpv/po/ && cd mpv/po/ && mv mpv_it_IT.po it_IT.po && cd .. && make install && sed -i "s|-P'dvbapi'|& -P'mpv'|" /usr/local/bin/vdrrun 
++  else sudo apt-get install -y libsndfile1 libsndfile-dev libid3tag0 libid3tag0-dev libmad0-dev mpv libmpv1 libmpv-dev && sudo add-apt-repository http://ppa.launchpad.net/mc3man/mpv-tests/ubuntu && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-mpv /$VDRSRC && mv vdr-plugin-mpv mpv && cp -r /$SRC/traduzioni/mpv_it_IT.po /$VDRSRC/mpv/po/ && cd mpv/po/ && mv mpv_it_IT.po it_IT.po && cd .. && make install && sed -i "s|-P'dvbapi'|& -P'mpv'|" /usr/local/bin/vdrrun 
+     fi || echo "$Remind7 Mpv"
+     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+ b) cd $VDRSRC; rm -r mpv; rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-mpv; git clone git://projects.vdr-developer.org/vdr-plugin-mpv.git; cp -r vdr-plugin-mpv /home/`logname`/sifinstallrepo/; mv vdr-plugin-mpv mpv; cp -r /$SRC/traduzioni/mpv_it_IT.po /$VDRSRC/mpv/po/ && cd mpv/po/; mv mpv_it_IT.po it_IT.po; cd .. ; make install;
+@@ -5628,7 +5642,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+ a)                                        #########################################
+-                                          #                  KODI                 #
++                                          #                  KODI               c  #
+                                           #########################################
+ 
+               
+@@ -5638,10 +5652,10 @@
+     else 
+     apt-get -y install python-software-properties pkg-config
+     apt-get -y install software-properties-common
+-#    sudo add-apt-repository ppa:team-xbmc/ppa
+-    sudo add-apt-repository ppa:team-xbmc/xbmc-nightly
++    sudo add-apt-repository ppa:team-xbmc/ppa
++#   sudo add-apt-repository ppa:team-xbmc/xbmc-nightly
+     sudo apt-get update
+-    sudo apt-get -y install kodi
++    sudo apt-get -y install kodi kodi-pvr-iptvsimple
+ #
+     rm -rf /home/`logname`/Scrivania/Kodi.desktop; touch /home/`logname`/Scrivania/Kodi.desktop; 
+     chmod 777 /home/`logname`/Scrivania/Kodi.desktop;
