@@ -1,3 +1,11 @@
+## Rev. 5.5.8
+- Modificate ... alcune parti rese compatibili con Ubuntu 15.10 e verosimilmente con la prossima versione LST 16.04
+- Rimane vdr in versione Stabile 2.2.0 
+- Sistemato un paio di bug
+
+
+
+
 ## Rev. 5.5.7
 - Modifica del Menu' Principale Script creati nuovi "Submenu" con diversa numerazione 
 - Creati Nuovi Sottomenu per selezionare i vari pacchetti con Installa/Rimuovi - Aggiunto Relative Note
