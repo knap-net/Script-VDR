@@ -1,0 +1,1279 @@
+--- Script-VDR-Scriptvdr-2.2.0_V.5.5.8/installer	2016-02-22 21:33:21.353580487 +0100
++++ Script-VDR-Scriptvdr-2.2.0_V.5.5.9/installer	2016-02-26 23:03:21.872802795 +0100
+@@ -457,25 +457,25 @@
+     wget https://www.dropbox.com/s/jtk3ax8hj7dmf2h/yasm-1.3.0.tar.gz;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/libdrm-2.4.65.tar.gz ]; then
++if [ -s /home/`logname`/sifinstallrepo/libdrm-2.4.67.tar.gz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.65.tar.gz;
++    wget https://dri.freedesktop.org/libdrm/libdrm-2.4.67.tar.gz;
+   fi    
+ 
+-if [ -s /home/`logname`/sifinstallrepo/libva-1.6.1.tar.bz2 ]; then
++if [ -s /home/`logname`/sifinstallrepo/libva-1.6.2.tar.bz2 ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    wget http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.6.1.tar.bz2;
++    wget https://www.freedesktop.org/software/vaapi/releases/libva/libva-1.6.2.tar.bz2;
+   fi    
+ 
+-if [ -s /home/`logname`/sifinstallrepo/libva-intel-driver-1.6.1.tar.bz2 ]; then
++if [ -s /home/`logname`/sifinstallrepo/libva-intel-driver-1.6.2.tar.bz2 ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    wget http://www.freedesktop.org/software/vaapi/releases/libva-intel-driver/libva-intel-driver-1.6.1.tar.bz2;
++    wget https://www.freedesktop.org/software/vaapi/releases/libva-intel-driver/libva-intel-driver-1.6.2.tar.bz2;
+   fi      
+   
+ if [ -s /home/`logname`/sifinstallrepo/libva-vdpau-driver-0.7.4.tar.bz2 ]; then
+@@ -1073,12 +1073,12 @@
+     wget https://www.dropbox.com/s/5l69u5htqsge852/elchiHD-logos-v3.tar.bz2;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/skinflatplus ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    git clone http://projects.vdr-developer.org/git/skin-flatplus.git skinflatplus;
+-  fi
++#if [ -s /home/`logname`/sifinstallrepo/skinflatplus ]; then
++#  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++#else
++#  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++#    git clone http://projects.vdr-developer.org/git/skin-flatplus.git skinflatplus;
++#  fi
+   
+ if [ -s /home/`logname`/sifinstallrepo/icone.tar.gz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+@@ -1167,6 +1167,13 @@
+     wget https://www.dropbox.com/s/os0dz379o9rdtk3/getchannels.tar.gz;
+   fi
+ 
++if [ -s /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz ]; then
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++else
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++    wget https://www.dropbox.com/s/tqua9jro2touw8c/vdr-getchannels-0.7.2.tar.gz;
++  fi
++
+ #if [ -s /home/`logname`/sifinstallrepo/channels-nohd-tivusat-skyno.conf ]; then
+ #  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ #else
+@@ -1290,9 +1297,9 @@
+ ############################ caricamento librerie ####################################
+ 
+     wget https://www.dropbox.com/s/jtk3ax8hj7dmf2h/yasm-1.3.0.tar.gz;
+-    wget http://dri.freedesktop.org/libdrm/libdrm-2.4.65.tar.gz;
+-    wget http://www.freedesktop.org/software/vaapi/releases/libva/libva-1.6.1.tar.bz2;
+-    wget http://www.freedesktop.org/software/vaapi/releases/libva-intel-driver/libva-intel-driver-1.6.1.tar.bz2;
++    wget https://dri.freedesktop.org/libdrm/libdrm-2.4.67.tar.gz;
++    wget https://www.freedesktop.org/software/vaapi/releases/libva/libva-1.6.2.tar.bz2;
++    wget https://www.freedesktop.org/software/vaapi/releases/libva-intel-driver/libva-intel-driver-1.6.2.tar.bz2;
+     wget http://www.freedesktop.org/software/vaapi/releases/libva-vdpau-driver/libva-vdpau-driver-0.7.4.tar.bz2;
+     wget https://www.dropbox.com/s/3hbp5r2jf4a1lh8/vdpau_decode.patch;
+     wget https://www.dropbox.com/s/u8h7u5htmqdzd0n/vdpau_dump.patch;
+@@ -1396,6 +1403,7 @@
+ 
+     wget https://www.dropbox.com/s/6hzpdx9yv5ypzxv/traduzioni.tar.gz;
+     wget https://www.dropbox.com/s/os0dz379o9rdtk3/getchannels.tar.gz;
++    wget https://www.dropbox.com/s/tqua9jro2touw8c/vdr-getchannels-0.7.2.tar.gz;
+     wget https://www.dropbox.com/s/jrizzen5q8o07uv/01_Add_language_It.patch.tar.gz;
+ #    wget http://www.vdr-italia.org/channels/17x/channels-nohd-tivusat-skyno.conf;
+     wget https://www.dropbox.com/s/z3czcyw5za82utc/channels.conf.dual.tar.gz;
+@@ -1424,7 +1432,6 @@
+     chmod -R 777 *;;
+     #echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;
+     
+-
+     
+     
+     
+@@ -1466,9 +1473,9 @@
+         
+         *****  Installa  *****  .................  *****  Rimuove  *****
+         [a]    YASM 1.3.0  ........................  [a1]    YASM 1.3.0
+-        [b]    LIBDRM 2.4.65  .....................  [b1]    LIBDRM 2.4.65
+-        [c]    LIBVA 1.6.1  .......................  [c1]    LIBVA 1.6.1
+-        [d]    LIBVA-INTEL-DRIVER 1.6.1 ...........  [d1]    LIBVA-INTEL-DRIVER 1.6.1
++        [b]    LIBDRM 2.4.67  .....................  [b1]    LIBDRM 2.4.67
++        [c]    LIBVA 1.6.2  .......................  [c1]    LIBVA 1.6.2
++        [d]    LIBVA-INTEL-DRIVER 1.6.2 ...........  [d1]    LIBVA-INTEL-DRIVER 1.6.2
+         [e]    LIBVA-VDPAU-DRIVER 0.7.4 ...........  [e1]    LIBVA-VDPAU-DRIVER 0.7.4
+ 
+         [f]    Skip
+@@ -1477,10 +1484,10 @@
+         
+    --------------------------------------------------------------       
+         Note:
+-        - LIBVA 1.6.1 - Va sempre installato come dipendenza.
++        - LIBVA 1.6.2 - Va sempre installato come dipendenza.
+         
+         Note:
+-        - LIBVA-INTEL-DRIVER 1.6.1 - is the VA-API implementation for Intel G45 chipsets
++        - LIBVA-INTEL-DRIVER 1.6.2 - is the VA-API implementation for Intel G45 chipsets
+         and Intel HD Graphics for Intel Core processor family.
+ 
+         Platform definitions:
+@@ -1497,6 +1504,9 @@
+     read yourch
+     case $yourch in
+     
++    
++    
++    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -1519,10 +1529,10 @@
+     tar -zxvf yasm-1.3.0.tar.gz; mv yasm-1.3.0 yasm; rm -r yasm-1.3.0.tar.gz; cd yasm
+     ./configure
+     checkinstall --pkgname=yasm --pkgversion="1.3.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES;;
+-
+     
+     
+-
++    
++    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -1536,10 +1546,10 @@
+     clear
+     echo "                    Adesso Rimuovo Yasm 1.3.0"; sleep 4
+     apt-get -y purge yasm; rm -r /usr/local/src/yasm; rm /usr/local/src/packages/yasm*;;
+-
+     
+     
+-
++    
++    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -1552,17 +1562,17 @@
+ 
+     apt-get -y remove libdrm
+     clear
+-    echo "                    Adesso Installo Libdrm 2.4.65"; sleep 4
++    echo "                    Adesso Installo Libdrm 2.4.67"; sleep 4
+     cd /usr/local/src
+     rm -rf libdrm;
+-    cp /home/`logname`/sifinstallrepo/libdrm-2.4.65.tar.gz /usr/local/src/;  
+-    tar -zxvf libdrm-2.4.65.tar.gz; mv libdrm-2.4.65 libdrm; rm -r libdrm-2.4.65.tar.gz; cd libdrm
++    cp /home/`logname`/sifinstallrepo/libdrm-2.4.67.tar.gz /usr/local/src/;  
++    tar -zxvf libdrm-2.4.67.tar.gz; mv libdrm-2.4.67 libdrm; rm -r libdrm-2.4.67.tar.gz; cd libdrm
+     ./configure --enable-silent-rules --enable-libkms --enable-udev --enable-largefile --enable-intel --enable-radeon
+-    checkinstall --pkgname=libdrm --pkgversion="2.4.65-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES;;
+-
++    checkinstall --pkgname=libdrm --pkgversion="2.4.67-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES;;
++    
++    
+     
+     
+-
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -1574,12 +1584,12 @@
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo Libdrm 2.4.65"; sleep 4
++    echo "                    Adesso Rimuovo Libdrm 2.4.67"; sleep 4
+     apt-get -y purge libdrm; rm -r /usr/local/src/libdrm; rm /usr/local/src/packages/libdrm*;;
+-
+     
+     
+-
++    
++    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -1593,14 +1603,14 @@
+     apt-get -y remove libva
+     apt-get -y install libwayland-dev
+     clear
+-    echo "                    Adesso Installo Libva 1.6.1"; sleep 4
++    echo "                    Adesso Installo Libva 1.6.2"; sleep 4
+     cd /usr/local/src;
+     rm -r libva;
+-    cp /home/`logname`/sifinstallrepo/libva-1.6.1.tar.bz2 /usr/local/src/;
+-    tar xjf libva-1.6.1.tar.bz2; mv libva-1.6.1 libva; rm -r libva-1.6.1.tar.bz2;
++    cp /home/`logname`/sifinstallrepo/libva-1.6.2.tar.bz2 /usr/local/src/;
++    tar xjf libva-1.6.2.tar.bz2; mv libva-1.6.2 libva; rm -r libva-1.6.2.tar.bz2;
+     cd libva
+     ./configure
+-    checkinstall --pkgname=libva --pkgversion="1.6.1-git" --pkgrelease=VAAPI-0.38.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=libva --pkgversion="1.6.2-git" --pkgrelease=VAAPI-0.38.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     rm /etc/ld.so.conf;
+     touch /etc/ld.so.conf;
+     echo 'include /etc/ld.so.conf.d/*.conf
+@@ -1621,33 +1631,33 @@
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo Libva 1.6.1"; sleep 4
++    echo "                    Adesso Rimuovo Libva 1.6.2"; sleep 4
+     apt-get -y purge libva; rm -r /usr/local/src/libva; rm /usr/local/src/packages/libva*;;
+-
+-
+-
+-
++    
++    
++    
++    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+ d)                                        ##########################################
+-                                          #        LIBVA-INTEL-DRIVER 1.6.1        #
++                                          #        LIBVA-INTEL-DRIVER 1.6.2        #
+                                           ##########################################
+ 
+ 
+     apt-get -y remove libva-intel-driver
+     apt-get -y install libwayland-dev
+     clear
+-    echo "                    Adesso Installo libva-intel-driver 1.6.1"; sleep 4
++    echo "                    Adesso Installo libva-intel-driver 1.6.2"; sleep 4
+     cd /usr/local/src;
+     rm -r libva-intel-driver;
+-    cp /home/`logname`/sifinstallrepo/libva-intel-driver-1.6.1.tar.bz2 /usr/local/src/;
+-    tar xjf libva-intel-driver-1.6.1.tar.bz2; mv libva-intel-driver-1.6.1 libva-intel-driver; rm -r libva-intel-driver-1.6.1.tar.bz2;
++    cp /home/`logname`/sifinstallrepo/libva-intel-driver-1.6.2.tar.bz2 /usr/local/src/;
++    tar xjf libva-intel-driver-1.6.2.tar.bz2; mv libva-intel-driver-1.6.2 libva-intel-driver; rm -r libva-intel-driver-1.6.2.tar.bz2;
+     cd libva-intel-driver
+     ./configure
+-    checkinstall --pkgname=libva-intel-driver --pkgversion="1.6.1-git" --pkgrelease=VAAPI-0.38.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=libva-intel-driver --pkgversion="1.6.2-git" --pkgrelease=VAAPI-0.38.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     rm /etc/ld.so.conf;
+     touch /etc/ld.so.conf;
+     echo 'include /etc/ld.so.conf.d/*.conf
+@@ -1663,17 +1673,17 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+ d1)                                       ##########################################
+-                                          #   Rimozione LIBVA-INTEL-DRIVER 1.6.1   #
++                                          #   Rimozione LIBVA-INTEL-DRIVER 1.6.2   #
+                                           ##########################################
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo libva-intel-driver 1.6.1"; sleep 4
++    echo "                    Adesso Rimuovo libva-intel-driver 1.6.2"; sleep 4
+     apt-get -y purge libva; rm -r /usr/local/src/libva; rm /usr/local/src/packages/libva*;;
+-
+-
+-
+-
++    
++    
++    
++    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -1781,6 +1791,9 @@
+     read yourch
+     case $yourch in
+     
++    
++    
++    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -2025,7 +2038,9 @@
+     esac
+     ;;
+     
+-
++    
++    
++    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -2043,9 +2058,6 @@
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+     
+     
+-
+-    
+-    
+     
+     
+ #############################################################################################################################  
+@@ -2081,6 +2093,10 @@
+     echo -n "        Scegli = Installa [a-g] ~~ Rimuove [a1-g1] ~~ Esci [h]:      "
+     read yourch
+     case $yourch in
++    
++    
++    
++    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -2436,6 +2452,8 @@
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+      
+ 
++     
++     
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -2860,6 +2878,8 @@
+ chmod 777 oscam;
+  
+  
++ 
++ 
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -3129,8 +3149,8 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+ e)                                #################################################################
+-                                   #    Installazione/Aggiornamento/Rimozopne altri Vdr Plugins    #
+-                                   #################################################################
++                                  #    Installazione/Aggiornamento/Rimozopne altri Vdr Plugins    #
++                                  #################################################################
+  
+        
+     clear        
+@@ -4585,6 +4605,7 @@
+     
+     
+ 
++    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+@@ -4612,614 +4633,272 @@
+                      Creazione lista canali
+    --------------------------------------------------------------
+    
+-        ***  Sezione Lamedb2vdr.sh (Mod. By Grazymax) - Getchannels  ***
+-        [a]    Accedi al Sottomenu - Converte Settings Enigma2
+-                 Creazione Settings - Download da Kingofsat
++        ****  Sezione Vdr-Getchannels 0.7.2 (New) ****
++        [a]    Creazione Settings da Kingofsat - Accedi al Sottomenu 
++                 Satelliti Disponibili: Da 4.8E a 30.0W
+         
+         
+-        ***  Sezione W_Scan  ***
++        ****  Sezione W_Scan  ****
+         [b]    Creazione Settings  9.0E - utilizzo W_scan                   
+         [c]    Creazione Settings 13.0E - utilizzo W_scan              
+         [d]    Creazione Settings 19.2E - utilizzo W_scan             
+         [e]    Creazione Settings Digitale - utilizzo W_scan
+         
+         
+-        ***  Sezione Lamedb2vdr.sh ~ Vhannibal  ***
+-        [f]    Accedi al Sottomenu - Converte Settings Enigma2
++        ****  Sezione Lamedb2vdr.sh ~ Vhannibal  ****
++        [f]    Converte Settings Enigma2 - Accedi al Sottomenu
+         
+         
+-        ***  Sezione Lamedb2vdr.sh ~ Morpheus  ***
+-        [g]    Accedi al Sottomenu - Converte Settings Enigma2
++        ****  Sezione Lamedb2vdr.sh ~ Morpheus  ****
++        [g]    Converte Settings Enigma2 - Accedi al Sottomenu
+         
++
++        ****  Editor Grafico Lista Canali - Personalizzazione && Modifica
++        [h]    Sezione Editor - Cle4vdr_0.5.3 ~ ChannelEditor_1.9.2.1
+         
+-        ***  Sezione Lamedb2vdr.sh ~ Morpheus  ***
+-        [h]    Rimozione Settings
+         
++        ****  Sezione Lamedb2vdr.sh ~ Morpheus  ****
++        [i]    Rimozione Settings
+         
+-        [i]    Skip 
++        
++        [k]    Skip 
+         
+    -------------------------------------------------------------- " 0 0
+-    echo -n "        Scegli  [a-i]:      "
++    echo -n "        Scegli  [a-k]:      "
+     read yourch
+     case $yourch in
++    
+     ###
+-    ##### Sezione Getchannels #####
++    ##### Sezione Getchannels 0.7.2 #####
+     a) clear        
+-    dialog --title "   ** Download - Conversione Settings Enigma2 Vhannibal - Morpheus - Aggiornamento con Getchannel 0.7.0 **   " --infobox "
+-   -------------------------------------------------------------------------------------------------------------------------------
+-           Scarica Settings Vhannibal ~ Morpheus - Crea File (Nome;Provider) con Lamedb2vdr.sh Modificato (By Grazymax)
++    dialog --title "   ** Creazione Settings con Vdr-Getchannel 0.7.2 **   " --infobox "
+    -------------------------------------------------------------------------------------------------------------------------------
+-           {Beta Test} Aggiorna tramite Getchannel 0.7.0 da Kingofsat - Parametri e PID Audio/Video - Crea Lista Canali 
++           Crea Settings da Kingofsat tramite Vdr-Getchannel 0.7.2 - Parametri, Caid e Pid Audio/Video - Versione Pubblica 
+    -------------------------------------------------------------------------------------------------------------------------------
+    
+-        *****  Vhannibal  ................................  *****  Morpheus
+-        *****  Setting Per Enigma2  *****  ...............  *****  Setting Per Enigma2  *****
+-        [a]    Vhannibal Hot Bird 13°E  ....................  [a1]    MONOFeed (13°E)
+-        [b]    Vhannibal Dual 13, 19°E  ....................  [b1]    DUALFeed (13°E + 19.2°E)
+-        [c]    Vhannibal Motor 68°E-45°W  ..................  [c1]    HISPASAT 1D/1E DUALFeed (30°W + 13°E)
+-        [d]    Vhannibal Quadri 9, 13, 16, 19°E  ...........  [d1]    HISPASAT 1D/1E TRIALFeed (30°W + 13°E + 19.2°E)
+-        [e]    Vhannibal Quadri 13, 19, 23, 28°E  ..........  [e1]    THOR 5/6 DUALFeed (0.8°W + 13°E)
+-        [f]    Vhannibal Quadri 7, 13, 19, 42°E  ...........  [f1]    THOR 5/6 TRIALFeed (0.8°W + 13°E + 19.2°E)
+-        [g]    Vhannibal Quadri Sirius Thor  ...............  [g1]    ASTRA 4A DUALFeed (4.8°E + 13°E)
+-        [h]    Vhannibal Trial 13, 19°E, 30°W  .............  [h1]    ASTRA 4A TRIALFeed (4.8°E + 13°E + 19.2°E)
+-        ..................................................    [i1]    EUTELSAT 9A DUALFeed (9°E + 13°E)
+-        *****  Setting Per Enigma2 + DTT  *****  .........    [j1]    EUTELSAT 9A TRIALFeed (9°E + 13°E + 19.2°E)
+-        [i]    Vhannibal Hot Bird + DTT Italia  ............  [k1]    EUTELSAT 16 DUALFeed (13°E + 16°E)
+-        [j]    Vhannibal Dual + DTT Italia  ................  [l1]    EUTELSAT 16 TRIALFeed (13°E + 16°E + 19.2°E)
+-        [k]    Vhannibal Motor + DTT Italia  ...............  [m1]    ASTRA 3B DUALFeed (13°E + 23.5°E)
+-        [l]    Vhannibal Hot Bird + DTT Roma  ..............  [n1]    ASTRA 3B TRIALFeed (13°E + 19.2°E + 23.5°E)
+-        [m]    Vhannibal Dual + DTT Roma  ..................  [o1]    ASTRA 2A/2E/2F EUTELSAT 28A DUALFeed (13°E + 28.2°E)
+-        [n]    Vhannibal Motor + DTT Roma  .................  [p1]    ASTRA 2A/2E/2F EUTELSAT 28A TRIAL (13°E + 19.2°E + 28.2°E)
+-        [o]    Vhannibal Hot Bird + DTT Milano  ............  [q1]    TURKSAT 2A/3A/4A DUALFeed (13°E + 42.0°E)
+-        [p]    Vhannibal Dual + DTT Milano  ................  [r1]    TURKSAT 2A/3A/4A TRIALFeed (13°E + 19.2°E + 42.0°E)
+-        [q]    Vhannibal Motor + DTT Milano  ...............  [s1]    THOR 5/6 ASTRA 4A TRIALFeed (0.8°W + 4.8°E + 13°E)
+-        [r]    Vhannibal Hot Bird + DTT Napoli  ............  [t1]    THOR 5/6 ASTRA 2A/2E/2F QUAD (0.8°W + 13°E + 19.2°E + 28.2°E)
+-        [s]    Vhannibal Dual + DTT Napoli  ................  [u1]    Motor - FULLFeed (45.0°W - 76.5°E)
+-        [t]    Vhannibal Motor + DTT Napoli  ...............
+-        [u]    Vhannibal Hot Bird + DTT Torino  ............
+-        [v]    Vhannibal Dual + DTT Torino  ................  *****  Sezione Getchannels  *****
+-        [x]    Vhannibal Motor + DTT Torino  ...............  [x1]    Creazione Settings 13.0E - Download da Kingofsat (old)
+-        [y]    Vhannibal Motor + DTT Forli'  ...............  [x2]    Creazione Settings 19.2E - Download da Kingofsat (old)
++        ****  Settings Puntamento Parabola a Est  ****  ...........  ****   Settings Puntamento Parabola a Ovest  ****
++        
++        [a]    Settings Astra-4A ......... 4.8E  ..................  [a1]    Settings Thor-5/6/7 ....... 0.8W
++        [b]    Settings Eutelsat-7A/B .... 7.0E  ..................  [b1]    Settings Amos-2/3 ......... 4.0W
++        [c]    Settings Eutelsat-9A ...... 9.0E  ..................  [c1]    Settings Eutelsat-5 ....... 5.0W
++        [d]    Settings Hot Bird-13B/C/D . 13.0E  .................  [d1]    Settings Nilesat-201 ...... 7.0W
++        [e]    Settings Eutelsat-16A ..... 16.0E  .................  [e1]    Settings Eutelsat-8 ....... 8.0W
++        [f]    Settings Astra-1L/M/N/KR .. 19.2E  .................  [f1]    Settings Eutelsat-12 ...... 12.5W
++        [g]    Settings Astra-3B ......... 23.5E  .................  [g1]    Settings Telstar-12 ....... 15.0W
++        [h]    Settings Eutelsat-25B ..... 25.5E  .................  [h1]    Settings Intelsat-905 ..... 24.5W
++        [i]    Settings Badr-4/5/6/7 ..... 26.0E  .................  [i1]    Settings Hispasat-1D/E .... 30.0W
++        [j]    Settings Astra-2A/E/F/G ... 28.2E  .................  
++        [k]    Settings Arabsat-5A ....... 30.5E  .................  
++        [l]    Settings Hellas-Sat-2 ..... 39.0E  .................  
++        [m]    Settings Turksat-2/3/4A ... 42.0E  .................  
++        [n]    Settings Intelsat-12 ...... 45.0E  .................  ****   Sezione Getchnanels 0.7.0 ****
++        [o]    Settings Intelsat-20 ...... 68.5E  .................  [x1]    Creazione Settings 13.0E - (old) Utilizza il config
++        [p]    Settings ABS-2 ............ 75.0E  .................  [x2]    Creazione Settings 19.2E - (old)
+         
+         [z]    Skip 
++   -------------------------------------------------------------------------------------------------------------------------------        
++        Note:
++        - Versione Pubblica Con Limitazione - Crea Circa 130~135 Canali Per Satellite - Dimostrativa o Test.
++        - Per Versione Privata Contattarmi - Email:  knap.home@alice.it
++        
++        - Crea Settings Ordinati Per Frequenza Crescente - Non Ordinati per Tipologia o Categoria.
+         
++        - Effettuare Piu' Selezioni Dei Satelliti Disponibili ... Per Avere Diversi Settings Nello Stesso channels.conf
++        - Accoda in Fondo Hai Dati Esistenti i Dati Creati Della Nuova Ricerca (Satellite).
++        
++        - x1 - Vdr-Getchannel Utilizza il Config in Lettura Per Creare Settings Personalizzati per Categoria.
+    -------------------------------------------------------------------------------------------------------------------------------" 0 0
+-    echo -n "        Scegli  Vhannibal [a-y]   Morpheus [a1-u1]   Getchannels [x1-x2]:        "
++    echo -n "              Scegli ~ Puntamento a Est [a-p] ~  Puntamento a Ovest [a1-i1] ~  Vdr-Getchannel [x1-x2]:        "
+     read yourch
+     case $yourch in
+     
+     ###
+-    ### Enigma2 ###
+-    ### Vhannibal ###
+-    ###
+-    
+-    a) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=9&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    b) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=10&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    c) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=11&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    d) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=12&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    e) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=13&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    f) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=14&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    g) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=15&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    h) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=16&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
++    ### Sezione Vdr-Getchannels 0.7.2 ###
+     ###
+-    ### Enigma2 + DTT ###
+-    ### Vhannibal ###
++    ###  Est  ###
+     ###
+     
+-    i) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=17&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    a) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 4.8E -o $SRC/settings/channels_4.8E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 4.8E ]" >> /etc/vdr/channels.conf; cat channels_4.8E.conf >> /etc/vdr/channels.conf;;
+     
+-    j) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=18&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    b) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 7.0E -o $SRC/settings/channels_7.0E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 7.0E ]" >> /etc/vdr/channels.conf; cat channels_7.0E.conf >> /etc/vdr/channels.conf;;
+     
+-    k) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=19&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    c) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 9.0E -o $SRC/settings/channels_9.0E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 9.0E ]" >> /etc/vdr/channels.conf; cat channels_9.0E.conf >> /etc/vdr/channels.conf;;
+     
+-    l) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=20&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    d) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 13.0E -o $SRC/settings/channels_13.0E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 13.0E ]" >> /etc/vdr/channels.conf; cat channels_13.0E.conf >> /etc/vdr/channels.conf;;
+     
+-    m) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=21&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    e) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 16.0E -o $SRC/settings/channels_16.0E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 16.0E ]" >> /etc/vdr/channels.conf; cat channels_16.0E.conf >> /etc/vdr/channels.conf;;
+     
+-    n) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=22&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    f) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 19.2E -o $SRC/settings/channels_19.2E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 19.2E ]" >> /etc/vdr/channels.conf; cat channels_19.2E.conf >> /etc/vdr/channels.conf;;
+     
+-    o) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=23&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    g) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 23.5E -o $SRC/settings/channels_23.5E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 23.5E ]" >> /etc/vdr/channels.conf; cat channels_23.5E.conf >> /etc/vdr/channels.conf;;
+     
+-    p) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=24&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    h) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 25.5E -o $SRC/settings/channels_25.5E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 25.5E ]" >> /etc/vdr/channels.conf; cat channels_25.5E.conf >> /etc/vdr/channels.conf;;
+     
+-    q) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=25&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    i) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 26.0E -o $SRC/settings/channels_26.0E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 26.0E ]" >> /etc/vdr/channels.conf; cat channels_26.0E.conf >> /etc/vdr/channels.conf;;
+     
+-    r) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=26&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    j) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 28.2E -o $SRC/settings/channels_28.2E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 28.2E ]" >> /etc/vdr/channels.conf; cat channels_28.2E.conf >> /etc/vdr/channels.conf;;
+     
+-    s) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=27&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    k) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 30.5E -o $SRC/settings/channels_30.5E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 30.5E ]" >> /etc/vdr/channels.conf; cat channels_30.5E.conf >> /etc/vdr/channels.conf;;
+     
+-    t) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=28&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    l) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 39.0E -o $SRC/settings/channels_39.0E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 39.0E ]" >> /etc/vdr/channels.conf; cat channels_39.0E.conf >> /etc/vdr/channels.conf;;
+     
+-    u) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=29&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    m) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 42.0E -o $SRC/settings/channels_42.0E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 42.0E ]" >> /etc/vdr/channels.conf; cat channels_42.0E.conf >> /etc/vdr/channels.conf;;
+     
+-    v) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=30&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    n) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 45.0E -o $SRC/settings/channels_45.0E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 45.0E ]" >> /etc/vdr/channels.conf; cat channels_45.0E.conf >> /etc/vdr/channels.conf;;
+     
+-    x) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=31&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    o) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 68.5E -o $SRC/settings/channels_68.5E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 68.5E ]" >> /etc/vdr/channels.conf; cat channels_68.5E.conf >> /etc/vdr/channels.conf;;
+     
+-    y) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget "http://www.vhannibal.net/settingd/download.php?id=32&action=download&clicked=y" -O Vhannibal.zip;
+-    unzip Vhannibal.zip; #rm -rf Vhannibal.zip; 
+-    tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; #rm -rf lamedb2vdrGetChannel.sh.tar.gz;
+-    cd Vhannibal*; mv * ../e2setting; cd ..; chmod +x lamedb2vdrGetChannel.sh; #clear;
+-    bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    p) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 75.0E -o $SRC/settings/channels_75.0E.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 75.0E ]" >> /etc/vdr/channels.conf; cat channels_75.0E.conf >> /etc/vdr/channels.conf;;
+     
+     ###
+-    ### Enigma2 ###
+-    ### Morpheus ###
++    ###  Ovest  ###
+     ###
++        
++    a1) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 0.8W -o $SRC/settings/channels_0.8W.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 0.8W ]" >> /etc/vdr/channels.conf; cat channels_0.8W.conf >> /etc/vdr/channels.conf;;
+     
+-    a1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_13E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    b1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    c1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_30W-13E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    d1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_30W-13E-19.2E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    e1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-13E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    f1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-13E-19.2E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    g1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_4.8E-13E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    h1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_4.8E-13E-19.2E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    i1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_9E-13E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    j1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_9E-13E-19.2E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    k1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-16E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    l1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-16E-19.2E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
+-    
+-    m1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-23.5E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    b1) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 4.0W -o $SRC/settings/channels_4.0W.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 4.0W ]" >> /etc/vdr/channels.conf; cat channels_4.0W.conf >> /etc/vdr/channels.conf;;
+     
+-    n1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E-23.5E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    c1) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 5.0W -o $SRC/settings/channels_5.0W.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 5.0W ]" >> /etc/vdr/channels.conf; cat channels_5.0W.conf >> /etc/vdr/channels.conf;;
+     
+-    o1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-28.2E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    d1) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 7.0W -o $SRC/settings/channels_7.0W.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 7.0W ]" >> /etc/vdr/channels.conf; cat channels_7.0W.conf >> /etc/vdr/channels.conf;;
+     
+-    p1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E-28.2E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    e1) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 8.0W -o $SRC/settings/channels_8.0W.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 8.0W ]" >> /etc/vdr/channels.conf; cat channels_8.0W.conf >> /etc/vdr/channels.conf;;
+     
+-    q1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-42.0E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    f1) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 12.5W -o $SRC/settings/channels_12.5W.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 12.5W ]" >> /etc/vdr/channels.conf; cat channels_12.5W.conf >> /etc/vdr/channels.conf;;
+     
+-    r1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_13E-19.2E-42.0E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    g1) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 15.0W -o $SRC/settings/channels_15.0W.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 15.0W ]" >> /etc/vdr/channels.conf; cat channels_15.0W.conf >> /etc/vdr/channels.conf;;
+     
+-    s1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-4.8E-13E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    h1) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 24.5W -o $SRC/settings/channels_24.5W.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 24.5W ]" >> /etc/vdr/channels.conf; cat channels_24.5W.conf >> /etc/vdr/channels.conf;;
+     
+-    t1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-13E-19.2E-28.2E.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    i1) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
++    tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 30.0W -o $SRC/settings/channels_30.0W.conf;
++    echo "" >> /etc/vdr/channels.conf;
++    echo ":[ Lista Canali 30.0W ]" >> /etc/vdr/channels.conf; cat channels_30.0W.conf >> /etc/vdr/channels.conf;;
+     
+-    u1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz;
+-    wget https://www.dropbox.com/s/ufaiznuq2h0dll3/lamedb2vdrGetChannel.sh.tar.gz;
+-    wget morpheus883.altervista.org/settings/Settings_Morph883_Motor.tar.gz;
+-    tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdrGetChannel.sh.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
+-    chmod +x lamedb2vdrGetChannel.sh; clear; bash lamedb2vdrGetChannel.sh e2setting $SRC/setting/getchannels/conf/; cd $SRC/setting/getchannels;
+-    python getchannels.py --useconfig getchannels.conf --list 13.0E --output $SRC/setting/getchannels/output/channels.conf;
+-    cp $SRC/setting/getchannels/output/channels.conf /etc/vdr/;;
++    ###
++    ###  Sezione Vdr-Getchannels 0.7.0 Old  ###
++    ###
++
++    x1) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/settings;
++    tar -zxvf getchannels.tar.gz; cd /usr/local/src/settings/getchannels/; 
++    python getchannels.py -c getchannels.conf -l 13.0E -o /etc/vdr/channels.conf;;
++
++    x2) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
++    cd settings; cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/settings;
++    tar -zxvf getchannels.tar.gz; cd /usr/local/src/settings/getchannels/;
++    python getchannels.py -l 19.2E -o /etc/vdr/channels.conf;;
+     
+-    x1) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz; 
+-    cd $SRC/setting/getchannels && python getchannels.py  --list 13.0E --output output/channels13.conf; sleep  4; cp $SRC/setting/getchannels/output/channels13.conf /etc/vdr/;;
+-    x2) apt-get -y install unzip; clear; 
+-    cd $SRC; rm -rf setting; rm -rf getchannels; mkdir setting; cd setting; mkdir e2setting;
+-    cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/setting; tar -zxvf getchannels.tar.gz; #rm -r getchannels.tar.gz; 
+-    cd $SRC/setting/getchannels && python getchannels.py  --list 19.2E --output output/channels19.conf; sleep  4; cp $SRC/setting/getchannels/output/channels19.conf /etc/vdr/;;
+     x3) cp -rf /home/`logname`/sifinstallrepo/channels.conf.trial.tar.gz /etc/vdr/;;
+    
+     z) ;;
+     esac
+     ;;
++    
+     ###
+     ##### Sezione W_Scan #####
+     b) rm -r /etc/vdr/channels-w_scan-9E0.conf; w_scan -fs -s S9E0 -D0c -o2 >> /etc/vdr/channels-w_scan-9E0.conf;; 
+     c) rm -r /etc/vdr/channels-w_scan-13E0.conf; w_scan -fs -s S13E0 -D1c -o2 >> /etc/vdr/channels-w_scan-13E0.conf;;
+     d) rm -r /etc/vdr/channels-w_scan-19E2.conf; w_scan -fs -s S19E2 -D2c -o2 >> /etc/vdr/channels-w_scan-19E2.conf;;
+     e) rm -r /etc/vdr/channels-dtt.conf; w_scan -ft -c IT >> /etc/vdr/channels-dtt.conf;;
++    
+     ###
+     ##### Sezione Lamedb2vdr.sh ~ Vhannibal  #####
+     f) clear        
+@@ -5454,6 +5133,7 @@
+     echo -n "        Scegli  [a-z]:      "
+     read yourch
+     case $yourch in
++    
+     ### Enigma2 ###
+     
+     a) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
+@@ -5588,25 +5268,95 @@
+ 
+ 
+     
+-    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+ h)                                        #########################################
++                                          #      Editor Grafico Lista Canali      #
++                                          #########################################
++
++
++    ###
++    ##### Sezione Editor - Cle4vdr_0.5.3 ~ ChannelEditor_1.9.2.1  #####
++    clear        
++    dialog --title "   ** Download && Utilizzo Editor - Cle4vdr_0.5.3 ~ ChannelEditor_1.9.2.1 **   " --infobox "
++   --------------------------------------------------------------
++                     Editor Lista Canali
++   --------------------------------------------------------------
++        
++        ****  Seleziona La Tua Scelta  **** 
++        [a]    Download ~ Installazione ~ Cle4vdr_0.5.3 - qt amd64
++        [b]    Download ~ Installazione ~ Cle4vdr_0.5.3 - gtk2 amd64
++        [c]    Download ~ Installazione ~ Cle4vdr_0.5.3 - qt i386
++        [d]    Download ~ Installazione ~ Cle4vdr_0.5.3 - gtk2 i386
++        [e]    Utilizzo ~ Cle4vdr_0.5.3
++        
++        [f]    Download ~ Installazione ~ ChannelEditor_1.9.2.1
++        [g]    Utilizzo ~ ChannelEditor_1.9.2.1
++
++        
++        [z]    Skip
++        
++        
++   --------------------------------------------------------------        
++        Note:
++        - Utilizzo Editor - Directory di Lavoro ~ /etc/vdr/channels.conf
++   -------------------------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-z]:      "
++    read yourch
++    case $yourch in
++
++    a) apt-get -y install libqt4pas5; clear; cd $SRC; rm -r editor; mkdir editor; cd editor;
++    wget http://cle4vdr.vdr-developer.org/files/cle4vdr.0.5.3-qt_amd64.tar.gz;
++    tar -zxvf cle4vdr.0.5.3-qt_amd64.tar.gz; mv cle4vdr.0.5.3-qt_amd64 cle4vdr;;
++    
++    b) clear; cd $SRC; rm -r editor; mkdir editor; cd editor;
++    wget http://cle4vdr.vdr-developer.org/files/cle4vdr.0.5.3-gtk2_amd64.tar.gz;
++    tar -zxvf cle4vdr.0.5.3-gtk2_amd64.tar.gz; mv cle4vdr.0.5.3-gtk2_amd64 cle4vdr;;
++    
++    c) apt-get -y install libqt4pas5; clear; cd $SRC; rm -r editor; mkdir editor; cd editor;
++    wget http://cle4vdr.vdr-developer.org/files/cle4vdr.0.5.3-qt.tar.gz;
++    tar -zxvf cle4vdr.0.5.3-qt.tar.gz; mv cle4vdr.0.5.3-qt cle4vdr;;
++    
++    d) clear; cd $SRC; rm -r editor; mkdir editor; cd editor;
++    wget http://cle4vdr.vdr-developer.org/files/cle4vdr.0.5.3-gtk2.tar.gz;
++    tar -zxvf cle4vdr.0.5.3-gtk2.tar.gz; mv cle4vdr.0.5.3-gtk2 cle4vdr;;
++        
++    e) cd $SRC/editor/cle4vdr; ./cle4vdr;;
++    
++    f) clear; cd $SRC; rm -r editor; mkdir editor; cd editor;
++    wget "https://sourceforge.net/projects/channeleditor/files/channeleditor/1.9.2/ChannelEditor_1.9.2.1.jar";;
++    
++    g) cd $SRC/editor; java -jar ChannelEditor_1.9.2.1.jar;;
++    
++    z) ;;
++    esac
++    ;;
++
++    
++    
++
++    
++    
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++i)                                        #########################################
+                                           #           Rimozione Settings          #
+                                           #########################################
+ 
+ 
+     clear
+     echo "                    Adesso Rimuovo tutti i Settings "; sleep 4
+-    cd /etc/vdr; rm -r channels*;;
++    cd /etc/vdr; rm -r channels.conf;;
+     esac
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+-    
+ 
+ #############################################################################################################################  
+ #############################################################################################################################
