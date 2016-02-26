@@ -1,8 +1,25 @@
+## Rev. 5.5.9
+- Aggiunto e Implementato Nuovo Metodo GetChannels 0.7.2 In Creazione Lista Canali
+- Satelliti Disponibili: Da 4.8E a 30.0W - Crea Parametri, Caid e Pid Audio/Video
+- Versione Pubblica Con Limitazione - Crea Circa 130~135 Canali Per Satellite - Dimostrativa
+- Effettuare Piu' Selezioni Dei Satelliti ... Per Avere Diversi Settings Nello Stesso channels.conf
+- Crea Settings Ordinati Per Frequenza Crescente - Non Ordinati per Tipologia o Categoria
+- Rimosso Sezione Lamedb2vdr.sh - Getchannels - Conversione e Aggiornamento
+- Aggiunto Nuove Fuonzionalità - Editor Grafici Lista Canali per Personalizzazione && Modifica
+- Sezione Editor - Cle4vdr_0.5.3 ~ ChannelEditor_1.9.2.1 
+- Editor Disponibili in Ambiente Grafico Qt e Gtk2 per Architettura x86 & x86_64
+- Aggiornato Librerie Libdrm 2.4.67
+- Aggiornato Librerie LIBVA 1.6.2
+- Aggiunto Supporto Librerie LIBVA-INTEL-DRIVER 1.6.2
+- Eliminati Altri Bug minori
+- Rieseguire il Punto 1, A, Creazione, Repository Locale
+
+
+
 ## Rev. 5.5.8
 - Modificate ... alcune parti rese compatibili con Ubuntu 15.10 e verosimilmente con la prossima versione LST 16.04
 - Rimane vdr in versione Stabile 2.2.0 
 - Sistemato un paio di bug
-
 
 
 
