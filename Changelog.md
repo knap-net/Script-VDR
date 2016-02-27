@@ -10,7 +10,7 @@
 - Editor Disponibili in Ambiente Grafico Qt e Gtk2 per Architettura x86 & x86_64
 - Aggiornato Librerie Libdrm 2.4.67
 - Aggiornato Librerie LIBVA 1.6.2
-- Aggiunto Supporto Librerie LIBVA-INTEL-DRIVER 1.6.2
+- Aggiornato Librerie LIBVA-INTEL-DRIVER 1.6.2
 - Eliminati Altri Bug minori
 - Rieseguire il Punto 1, A, Creazione, Repository Locale
 
