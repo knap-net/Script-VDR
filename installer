@@ -42,10 +42,9 @@ Vdr_Xine='sudo /etc/init.d/vdr start > /dev/null 2>&1; sleep 2; /usr/local/bin/x
 #
 Vdr_Xine1='sudo /etc/init.d/vdr start > /dev/null 2>&1; sleep 2; /usr/local/bin/xine -f --no-splash --no-gui -V xv --post vdr_video --post tvtime --post vdr_audio "vdr:/tmp/vdr-xine/stream#demux:mpeg_pes"'
 #
-PLUGIN="--lirc -P'xineliboutput -l none -r 37890 -p' -P'dvbapi' -P'text2skin' -P'osdteletext' -P'loadepg' -P'epgsearch' -P'xvdr'"
+PLUGIN="--lirc -P'xineliboutput -l none -r 37890 -p' -P'dvbapi' -P'text2skin' -P'osdteletext' -P'epgsearch'"
 # 
-#
-PLUGIN1="--lirc -P'softhddevice -f' -P'dvbapi' -P'skindesigner -l /etc/vdr/logos/ -i /usr/share/vdr/plugins/skindesigner/skins/' -P'skinflatplus -l /etc/vdr/logos/' -P'tvguideng' -P'tvguide -l /etc/vdr/logos/' -P'weatherforecast' -P'text2skin' -P'osdteletext' -P'loadepg' -P'epgsearch' -P'xvdr' -P'externalplayer'"
+PLUGIN1="--lirc -P'softhddevice -f' -P'dvbapi' -P'skindesigner -l /etc/vdr/logos/ -i /usr/share/vdr/plugins/skindesigner/skins/' -P'skinflatplus -l /etc/vdr/logos/' -P'tvguideng' -P'iptv' -P'tvguide -l /etc/vdr/logos/' -P'weatherforecast' -P'text2skin' -P'osdteletext' -P'epgsearch' -P'externalplayer'"
 #
 Remind='è già installato... avete dimenticato di aggiungere il comando al vdrrun?'
 Remind1='è già installata... avete dimenticato di aggiungere il comando al vdrrun?'
@@ -909,11 +908,11 @@ else
     wget http://www.saunalahti.fi/~rahrenbe/vdr/satip/files/vdr-satip-2.2.1.tgz;
 fi
 
-if [ -s /home/`logname`/sifinstallrepo/vdr-cecremote-1.3.0.tgz ]; then
+if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-cecremote ]; then
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
-    wget https://www.dropbox.com/s/d1ndjpihfgmcbt9/vdr-cecremote-1.3.0.tgz;
+    git clone https://git.uli-eckhardt.de/vdr-plugin-cecremote.git;
 fi
 
 if [ -s /home/`logname`/sifinstallrepo/vdr-setup-0.3.1.tar.gz ]; then
@@ -973,11 +972,11 @@ else
     wget https://www.dropbox.com/s/ond4cpofj5yxhp8/patch_play.tar.gz
 fi
 
-if [ -s /home/`logname`/sifinstallrepo/externalplayer.tar.gz ]; then
+if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-externalplayer ]; then
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
-    wget https://www.dropbox.com/s/9c7s5nob4ocgsya/externalplayer.tar.gz;
+    git clone https://git.uli-eckhardt.de/vdr-plugin-externalplayer.git;
 fi
 
 if [ -s /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz ]; then
@@ -1005,14 +1004,42 @@ if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-epg2vdr ]; then
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
-    git clone git://projects.vdr-developer.org/vdr-plugin-epg2vdr.git
+    git clone git://projects.vdr-developer.org/vdr-plugin-epg2vdr.git;
 fi
 
 if [ -s /home/`logname`/sifinstallrepo/vdr-epg-daemon ]; then
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
-    git clone git://projects.vdr-developer.org/vdr-epg-daemon.git
+    git clone git://projects.vdr-developer.org/vdr-epg-daemon.git;
+fi
+
+if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-lcdproc ]; then
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+    git clone https://projects.vdr-developer.org/git/vdr-plugin-lcdproc.git;
+fi
+
+if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-upnp ]; then
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+    git clone https://projects.vdr-developer.org/git/vdr-plugin-upnp.git;
+fi
+
+if [ -s /home/`logname`/sifinstallrepo/patch_upnp.tar.gz ]; then
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+    wget https://www.dropbox.com/s/hgsv671o7aai2qm/patch_upnp.tar.gz;
+fi
+
+if [ -s /home/`logname`/sifinstallrepo/softhddevice-openglosd ]; then
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+    git clone https://github.com/louisbraun/softhddevice-openglosd;
 fi
 
 ################################# caricamento skin ########################################
@@ -1073,12 +1100,12 @@ else
     wget https://www.dropbox.com/s/5l69u5htqsge852/elchiHD-logos-v3.tar.bz2;
   fi
 
-#if [ -s /home/`logname`/sifinstallrepo/skinflatplus ]; then
-#  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
-#else
-#  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
-#    git clone http://projects.vdr-developer.org/git/skin-flatplus.git skinflatplus;
-#  fi
+if [ -s /home/`logname`/sifinstallrepo/skinflatplus ]; then
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+    git clone http://projects.vdr-developer.org/git/skin-flatplus.git;
+  fi
   
 if [ -s /home/`logname`/sifinstallrepo/icone.tar.gz ]; then
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
@@ -1368,18 +1395,22 @@ else
     git clone git://projects.vdr-developer.org/vdr-plugin-scraper2vdr.git;
     wget https://www.dropbox.com/s/xe2hrg73a591t0z/patch_setup.tar.gz;
     wget https://www.dropbox.com/s/8f635z72gomjfw0/vdr-setup-0.3.1.tar.gz;
-    wget https://www.dropbox.com/s/d1ndjpihfgmcbt9/vdr-cecremote-1.3.0.tgz;
+    git clone https://git.uli-eckhardt.de/vdr-plugin-cecremote.git;
     wget https://www.dropbox.com/s/nof5ydmxrplw2b0/patch_iptv.tar.gz;
     wget https://www.dropbox.com/s/1ujtklnct0nqq6q/iptv_conf.tar.gz;
     wget https://www.dropbox.com/s/rjh3vpj3b2q3dxz/vdr-mp3-0.10.2.tar.gz;
     wget https://www.dropbox.com/s/tlb8bfpb2wj59mf/patch_mp3.tar.gz;
     wget https://www.dropbox.com/s/ond4cpofj5yxhp8/patch_play.tar.gz;
-    wget https://www.dropbox.com/s/9c7s5nob4ocgsya/externalplayer.tar.gz;
+    git clone https://git.uli-eckhardt.de/vdr-plugin-externalplayer.git;
     wget https://www.dropbox.com/s/vhz1fz68159s0qg/externalplayer.conf.tar.gz;
     git clone http://projects.vdr-developer.org/git/vdr-plugin-play.git/;
     git clone git://projects.vdr-developer.org/vdr-plugin-mpv.git;
     git clone git://projects.vdr-developer.org/vdr-plugin-epg2vdr.git;
     git clone git://projects.vdr-developer.org/vdr-epg-daemon.git;
+    git clone https://projects.vdr-developer.org/git/vdr-plugin-lcdproc.git;
+    git clone https://projects.vdr-developer.org/git/vdr-plugin-upnp.git;
+    wget https://www.dropbox.com/s/hgsv671o7aai2qm/patch_upnp.tar.gz;
+    git clone https://github.com/louisbraun/softhddevice-openglosd;
 
 ############################ caricamento skin ########################################
 
@@ -1388,7 +1419,7 @@ else
     git clone git://projects.vdr-developer.org/skin-narrowhd.git;
     git clone git://projects.vdr-developer.org/skin-nopacity.git;
     git clone http://projects.vdr-developer.org/git/vdr-plugin-skinenigmang.git;
-    git clone http://projects.vdr-developer.org/git/skin-flatplus.git skinflatplus;
+    git clone http://projects.vdr-developer.org/git/skin-flatplus.git;
     wget https://www.dropbox.com/s/odv30s0a22mau60/skinenigmang-logos-xpm-hi-20070702.tgz;
     wget https://www.dropbox.com/s/weh6c53bg9363ey/skinenigmang-channellogos-xpm-hi-20070702.tgz;
     wget https://www.dropbox.com/s/pydva1r0iafh5hy/skinenigmang-fonts-20080225.tgz;
@@ -2315,7 +2346,7 @@ echo "*** 99 ***"
 # See man vdr(5)
 
 Red       Recordings
-Green     @loadepg
+Green     @tvguide
 Yellow    Info
 Blue      @tvguideng
 Ok        Channels" >> /etc/vdr/keymacros.conf
@@ -2334,7 +2365,7 @@ clear
 echo "                        "
 echo "                        "
 echo "                        "
-echo "Ora installo i Plugins base (Text2skin - OSDTeletext - Dvbapi - Softhddevice - Epgsearch - Xvdr - Loadepg - Skindesigner - TvGuideng - Weatherforecast - Skinflatplus - TvGuide - ExternalPlayer)"
+echo "Ora installo i Plugins base (Text2skin - OSDTeletext - Dvbapi - Softhddevice - Epgsearch - Skindesigner - TvGuideng - Weatherforecast - Skinflatplus - TvGuide - Iptv - ExternalPlayer)"
 echo "                 premere il tasto [Invio] per continuare "; read enterKey
 cd $SRC;
 mkdir -p /usr/lib/vdr/plugins; mkdir -p /usr/lib/vdr/scripts; mkdir -p /etc/vdr/plugins; mkdir -p /etc/vdr/themes; cd $PLUGINS; mkdir -p tvguide;
@@ -2398,27 +2429,11 @@ tar -zxvf patch_epgsearch.tar.gz; rm -r patch_epgsearch.tar.gz;
 patch -p1 < 10_langinfo-include.diff; sleep 1;
 cd ../../..; make plugins; 
 #
-#    
-clear
-echo ""; echo "               *** Xvdr ***"; echo ""; sleep 3
-cd $VDRSRC; 
-cp -r /home/`logname`/sifinstallrepo/vdr-plugin-xvdr /$VDRSRC/;
-mv vdr-plugin-xvdr xvdr; mkdir -p /etc/vdr/plugins/xvdr/; cd ../..; make plugins; echo "*** allowed_hosts.conf setup ***"; echo "$ALLOWED" >> /etc/vdr/plugins/xvdr/allowed_hosts.conf
-#
-#
-clear
-echo ""; echo "               *** Loadepg ***"; echo ""; sleep 3
-cd $VDRSRC; 
-cp -r /home/`logname`/sifinstallrepo/vdr-loadepg-0.2.6.tgz /$VDRSRC;
-tar -zxvf vdr-loadepg-0.2.6.tgz; mv loadepg-0.2.6 loadepg; rm -r vdr-loadepg-0.2.6.tgz;
-cd ../..; make plugins; cd $PLUGINS; mkdir -p loadepg;
-cp -r $VDRSRC/loadepg/conf/* $PLUGINS/loadepg/; 
-#
 #
 clear
 echo ""; echo "               *** Skindesigner ***"; echo ""; sleep 3
 cd $VDRSRC; sudo apt-get -y install lm-sensors;
-cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && mv vdr-plugin-skindesigner skindesigner && cp -r /$SRC/traduzioni/Skin_it_IT.po /$VDRSRC/skindesigner/po/ && cd skindesigner/po/ && mv Skin_it_IT.po it_IT.po && cp -rf /$SRC/traduzioni/metrixhd/*.xml /$VDRSRC/skindesigner/skins/metrixhd/ && cd .. && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
+cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && mv vdr-plugin-skindesigner skindesigner && cp -rf /$SRC/traduzioni/metrixhd/*.xml /$VDRSRC/skindesigner/skins/metrixhd/ && cd .. && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
 # qui sopra c'è da mettere le icone di menù mancanti che sono dentro le skin del vdr-plugin-skindesigner traducendole e comprimendole
 #
 clear
@@ -2434,7 +2449,7 @@ cd $VDRSRC; apt-get -y install libjansson4 libjansson-dev; cp -r /home/`logname`
 clear
 echo "               *** Skin Flatplus ***"; echo ""; sleep 3
 cd $VDRSRC;
-cp -r /home/`logname`/sifinstallrepo/skinflatplus /$VDRSRC/ && cd skinflatplus && make install && cd /usr/lib/vdr/plugins/skinflatplus/widgets/temperatures/ && ln -s temperatures.default temperatures && cd ../system_information && ln -s system_information.ubuntu system_information  && cp -rf /home/`logname`/sifinstallrepo/flat_weather.tar.gz ../weather/ && cd ../weather && tar -zxvf flat_weather.tar.gz && rm -r flat_weather.tar.gz;
+cp -r /home/`logname`/sifinstallrepo/skin-flatplus /$VDRSRC/ && cd skin-flatplus && make install && cd /usr/lib/vdr/plugins/skinflatplus/widgets/temperatures/ && ln -s temperatures.default temperatures && cd ../system_information && ln -s system_information.ubuntu system_information  && cp -rf /home/`logname`/sifinstallrepo/flat_weather.tar.gz ../weather/ && cd ../weather && tar -zxvf flat_weather.tar.gz && rm -r flat_weather.tar.gz;
 # qui sopra c'è da mettere le icone di menù mancanti che sono dentro le skin del Skin Flatplus traducendole e comprimendole
 #
 clear
@@ -2442,10 +2457,15 @@ echo ""; echo "               *** Tvguide ***";  sleep 3
 cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-tvguide /$VDRSRC; mv vdr-plugin-tvguide tvguide; cd ../..; make plugins; cp $VDRSRC/tvguide/themes/* /etc/vdr/themes/;
 #
 #
+echo "               *** Iptv ***"; echo ""; sleep 3
+cd $VDRSRC && cp -r /home/`logname`/sifinstallrepo/vdr-iptv-2.2.1.tgz /$VDRSRC && tar -zxvf vdr-iptv-2.2.1.tgz && mv iptv-2.2.1 iptv && rm -r vdr-iptv-2.2.1.tgz && cd iptv && cp -r /home/`logname`/sifinstallrepo/patch_iptv.tar.gz /$VDRSRC/iptv && tar -zxvf patch_iptv.tar.gz && rm -r patch_iptv.tar.gz && patch -p1 < iptv.patch && make && cd ../../.. && make plugins && mkdir -p /etc/vdr/plugins/iptv/vlcinput && cp -r /home/`logname`/sifinstallrepo/iptv_conf.tar.gz /$PLUGINS/iptv/vlcinput/ && cd $PLUGINS/iptv/vlcinput && tar -zxvf iptv_conf.tar.gz && rm -r iptv_conf.tar.gz 
+#
+#
 clear
 echo ""; echo "               *** Externalplayer ***";  sleep 3
-cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/externalplayer.tar.gz /$VDRSRC && tar -zxvf externalplayer.tar.gz && rm -r externalplayer.tar.gz && mv externalplayer-4078eddc1cb3 externalplayer && cp -r /$SRC/traduzioni/external_it_IT.po /$VDRSRC/externalplayer/po/ && cd externalplayer/po/ && mv external_it_IT.po it_IT.po && cd ../../../.. && make plugins && cp -r /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz /etc/vdr/plugins/ && cd /etc/vdr/plugins && tar -zxvf externalplayer.conf.tar.gz && rm -r externalplayer.conf.tar.gz;
+cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-externalplayer /$VDRSRC && mv vdr-plugin-externalplayer externalplayer && cp -r /$SRC/traduzioni/external_it_IT.po /$VDRSRC/externalplayer/po/ && cd externalplayer/po/ && mv external_it_IT.po it_IT.po && cd ../../../.. && make plugins && cp -r /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz /etc/vdr/plugins/ && cd /etc/vdr/plugins && tar -zxvf externalplayer.conf.tar.gz && rm -r externalplayer.conf.tar.gz;
 clear
+
 
 cd /usr/local/src/vdr; make plugins install;
 
@@ -3167,18 +3187,21 @@ e)                                ##############################################
 		ZapPilot                                     
 		Scraper2vdr                                    
 		Ttxtsubs                                     
-		Iptv
 		Mp3/Mplayer
-		Mpv (va caricato a mano libmpv ... non facile!)
+		Mpv (Ok su sistemi > di 15.04 )
 		Play 
 		Sat-Ip                                       
 		Vdr-StreamDev                                
 		Vdr-Plugin-Sc                                
-		Vdr-Manager                                  
+		Vdr-Manager
+		Loadepg                                                                                                                           
 		Neutrinoepg
 		Epg2vdr
 		Epg-Daemon  (in costruzione)                                 
-		Extrecmenu                                   
+		Extrecmenu
+		Lcdproc
+		Xvdr                                  
+		Upnp                                      
 		CecRemote  (sperimentale)                    
 		Remote                             
 
@@ -3610,39 +3633,6 @@ c) cd $VDRSRC && if [ -f satip/Makefile ];
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
     esac
 #
-#
-#echo "*** IPTV ***"; 
-    clear
-    dialog --title "   ** VDR-Plugin-IPTV **   " --infobox "
-   ----------------------------------------------
-                Che cosa vuoi fare ?
-   ----------------------------------------------
-        [a]    Installare il plugin IPTV                
-        [b]    Aggiornare il plugin IPTV                
-        [c]    Rimuovere il plugin IPTV            
-        [d]    Skip             
-                                       
-   ---------------------------------------------- " 0 0
-    echo -n "        Scegli  [a-d]:      "
-    read yourch
-    case $yourch in 
-a) cd $VDRSRC && if [ -f iptv/Makefile ];
-  then  echo "IPTV $Remind"
-  else cp -r /home/`logname`/sifinstallrepo/vdr-iptv-2.2.1.tgz /$VDRSRC && tar -zxvf vdr-iptv-2.2.1.tgz && mv iptv-2.2.1 iptv && rm -r vdr-iptv-2.2.1.tgz && cd iptv && cp -r /home/`logname`/sifinstallrepo/patch_iptv.tar.gz /$VDRSRC/iptv && tar -zxvf patch_iptv.tar.gz && rm -r patch_iptv.tar.gz && patch -p1 < iptv.patch && make && cd ../../.. && make plugins && mkdir -p /etc/vdr/plugins/iptv/vlcinput && cp -r /home/`logname`/sifinstallrepo/iptv_conf.tar.gz /$PLUGINS/iptv/vlcinput/ && cd $PLUGINS/iptv/vlcinput && tar -zxvf iptv_conf.tar.gz && rm -r iptv_conf.tar.gz && sed -i "s|-P'dvbapi'|& -P'iptv'|" /usr/local/bin/vdrrun 
-    fi || echo "$Remind7 IPTV"
-        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-b) echo "*** plugin IPTV ***"; 
-    clear
-    echo "Il plugin IPTV è già aggiornato."
-        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-c) cd $VDRSRC && if [ -f iptv/Makefile ];
-  then rm -r iptv && rm -rf $PLUGINS/iptv && rm -r /usr/share/vdr/plugins/iptv && sed -i "s|-P'iptv'||" /usr/local/bin/vdrrun
-  else echo "IPTV $Remind5" 
-  fi
-    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-    esac
-#
-#
 #echo ""; echo "*** Mp3  ***"; echo ""
     clear
     dialog --title "   **  Vdr-Plugin-Mp3/Mplayer **   " --infobox "
@@ -3853,6 +3843,30 @@ c) cd $VDRSRC && if [ -f vdrmanager/Makefile ];
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
     esac
 #
+#echo "*** Loadepg ***"; 
+    clear
+    dialog --title "   ** VDR-Plugins-Loadepg **   " --infobox "
+   ----------------------------------------------
+                Che cosa vuoi fare ?
+   ----------------------------------------------
+        [a]    Installare il plugin Loadepg                
+        [b]    Aggiornare il plugin Loadepg                
+        [c]    Rimuovere il plugin Loadepg            
+        [d]    Skip             
+                                       
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-d]:      "
+    read yourch
+    case $yourch in 
+a) cd $VDRSRC && if [ -f loadepg/Makefile ];
+  then  echo "Loadepg $Remind"
+  else cp -r /home/`logname`/sifinstallrepo/vdr-loadepg-0.2.6.tgz /$VDRSRC && tar -zxvf vdr-loadepg-0.2.6.tgz && mv loadepg-0.2.6 loadepg && rm -r vdr-loadepg-0.2.6.tgz && cd ../.. && make plugins && cd $PLUGINS && mkdir -p loadepg && cp -r $VDRSRC/loadepg/conf/* $PLUGINS/loadepg/ && sed -i "s|-P'dvbapi'|& -P'loadepg'|" /usr/local/bin/vdrrun
+	fi || echo "$Remind7 Loadepg"
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+b) cd $VDRSRC && rm -r loadepg && cp -r /home/`logname`/sifinstallrepo/vdr-loadepg-0.2.6.tgz /$VDRSRC && tar -zxvf vdr-loadepg-0.2.6.tgz && mv loadepg-0.2.6 loadepg && rm -r vdr-loadepg-0.2.6.tgz && cd ../.. && make plugins;;
+c) cd $VDRSRC && rm -r loadepg && rm -rf $PLUGINS/loadepg && sed -i "s|-P'loadepg'||" /usr/local/bin/vdrrun;;
+d) ;;
+esac
 #
 #echo "*** Neutrinoepg ***"; echo ""; 
     clear
@@ -3986,6 +4000,104 @@ c) cd $VDRSRC && if [ -f extrecmenu/Makefile ];
 esac
 #
 #
+#echo "*** Lcdproc ***"; echo ""; 
+    clear
+    dialog --title "   ** VDR-Plugin-Lcdproc **   " --infobox "
+   ----------------------------------------------
+                Che cosa vuoi fare ?
+   ----------------------------------------------
+        [a]    Installare il plugin Lcdproc                
+        [b]    Aggiornare il plugin Lcdproc                
+        [c]    Rimuovere il plugin Lcdproc            
+        [d]    Skip             
+                                       
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-d]:      "
+    read yourch
+    case $yourch in 
+a) cd $VDRSRC && if [ -f lcdproc/Makefile ];
+  then  echo "Lcdproc $Remind"
+  else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-lcdproc /$VDRSRC && mv vdr-plugin-lcdproc lcdproc && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'lcdproc'|" /usr/local/bin/vdrrun 
+    fi || echo "$Remind7 Lcdproc"
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+b) cd $VDRSRC && if [ -f lcdproc/Makefile ];
+  then rm -r lcdproc && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-lcdproc && git clone git://projects.vdr-developer.org/vdr-plugin-lcdproc.git && cp -r vdr-plugin-lcdproc /home/`logname`/sifinstallrepo/  && mv vdr-plugin-lcdproc lcdproc && cd ../.. && make plugins
+  else echo "Lcdproc $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-lcdproc /$VDRSRC && mv vdr-plugin-lcdproc lcdproc && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'lcdproc'|" /usr/local/bin/vdrrun 
+    fi
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+c) cd $VDRSRC && if [ -f lcdproc/Makefile ];
+  then rm -r lcdproc && sed -i "s|-P'lcdproc'||" /usr/local/bin/vdrrun
+  else echo "Lcdproc $Remind5" 
+      fi
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+esac
+#
+#
+#echo "*** Xvdr ***";
+    clear
+    dialog --title "   ** VDR-Plugins-Xvdr **   " --infobox "
+   ----------------------------------------------
+                Che cosa vuoi fare ?
+   ----------------------------------------------
+        [a]    Installare il plugin Xvdr                
+        [a]    Aggiornare il plugin Xvdr                
+        [b]    Rimuovere il plugin Xvdr            
+        [c]    Skip             
+                                       
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-c]:      "
+    read yourch
+    case $yourch in
+
+a) cd $VDRSRC && if [ -f xvdr/Makefile ];
+  then  echo "Xvdr $Remind"
+  else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-xvdr /$VDRSRC/ && mv vdr-plugin-xvdr xvdr && mkdir -p /etc/vdr/plugins/xvdr/ && cd ../.. && make plugins && echo "*** allowed_hosts.conf setup ***" && echo "$ALLOWED" >> /etc/vdr/plugins/xvdr/allowed_hosts.conf && sed -i "s|-P'dvbapi'|& -P'xvdr'|" /usr/local/bin/vdrrun 
+    fi || echo "$Remind7 Xvdr"
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+b) cd $VDRSRC && if [ -f lcdproc/Makefile ];
+  then rm -r xvdr && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-xvdr && git clone https://github.com/pipelka/vdr-plugin-xvdr.git && cp -r vdr-plugin-xvdr /home/`logname`/sifinstallrepo/ && mv vdr-plugin-xvdr xvdr && mkdir -p /etc/vdr/plugins/xvdr/ && cd ../.. && make plugins && echo "*** allowed_hosts.conf setup ***" && echo "$ALLOWED" >> /etc/vdr/plugins/xvdr/allowed_hosts.conf 
+  else echo "Xvdr $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-xvdr /$VDRSRC && mv vdr-plugin-xvdr xvdr && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'xvdr'|" /usr/local/bin/vdrrun 
+    fi
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+c) cd $VDRSRC && rm -r xvdr && cd $PLUGINS && rm -r xvdr && sed -i "s|-P'xvdr'||" /usr/local/bin/vdrrun;;
+d) ;;
+esac
+#
+#
+#echo "*** Upnp ***"; echo ""; 
+    clear
+    dialog --title "   ** VDR-Plugin-Upnp **   " --infobox "
+   ----------------------------------------------
+                Che cosa vuoi fare ?
+   ----------------------------------------------
+        [a]    Installare il plugin Upnp                
+        [b]    Aggiornare il plugin Upnp                
+        [c]    Rimuovere il plugin Upnp            
+        [d]    Skip             
+                                       
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-d]:      "
+    read yourch
+    case $yourch in 
+a) cd $VDRSRC && if [ -f upnp/Makefile ];
+  then  echo "Upnp $Remind"
+  else sudo apt-get install -y libupnp6-dev libtntnet-dev libtntdb-dev libsqlite3-dev libboost1.55-dev && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-upnp /$VDRSRC && mv vdr-plugin-upnp upnp && cp -r /home/`logname`/sifinstallrepo/patch_upnp.tar.gz /$VDRSRC/upnp && cd upnp && tar -zxvf patch_upnp.tar.gz && rm -r patch_upnp.tar.gz && patch -p1 < 10_upnp_vdr2.1.2.patch && patch -p1 < 11_upnp_httptnt.patch && make &&
+make subplugins && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'upnp'|" /usr/local/bin/vdrrun 
+    fi || echo "$Remind7 Upnp"
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+b) cd $VDRSRC && if [ -f upnp/Makefile ];
+  then rm -r upnp && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-upnp && git clone git://projects.vdr-developer.org/vdr-plugin-upnp.git && cp -r vdr-plugin-upnp /home/`logname`/sifinstallrepo/  && mv vdr-plugin-upnp upnp && cp -r /home/`logname`/sifinstallrepo/patch_upnp.tar.gz /$VDRSRC/upnp && cd upnp && tar -zxvf patch_upnp.tar.gz && rm -r patch_upnp.tar.gz && patch -p1 < 10_upnp_vdr2.1.2.patch && patch -p1 < 11_upnp_httptnt.patch && make && make subplugins && cd ../../.. && make plugins
+  else echo "Upnp $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-upnp /$VDRSRC && mv vdr-plugin-upnp upnp && cp -r /home/`logname`/sifinstallrepo/patch_upnp.tar.gz /$VDRSRC/upnp && cd upnp && tar -zxvf patch_upnp.tar.gz && rm -r patch_upnp.tar.gz && patch -p1 < 10_upnp_vdr2.1.2.patch && patch -p1 < 11_upnp_httptnt.patch && make && make subplugins && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'upnp'|" /usr/local/bin/vdrrun 
+    fi
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+c) cd $VDRSRC && if [ -f upnp/Makefile ];
+  then rm -r upnp && sed -i "s|-P'upnp'||" /usr/local/bin/vdrrun
+  else echo "Upnp $Remind5" 
+      fi
+        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+esac
+#
+#
 #echo "*** CecRemote (sperimentale) ***"; echo ""; 
     clear
     dialog --title "   ** VDR-Plugin-CecRemote (sperimentale) **   " --infobox "
@@ -4003,12 +4115,13 @@ esac
     case $yourch in 
 a) cd $VDRSRC && if [ -f cecremote/Makefile ];
   then  echo "CecRemote $Remind"
-  else apt-get -y install libcec libcec-dev libpugixml1 libpugixml-dev cec-utils && cp -r /home/`logname`/sifinstallrepo/vdr-cecremote-1.2.0.tgz /$VDRSRC && tar -zxvf vdr-cecremote-1.3.0.tgz && mv cecremote-1.3.0 cecremote && cd ../.. && make plugins # && sed -i "s|-P'dvbapi'|& -P'cecremote'|" /usr/local/bin/vdrrun 
+  else apt-get -y install libcec libcec-dev libpugixml1 libpugixml-dev cec-utils && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-cecremote /$VDRSRC && mv vdr-plugin-cecremote cecremote && cd ../.. && make plugins # && sed -i "s|-P'dvbapi'|& -P'cecremote'|" /usr/local/bin/vdrrun 
     fi || echo "$Remind7 CecRemote"
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-b) echo "*** plugin CecRemote ***"; 
-    clear
-    echo "Il plugin CecRemote è già aggiornato."
+b) cd $VDRSRC && if [ -f cecremote/Makefile ];
+  then rm -r cecremote && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-cecremote && git clone https://git.uli-eckhardt.de/vdr-plugin-cecremote.git && cp -r vdr-plugin-cecremote /home/`logname`/sifinstallrepo/ && mv vdr-plugin-cecremote cecremote && cd ../.. && make plugins 
+  else echo "CecRemote $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-cecremote /$VDRSRC && mv vdr-plugin-cecremote cecremote && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'xvdr'|" /usr/local/bin/vdrrun 
+    fi
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 c) cd $VDRSRC && if [ -f cecremote/Makefile ];
   then rm -r cecremote && sed -i "s|-P'cecremote'||" /usr/local/bin/vdrrun
@@ -4293,8 +4406,8 @@ f1)                                       ######################################
     echo -n "        Scegli  [a-g]:      "                   
     read yourch
     case $yourch in
-    a) rm -r $VDRSRC/skindesigner; rm -rf /usr/share/vdr/plugins/skindesigner; rm -r $PLUGINS/skindesigner;;
-    b) rm -r $VDRSRC/skin-flatplus; rm -r $PLUGINS/skinflatplus; rm -rf /usr/share/vdr/plugins/skinflatplus;;
+    a) rm -r $VDRSRC/skindesigner; rm -rf /usr/share/vdr/plugins/skindesigner; rm -rf /usr/lib/vdr/plugins/skindesigner; rm -r $PLUGINS/skindesigner;;
+    b) rm -r $VDRSRC/skin-flatplus; rm -r $PLUGINS/skinflatplus; rm -rf /usr/lib/vdr/plugins/skinflatplus; rm -rf /usr/share/vdr/plugins/skinflatplus;;
     c) rm -r $VDRSRC/narrowhd; rm -r $SKIN/NarrowHD;;
     d) rm -r $VDRSRC/skinenigmang;;
     e) rm -r $VDRSRC/skinsoppalusikka; rm -r /etc/vdr/plugins/skinsoppalusikka;;
@@ -4332,7 +4445,8 @@ g)                                        ######################################
         OSDTeletext                                                  
         Epgsearch   
         Dvbapi
-        Xvdr
+        Iptv
+        Externalplayer
    ---------------------------------------------- " 0 0                 
 echo "     premere il tasto [Invio] per continuare. . .    " ;read enterKey
 #
@@ -4351,7 +4465,7 @@ echo "     premere il tasto [Invio] per continuare. . .    " ;read enterKey
     echo -n "        Scegli  [a-c]:      "
     read yourch
     case $yourch in
-a) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner && cd $PLUGINS && rm -rf skindesigner && cd $VDRSRC && git clone git://projects.vdr-developer.org/vdr-plugin-skindesigner.git && cp -rf vdr-plugin-skindesigner /home/`logname`/sifinstallrepo/  && mv vdr-plugin-skindesigner skindesigner && cd skindesigner && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures ;;
+a) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/lib/vdr/plugins/skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner && cd $PLUGINS && rm -rf skindesigner && cd $VDRSRC && git clone git://projects.vdr-developer.org/vdr-plugin-skindesigner.git && cp -rf vdr-plugin-skindesigner /home/`logname`/sifinstallrepo/  && mv vdr-plugin-skindesigner skindesigner && cd skindesigner && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures ;;
 b) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && sed -i "s|-P'skindesigner -l /etc/vdr/logos/ -i /usr/share/vdr/plugins/skindesigner/skins/'||" /usr/local/bin/vdrrun;;
 c) ;;
 esac
@@ -4411,7 +4525,7 @@ esac
     echo -n "        Scegli  [a-c]:      "
     read yourch
     case $yourch in
-a) cd $VDRSRC && rm -r weatherforecast && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-weatherforecast && git clone git://projects.vdr-developer.org/vdr-plugin-weatherforecast.git && cp -rf vdr-plugin-weatherforecast /home/`logname`/sifinstallrepo/ && mv vdr-plugin-weatherforecast weatherforecast && cd $SRC/vdr && make plugins;;
+a) cd $VDRSRC && rm -r weatherforecast && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-weatherforecast && git clone git://projects.vdr-developer.org/vdr-plugin-weatherforecast.git && cp -rf vdr-plugin-weatherforecast /home/`logname`/sifinstallrepo/ && mv vdr-plugin-weatherforecast weatherforecast && cp -r /$SRC/traduzioni/weather_it_IT.po /$VDRSRC/weatherforecast/po/ && cd weatherforecast/po/; mv weather_it_IT.po it_IT.po && cd $SRC/vdr && make plugins;;
 b) cd $VDRSRC && rm -r weatherforecast && sed -i "s|-P'weatherforecast'||" /usr/local/bin/vdrrun;;
 c) ;;
 esac
@@ -4431,8 +4545,8 @@ esac
     echo -n "        Scegli  [a-c]:      "
     read yourch
     case $yourch in
-a) cd $VDRSRC && rm -rf skin-flatplus rm -rf /home/`logname`/sifinstallrepo/skin-flatplus && rm -rf /usr/share/vdr/plugins/skinflatplus && cd $PLUGINS && rm -rf skinflatplus && cd $VDRSRC && git clone http://projects.vdr-developer.org/git/skin-flatplus.git/ && cp -rf skin-flatplus /home/`logname`/sifinstallrepo/ && cd skin-flatplus && make && make install ;;
-b) cd $VDRSRC && rm -r skin-nopacity && cd $PLUGINS && rm -r skinnopacity && sed -i "s|-P'skinflatplus -l /etc/vdr/logos/'||" /usr/local/bin/vdrrun;;
+a) cd $VDRSRC && rm -rf skin-flatplus rm -rf /home/`logname`/sifinstallrepo/skin-flatplus && rm -rf /usr/lib/vdr/plugins/skinflatplus && rm -rf /usr/share/vdr/plugins/skinflatplus && cd $PLUGINS && rm -rf skinflatplus && cd $VDRSRC && git clone http://projects.vdr-developer.org/git/skin-flatplus.git/ && cp -rf skin-flatplus /home/`logname`/sifinstallrepo/ && cd skin-flatplus && make install && cd /usr/lib/vdr/plugins/skinflatplus/widgets/temperatures/ && ln -s temperatures.default temperatures && cd ../system_information && ln -s system_information.ubuntu system_information  && cp -rf /home/`logname`/sifinstallrepo/flat_weather.tar.gz ../weather/ && cd ../weather && tar -zxvf flat_weather.tar.gz && rm -r flat_weather.tar.gz ;;
+b) cd $VDRSRC && rm -r skin-flatplus && cd $PLUGINS && rm -r skinflatplus && rm -rf /usr/lib/vdr/plugins/skinflatplus && rm -rf /usr/share/vdr/plugins/skinflatplus && sed -i "s|-P'skinflatplus -l /etc/vdr/logos/'||" /usr/local/bin/vdrrun;;
 c) ;;
 esac
 #
@@ -4471,8 +4585,8 @@ esac
     echo -n "        Scegli  [a-c]:      "
     read yourch
     case $yourch in
-a) cd $VDRSRC; rm -rf softhddevice; git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git; rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice; cp -rf vdr-plugin-softhddevice /home/`logname`/sifinstallrepo/; mv vdr-plugin-softhddevice softhddevice; cd softhddevice; cp -r /home/`logname`/sifinstallrepo/patch_softhddevice.tar.gz /$VDRSRC/softhddevice; tar -zxvf patch_softhddevice.tar.gz; rm -r patch_softhddevice.tar.gz; patch -p1 < 11_Makefile.patch; sleep 1; patch -p1 < 12_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_vdpauqueue.patch; sleep 1; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1; make install; cd ../../..;; 
-b) cd $VDRSRC; rm -r softhddevice; rm -rf $PLUGINS/softhddevice; rm -r /home/`logname`/Scrivania/Vdr-Softhddevice.desktop; rm -r /home/`logname`/start-softhddevice-vdr.sh; sed -i "s|-P'softhddevice'||" /usr/local/bin/vdrrun; sed -i "s|--lirc|& -P'xineliboutput -l none -r 37890 -p'|" /usr/local/bin/vdrrun;;
+a) cd $VDRSRC && rm -rf softhddevice; git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice && cp -rf vdr-plugin-softhddevice /home/`logname`/sifinstallrepo/ && mv vdr-plugin-softhddevice softhddevice && cd softhddevice && cp -r /home/`logname`/sifinstallrepo/patch_softhddevice.tar.gz /$VDRSRC/softhddevice && tar -zxvf patch_softhddevice.tar.gz && rm -r patch_softhddevice.tar.gz && patch -p1 < 11_Makefile.patch && sleep 1 && patch -p1 < 12_ffmpeg2.2.2.patch && sleep 1 && patch -p1 < 13_vdpauqueue.patch && sleep 1; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1 && make install && cd ../../..;; 
+b) cd $VDRSRC && rm -r softhddevice && rm -rf $PLUGINS/softhddevice && rm -r /home/`logname`/Scrivania/Vdr-Softhddevice.desktop && rm -r /home/`logname`/start-softhddevice-vdr.sh && sed -i "s|-P'softhddevice'||" /usr/local/bin/vdrrun && sed -i "s|--lirc|& -P'xineliboutput -l none -r 37890 -p'|" /usr/local/bin/vdrrun;;
 c) ;;
 esac
 #
@@ -4491,7 +4605,7 @@ esac
     echo -n "        Scegli  [a-c]:      "
     read yourch
     case $yourch in
-a) cd $VDRSRC ; rm -rf osdteletext; rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-osdteletext; git clone http://projects.vdr-developer.org/git/vdr-plugin-osdteletext.git; cd $VDRSRC; cp -r vdr-plugin-osdteletext /home/`logname`/sifinstallrepo/; mv vdr-plugin-osdteletext osdteletext; cd ../..; make plugins; mkdir -p /vtx;;
+a) cd $VDRSRC && rm -rf osdteletext && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-osdteletext && git clone http://projects.vdr-developer.org/git/vdr-plugin-osdteletext.git && cd $VDRSRC && cp -r vdr-plugin-osdteletext /home/`logname`/sifinstallrepo/ && mv vdr-plugin-osdteletext osdteletext && cd ../.. && make plugins && mkdir -p /vtx;;
 b) cd $VDRSRC && rm -r osdteletext && sed -i "s|-P'osdteletext'||" /usr/local/bin/vdrrun;;
 c) ;;
 esac
@@ -4516,25 +4630,6 @@ b) cd $VDRSRC && rm -r epgsearch && cd $PLUGINS && rm -r epgsearch && sed -i "s|
 c) ;;
 esac
 #
-#echo ""; echo "*** Externalplayer  ***"; echo ""
-    clear
-    dialog --title "   **  Vdr-Plugin-Externalplayer **   " --infobox "
-   ----------------------------------------------
-                Che cosa vuoi fare ?
-   ----------------------------------------------
-          [a]  Aggiornare il plugin Externalplayer         
-          [b]  Rimuovere il plugin Externalplayer          
-          [c]  Skip                             
-
-   ---------------------------------------------- " 0 0 
-    echo -n "        Scegli  [a-c]:      "
-    read yourch
-    case $yourch in
-a) cd $VDRSRC && rm -r externalplayer && rm -rf $PLUGINS/externalplayer && rm -rf /etc/vdr/plugins/externalplayer.conf && cp -r /home/`logname`/sifinstallrepo/externalplayer.tar.gz /$VDRSRC && tar -zxvf externalplayer.tar.gz && rm -r externalplayer.tar.gz && mv externalplayer-4078eddc1cb3 externalplayer && cd ../.. && make plugins && cp -r /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz /etc/vdr/plugins/ && cd /etc/vdr/plugins && tar -zxvf externalplayer.conf.tar.gz && rm -r externalplayer.conf.tar.gz;; 
-b) cd $VDRSRC; rm -r externalplayer && rm -rf $PLUGINS/externalplayer && rm -rf /etc/vdr/plugins/externalplayer.conf && sed -i "s|-P'externalplayer'||" /usr/local/bin/vdrrun;;
-c) ;;
-esac
-#
 #
 #echo "*** Dvbapi ***"; 
     clear
@@ -4550,52 +4645,50 @@ esac
     echo -n "        Scegli  [a-c]:      "
     read yourch
     case $yourch in
-a)  cd $VDRSRC; rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-dvbapi; rm -rf dvbapi; git clone git://github.com/manio/vdr-plugin-dvbapi.git; cp -r vdr-plugin-dvbapi /home/`logname`/sifinstallrepo/; mv vdr-plugin-dvbapi dvbapi; cp /home/`logname`/sifinstallrepo/dvbapi.patch.tar.gz /$VDRSRC/dvbapi; cd dvbapi; tar -zxvf dvbapi.patch.tar.gz; rm -r dvbapi.patch.tar.gz; patch -p1 < vdr-plugin-dvbapi-01_crosscompiling.patch; sleep 1; cd ../../..; make plugins;;
- 
+a)  cd $VDRSRC && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-dvbapi && rm -rf dvbapi && git clone git://github.com/manio/vdr-plugin-dvbapi.git && cp -r vdr-plugin-dvbapi /home/`logname`/sifinstallrepo/ && mv vdr-plugin-dvbapi dvbapi && cp /home/`logname`/sifinstallrepo/dvbapi.patch.tar.gz /$VDRSRC/dvbapi && cd dvbapi && tar -zxvf dvbapi.patch.tar.gz && rm -r dvbapi.patch.tar.gz && patch -p1 < vdr-plugin-dvbapi-01_crosscompiling.patch && sleep 1 && cd ../../.. && make plugins;; 
 b) cd $VDRSRC && rm -r dvbapi && sed -i "s|-P'dvbapi'||" /usr/local/bin/vdrrun;;
 c) ;;
 esac
 #
 #
-#echo "*** Loadepg ***"; 
+#echo "*** IPTV ***"; 
     clear
-    dialog --title "   ** VDR-Plugins-Loadepg **   " --infobox "
+    dialog --title "   ** VDR-Plugin-IPTV **   " --infobox "
    ----------------------------------------------
                 Che cosa vuoi fare ?
    ----------------------------------------------
-        [a]    Aggiornare il plugin Loadepg                
-        [b]    Rimuovere il plugin Loadepg            
+        [a]    Aggiornare il plugin IPTV                
+        [b]    Rimuovere il plugin IPTV            
         [c]    Skip             
                                        
    ---------------------------------------------- " 0 0
     echo -n "        Scegli  [a-c]:      "
     read yourch
     case $yourch in 
-a) cd $VDRSRC && rm -r loadepg && cp -r /home/`logname`/sifinstallrepo/vdr-loadepg-0.2.6.tgz /$VDRSRC && tar -zxvf vdr-loadepg-0.2.6.tgz && mv loadepg-0.2.6 loadepg && rm -r vdr-loadepg-0.2.6.tgz && cd ../.. && make plugins;;
-b) cd $VDRSRC && rm -r loadepg && rm -rf $PLUGINS/loadepg && sed -i "s|-P'loadepg'||" /usr/local/bin/vdrrun;;
+a) cd $VDRSRC && rm -r iptv && rm -rf /etc/vdr/plugins/iptv && rm -r /usr/share/vdr/plugins/iptv && cp -r /home/`logname`/sifinstallrepo/vdr-iptv-2.2.1.tgz /$VDRSRC && tar -zxvf vdr-iptv-2.2.1.tgz && mv iptv-2.2.1 iptv && rm -r vdr-iptv-2.2.1.tgz && cd iptv && cp -r /home/`logname`/sifinstallrepo/patch_iptv.tar.gz /$VDRSRC/iptv && tar -zxvf patch_iptv.tar.gz && rm -r patch_iptv.tar.gz && patch -p1 < iptv.patch && make && cd ../../.. && make plugins && mkdir -p /etc/vdr/plugins/iptv/vlcinput && cp -r /home/`logname`/sifinstallrepo/iptv_conf.tar.gz /$PLUGINS/iptv/vlcinput/ && cd $PLUGINS/iptv/vlcinput && tar -zxvf iptv_conf.tar.gz && rm -r iptv_conf.tar.gz;;
+b) cd $VDRSRC && rm -r iptv && rm -rf $PLUGINS/iptv && rm -r /usr/share/vdr/plugins/iptv && sed -i "s|-P'iptv'||" /usr/local/bin/vdrrun;;
 c) ;;
 esac
 #
 #
-#echo "*** Xvdr ***"; 
+#echo ""; echo "*** Externalplayer  ***"; echo ""
     clear
-    dialog --title "   ** VDR-Plugins-Xvdr **   " --infobox "
+    dialog --title "   **  Vdr-Plugin-Externalplayer **   " --infobox "
    ----------------------------------------------
                 Che cosa vuoi fare ?
    ----------------------------------------------
-        [a]    Aggiornare il plugin Xvdr                
-        [b]    Rimuovere il plugin Xvdr            
-        [c]    Skip             
-                                       
-   ---------------------------------------------- " 0 0
+          [a]  Aggiornare il plugin Externalplayer         
+          [b]  Rimuovere il plugin Externalplayer          
+          [c]  Skip                             
+
+   ---------------------------------------------- " 0 0 
     echo -n "        Scegli  [a-c]:      "
     read yourch
     case $yourch in
-a) cd $VDRSRC && rm -r xvdr && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-xvdr && git clone https://github.com/pipelka/vdr-plugin-xvdr.git && cp -r vdr-plugin-xvdr /home/`logname`/sifinstallrepo/ && mv vdr-plugin-xvdr xvdr && mkdir -p /etc/vdr/plugins/xvdr/ && cd ../.. && make plugins && echo "*** allowed_hosts.conf setup ***" && echo "$ALLOWED" >> /etc/vdr/plugins/xvdr/allowed_hosts.conf ;;
-b) cd $VDRSRC && rm -r xvdr && cd $PLUGINS && rm -r xvdr && sed -i "s|-P'xvdr'||" /usr/local/bin/vdrrun;;
+a) cd $VDRSRC && rm -r externalplayer && rm -rf $PLUGINS/externalplayer && rm -rf /etc/vdr/plugins/externalplayer.conf && git clone https://git.uli-eckhardt.de/vdr-plugin-externalplayer.git && cp -r vdr-plugin-externalplayer /home/`logname`/sifinstallrepo/ && mv vdr-plugin-externalplayer externalplayer && cd ../.. && make plugins && cp -r /home/`logname`/sifinstallrepo/externalplayer.conf.tar.gz /etc/vdr/plugins && cd /etc/vdr/plugins && tar -zxvf externalplayer.conf.tar.gz && rm -r externalplayer.conf.tar.gz;; 
+b) cd $VDRSRC; rm -r externalplayer && rm -rf $PLUGINS/externalplayer && sed -i "s|-P'externalplayer'||" /usr/local/bin/vdrrun;;
 c) ;;
 esac
-#
 cd /home/`logname`/sifinstallrepo/; chmod -R 777 *;
 #
 cd $SRC/vdr; make plugins install;
@@ -5082,7 +5175,7 @@ fi
     
     x) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
     wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
-    wget "http://www.vhannibal.net/settingd/download.php?id=31&action=download&clicked=y" -O Vhannibal.zip;
+    wget "http://www.vhannibal.net/settingd/download.php?id=31&action=download&clicked=y" -O Vhannibal.zip;#
     unzip Vhannibal.zip; tar -zxvf lamedb2vdr.tar.gz; cd Vhannibal*; mv * ../e2setting; cd ..;
     chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
     
@@ -5158,8 +5251,8 @@ fi
     wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
     wget morpheus883.altervista.org/settings/Settings_Morph883_30W-13E-19.2E.tar.gz;
     tar -zxvf Settings_*.tar.gz; tar -zxvf lamedb2vdr.tar.gz; cd etc/enigma2; mv * ../../e2setting; cd ../..;
-    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;
-    
+    chmod +x lamedb2vdr.sh; clear; bash lamedb2vdr.sh e2setting /etc/vdr; cd /etc/vdr; mv favorites_channels.conf channels.conf;;#
+  
     e) apt-get -y install unzip; clear; cd $SRC; rm -rf setting; mkdir setting; cd setting; mkdir e2setting;
     wget https://www.dropbox.com/s/m39civcyqy56apf/lamedb2vdr.tar.gz;
     wget morpheus883.altervista.org/settings/Settings_Morph883_0.8W-13E.tar.gz;
@@ -5385,29 +5478,9 @@ i)                                        ######################################
     echo -n "        Scegli = Installa [a] ~~ Rimuove [a1] ~~ Esci [b]:      "
     read yourch
     case $yourch in
-    
-#############################################################################################################################  
-#############################################################################################################################
-###                                                                                                                       ###
-##                                                                                                                         ##
-#                                                                                                                           #
-a)                                        #########################################
-                                          #                  KODI               c  #
-                                          #########################################
 
-              
-    clear        
-    cd $SRC  && if [ -f /usr/local/bin/kodi ];
-    then  echo "KODI $Remind3"
-    else 
-    apt-get -y install python-software-properties pkg-config
-    apt-get -y install software-properties-common
-    sudo add-apt-repository ppa:team-xbmc/ppa
-#   sudo add-apt-repository ppa:team-xbmc/xbmc-nightly
-    sudo apt-get update
-    sudo apt-get -y install kodi kodi-pvr-iptvsimple
-#
-    rm -rf /home/`logname`/Scrivania/Kodi.desktop; touch /home/`logname`/Scrivania/Kodi.desktop; 
+a)
+rm -rf /home/`logname`/Scrivania/Kodi.desktop; touch /home/`logname`/Scrivania/Kodi.desktop; 
     chmod 777 /home/`logname`/Scrivania/Kodi.desktop;
 echo "[Desktop Entry]
 Version=1.0
@@ -5424,13 +5497,38 @@ echo '#!/bin/sh
 /bin/sleep 2
 kodi 
 ' >> /usr/local/bin/start-kodi-vdr.sh; chmod a+x /usr/local/bin/start-kodi-vdr.sh;
+apt-get -y install python-software-properties pkg-config; apt-get -y install software-properties-common
+
+                                          #                      Installazione - KODI              #
+                                          ##########################################################
+     
+    clear
+    dialog --title "   ** KODI **   " --infobox "
+   ----------------------------------------------
+                Che versione vuoi installare ?
+   ----------------------------------------------
+        [a]    Kodi versione stabile
+        [b]    Kodi versione Release Candidate                                
+        [c]    Kodi versione di sviluppo            
+                                     
+   ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-c]:      "
+    read yourch
+    case $yourch in
+
+a)   sudo add-apt-repository ppa:team-xbmc/ppa; sudo apt-get update; sudo apt-get -y install kodi kodi-pvr-iptvsimple;;
+b)   sudo add-apt-repository ppa:team-xbmc/unstable; sudo apt-get update; sudo apt-get -y install kodi kodi-pvr-iptvsimple;;
+c)   sudo add-apt-repository ppa:team-xbmc/xbmc-nightly; sudo apt-get update; sudo apt-get -y install kodi kodi-pvr-iptvsimple;;
+ esac    
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+#
+    
 # cd /home/`logname`/.xbmc/userdata; rm -r guisettings.xml; 
 # wget https://www.dropbox.com/s/hn5uwwflwmm5no8/guisettings.xml.tar.gz;
-fi || echo "        Avete scelto di non installare KODI."
-    echo "        Premere il tasto [Invio] per continuare. . ."; read enterKey;;
+#fi || echo "        Avete scelto di non installare KODI."
+#    echo "        Premere il tasto [Invio] per continuare. . ."; read enterKey;;
 
-
-    
+ 
     
 
 #############################################################################################################################  
@@ -5445,7 +5543,7 @@ a1)                                       ######################################
 
     clear
     echo "                    Adesso Rimuovo KODI"; sleep 4
-    apt-get -y purge kodi; apt-get -y autoremove;;
+    apt-get remove kodi*; apt-get purge kodi*; rm -rf ~/.kodi/; sudo add-apt-repository --remove ppa:team-xbmc/xbmc-nightly; sudo add-apt-repository --remove ppa:team-xbmc/ppa; sudo add-apt-repository --remove ppa:team-xbmc/unstable;;
     esac
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 
@@ -5594,7 +5692,7 @@ esac
     echo -n "        Scegli  [a-b]:      "
     read yourch
     case $yourch in
-a)  dpkg -r vdr; rm -rf /etc/vdr; rm -rf /usr/lib/vdr; cd $SRC; rm -r vdr vdr-*; cd packages; rm -r vdr*.deb; rm -r /usr/local/bin/vdrpoweroff; rm -r /usr/local/bin/vdrrun;  rm -rf /usr/local/bin/start-vdr-xine.sh; rm -rf /usr/local/bin/start-xinelib-vdr.sh; rm -rf /usr/share/vdr; rm -rf /usr/local/bin/start-softhddevice-vdr.sh; rm -rf /home/`logname`/Scrivania/Xinelib.desktop; rm -rf /home/`logname`/Scrivania/Vdr-Xine.desktop; rm -rf /home/`logname`/Scrivania/Vdr-Softhddevice.desktop; rm -r /usr/bin/mplayer.sh; rm -rf /home/`logname`/Scrivania/KillVdr.desktop; cd $PACKAGES; rm -rf vdr*.deb;;
+a)  dpkg -r vdr; rm -rf /etc/vdr; rm -rf /usr/share/vdr; rm -rf /usr/lib/vdr; cd $SRC; rm -r vdr vdr-*; cd packages; rm -r vdr*.deb; rm -r /usr/local/bin/vdrpoweroff; rm -r /usr/local/bin/vdrrun;  rm -rf /usr/local/bin/start-vdr-xine.sh; rm -rf /usr/local/bin/start-xinelib-vdr.sh; rm -rf /usr/share/vdr; rm -rf /usr/local/bin/start-softhddevice-vdr.sh; rm -rf /home/`logname`/Scrivania/Xinelib.desktop; rm -rf /home/`logname`/Scrivania/Vdr-Xine.desktop; rm -rf /home/`logname`/Scrivania/Vdr-Softhddevice.desktop; rm -r /usr/bin/mplayer.sh; rm -rf /home/`logname`/Scrivania/KillVdr.desktop; cd $PACKAGES; rm -rf vdr*.deb;;
 b) ;;
 esac
 #
@@ -5611,7 +5709,7 @@ esac
     echo -n "        Scegli  [a-b]:      "
     read yourch
     case $yourch in
-a) apt-get remove kodi*; cd $SRC; rm -rf xbmc; rm -rf /usr/local/bin/kodi; rm -rf /usr/local/bin/kodi-standalone; rm -rf /home/#`logname`/start-kodi-vdr.sh; rm -rf /home/`logname`/Scrivania/kodi.desktop;;
+a) apt-get remove kodi*; apt-get purge kodi*; rm -rf ~/.kodi; rm -rf xbmc; rm -rf /usr/local/bin/kodi; rm -rf /usr/local/bin/kodi-standalone; rm -rf /home/`logname`/start-kodi-vdr.sh; rm -rf /home/`logname`/Scrivania/kodi.desktop; sudo add-apt-repository --remove ppa:team-xbmc/xbmc-nightly; sudo add-apt-repository --remove ppa:team-xbmc/ppa; sudo add-apt-repository --remove ppa:team-xbmc/unstable;;
 b) ;;
 esac
 #
