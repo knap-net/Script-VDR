@@ -1,3 +1,12 @@
+## Rev. 5.6.0
+- Aggiornati alcuni plugin e inseriti altri tre nuovi)
+- Installazione Kodi modificata (ora possibilità di caricare le tre possibili versioni: stabile - release - sviluppo)
+- Aggiornati alcuni loghi
+- Eliminati Altri Bug minori
+- Rieseguire il Punto 1, A, Creazione, Repository Locale
+
+
+
 ## Rev. 5.5.9
 - Aggiunto e Implementato Nuovo Metodo GetChannels 0.7.2 In Creazione Lista Canali
 - Satelliti Disponibili: Da 4.8E a 30.0W - Crea Parametri, Caid e Pid Audio/Video
