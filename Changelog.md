@@ -1,5 +1,5 @@
 ## Rev. 5.6.0
-- Aggiornati alcuni plugin e inseriti altri tre nuovi)
+- Aggiornati alcuni plugin e inseriti altri tre nuovi
 - Installazione Kodi modificata (ora possibilità di caricare le tre possibili versioni: stabile - release - sviluppo)
 - Aggiornati alcuni loghi
 - Eliminati Altri Bug minori
