@@ -1,3 +1,12 @@
+## Rev. 5.6.1
+- Aggiunto Supporto Librerie LIBVDPAU 1.1.1 - Non Supportate piu' ufficialmente dai driver nvidia.
+- Aggiunto Supporto Librerie VDPAUINFO 1.0 - Tools Utilità Informazioni Generali
+- Rimosso Limitazione GetChannels 0.7.2 in Creazione Settings ed Allineato Versioni
+- Eliminati Altri Bug minori
+- Rieseguire il Punto 1, A, Creazione, Repository Locale
+
+
+
 ## Rev. 5.6.0
 - Aggiornati alcuni plugin e inseriti altri tre nuovi
 - Installazione Kodi modificata (ora possibilità di caricare le tre possibili versioni: stabile - release - sviluppo)
