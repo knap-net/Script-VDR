@@ -1,5 +1,5 @@
 ## Rev. 5.6.2
-- Aggiunto Supporto NVIDIA Video Codec 6.1 SDK - hardware encode(NVENC API) and hardware decode(NVCUVID API)
+- Aggiunto Supporto NVIDIA Video Codec 6.1 SDK - hardware encode(NVENC) and hardware decode(NVCUVID)
 - Per Ulteriori Dettagli NVENC consultare -> https://developer.nvidia.com/nvidia-video-codec-sdk
 - Aggiornato FFmpeg da Git repository a Release Stable 2.8.6 Snapshot
 - Aggiunto Supporto in FFmpeg 2.8.6 con Vdpau e NVENC (H.264 - H.265)
