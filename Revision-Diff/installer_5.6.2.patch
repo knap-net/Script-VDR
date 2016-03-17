@@ -1,0 +1,520 @@
+--- "Old Release/Script-VDR-Scriptvdr-2.2.0_V.5.6.1/installer"	2016-03-01 20:50:31.689875565 +0100
++++ Script-VDR-Scriptvdr-2.2.0_V.5.6.2/installer	2016-03-17 08:47:15.117991222 +0100
+@@ -531,38 +531,45 @@
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+     hg clone http://hg.videolan.org/x265;
+-  fi   
++  fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/fdk-aac ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+     git clone https://github.com/mstorsjo/fdk-aac.git;
+-  fi  
++  fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/libvpx-1.4.0.tar.bz2 ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+     wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.4.0.tar.bz2;
+-  fi   
++  fi
+ 
+-#if [ -s /home/`logname`/sifinstallrepo/ffmpeg ]; then
+-#  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-#else
+-#  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-#    git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg;
+-#  fi    
++if [ -s /home/`logname`/sifinstallrepo/libvpx-1.5.0.tar.bz2 ]; then
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++else
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++    wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.5.0.tar.bz2;
++  fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/ffmpeg-2.8.tar.bz2 ]; then
++if [ -s /home/`logname`/sifinstallrepo/nvidia_video_sdk_6.0.1.zip ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    wget https://www.ffmpeg.org/releases/ffmpeg-2.8.tar.bz2;
+-  fi   
+- 
+-############################# caricamento xinelib - xine-ui ###########################
++    wget http://developer.download.nvidia.com/assets/cuda/files/nvidia_video_sdk_6.0.1.zip;
++  fi
+ 
++if [ -s /home/`logname`/sifinstallrepo/ffmpeg-2.8.6.tar.bz2 ]; then
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++else
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++    wget https://github.com/FFmpeg/FFmpeg/releases/download/n2.8.6/ffmpeg-2.8.6.tar.bz2;
++  fi
++
++
++############################# caricamento xinelib - xine-ui ###########################
+ if [ -s /home/`logname`/sifinstallrepo/xine-lib ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+@@ -677,11 +684,11 @@
+     git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/patch_softhddevice.tar.gz ]; then
++if [ -s /home/`logname`/sifinstallrepo/patch_softhddevice_2.tar.gz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    wget https://www.dropbox.com/s/qa0674d9l9mgzzf/patch_softhddevice.tar.gz;
++    wget https://www.dropbox.com/s/u8dw9na1rl2ne96/patch_softhddevice_2.tar.gz;
+   fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-streamdev ]; then
+@@ -1348,7 +1355,7 @@
+     git clone https://github.com/mstorsjo/fdk-aac.git;
+     git clone git://git.videolan.org/x264.git
+     wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.4.0.tar.bz2;
+-    #git clone git://source.ffmpeg.org/ffmpeg.git ffmpeg
++    wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.5.0.tar.bz2;    
+     wget https://www.ffmpeg.org/releases/ffmpeg-2.8.tar.bz2;
+ 
+ 
+@@ -1374,7 +1381,7 @@
+     git clone git://projects.vdr-developer.org/vdr-plugin-osdteletext.git;
+     git clone git://projects.vdr-developer.org/vdr-plugin-skinpearlhd.git;
+     git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git;
+-    wget https://www.dropbox.com/s/qa0674d9l9mgzzf/patch_softhddevice.tar.gz;
++    wget https://www.dropbox.com/s/u8dw9na1rl2ne96/patch_softhddevice_2.tar.gz;
+     git clone git://projects.vdr-developer.org/vdr-plugin-epgfixer.git;
+     git clone http://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git;
+     git clone git://github.com/manio/vdr-plugin-dvbapi.git;
+@@ -1512,9 +1519,9 @@
+                   
+     clear        
+     dialog --title "   ** Supporto Librerie Schede Video ATI & Intel & Nvidia - YASM - LIBDRM - LIBVA - LIBVDPAU  **   " --infobox "
+-   ----------------------------------------------------------------------------------------------
+-              Installa o Rimuove Librerie di supporto {Vaapi-Vdpau} - {Test Softhddevice}
+-   ----------------------------------------------------------------------------------------------
++   ---------------------------------------------------------------------------------------------
++            Installa o Rimuove Librerie di supporto {Vaapi-Vdpau} - {Test Softhddevice}
++   ---------------------------------------------------------------------------------------------
+         
+         ***** Installa  *****  .........................  *****  Rimuove  *****
+         [a]    YASM ......... 1.3.0  .....................  [a1]    YASM ......... 1.3.0
+@@ -1528,9 +1535,9 @@
+         [f]    LIB-VDPAU .... 1.1.1  .....................  [f1]    LIB-VDPAU .... 1.1.1
+         [g]    VDPAUINFO .... 1.0  .......................  [g1]    VDPAUINFO .... 1.0
+         
+-        [h]    Skip
++        [z]    Skip
+         
+-   ----------------------------------------------------------------------------------------------      
++   ---------------------------------------------------------------------------------------------      
+         Note:
+         - LIBVA 1.6.2 - Va sempre installato come dipendenza.
+         
+@@ -1548,10 +1555,11 @@
+         - LIBVA-VDPAU-DRIVER 0.7.4 - consists in a VDPAU-based backend for VA-API.
+         
+         Note:
+-        - LIB-VDPAU 1.1.1 - Assegna parte del processo della decodifica e della post-elaborazione video alla GPU della scheda video. 
++        - LIB-VDPAU 1.1.1 - Assegna parte del processo della decodifica e della 
++        post-elaborazione video alla GPU della scheda video. 
+    
+-   ---------------------------------------------------------------------------------------------- " 0 0
+-    echo -n "        Scegli = Installa [a-e] ~~ Rimuove [a1-e1] ~~ Esci [f]:      "
++   --------------------------------------------------------------------------------------------- " 0 0
++    echo -n "        Scegli = Installa [a-g] ~~ Rimuove [a1-g1] ~~ Esci [z]:      "
+     read yourch
+     case $yourch in
+     
+@@ -1862,7 +1870,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+ g1)                                       ##########################################
+-                                          #        Rimozione   VDPAUINFO 1.0       #
++                                          #         Rimozione  VDPAUINFO 1.0       #
+                                           ##########################################
+ 
+ 
+@@ -1896,34 +1904,34 @@
+                   
+     clear        
+     dialog --title "   ** Supporto Librerie Librerie & Codec - X264 - X265 - FDK-AAC - LIBVPX - FFMPEG **   " --infobox "
+-   --------------------------------------------------------------
+-              Installa o Rimuove Librerie di supporto
+-   --------------------------------------------------------------
++   --------------------------------------------------------------------------------------------------------------------
++                                     Installa o Rimuove Librerie di Supporto
++   --------------------------------------------------------------------------------------------------------------------
+         
+-        *****  Installa  *****  .................  *****  Rimuove  *****
+-        [a]    X264 26.09.2015 Git  ...............  [a1]    X264 26.09.2015 Git
+-        [b]    X265 HG  ...........................  [b1]    X265 HG
+-        [c]    FDK-AAC Git  .......................  [c1]    FDK-AAC Git
+-        [d]    LIBVPX 1.4.0 .......................  [d1]    LIBVPX 1.4.0
+-        [e]    FFMPEG 2.8 Git .....................  [e1]    FFMPEG 2.8 Git
+-
+-        [f]    Skip
++        *****  Installa  *****  ......................  *****  Rimuove  *****
++        [a]    X264 26.09.2015 Git  ....................  [a1]    X264 26.09.2015 Git
++        [b]    X265 HG  ................................  [b1]    X265 HG
++        [c]    FDK-AAC Git  ............................  [c1]    FDK-AAC Git
+         
++        [d]    NVIDIA Video Codec 6.1 SDK ..............  [d1]    NVIDIA Video Codec 6.1 SDK        
++        [e]    LIBVPX 1.5.0 ............................  [e1]    LIBVPX 1.5.0
++        [f]    FFMPEG 2.8.6 Git-Snapshot ...............  [f1]    FFMPEG 2.8.6 Git-Snapshot
+         
++        [z]    Skip
+         
+-   -------------------------------------------------------------- 
++   -------------------------------------------------------------------------------------------------------------------- 
+         Note:
+         Per reinstallare o aggiornare x264 e x265 si deve rimuovere 
+         libx264-dev - x264 - ffmpeg - dal sistema con il comando:
+-        
+         ~$ sudo apt-get purge x264 libx264-dev ffmpeg
+         
++        Note:
++        - FFMPEG 2.8.6 Stabile - Si puo' selezionare il supporto per X264 & X265
+         
+         Note:
+-        - FFMPEG - Si puo' selezionare il supporto per X264 & X265
+-           
+-   -------------------------------------------------------------- " 0 0
+-    echo -n "        Scegli = Installa [a-e] ~~ Rimuove [a1-e1] ~~ Esci [f]:      "
++        - NVIDIA Video Codec 6.1 SDK --- NVENC Hardware Accelerated Video Encoding Decoding ~ H.264 and H.265 (HEVC) 
++   -------------------------------------------------------------------------------------------------------------------- " 0 0
++    echo -n "        Scegli = Installa [a-f] ~~ Rimuove [a1-f1] ~~ Esci [z]:      "
+     read yourch
+     case $yourch in
+     
+@@ -1998,7 +2006,7 @@
+     cd x265/build/linux;
+     ./make-Makefiles.bash
+     make -j4
+-    checkinstall --pkgname=x265 --pkgversion="2:1.7-git" --bk --default --deldoc=yes --pakdir=$PACKAGES
++    checkinstall --pkgname=x265 --pkgversion="2:1.7-git" --bk --default --deldoc=yes --pakdir=$PACKAGES;
+     ldconfig -v;;
+ 
+     
+@@ -2060,15 +2068,56 @@
+     apt-get -y purge fdk-aac; rm -r /usr/local/src/fdk-aac; rm /usr/local/src/packages/fdk-aac*;;
+ 
+     
+-    
+ 
++    
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+ d)                                        #########################################
+-                                          #                 LIBVPX                #
++                                          #       NVIDIA Video Codec 6.1 SDK      #
++                                          #########################################    
++    
++    clear
++    echo "                    Adesso Installo NVIDIA Video Codec 6.1 SDK"; sleep 4
++    apt-get -y install unzip libxmu-dev freeglut3 freeglut3-dev; clear;
++    cd /usr/local/src
++    rm -R nvidia_sdk
++    cp /home/`logname`/sifinstallrepo/nvidia_video_sdk_6.0.1.zip /usr/local/src/;
++    unzip nvidia_video_sdk_6.0.1.zip; mv nvidia_video_sdk_6.0.1 nvidia_sdk;
++    rm -r nvidia_video_sdk_6.0.1.zip; cd nvidia_sdk; cp Samples/common/inc/*.h /usr/local/include/; cd Samples;
++    #./configure --enable-pic --enable-shared --enable-runtime_cpu_detect
++    make -j4;;
++    #checkinstall --pkgname=nvidia-video-codec-sdk --pkgversion="6.1-sdk" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES;;    
++    
++    
++    
++    
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++d1)                                       ##########################################
++                                          #  Rimozione NVIDIA Video Codec 6.1 SDK  #
++                                          ##########################################
++
++
++    clear
++    echo "                    Adesso Rimuovo Libvpx 1.5.0"; sleep 4
++    rm -r /usr/local/src/nvidia_sdk;;
++
++
++
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++e)                                        #########################################
++                                          #              LIBVPX 1.5.0             #
+                                           #########################################
+ 
+ 
+@@ -2080,15 +2129,15 @@
+     apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+     apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
+     clear
+-    echo "                    Adesso Installo Libvpx 1.4.0"; sleep 4
++    echo "                    Adesso Installo Libvpx 1.5.0"; sleep 4
+     cd /usr/local/src
+     rm -R libvpx
+-    cp /home/`logname`/sifinstallrepo/libvpx-1.4.0.tar.bz2 /usr/local/src/;
+-    tar xjf libvpx-1.4.0.tar.bz2; mv libvpx-1.4.0 libvpx;
+-    rm -r libvpx-1.4.0.tar.bz2; cd libvpx
++    cp /home/`logname`/sifinstallrepo/libvpx-1.5.0.tar.bz2 /usr/local/src/;
++    tar xjf libvpx-1.5.0.tar.bz2; mv libvpx-1.5.0 libvpx;
++    rm -r libvpx-1.5.0.tar.bz2; cd libvpx
+     ./configure --enable-pic --enable-shared --enable-runtime_cpu_detect
+     make -j4
+-    checkinstall --pkgname=libvpx --pkgversion="1.4.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES;;
++    checkinstall --pkgname=libvpx --pkgversion="1.5.0-git-snapshot" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES;;
+ 
+     
+     
+@@ -2098,13 +2147,13 @@
+ ###                                                                                                                       ###
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+-d1)                                       #########################################
++e1)                                       #########################################
+                                           #             Rimozione LIBVPX          #
+                                           #########################################
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo Libvpx 1.4.0"; sleep 4
++    echo "                    Adesso Rimuovo Libvpx 1.5.0"; sleep 4
+     apt-get -y purge libvpx; rm -r /usr/local/src/libvpx; rm /usr/local/src/packages/libvpx*;;
+ 
+     
+@@ -2115,7 +2164,7 @@
+ ###                                                                                                                       ###
+ ##                                                                                                                         ##
+ #                                                                                                                           # 
+-e)                                        #########################################
++f)                                        #########################################
+                                           #                  FFMPEG               #
+                                           #########################################
+ 
+@@ -2130,7 +2179,7 @@
+     clear
+     apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
+     clear
+-    dialog --title "   ** Installazione FFmpeg 2.8 Git **   " --infobox "
++    dialog --title "   ** Installazione FFmpeg 2.8.6 Git-Snapshot **   " --infobox "
+    ----------------------------------------------------
+           Seleziona il Tipo di Configurazione ...            
+    ----------------------------------------------------
+@@ -2150,12 +2199,13 @@
+     echo "                    Attendere qualche secondo la configurazione ...";
+     cd /usr/local/src;
+     rm -R ffmpeg
+-    cp /home/`logname`/sifinstallrepo/ffmpeg-2.8.tar.bz2 /usr/local/src/;
+-    tar xjf ffmpeg-2.8.tar.bz2; mv ffmpeg-2.8 ffmpeg;
+-    rm -r ffmpeg-2.8.tar.bz2; cd ffmpeg
+-    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
++    cp /home/`logname`/sifinstallrepo/ffmpeg-2.8.6.tar.bz2 /usr/local/src/;
++    tar xjf ffmpeg-2.8.6.tar.bz2; mv ffmpeg-2.8.6 ffmpeg;
++    rm -r ffmpeg-2.8.6.tar.bz2; cd ffmpeg 
++    #./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
++    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
+     make -j4
+-    checkinstall --pkgname=ffmpeg --pkgversion="7:2.8-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.6-git-snapshot" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     hash -r
+     ldconfig -v
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+@@ -2163,13 +2213,14 @@
+     echo "                    Attendere qualche secondo la configurazione ...";
+     cd /usr/local/src;
+     rm -R ffmpeg
+-    cp /home/`logname`/sifinstallrepo/ffmpeg-2.8.tar.bz2 /usr/local/src/;
+-    tar xjf ffmpeg-2.8.tar.bz2; mv ffmpeg-2.8 ffmpeg;
+-    rm -r ffmpeg-2.8.tar.bz2; cd ffmpeg 
+-    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
++    cp /home/`logname`/sifinstallrepo/ffmpeg-2.8.6.tar.bz2 /usr/local/src/;
++    tar xjf ffmpeg-2.8.6.tar.bz2; mv ffmpeg-2.8.6 ffmpeg;
++    rm -r ffmpeg-2.8.6.tar.bz2; cd ffmpeg 
++    #./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
++    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
+     make -j4
+-    checkinstall --pkgname=ffmpeg --pkgversion="7:2.8-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+-    hash -r
++    checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.6-git-snapshot" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    hash -r;
+     ldconfig -v;;
+     esac
+     ;;
+@@ -2182,17 +2233,30 @@
+ ###                                                                                                                       ###
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+-e1)                                       #########################################
++f1)                                       #########################################
+                                           #             Rimozione FFMPEG          #
+                                           #########################################
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo FFmpeg 2.8"; sleep 4
++    echo "                    Adesso Rimuovo FFmpeg 2.8.6"; sleep 4
+     apt-get -y purge ffmpeg; rm -r /usr/local/src/ffmpeg; rm /usr/local/src/packages/ffmpeg*;; 
++    #esac
++    #echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++    
++  
++    
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++
++z) ;;
+     esac
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+-    
++
+     
+     
+     
+@@ -2520,8 +2584,7 @@
+ clear
+ echo ""; echo "               *** Softhddevice ***"; echo ""; sleep 3
+ cd $VDRSRC;
+-cp -r /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice /$VDRSRC; mv vdr-plugin-softhddevice softhddevice; cd softhddevice; cp -r /home/`logname`/sifinstallrepo/patch_softhddevice.tar.gz /$VDRSRC/softhddevice; tar -zxvf patch_softhddevice.tar.gz; rm -r patch_softhddevice.tar.gz; patch -p1 < 11_Makefile.patch; sleep 1; patch -p1 < 12_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_vdpauqueue.patch; sleep 1;
+-make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1; make install; 
++cp -r /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice /$VDRSRC; mv vdr-plugin-softhddevice softhddevice; cd softhddevice; cp -r /home/`logname`/sifinstallrepo/patch_softhddevice_2.tar.gz /$VDRSRC/softhddevice; tar -zxvf patch_softhddevice_2.tar.gz; rm -r patch_softhddevice_2.tar.gz; patch -p1 < 10_softhddevice_trusty.patch; sleep 1; patch -p1 < 11_Makefile.patch; sleep 1; patch -p1 < 12_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_vdpauqueue.patch; sleep 1; patch -p1 < 15_fsigned_char.patch; sleep 1; patch -p1 < 20_ffmpeg_2.9.patch; sleep 1; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1; make install; 
+ # 
+ #
+ clear
+@@ -2537,7 +2600,7 @@
+ #
+ clear
+ echo ""; echo "               *** Skindesigner ***"; echo ""; sleep 3
+-cd $VDRSRC; sudo apt-get -y install lm-sensors;
++cd $VDRSRC; sudo apt-get -y install lm-sensors librsvg2-dev libxml2-dev libcairo2-dev;
+ cp -r /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner /$VDRSRC/ && mv vdr-plugin-skindesigner skindesigner && cp -rf /$SRC/traduzioni/metrixhd/*.xml /$VDRSRC/skindesigner/skins/metrixhd/ && cd .. && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures; 
+ # qui sopra c'è da mettere le icone di menù mancanti che sono dentro le skin del vdr-plugin-skindesigner traducendole e comprimendole
+ #
+@@ -2721,7 +2784,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #    
+                                           ##################################################
+-                                          #      Creazione avvio xinelib                   #
++                                          #            Creazione avvio xinelib             #
+                                           ##################################################
+                                           
+                                           
+@@ -2872,7 +2935,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+                                           ##################################################
+-                                          #  Creazione icona avvio vdr con Vdr-Xine        #
++                                          #     Creazione icona avvio vdr con Vdr-Xine     #
+                                           ##################################################
+                                           
+                                           
+@@ -2902,7 +2965,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+                                           ##################################################
+-                                          #        Creazione icona kill vdr                #
++                                          #            Creazione icona kill vdr            #
+                                           ##################################################
+                                           
+                                           
+@@ -2936,7 +2999,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+                                           ##################################################
+-                                          #              Avvio Oscam                       #
++                                          #                  Avvio Oscam                   #
+                                           ##################################################
+                                           
+                                           
+@@ -3037,7 +3100,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+                                           ##################################################
+-                                          #        creazione icona kill oscam              #
++                                          #           creazione icona kill oscam           #
+                                           ##################################################
+                                           
+                                           
+@@ -3070,7 +3133,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+                                           ##################################################
+-                                          #              Creazione diseqc                  #
++                                          #                  Creazione diseqc              #
+                                           ##################################################
+                                           
+                                           
+@@ -3152,7 +3215,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+                                           ##################################################
+-                                          #    Installazione Skin di default per Vdr       #
++                                          #      Installazione Skin di default per Vdr     #
+                                           ##################################################
+                                           
+                                           
+@@ -3209,7 +3272,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+                                           ##################################################
+-                                          #      Installazione logos per Vdr               #
++                                          #           Installazione logos per Vdr          #
+                                           ##################################################
+ 
+                             
+@@ -3315,7 +3378,7 @@
+ #
+ #
+ 
+-apt-get -y install libextractor-dev
++apt-get -y install libextractor-dev libmagick++-dev
+ cd $VDRSRC;
+ 
+     clear
+@@ -4570,7 +4633,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/lib/vdr/plugins/skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner && cd $PLUGINS && rm -rf skindesigner && cd $VDRSRC && git clone git://projects.vdr-developer.org/vdr-plugin-skindesigner.git && cp -rf vdr-plugin-skindesigner /home/`logname`/sifinstallrepo/  && mv vdr-plugin-skindesigner skindesigner && cd skindesigner && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures ;;
++a) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/lib/vdr/plugins/skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-skindesigner && cd $PLUGINS && rm -rf skindesigner && cd $VDRSRC && git clone git://projects.vdr-developer.org/vdr-plugin-skindesigner.git && cp -rf vdr-plugin-skindesigner /home/`logname`/sifinstallrepo/  && mv vdr-plugin-skindesigner skindesigner && cd skindesigner && apt-get -y install lm-sensors librsvg2-dev libxml2-dev libcairo2-dev && make install && cd /usr/lib/vdr/plugins/skindesigner/scripts/ && ln -s temperatures.default temperatures ;;
+ b) cd $VDRSRC && rm -rf skindesigner && rm -rf /usr/share/vdr/plugins/skindesigner && cd $PLUGINS && rm -rf skindesigner && sed -i "s|-P'skindesigner -l /etc/vdr/logos/ -i /usr/share/vdr/plugins/skindesigner/skins/'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+@@ -4682,15 +4745,15 @@
+    ----------------------------------------------
+                 Che cosa vuoi fare ?
+    ----------------------------------------------
+-        [a]    Aggiornare il plugin Softhddevice                
+-        [b]    Rimuovere il plugin Softhddevice            
++        [a]    Aggiornare il plugin Softhddevice  
++        [b]    Rimuovere il plugin Softhddevice
+         [c]    Skip             
+                                        
+    ---------------------------------------------- " 0 0
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC && rm -rf softhddevice; git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice && cp -rf vdr-plugin-softhddevice /home/`logname`/sifinstallrepo/ && mv vdr-plugin-softhddevice softhddevice && cd softhddevice && cp -r /home/`logname`/sifinstallrepo/patch_softhddevice.tar.gz /$VDRSRC/softhddevice && tar -zxvf patch_softhddevice.tar.gz && rm -r patch_softhddevice.tar.gz && patch -p1 < 11_Makefile.patch && sleep 1 && patch -p1 < 12_ffmpeg2.2.2.patch && sleep 1 && patch -p1 < 13_vdpauqueue.patch && sleep 1; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1 && make install && cd ../../..;; 
++a) cd $VDRSRC && rm -rf softhddevice; git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice && cp -rf vdr-plugin-softhddevice /home/`logname`/sifinstallrepo/ && mv vdr-plugin-softhddevice softhddevice && cd softhddevice && cp -r /home/`logname`/sifinstallrepo/patch_softhddevice_2.tar.gz /$VDRSRC/softhddevice && tar -zxvf patch_softhddevice_2.tar.gz && rm -r patch_softhddevice_2.tar.gz; patch -p1 < 10_softhddevice_trusty.patch; sleep 1; patch -p1 < 11_Makefile.patch; sleep 1; patch -p1 < 12_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_vdpauqueue.patch; sleep 1; patch -p1 < 15_fsigned_char.patch; sleep 1; patch -p1 < 20_ffmpeg_2.9.patch; sleep 1; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1 && make install && cd ../../..;;
+ b) cd $VDRSRC && rm -r softhddevice && rm -rf $PLUGINS/softhddevice && rm -r /home/`logname`/Scrivania/Vdr-Softhddevice.desktop && rm -r /home/`logname`/start-softhddevice-vdr.sh && sed -i "s|-P'softhddevice'||" /usr/local/bin/vdrrun && sed -i "s|--lirc|& -P'xineliboutput -l none -r 37890 -p'|" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
