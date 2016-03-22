@@ -2177,7 +2177,7 @@ f)                                        ######################################
     apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
     apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
     clear
-    apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
+    apt-get -y install libopus-dev libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
     clear
     dialog --title "   ** Installazione FFmpeg 2.8.6 Git-Snapshot **   " --infobox "
    ----------------------------------------------------
