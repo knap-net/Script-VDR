@@ -1354,9 +1354,8 @@ else
     wget https://www.dropbox.com/s/hvu4nstph14zaz5/utils_glx.patch;
     git clone https://github.com/mstorsjo/fdk-aac.git;
     git clone git://git.videolan.org/x264.git
-    wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.4.0.tar.bz2;
     wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.5.0.tar.bz2;    
-    wget https://www.ffmpeg.org/releases/ffmpeg-2.8.tar.bz2;
+    wget https://github.com/FFmpeg/FFmpeg/releases/download/n2.8.6/ffmpeg-2.8.6.tar.bz2;
 
 
 ############################ caricamento xinelib - xine-ui ###########################
