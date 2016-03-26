@@ -1,0 +1,133 @@
+--- installer	2016-03-26 18:48:25.491684000 +0100
++++ installer_5.6.2_mod	2016-03-26 18:46:45.527688000 +0100
+@@ -44,7 +44,7 @@
+ #
+ PLUGIN="--lirc -P'xineliboutput -l none -r 37890 -p' -P'dvbapi' -P'text2skin' -P'osdteletext' -P'epgsearch'"
+ # 
+-PLUGIN1="--lirc -P'softhddevice -f' -P'dvbapi' -P'skindesigner -l /etc/vdr/logos/ -i /usr/share/vdr/plugins/skindesigner/skins/' -P'skinflatplus -l /etc/vdr/logos/' -P'tvguideng' -P'iptv' -P'tvguide -l /etc/vdr/logos/' -P'weatherforecast' -P'text2skin' -P'osdteletext' -P'epgsearch' -P'externalplayer'"
++PLUGIN1="--lirc -P'softhddevice -f' -P'dvbapi' -P'skindesigner -l /etc/vdr/logos/ -i /usr/share/vdr/plugins/skindesigner/skins/' -P'skinflatplus -l /etc/vdr/logos/' -P'tvguideng' -P'weatherforecast' -P'iptv' -P'tvguide -l /etc/vdr/logos/'  -P'text2skin' -P'osdteletext' -P'epgsearch' -P'externalplayer'"
+ #
+ Remind='è già installato... avete dimenticato di aggiungere il comando al vdrrun?'
+ Remind1='è già installata... avete dimenticato di aggiungere il comando al vdrrun?'
+@@ -786,7 +786,7 @@
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    wget https://www.dropbox.com/s/i2syzegiwy7gvex/vdr-patches.2.2.0.tar.gz;
++    wget https://www.dropbox.com/s/0fpr5q0jf85haen/vdr-patches.2.2.0.tar.gz;
+   fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/Make.config.2.2.0 ]; then
+@@ -1354,8 +1354,9 @@
+     wget https://www.dropbox.com/s/hvu4nstph14zaz5/utils_glx.patch;
+     git clone https://github.com/mstorsjo/fdk-aac.git;
+     git clone git://git.videolan.org/x264.git
++    wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.4.0.tar.bz2;
+     wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.5.0.tar.bz2;    
+-    wget https://github.com/FFmpeg/FFmpeg/releases/download/n2.8.6/ffmpeg-2.8.6.tar.bz2;
++    wget https://www.ffmpeg.org/releases/ffmpeg-2.8.tar.bz2;
+ 
+ 
+ ############################ caricamento xinelib - xine-ui ###########################
+@@ -1406,7 +1407,7 @@
+     wget https://www.dropbox.com/s/bx13km4g9ogvgb8/menuorg.tar.gz;
+     git clone https://github.com/3PO/vdr-plugin-sc.git;
+     wget https://www.dropbox.com/s/hsp66258srhwa1d/mce-remote.conf.tar.gz;
+-    wget https://www.dropbox.com/s/i2syzegiwy7gvex/vdr-patches.2.2.0.tar.gz;
++    wget https://www.dropbox.com/s/0fpr5q0jf85haen/vdr-patches.2.2.0.tar.gz;
+     wget https://www.dropbox.com/s/mgg1lfyjbx9li7p/Make.config.2.2.0;
+     wget https://www.dropbox.com/s/c2ikz2od9s2hd0j/reelchannellist.tar.xz;
+     wget https://www.dropbox.com/s/odj5b2w1y3sedsp/ReelMakefile.tar.gz;
+@@ -2176,7 +2177,7 @@
+     apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+     apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
+     clear
+-    apt-get -y install libopus-dev libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
++    apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
+     clear
+     dialog --title "   ** Installazione FFmpeg 2.8.6 Git-Snapshot **   " --infobox "
+    ----------------------------------------------------
+@@ -2216,7 +2217,8 @@
+     tar xjf ffmpeg-2.8.6.tar.bz2; mv ffmpeg-2.8.6 ffmpeg;
+     rm -r ffmpeg-2.8.6.tar.bz2; cd ffmpeg 
+     #./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
+-    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
++    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame  --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
++    # --enable-libopus
+     make -j4
+     checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.6-git-snapshot" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     hash -r;
+@@ -2472,14 +2474,18 @@
+     patch -p1 < 31_vdr_hddarchive.patch; sleep 1;
+ echo "*** 34 ***"
+     patch -p1 < 34_vdr_naludump.patch; sleep 1;
++echo "*** 36 ***"
++    patch -p1 < 36_vdr_2.2.0_horizontal_menu.patch; sleep 1;
++echo "*** 37 ***"
++    patch -p1 < 37_vdr_2.2.0_softhddevice_CAID_Buffer_V3.patch; sleep 1;
+ echo "*** 81 menuorg ***"
+     patch -p1 < 80_menuorg-0.5.0.patch; sleep 1;
+ echo "*** 84 ***"
+     patch -p1 < 84_reelchannels.patch; sleep 1;
+ echo "*** 87 ***"
+     patch -p1 < 87_pin.patch; sleep 1;
+-echo "*** 90 ***"
+-    patch -p1 < 90_dvbdevice.patch; sleep 1;   
++#echo "*** 90 ***"
++#    patch -p1 < 90_dvbdevice.patch; sleep 1;   
+ echo "*** 91 ***"
+     patch -p1 < 91_doubleChannels.patch; sleep 1;
+ echo "*** 99 ***"
+@@ -4713,7 +4719,7 @@
+     read yourch
+     case $yourch in
+ a) cd $VDRSRC && rm -rf skin-flatplus rm -rf /home/`logname`/sifinstallrepo/skin-flatplus && rm -rf /usr/lib/vdr/plugins/skinflatplus && rm -rf /usr/share/vdr/plugins/skinflatplus && cd $PLUGINS && rm -rf skinflatplus && cd $VDRSRC && git clone http://projects.vdr-developer.org/git/skin-flatplus.git/ && cp -rf skin-flatplus /home/`logname`/sifinstallrepo/ && cd skin-flatplus && make install && cd /usr/lib/vdr/plugins/skinflatplus/widgets/temperatures/ && ln -s temperatures.default temperatures && cd ../system_information && ln -s system_information.ubuntu system_information  && cp -rf /home/`logname`/sifinstallrepo/flat_weather.tar.gz ../weather/ && cd ../weather && tar -zxvf flat_weather.tar.gz && rm -r flat_weather.tar.gz ;;
+-b) cd $VDRSRC && rm -r skin-flatplus && cd $PLUGINS && rm -r skinflatplus && rm -rf /usr/lib/vdr/plugins/skinflatplus && rm -rf /usr/share/vdr/plugins/skinflatplus && sed -i "s|-P'skinflatplus -l /etc/vdr/logos/'||" /usr/local/bin/vdrrun;;
++b) cd $VDRSRC && rm -rf skin-flatplus && cd $PLUGINS && rm -rf skinflatplus && rm -rf /usr/lib/vdr/plugins/skinflatplus && rm -rf /usr/share/vdr/plugins/skinflatplus && sed -i "s|-P'skinflatplus -l /etc/vdr/logos/'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+ #
+@@ -4732,7 +4738,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC && rm -r text2skin && git clone git://projects.vdr-developer.org/vdr-plugin-text2skin.git && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-text2skin && cd $VDRSRC && cp -r vdr-plugin-text2skin /home/`logname`/sifinstallrepo/ && mv vdr-plugin-text2skin text2skin && cd text2skin && cp /home/`logname`/sifinstallrepo/text2skin.patch.tar.gz /$VDRSRC/text2skin/ && tar -zxvf text2skin.patch.tar.gz && rm -r text2skin.patch.tar.gz && sleep 1 && patch -p1 < 10_text2skin_livebuffer.patch && sleep 1 && patch -p1 < 11_text2skin_render.patch && sleep 1 && patch -p1 < 12_text2skin_sortname.patch && sleep 1 && patch -p1 < 13_text2skin_noreruns.patch && sleep 1 && patch -p1 < 14_text2skin_status.patch && sleep 1 && cd ../../.. && make plugins;;
++a) cd $VDRSRC && rm -r text2skin && git clone git://projects.vdr-developer.org/vdr-plugin-text2skin.git && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-text2skin && cp -r vdr-plugin-text2skin /home/`logname`/sifinstallrepo/ && mv vdr-plugin-text2skin text2skin && cd text2skin && cp /home/`logname`/sifinstallrepo/text2skin.patch.tar.gz /$VDRSRC/text2skin/ && tar -zxvf text2skin.patch.tar.gz && rm -r text2skin.patch.tar.gz && sleep 1 && patch -p1 < 10_text2skin_livebuffer.patch && sleep 1 && patch -p1 < 11_text2skin_render.patch && sleep 1 && patch -p1 < 12_text2skin_sortname.patch && sleep 1 && patch -p1 < 13_text2skin_noreruns.patch && sleep 1 && patch -p1 < 14_text2skin_status.patch && sleep 1 && cd ../../.. && make plugins;;
+ b) cd $VDRSRC && rm -r text2skin && cd $PLUGINS && rm -r text2skin && sed -i "s|-P'text2skin'||" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+@@ -4752,7 +4758,7 @@
+     echo -n "        Scegli  [a-c]:      "
+     read yourch
+     case $yourch in
+-a) cd $VDRSRC && rm -rf softhddevice; git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice && cp -rf vdr-plugin-softhddevice /home/`logname`/sifinstallrepo/ && mv vdr-plugin-softhddevice softhddevice && cd softhddevice && cp -r /home/`logname`/sifinstallrepo/patch_softhddevice_2.tar.gz /$VDRSRC/softhddevice && tar -zxvf patch_softhddevice_2.tar.gz && rm -r patch_softhddevice_2.tar.gz; patch -p1 < 10_softhddevice_trusty.patch; sleep 1; patch -p1 < 11_Makefile.patch; sleep 1; patch -p1 < 12_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_vdpauqueue.patch; sleep 1; patch -p1 < 15_fsigned_char.patch; sleep 1; patch -p1 < 20_ffmpeg_2.9.patch; sleep 1; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1 && make install && cd ../../..;;
++a) cd $VDRSRC && rm -rf softhddevice && git clone git://projects.vdr-developer.org/vdr-plugin-softhddevice.git && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice && cp -rf vdr-plugin-softhddevice /home/`logname`/sifinstallrepo/ && mv vdr-plugin-softhddevice softhddevice && cd softhddevice && cp -r /home/`logname`/sifinstallrepo/patch_softhddevice_2.tar.gz /$VDRSRC/softhddevice && tar -zxvf patch_softhddevice_2.tar.gz && rm -r patch_softhddevice_2.tar.gz; patch -p1 < 10_softhddevice_trusty.patch; sleep 1; patch -p1 < 11_Makefile.patch; sleep 1; patch -p1 < 12_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_vdpauqueue.patch; sleep 1; patch -p1 < 15_fsigned_char.patch; sleep 1; patch -p1 < 20_ffmpeg_2.9.patch; sleep 1; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1 && make install && cd ../../..;;
+ b) cd $VDRSRC && rm -r softhddevice && rm -rf $PLUGINS/softhddevice && rm -r /home/`logname`/Scrivania/Vdr-Softhddevice.desktop && rm -r /home/`logname`/start-softhddevice-vdr.sh && sed -i "s|-P'softhddevice'||" /usr/local/bin/vdrrun && sed -i "s|--lirc|& -P'xineliboutput -l none -r 37890 -p'|" /usr/local/bin/vdrrun;;
+ c) ;;
+ esac
+@@ -5136,13 +5142,13 @@
+     x1) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
+     cd settings; cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/settings;
+     tar -zxvf getchannels.tar.gz; cd /usr/local/src/settings/getchannels/; 
+-    python getchannels.py -c getchannels.conf -l 13.0E -o /etc/vdr/channels.conf;;
++    python getchannels.py  --list 13.0E --output output/channels13.conf; sleep  4; cp $SRC/setting/getchannels/output/channels13.conf /etc/vdr/;;
+ 
+     x2) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
+     cd settings; cp -r /home/`logname`/sifinstallrepo/getchannels.tar.gz $SRC/settings;
+     tar -zxvf getchannels.tar.gz; cd /usr/local/src/settings/getchannels/;
+-    python getchannels.py -l 19.2E -o /etc/vdr/channels.conf;;
+-    
++    python getchannels.py  --list 19.2E --output output/channels19.conf; sleep  4; cp $SRC/setting/getchannels/output/channels19.conf /etc/vdr/;;
++  
+     x3) cp -rf /home/`logname`/sifinstallrepo/channels.conf.trial.tar.gz /etc/vdr/;;
+    
+     z) ;;
+@@ -5931,7 +5937,7 @@
+     echo "                                              '  Updated by fiveten_59 ® 2015   '"
+     echo "                                             '                                   '"
+     echo "                                              ',       Revision by knap         '"
+-    echo "                                              ',     & fiveten_59 ® 2015       ,'"
++    echo "                                              ',     & fiveten_59 ® 2016       ,'"
+     echo "                                                '----,      ,----,       ,----'"
+     echo "                                                      '----'      '-----'"
+     echo "                                                                O"
