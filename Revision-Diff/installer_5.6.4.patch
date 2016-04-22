@@ -1,5 +1,5 @@
 --- Script-VDR-Scriptvdr-2.2.0_V.5.6.3/installer	2016-03-29 18:13:42.535991335 +0200
-+++ Script-VDR-Scriptvdr-2.2.0_V.5.6.4/installer	2016-04-22 07:48:23.596707727 +0200
++++ Script-VDR-Scriptvdr-2.2.0_V.5.6.4/installer	2016-04-22 19:09:46.614386585 +0200
 @@ -419,28 +419,36 @@
  
      clear
@@ -8,7 +8,7 @@
 -                   Cartella Repository in Locale
 -   --------------------------------------------------------------
 +   ---------------------------------------------------------------------------------------------
-+       Creazione ~ Aggiornamento ~ Rimozione ~ Cartella Repository in Locale Sifinstallrepo 
++       Creazione ~ Aggiornamento ~ Rimozione ~ Cartella Repository Locale Sifinstallrepo 
 +   ---------------------------------------------------------------------------------------------
          
 -        *****  Crea  *****  ........  *****  Rimuove  *****
@@ -30,10 +30,10 @@
 +        [m]  vdr-cecremote-x  ......................... [n]  externalplayer-x
 +        [o]  Sorgenti di VDR  ......................... [p]  Sorgenti di DVBAPI
 +        [q]  Sorgenti di SC  .......................... [r]  Tutto il contenuto
++        
++        [z]  Skip      
          
 -   --------------------------------------------------------------
-+        [z]  Skip      
-+        
 +   ---------------------------------------------------------------------------------------------
          Note:
 -        - [a]  Creazione  -  Crea File Se Non Presente.
@@ -48,7 +48,7 @@
 -   --------------------------------------------------------------" 0 0
 -    echo -n "        Scegli  [a-e]:      "
 +   ---------------------------------------------------------------------------------------------" 0 0
-+    echo -n "        Scegli  [a-z] :      "
++    echo -n "        Scegli = Crea [a-b] ~~ Rimuove [c-r] ~~ Esci [z]:      "
      read yourch
      case $yourch in
      a) clear; cd /home/`logname`; mkdir -p sifinstallrepo;
@@ -221,7 +221,13 @@
     --------------------------------------------------------------------------------------------- " 0 0
      echo -n "        Scegli = Installa [a-g] ~~ Rimuove [a1-g1] ~~ Esci [z]:      "
      read yourch
-@@ -1908,14 +1929,18 @@
+@@ -1903,19 +1924,23 @@
+                                           #######################################################
+                   
+     clear        
+-    dialog --title "   ** Supporto Librerie Librerie & Codec - X264 - X265 - FDK-AAC - LIBVPX - FFMPEG **   " --infobox "
++    dialog --title "   ** Supporto Librerie & Codec - X264 - X265 - FDK-AAC - LIBVPX - FFMPEG **   " --infobox "
+    --------------------------------------------------------------------------------------------------------------------
                                       Installa o Rimuove Librerie di Supporto
     --------------------------------------------------------------------------------------------------------------------
          
@@ -239,15 +245,15 @@
 -        [f]    FFMPEG 2.8.6 Git-Snapshot ...............  [f1]    FFMPEG 2.8.6 Git-Snapshot
 +        [d]    NVIDIA Video Codec 6.1 SDK .................  [d1]    NVIDIA Video Codec 6.1 SDK
 +        
-+        [e]    LIBVPX 1.4.0 ~ Stabile .....................  [e1]    LIBVPX 1.4.0
++        [e]    LIBVPX 1.4.0 ~ Stabile .....................  [e1]    LIBVPX 1.4.0 ~ Stabile
 +        [f]    FFMPEG 2.8.0 ~ Stabile - Git-Snapshot ......  [f1]    FFMPEG 2.8.0 ~ Stabile - Git-Snapshot
 +        
-+        [g]    LIBVPX 1.5.0 ~ Testing .....................  [g1]    LIBVPX 1.5.0
++        [g]    LIBVPX 1.5.0 ~ Testing .....................  [g1]    LIBVPX 1.5.0 ~ Testing
 +        [h]    FFMPEG 2.8.6 ~ Testing - Git-Snapshot ......  [h1]    FFMPEG 2.8.6 ~ Testing - Git-Snapshot
          
          [z]    Skip
          
-@@ -1926,7 +1951,8 @@
+@@ -1926,12 +1951,13 @@
          ~$ sudo apt-get purge x264 libx264-dev ffmpeg
          
          Note:
@@ -257,7 +263,203 @@
          
          Note:
          - NVIDIA Video Codec 6.1 SDK --- NVENC Hardware Accelerated Video Encoding Decoding ~ H.264 and H.265 (HEVC) 
-@@ -2177,7 +2203,7 @@
+    -------------------------------------------------------------------------------------------------------------------- " 0 0
+-    echo -n "        Scegli = Installa [a-f] ~~ Rimuove [a1-f1] ~~ Esci [z]:      "
++    echo -n "        Scegli = Installa [a-h] ~~ Rimuove [a1-h1] ~~ Esci [z]:      "
+     read yourch
+     case $yourch in
+     
+@@ -2105,7 +2131,7 @@
+ 
+ 
+     clear
+-    echo "                    Adesso Rimuovo Libvpx 1.5.0"; sleep 4
++    echo "                    Adesso Rimuovo NVIDIA Video Codec 6.1 SDK"; sleep 4
+     rm -r /usr/local/src/nvidia_sdk;;
+ 
+ 
+@@ -2117,6 +2143,140 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+ e)                                        #########################################
++                                          #              LIBVPX  1.4.0            #
++                                          #########################################
++
++
++    apt-get -y remove libvpx
++    clear
++    apt-get update
++    ### Aggiunto Supporto per Linux Mint 16 Mate ###
++    apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
++    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
++    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
++    clear
++    echo "                    Adesso Installo Libvpx 1.4.0"; sleep 4
++    cd /usr/local/src
++    rm -R libvpx
++    cp /home/`logname`/sifinstallrepo/libvpx-1.4.0.tar.bz2 /usr/local/src/;
++    tar xjf libvpx-1.4.0.tar.bz2; mv libvpx-1.4.0 libvpx;
++    rm -r libvpx-1.4.0.tar.bz2; cd libvpx
++    ./configure --enable-pic --enable-shared --enable-runtime_cpu_detect
++    make -j4
++    checkinstall --pkgname=libvpx --pkgversion="1.4.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES;;
++
++
++
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++e1)                                       #########################################
++                                          #       Rimozione LIBVPX    1.4.0       #
++                                          #########################################
++
++
++    clear
++    echo "                    Adesso Rimuovo Libvpx 1.4.0"; sleep 4
++    apt-get -y purge libvpx; rm -r /usr/local/src/libvpx; rm /usr/local/src/packages/libvpx*;;
++
++
++
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           # 
++f)                                        #########################################
++                                          #              FFmpeg 2.8.0             #
++                                          #########################################
++
++
++    apt-get -y remove ffmpeg
++    clear
++    apt-get update
++    ### Aggiunto Supporto per Linux Mint 16 Mate ###
++    apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
++    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
++    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
++    clear
++    apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
++    clear
++    dialog --title "   ** Installazione FFmpeg 2.8.0 Git **   " --infobox "
++   ----------------------------------------------------
++          Seleziona il Tipo di Configurazione ...            
++   ----------------------------------------------------
++   
++   [a]  Installa FFmpeg con supporto X264 MPEG-4 AVC Encoder
++   
++   [b]  Installa FFmpeg con supporto X264 & X265 HEVC Encoder
++   
++   
++    
++      
++   ----------------------------------------------------" 0 0
++    echo -n "        Scegli  [a-b]:      "
++    read yourch
++    case $yourch in
++    a) clear
++    echo "                    Attendere qualche secondo la configurazione ...";
++    cd /usr/local/src;
++    rm -R ffmpeg
++    cp /home/`logname`/sifinstallrepo/ffmpeg-2.8.tar.bz2 /usr/local/src/;
++    tar xjf ffmpeg-2.8.tar.bz2; mv ffmpeg-2.8 ffmpeg;
++    rm -r ffmpeg-2.8.tar.bz2; cd ffmpeg
++    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
++    make -j4
++    checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    hash -r
++    ldconfig -v
++    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++    b) clear
++    echo "                    Attendere qualche secondo la configurazione ...";
++    cd /usr/local/src;
++    rm -R ffmpeg
++    cp /home/`logname`/sifinstallrepo/ffmpeg-2.8.tar.bz2 /usr/local/src/;
++    tar xjf ffmpeg-2.8.tar.bz2; mv ffmpeg-2.8 ffmpeg;
++    rm -r ffmpeg-2.8.tar.bz2; cd ffmpeg 
++    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
++    make -j4
++    checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    hash -r
++    ldconfig -v;;
++    esac
++    ;;
++
++
++
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++f1)                                       #########################################
++                                          #         Rimozione FFmpeg 2.8.0        #
++                                          #########################################
++
++
++    clear
++    echo "                    Adesso Rimuovo FFmpeg 2.8.0"; sleep 4
++    apt-get -y purge ffmpeg; rm -r /usr/local/src/ffmpeg; rm /usr/local/src/packages/ffmpeg*;; 
++    #esac
++    #echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++
++
++
++
++#############################################################################################################################  
++#############################################################################################################################
++###                                                                                                                       ###
++##                                                                                                                         ##
++#                                                                                                                           #
++g)                                        #########################################
+                                           #              LIBVPX 1.5.0             #
+                                           #########################################
+ 
+@@ -2139,15 +2299,15 @@
+     make -j4
+     checkinstall --pkgname=libvpx --pkgversion="1.5.0-git-snapshot" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES;;
+ 
+-    
+-    
++
++
+ 
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+-e1)                                       #########################################
++g1)                                       #########################################
+                                           #             Rimozione LIBVPX          #
+                                           #########################################
+ 
+@@ -2156,16 +2316,16 @@
+     echo "                    Adesso Rimuovo Libvpx 1.5.0"; sleep 4
+     apt-get -y purge libvpx; rm -r /usr/local/src/libvpx; rm /usr/local/src/packages/libvpx*;;
+ 
+-    
+-    
++
++
+ 
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+ ##                                                                                                                         ##
+ #                                                                                                                           # 
+-f)                                        #########################################
+-                                          #                  FFMPEG               #
++h)                                        #########################################
++                                          #               FFmpeg 2.8.6            #
+                                           #########################################
+ 
+ 
+@@ -2177,7 +2337,7 @@
      apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
      apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
      clear
@@ -266,7 +468,7 @@
      clear
      dialog --title "   ** Installazione FFmpeg 2.8.6 Git-Snapshot **   " --infobox "
     ----------------------------------------------------
-@@ -2217,8 +2243,7 @@
+@@ -2217,25 +2377,24 @@
      tar xjf ffmpeg-2.8.6.tar.bz2; mv ffmpeg-2.8.6 ffmpeg;
      rm -r ffmpeg-2.8.6.tar.bz2; cd ffmpeg 
      #./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
@@ -276,7 +478,102 @@
      make -j4
      checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.6-git-snapshot" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
      hash -r;
-@@ -5931,13 +5956,12 @@
+     ldconfig -v;;
+     esac
+     ;;
+-    
+-    
+-    
+-    
++
++
++
++
+ #############################################################################################################################  
+ #############################################################################################################################
+ ###                                                                                                                       ###
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+-f1)                                       #########################################
+-                                          #             Rimozione FFMPEG          #
++h1)                                       #########################################
++                                          #          Rimozione FFmpeg 2.8.6       #
+                                           #########################################
+ 
+ 
+@@ -2244,9 +2403,9 @@
+     apt-get -y purge ffmpeg; rm -r /usr/local/src/ffmpeg; rm /usr/local/src/packages/ffmpeg*;; 
+     #esac
+     #echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+-    
+-  
+-    
++
++
++
+ 
+ #############################################################################################################################  
+ #############################################################################################################################
+@@ -3157,11 +3316,12 @@
+         [e]    Trial 13, 16, 19°E               
+         [f]    Quadri 13, 19, 23.5, 28.2°E      
+         [g]    Quadri 9, 13, 16, 19°E           
+-        [h]    Terrestre                        
+-        [i]    Skip                             
++        [h]    Terrestre                  
++        
++        [z]    Skip                             
+         
+    ---------------------------------------------- " 0 0
+-    echo -n "        Scegli  [a-i]:      "
++    echo -n "        Scegli  [a-z]:      "
+     read yourch
+     case $yourch in
+ a) echo "$MONO13" >> /etc/vdr/diseqc.conf && cd /etc/vdr/ && wget http://www.vdr-italia.org/channels/17x/channels_tivusat_skyitalia_17x.conf && mv channels_tivusat_skyitalia_17x.conf channels.conf;;
+@@ -4927,10 +5087,10 @@
+         [i]    Rimozione Settings
+         
+         
+-        [k]    Skip 
++        [z]    Skip 
+         
+    -------------------------------------------------------------- " 0 0
+-    echo -n "        Scegli  [a-k]:      "
++    echo -n "        Scegli  [a-z]:      "
+     read yourch
+     case $yourch in
+     
+@@ -5639,13 +5799,13 @@
+         *****  Installa  *****  ..........  *****  Rimuove  *****
+         [a]    Installare KODI  ............  [a1]    Rimozione KODI  
+         
+-        [b]    Skip
++        [z]    Skip
+         
+         
+ 
+            
+    -------------------------------------------------------------- " 0 0
+-    echo -n "        Scegli = Installa [a] ~~ Rimuove [a1] ~~ Esci [b]:      "
++    echo -n "        Scegli = Installa [a] ~~ Rimuove [a1] ~~ Esci [z]:      "
+     read yourch
+     case $yourch in
+ 
+@@ -5750,10 +5910,11 @@
+         [g]    Modifica oscam              
+         [h]    Riconfigura lirc                        
+         [i]    Nautilus  
+-        [l]    Skip    
++        
++        [z]    Skip    
+         
+    ---------------------------------------------- " 0 0
+-    echo -n "        Scegli  [a-l]:      " 
++    echo -n "        Scegli  [a-z]:      " 
+     read yourch
+     case $yourch in
+ a) if cat /usr/local/bin/vdrrun | grep -q "xineliboutput";
+@@ -5931,13 +6092,12 @@
      echo "                                                       .-----,        ,.----."
      echo "                                                .-----'       '------'       ',"
      echo "                                              ,'  First ed. by mona66 ® 2010   ',"
