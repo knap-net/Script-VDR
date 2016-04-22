@@ -1,3 +1,18 @@
+## Rev. 5.6.4
+- Modifica Repository Sifinstallrepo ~ Nuove Funzioni rimozione pacchetti obsoleti
+- Nuovo Menù Punto [1] Repository Sifinstallrepo
+- Aggiornato Librerie Libva 1.7.0
+- Aggiornato Librerie Libva-intel-driver 1.7.0
+- Modifica Menù Punto [2] - Aggiunto Note
+- Modifica Menù Punto [3] - LIBVPX - FFMPEG ~ Versione Selezionabile ~ Stabile o Testing
+
+
+
+## Rev. 5.6.3
+- Update && Revision By Fiveten_59
+
+
+
 ## Rev. 5.6.2
 - Aggiunto Supporto NVIDIA Video Codec 6.1 SDK - hardware encode(NVENC) and hardware decode(NVCUVID)
 - Per Ulteriori Dettagli NVENC consultare -> https://developer.nvidia.com/nvidia-video-codec-sdk
