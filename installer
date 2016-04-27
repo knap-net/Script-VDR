@@ -1775,7 +1775,7 @@ e)                                        ######################################
 
 
     apt-get -y remove libva-vdpau-driver
-    apt-get -y install libwayland-dev
+    apt-get -y install libwayland-dev libva-dev libvdpau-dev
     clear
     echo "                    Adesso Installo libva-vdpau-driver 0.7.4"; sleep 4
     cd /usr/local/src;
