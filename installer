@@ -1552,8 +1552,8 @@ chmod -R 777 *;;
         
         [b]    LIBDRM ....... 2.4.67  .......................  [b1]    LIBDRM ....... 2.4.67
         
-        [c]    LIBVA ........ 1.6.2  ........................  [c1]    LIBVA ........ 1.6.2
-        [d]    LIBVA-INTEL-DRIVER .. 1.6.2  .................  [d1]    LIBVA-INTEL-DRIVER .. 1.6.2
+        [c]    LIBVA ........ 1.7.0  ........................  [c1]    LIBVA ........ 1.7.0
+        [d]    LIBVA-INTEL-DRIVER .. 1.7.0  .................  [d1]    LIBVA-INTEL-DRIVER .. 1.7.0
         [e]    LIBVA-VDPAU-DRIVER .. 0.7.4  .................  [e1]    LIBVA-VDPAU-DRIVER .. 0.7.4
         
         [f]    LIB-VDPAU .... 1.1.1  ........................  [f1]    LIB-VDPAU .... 1.1.1
@@ -1562,13 +1562,13 @@ chmod -R 777 *;;
         [z]    Skip
         
    ---------------------------------------------------------------------------------------------      
-        Note:  YASM ~ LIBDRM ~ LIBVA 1.6.2 - Vanno sempre installati come dipendenze.
+        Note:  YASM ~ LIBDRM ~ LIBVA 1.7.0 - Vanno sempre installati come dipendenze.
         
         Note:  LIBDRM ~ Mesa 3D and DRI [(Direct Rendering Infrastructure) by 3DFX, AMD (formerly ATI), Intel and Matrox]
         
         Note:  LIBVA ~ Fornisce l'accesso all'accelerazione grafica hardware (GPU) GMA (Graphics Media Accelerator).
         
-        Note:  LIBVA-INTEL-DRIVER 1.6.2 - is the VA-API implementation for Intel G45 chipsets
+        Note:  LIBVA-INTEL-DRIVER 1.7.0 - is the VA-API implementation for Intel G45 chipsets
         and Intel HD Graphics for Intel Core processor family.
 
         Platform definitions:
@@ -1683,14 +1683,14 @@ c)                                        ######################################
     apt-get -y remove libva
     apt-get -y install libwayland-dev
     clear
-    echo "                    Adesso Installo Libva 1.6.2"; sleep 4
+    echo "                    Adesso Installo Libva 1.7.0"; sleep 4
     cd /usr/local/src;
     rm -r libva;
-    cp /home/`logname`/sifinstallrepo/libva-1.6.2.tar.bz2 /usr/local/src/;
-    tar xjf libva-1.6.2.tar.bz2; mv libva-1.6.2 libva; rm -r libva-1.6.2.tar.bz2;
+    cp /home/`logname`/sifinstallrepo/libva-1.7.0.tar.bz2 /usr/local/src/;
+    tar xjf libva-1.7.0.tar.bz2; mv libva-1.7.0 libva; rm -r libva-1.7.0.tar.bz2;
     cd libva
     ./configure
-    checkinstall --pkgname=libva --pkgversion="1.6.2-git" --pkgrelease=VAAPI-0.38.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+    checkinstall --pkgname=libva --pkgversion="1.7.0-git" --pkgrelease=VAAPI-0.38.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
     rm /etc/ld.so.conf;
     touch /etc/ld.so.conf;
     echo 'include /etc/ld.so.conf.d/*.conf
@@ -1711,7 +1711,7 @@ c1)                                       ######################################
 
 
     clear
-    echo "                    Adesso Rimuovo Libva 1.6.2"; sleep 4
+    echo "                    Adesso Rimuovo Libva 1.7.0"; sleep 4
     apt-get -y purge libva; rm -r /usr/local/src/libva; rm /usr/local/src/packages/libva*;;
     
     
@@ -1723,21 +1723,21 @@ c1)                                       ######################################
 ##                                                                                                                         ##
 #                                                                                                                           #
 d)                                        ##########################################
-                                          #        LIBVA-INTEL-DRIVER 1.6.2        #
+                                          #        LIBVA-INTEL-DRIVER 1.7.0        #
                                           ##########################################
 
 
     apt-get -y remove libva-intel-driver
     apt-get -y install libwayland-dev
     clear
-    echo "                    Adesso Installo libva-intel-driver 1.6.2"; sleep 4
+    echo "                    Adesso Installo libva-intel-driver 1.7.0"; sleep 4
     cd /usr/local/src;
     rm -r libva-intel-driver;
-    cp /home/`logname`/sifinstallrepo/libva-intel-driver-1.6.2.tar.bz2 /usr/local/src/;
-    tar xjf libva-intel-driver-1.6.2.tar.bz2; mv libva-intel-driver-1.6.2 libva-intel-driver; rm -r libva-intel-driver-1.6.2.tar.bz2;
+    cp /home/`logname`/sifinstallrepo/libva-intel-driver-1.7.0.tar.bz2 /usr/local/src/;
+    tar xjf libva-intel-driver-1.7.0.tar.bz2; mv libva-intel-driver-1.7.0 libva-intel-driver; rm -r libva-intel-driver-1.7.0.tar.bz2;
     cd libva-intel-driver
     ./configure
-    checkinstall --pkgname=libva-intel-driver --pkgversion="1.6.2-git" --pkgrelease=VAAPI-0.38.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+    checkinstall --pkgname=libva-intel-driver --pkgversion="1.7.0-git" --pkgrelease=VAAPI-0.38.0 --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
     rm /etc/ld.so.conf;
     touch /etc/ld.so.conf;
     echo 'include /etc/ld.so.conf.d/*.conf
@@ -1753,12 +1753,12 @@ d)                                        ######################################
 ##                                                                                                                         ##
 #                                                                                                                           #
 d1)                                       ##########################################
-                                          #   Rimozione LIBVA-INTEL-DRIVER 1.6.2   #
+                                          #   Rimozione LIBVA-INTEL-DRIVER 1.7.0   #
                                           ##########################################
 
 
     clear
-    echo "                    Adesso Rimuovo libva-intel-driver 1.6.2"; sleep 4
+    echo "                    Adesso Rimuovo libva-intel-driver 1.7.0"; sleep 4
     apt-get -y purge libva; rm -r /usr/local/src/libva; rm /usr/local/src/packages/libva*;;
     
     
