@@ -1,3 +1,8 @@
+## Rev. 5.6.5
+- Sistemato bug plugin skindesigner
+- Rieseguire il Punto 1, A, Creazione, Repository Locale
+
+
 ## Rev. 5.6.4
 - Modifica Repository Sifinstallrepo ~ Nuove Funzioni rimozione pacchetti obsoleti
 - Nuovo Menù Punto [1] Repository Sifinstallrepo
