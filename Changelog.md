@@ -1,3 +1,9 @@
+## Rev. 5.6.6
+- Sistemati plugin skindesigner, S*, live 
+- Rieseguire il Punto 1, B, Creazione, Repository Locale
+- Maggiore pulizia del S.O in caso eliminazione plugin 
+
+
 ## Rev. 5.6.5
 - Sistemato bug plugin skindesigner
 - Rieseguire il Punto 1, A, Creazione, Repository Locale
