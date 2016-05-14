@@ -1,3 +1,11 @@
+## Rev. 5.6.7
+- Script per ubuntu e derivate 14.04 e 16.04
+- Per Ubuntu 16.04 è necessario scaricare Mate-terminal per compilare lo script (il terminale di UBU 16.04 non riconosce più il comando logname - non è un bug ma una caratteristica già presente da tempo in archlinux)
+- Tutti i plugin (tranne dove evidenziato i.e. mpv per ubu 14.04 e play per ubu 16.04) vengono compilati correttamente
+- La fase di compilazione di ffmpeg è ora stabile
+- Per la compilazione di ffmpeg nella versione di testing è obbligatorio caricare le NVIDIA Video Codec 6.1 SDK al punto 3-d
+
+
 ## Rev. 5.6.6
 - Sistemati plugin skindesigner, S*, live 
 - Rieseguire il Punto 1, B, Creazione, Repository Locale
