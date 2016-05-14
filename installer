@@ -38,10 +38,10 @@ Xinelib='sudo /etc/init.d/vdr start > /dev/null 2>&1; while ! netcat -z localhos
 #
 Xinelib1='sudo /etc/init.d/vdr start > /dev/null 2>&1; while ! netcat -z localhost 37890; do sleep 2; vdr-sxfe --video=xv --hud --audio=alsa --aspect=16:9 --width=1920 --height=1080 --fullscreen --daemon --reconnect --post=tvtime:method=Linear,cheap_mode=1,pulldown=0,use_progressive_frame_flag=1 --buffers=850; done;'
 #
-Vdr_Xine='sudo /etc/init.d/vdr start > /dev/null 2>&1; sleep 2; /usr/local/bin/xine -f --no-splash --no-gui -V xv --post vdr_video --post tvtime --post vdr_audio "vdr:/tmp/vdr-xine/stream#demux:mpeg_pes"'
-#
-Vdr_Xine1='sudo /etc/init.d/vdr start > /dev/null 2>&1; sleep 2; /usr/local/bin/xine -f --no-splash --no-gui -V xv --post vdr_video --post tvtime --post vdr_audio "vdr:/tmp/vdr-xine/stream#demux:mpeg_pes"'
-#
+Vdr_Xine='sudo /etc/init.d/vdr start > /dev/null 2>&1; sleep 2; /usr/local/bin/xine --no-splash --no-gui -V vdpau --post vdr_video --post tvtime --post vdr_audio "vdr:/tmp/vdr-xine/stream#demux:mpeg_pes"'
+# xine -f
+Vdr_Xine1='sudo /etc/init.d/vdr start > /dev/null 2>&1; sleep 2; /usr/local/bin/xine --no-splash --no-gui -V xv --post vdr_video --post tvtime --post vdr_audio "vdr:/tmp/vdr-xine/stream#demux:mpeg_pes"'
+# xine -f
 PLUGIN="--lirc -P'xineliboutput -l none -r 37890 -p' -P'dvbapi' -P'skindesigner -l /etc/vdr/logos/ -i /usr/local/share/vdr/plugins/skindesigner/skins/' -P'skinflatplus -l /etc/vdr/logos/' -P'tvguideng' -P'weatherforecast' -P'iptv' -P'tvguide -l /etc/vdr/logos/'  -P'text2skin' -P'osdteletext' -P'epgsearch' -P'externalplayer'"
 # 
 PLUGIN1="--lirc -P'softhddevice -f' -P'dvbapi' -P'skindesigner -l /etc/vdr/logos/ -i /usr/local/share/vdr/plugins/skindesigner/skins/' -P'skinflatplus -l /etc/vdr/logos/' -P'tvguideng' -P'weatherforecast' -P'iptv' -P'tvguide -l /etc/vdr/logos/'  -P'text2skin' -P'osdteletext' -P'epgsearch' -P'externalplayer'"
@@ -68,6 +68,7 @@ Remind19='skin shady non è installata'
 Remind20='skin tryouts non è installata'
 #
 #REPO='home/'logname'/sifinstallrepo'
+ETC='/usr/local/etc'
 SRC='/usr/local/src'
 SRCVDR='/usr/local/src/vdr-2.2.0'
 VDRSRC=''$SRC'/vdr/PLUGINS/src'
@@ -624,11 +625,14 @@ else
     wget https://www.dropbox.com/s/11clb1n2b6itave/patch_xineliboutput.tar.gz;
   fi
 
-if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-xine_0.9.4.orig.tar.gz ]; then
+# if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-xine_0.9.4.orig.tar.gz ]; then
+#wget https://www.dropbox.com/s/bu8wm0a6gpw0tzx/vdr-plugin-xine_0.9.4.orig.tar.gz;
+
+if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-xine ]; then
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
-    wget https://www.dropbox.com/s/bu8wm0a6gpw0tzx/vdr-plugin-xine_0.9.4.orig.tar.gz;
+    git clone https://projects.vdr-developer.org/git/vdr-plugin-xine.git;
   fi
 
 if [ -s /home/`logname`/sifinstallrepo/patch_Vdr_Xine.tar.gz ]; then
@@ -1110,11 +1114,11 @@ else
     git clone git://projects.vdr-developer.org/vdr-plugin-skinpearlhd.git;
   fi
 
-if [ -s /home/`logname`/sifinstallrepo/logos ]; then
+if [ -s /home/`logname`/sifinstallrepo/logos.tar.gz ]; then
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
-    wget https://www.dropbox.com/s/omrs8wwh5jbz46e/logos.tar.gz; tar -zxvf logos.tar.gz; rm -rf logos.tar.gz;
+    wget https://www.dropbox.com/s/omrs8wwh5jbz46e/logos.tar.gz;
   fi
 
 if [ -s /home/`logname`/sifinstallrepo/anthra_pack.tar.gz ]; then
@@ -1410,7 +1414,8 @@ chmod -R 777 *;;
     git clone http://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git;
     git clone git://github.com/manio/vdr-plugin-dvbapi.git;
     wget https://www.dropbox.com/s/5tyvqkbhohbbju2/dvbapi.patch.tar.gz;
-    wget https://www.dropbox.com/s/bu8wm0a6gpw0tzx/vdr-plugin-xine_0.9.4.orig.tar.gz;
+    #wget https://www.dropbox.com/s/bu8wm0a6gpw0tzx/vdr-plugin-xine_0.9.4.orig.tar.gz;
+    git clone https://projects.vdr-developer.org/git/vdr-plugin-xine.git;
     wget https://www.dropbox.com/s/p4i5x8jdkfhirru/patch_Vdr_Xine.tar.gz;
     wget https://www.dropbox.com/s/ifjdxiq91mj3g3v/livepatch.tar.gz;
     wget https://www.dropbox.com/s/58uo8u742whd19w/live-themes.tar.gz;
@@ -1503,7 +1508,7 @@ chmod -R 777 *;;
     wget https://www.dropbox.com/s/m32a4s23h7r00mg/themes.tar.gz;
     wget https://www.dropbox.com/s/bbi09cxti2wa8r2/yaepghd-0.0.3-ce-themes.tar.gz;
     wget https://www.dropbox.com/s/2mezs18wcvtr66c/w_scan-20141122.tar.bz2;
-    wget https://www.dropbox.com/s/omrs8wwh5jbz46e/logos.tar.gz; tar -zxvf logos.tar.gz; rm -rf logos.tar.gz;
+    wget https://www.dropbox.com/s/omrs8wwh5jbz46e/logos.tar.gz; 
     wget https://www.dropbox.com/s/v6o2zsjt7yvascy/flat_weather.tar.gz;
     #
     chmod -R 777 *;;
@@ -1610,7 +1615,7 @@ a)                                        ######################################
     apt-get -y remove yasm
     clear
     apt-get update && apt-get upgrade;
-    apt-get install libpciaccess-dev checkinstall xserver-xorg-dev vainfo gcc build-essential pkg-config automake autoconf make autoproject;
+    apt-get install -y libpciaccess-dev checkinstall xserver-xorg-dev vainfo gcc build-essential pkg-config automake autoconf make autoproject;
     clear
     echo "                    Adesso Installo Yasm 1.3.0"; sleep 4
     cd /usr/local/src; 
@@ -1653,6 +1658,7 @@ b)                                        ######################################
     apt-get -y remove libdrm
     clear
     echo "                    Adesso Installo Libdrm 2.4.67"; sleep 4
+    apt-get install -y libpthread-stubs0-dev libpciaccess-dev
     cd /usr/local/src
     rm -rf libdrm;
     cp /home/`logname`/sifinstallrepo/libdrm-2.4.67.tar.gz /usr/local/src/;  
@@ -1785,6 +1791,7 @@ e)                                        ######################################
 
 
     apt-get -y remove libva-vdpau-driver
+    apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
     apt-get -y install libwayland-dev libva-dev libvdpau-dev
     clear
     echo "                    Adesso Installo libva-vdpau-driver 0.7.4"; sleep 4
@@ -1838,6 +1845,7 @@ f)                                        ######################################
 
 
     apt-get -y remove libvdpau1
+    apt-get -y install libxext-dev
     clear
     echo "                    Adesso Installo libvdpau 1.1.1"; sleep 4
     cd /usr/local/src;
@@ -1988,7 +1996,9 @@ a)                                        ######################################
     clear
     apt-get update;
     apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
-    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+    apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
+    apt-get -y install libvdpau1 libvdpau-dev
+    apt-get -y install libtheora-dev libva-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
     apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev libfaad-dev libx264-dev
     apt-get -y install cmake cmake-curses-gui 
     clear
@@ -2162,7 +2172,9 @@ e)                                        ######################################
     apt-get update
     ### Aggiunto Supporto per Linux Mint 16 Mate ###
     apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
-    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+    apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
+    apt-get -y install libvdpau1 libvdpau-dev
+    apt-get -y install libtheora-dev libva-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
     apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
     clear
     echo "                    Adesso Installo Libvpx 1.4.0"; sleep 4
@@ -2210,7 +2222,11 @@ f)                                        ######################################
     apt-get update
     ### Aggiunto Supporto per Linux Mint 16 Mate ###
     apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
-    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+    echo "                    Attendere qualche secondo la configurazione ...";
+    apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
+    apt-get -y install libvdpau1 libvdpau-dev
+    echo "                    Attendere qualche secondo la configurazione ...";
+    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev 
     apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
     clear
     apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
@@ -2239,6 +2255,7 @@ f)                                        ######################################
     tar xjf ffmpeg-2.8.tar.bz2; mv ffmpeg-2.8 ffmpeg;
     rm -r ffmpeg-2.8.tar.bz2; cd ffmpeg
     ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
+    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;
     make -j4
     checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
     hash -r
@@ -2344,6 +2361,7 @@ h)                                        ######################################
     apt-get update
     ### Aggiunto Supporto per Linux Mint 16 Mate ###
     apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
+    apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
     apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
     apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
     clear
@@ -2374,6 +2392,7 @@ h)                                        ######################################
     rm -r ffmpeg-2.8.6.tar.bz2; cd ffmpeg 
     #./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
     ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
+    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;
     make -j4
     checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.6-git-snapshot" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
     hash -r
@@ -2388,6 +2407,7 @@ h)                                        ######################################
     rm -r ffmpeg-2.8.6.tar.bz2; cd ffmpeg 
     #./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
     ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
+    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;
     make -j4
     checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.6-git-snapshot" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
     hash -r;
@@ -2962,12 +2982,12 @@ chmod 755 /usr/local/bin/vdrpoweroff
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #    
-                                          ##################################################
-                                          #            Creazione avvio xinelib             #
-                                          ##################################################
+                                          ########################################################
+                                          #            Creazione avvio xinelib e xine            #
+                                          ########################################################
                                           
                                           
-# xinelib 16:9
+# xinelib & xine 16:9
 a) cd /etc/vdr; rm -r setup.conf;
 #wget https://www.dropbox.com/s/873qnh3yxmnzo0o/setup16.tar.gz
 cp /home/`logname`/sifinstallrepo/setup16.tar.gz /etc/vdr/;
@@ -2986,12 +3006,16 @@ touch /usr/local/bin/start-xinelib-vdr.sh
 echo "#!/bin/sh
 "$Xinelib1"" >> /usr/local/bin/start-xinelib-vdr.sh
 chmod a+x /usr/local/bin/start-xinelib-vdr.sh
+fi
 # vdr-xine 16:9
+if cat $TEMP/nvcheck | grep "loading NVIDIA UNIX "; then
+   echo "NV driver Detected"; rm $TEMP/nvcheck;
  rm -r /usr/local/bin/start-vdr-xine.sh
  touch /usr/local/bin/start-vdr-xine.sh
  echo "#!/bin/sh
  "$Vdr_Xine"" >> /usr/local/bin/start-vdr-xine.sh
  chmod a+x /usr/local/bin/start-vdr-xine.sh
+else
  rm /usr/local/bin/start-vdr-xine.sh
  touch /usr/local/bin/start-vdr-xine.sh
  echo "#!/bin/sh
@@ -3020,12 +3044,16 @@ echo "#!/bin/sh
 "$Xinelib1"" >> /usr/local/bin/start-xinelib-vdr.sh
 sed -i 's|--aspect=16:9 --width=1920 --height=1080|--aspect=4:3 --width=1280 --height=720|' /usr/local/bin/start-xinelib-vdr.sh
 chmod a+x /usr/local/bin/start-xinelib-vdr.sh
+fi
 # xineui 4:3
+if cat $TEMP/nvcheck | grep "loading NVIDIA UNIX "; then
+   echo "NV driver Detected"; rm $TEMP/nvcheck;
  rm -r /usr/local/bin/start-vdr-xine.sh
  touch /usr/local/bin/start-vdr-xine.sh
  echo "#!/bin/sh
  "$Vdr_Xine"" >> /usr/local/bin/start-vdr-xine.sh
  chmod a+x /usr/local/bin/start-vdr-xine.sh
+else
  rm /usr/local/bin/start-vdr-xine.sh
  touch /usr/local/bin/start-vdr-xine.sh
  echo "#!/bin/sh
@@ -3129,7 +3157,7 @@ Type=Application
 Name=Vdr-Xine
 Description=avvio di Vdr-Xine
 Icon=/usr/local/src/icone/xine.png
-Exec=/usr/local/bin/start-Vdr-Xine.sh
+Exec=/usr/local/bin/start-vdr-xine.sh
 " >> /home/`logname`/Scrivania/Vdr-Xine.desktop;
 sudo chmod 777 /home/`logname`/Scrivania/Vdr-Xine.desktop;
 else echo " Vdr-Xine $remind5"
@@ -3181,7 +3209,7 @@ chmod a+x /usr/local/bin/KillVdr.sh;
                                           #                  Avvio Oscam                   #
                                           ##################################################
                                           
-                                          
+cd /usr/local; mkdir -p etc;                                          
 if [ -f /usr/local/etc/oscam.check ];
   then  echo "Oscam $Remind3"
 else
@@ -3234,7 +3262,7 @@ case "$1" in
 esac
 exit 0
 ' >> /etc/init.d/oscam; chmod 755 /etc/init.d/oscam; echo "%`logname` ALL=NOPASSWD: /etc/init.d/oscam" >> /etc/sudoers; cd $SRC; mkdir -p oscam; cd oscam; cp -r /home/`logname`/sifinstallrepo/oscam.tar.gz /$SRC/oscam; tar -zxvf oscam.tar.gz; rm -rf oscam.tar.gz;
-cp -r * /usr/local/etc;
+cp -r * /usr/local/etc/;
 fi
    
 if uname -m  | grep "x86_64"; then
@@ -3461,7 +3489,7 @@ cd /etc/vdr/plugins/; mkdir picon;
 if [ -f /etc/vdr/logos/2be.png ];
 then echo " I logos $Remind4"
 else
-cp -rf /home/`logname`/sifinstallrepo/logos /etc/vdr/;
+cp -rf /home/`logname`/sifinstallrepo/logos.tar.gz /etc/vdr/; cd /etc/vdr/; tar -zxvf logos.tar.gz; rm -r logos.tar.gz;
 fi
 sleep 1
 ln -s /etc/vdr/plugins/picon liquid-logos4anthra_HD;
@@ -3508,7 +3536,7 @@ d1)                                       ######################################
     esac
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 
-    
+  
     
 
 #############################################################################################################################  
@@ -3524,8 +3552,8 @@ e)                                ##############################################
     clear        
     dialog --title " ** Installazione o Aggiornamento Altri Plugins ** " --infobox "
    ----------------------------------------------
-		XINELIBOUTPUT  (alternativo a Xineliboutput)  
-		Vdr-Xine       (alternativo a Xineliboutput)                           
+		XINELIBOUTPUT  (alternativo a Softhddevice e a VDR-Xine)  
+		Vdr-Xine       (alternativo a Softhddevice e a Xineliboutput)                           
 		YAEPGHD                                      
 		Femon 
 		Setup (non installabile in questa versione)
@@ -3557,16 +3585,32 @@ e)                                ##############################################
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;
 #
 #
+    clear
+    dialog --title "   ** Sistema operativo **   " --infobox "
+   ----------------------------------------------
+                Che sistema operativo hai?
+   ----------------------------------------------
+        [a]    Ubuntu 14.04                    
+        [b]    Ubuntu 16.04                    
+    ---------------------------------------------- " 0 0
+    echo -n "        Scegli  [a-b]:      "
+    read yourch
+    case $yourch in
+    a) apt-get -y install libextractor-dev libmagick++-dev; apt-get -y install libtntnet-dev tntnet libxml++2.6-2 libglibmm-2.4-1c2a libxml++2.6-dev libglibmm-2.4-dev; apt-get -y install uuid-dev libmysql++-dev libimlib2-dev libssl-dev; apt-get -y install libpugixml1 libpugixml-dev; apt-get install -y libsndfile1 libsndfile-dev libid3tag0 libid3tag0-dev libmad0-dev mplayer2; apt-get -y install libssl-dev subversion libdvbcsa-dev; apt-get install -y libmysqlclient-dev libmysqlclient18 libimlib2; apt-get install -y libupnp6-dev libtntdb-dev libsqlite3-dev libboost1.55-dev tntdb-sqlite4; apt-get -y install libcec-dev cec-utils libarchive-dev; apt-get install -y cmake libudev-dev libxrandr-dev python-dev swig;;
+    b) apt-get -y install libextractor-dev libmagick++-dev; apt-get -y install libtntnet-dev tntnet; apt-get -y install libxml++2.6-2v5 libglibmm-2.4-1v5 libxml++2.6-dev libglibmm-2.4-dev; apt-get -y install uuid-dev libmysql++-dev libimlib2-dev libssl-dev; apt-get -y install libpugixml1v5 libpugixml-dev; apt-get install -y libsndfile1 libsndfile1-dev libid3tag0 libid3tag0-dev libmad0-dev mplayer; apt-get install -y mpv libmpv1 libmpv-dev; apt-get -y install subversion libdvbcsa-dev; apt-get install -y libmysqlclient-dev libmysqlclient20 libimlib2; apt-get install -y libupnp6-dev libtntdb-dev libsqlite3-dev libboost1.58-dev tntdb-sqlite4v5; apt-get -y install libcec-dev cec-utils; apt-get install -y libxslt1-dev libarchive-dev; apt-get install -y cmake; apt-get install -y  libudev-dev libxrandr-dev python-dev swig;;  
 
-apt-get -y install libextractor-dev libmagick++-dev
+    esac
+    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;
+#
+#
 cd $VDRSRC;
 
     clear
     dialog --title "   ** VDR-Plugin-XINELIBOUTPUT **   " --infobox "
-   ----------------------------------------------------------------------------
+   ----------------------------------------------------------------------------------------
                 Che cosa vuoi fare ?
-   ----------------------------------------------------------------------------
-        [a]    Installare il plugin XINELIBOUTPUT (alternativo a Xineliboutput)                 
+   ----------------------------------------------------------------------------------------
+        [a]    Installare il plugin XINELIBOUTPUT (alternativo a Softhddevice)                 
         [b]    Aggiornare il plugin XINELIBOUTPUT                   
         [c]    Rimuovere il plugin XINELIBOUTPUT                
         [d]    Skip             
@@ -3629,8 +3673,8 @@ esac
    -----------------------------------------------------------------------
                 Che cosa vuoi fare ?
    -----------------------------------------------------------------------
-        [a]    Installare il plugin Vdr-Xine (alternativo a Xineliboutput)              
-        [b]    Aggiornare il plugin Vdr-Xine                 
+        [a]    Installare il plugin Vdr-Xine     (alternativo a Softhddevice e              
+        [b]    Aggiornare il plugin Vdr-Xine    da usare insieme a Xineliboutput)               
         [c]    Rimuovere il plugin Vdr-Xine              
         [d]    Skip             
                                        
@@ -3640,7 +3684,8 @@ esac
     case $yourch in
 a) cd $VDRSRC && if [ -f xine/Makefile ];
   then  echo "Vdr-Xine $Remind"
-else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-xine_0.9.4.orig.tar.gz /$VDRSRC && tar -xzvf vdr-plugin-xine_0.9.4.orig.tar.gz && mv xine-0.9.4 xine && rm -r vdr-plugin-xine_0.9.4.orig.tar.gz && cd xine && cp -r /home/`logname`/sifinstallrepo/patch_Vdr_Xine.tar.gz /$VDRSRC/xine && tar -xzvf patch_Vdr_Xine.tar.gz && rm -r patch_Vdr_Xine.tar.gz && patch -p0 < patch_Vdr_Xine && sed -i 's/#VDR_XINE_SET_VIDEO_WINDOW = 1/VDR_XINE_SET_VIDEO_WINDOW = 1/' Makefile && make && sudo mkdir -p /etc/vdr/plugins/xine && cp -rf /$VDRSRC/xine/data/* /etc/vdr/plugins/xine/ && sed -i "s|-P'dvbapi'|& -P'xine -r'|" /usr/local/bin/vdrrun && sed -i "s|-P'softhddevice -f'||" /usr/local/bin/vdrrun && sed -i "s|-P'xineliboutput -l none -r 37890 -p'||" /usr/local/bin/vdrrun
+else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-xine /$VDRSRC && mv vdr-plugin-xine xine && cd xine  && make && sudo mkdir -p /etc/vdr/plugins/xine && cp -rf /$VDRSRC/xine/data/* /etc/vdr/plugins/xine/ && sed -i "s|-P'dvbapi'|& -P'xine -r'|" /usr/local/bin/vdrrun && sed -i "s|-P'softhddevice -f'||" /usr/local/bin/vdrrun && sed -i "s|-P'xineliboutput -l none -r 37890 -p'||" /usr/local/bin/vdrrun
+# && cp -r /home/`logname`/sifinstallrepo/patch_Vdr_Xine.tar.gz /$VDRSRC/xine && tar -xzvf patch_Vdr_Xine.tar.gz && rm -r patch_Vdr_Xine.tar.gz && patch -p0 < patch_Vdr_Xine && sed -i 's/#VDR_XINE_SET_VIDEO_WINDOW = 1/VDR_XINE_SET_VIDEO_WINDOW = 1/' Makefile
 #  Creazione icona avvio vdr con Vdr-Xine   
 rm -rf /home/`logname`/Scrivania/Vdr-Xine.desktop
 if [ -e /etc/vdr/plugins/xine/mkNoSignal.sh ]
@@ -3750,7 +3795,7 @@ c) cd $VDRSRC && if [ -f femon/Makefile ];
     case $yourch in
 a) cd $VDRSRC && if [ -f live/Makefile ];
   then  echo "Live $Remind"
-else apt-get -y install libtntnet-dev tntnet && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-live /$VDRSRC/ && mv vdr-plugin-live live && cd live && cp -r /home/`logname`/sifinstallrepo/livepatch.tar.gz /$VDRSRC/live/ && tar -zxvf livepatch.tar.gz && rm -r livepatch.tar.gz && patch -p1 < timeformat-it_IT-fix.patch &&  patch -p1 <  11_live_osd.patch && patch -p1 < 12_live_set_mld_theme_to_default.patch && patch -p1 < 13_live_level.patch && mkdir -p /etc/vdr/plugins/live && cp -a $VDRSRC/live/live /etc/vdr/plugins && cp -r /home/`logname`/sifinstallrepo/live-themes.tar.gz /etc/vdr/plugins/live/themes && cd /etc/vdr/plugins/live/themes && tar -zxvf live-themes.tar.gz && rm -r live-themes.tar.gz && cd /usr/local/src/vdr && make plugins && sed -i "s|-P'dvbapi'|& -P'live'|" /usr/local/bin/vdrrun
+else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-live /$VDRSRC/ && mv vdr-plugin-live live && cd live && cp -r /home/`logname`/sifinstallrepo/livepatch.tar.gz /$VDRSRC/live/ && tar -zxvf livepatch.tar.gz && rm -r livepatch.tar.gz && patch -p1 < timeformat-it_IT-fix.patch &&  patch -p1 < 11_live_osd.patch && patch -p1 < 12_live_set_mld_theme_to_default.patch && patch -p1 < 13_live_level.patch && mkdir -p /etc/vdr/plugins/live && cp -a $VDRSRC/live/live /etc/vdr/plugins && cp -r /home/`logname`/sifinstallrepo/live-themes.tar.gz /etc/vdr/plugins/live/themes && cd /etc/vdr/plugins/live/themes && tar -zxvf live-themes.tar.gz && rm -r live-themes.tar.gz && cd /usr/local/src/vdr && make plugins && sed -i "s|-P'dvbapi'|& -P'live'|" /usr/local/bin/vdrrun
     fi || echo "$Remind7 Live"
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 b) cd $VDRSRC && rm -r live && git clone http://projects.vdr-developer.org/git/vdr-plugin-live.git && cd /home/`logname`/sifinstallrepo && rm -r vdr-plugin-live && cd $VDRSRC && cp -r vdr-plugin-live /home/`logname`/sifinstallrepo/ && mv vdr-plugin-live live && cp -r /home/`logname`/sifinstallrepo/livepatch.tar.gz /$VDRSRC/live/ && tar -zxvf livepatch.tar.gz && rm -r livepatch.tar.gz && patch -p1 < timeformat-it_IT-fix.patch &&  patch -p1 <  11_live_osd.patch && patch -p1 < 12_live_set_mld_theme_to_default.patch && patch -p1 < 13_live_level.patch && mkdir -p /etc/vdr/plugins/live && cp -a $VDRSRC/live/live /etc/vdr/plugins && cp -r /home/`logname`/sifinstallrepo/live-themes.tar.gz /etc/vdr/plugins/live/themes && cd /etc/vdr/plugins/live/themes && tar -zxvf live-themes.tar.gz && rm -r live-themes.tar.gz && cd /usr/local/src/vdr && make plugins ;; 
@@ -3763,35 +3808,35 @@ c) cd $VDRSRC && if [ -f live/Makefile ];
 #
 #
 #echo "*** Setup ***"; echo "";
-    clear
-    dialog --title "   ** VDR-Plugin-Setup **   " --infobox "
-   ----------------------------------------------------------------------------
-                Che cosa vuoi fare ?
-   ----------------------------------------------------------------------------
-        [a]    Installare il plugin Setup (non installabile in questa versione)               
-        [b]    Aggiornare il plugin Setup                  
-        [c]    Rimuovere il plugin Setup               
-        [d]    Skip             
-                                       
-   ---------------------------------------------- " 0 0
-    echo -n "        Scegli  [a-d]:      "
-    read yourch
-    case $yourch in
-a) cd $VDRSRC && if [ -f setup/Makefile ];
-  then  echo "Setup $Remind"
-else cp -r /home/`logname`/sifinstallrepo/vdr-setup-0.3.1.tar.gz  /$VDRSRC && tar -xzvf vdr-setup-0.3.1.tar.gz && mv setup-0.3.1 setup && rm -r vdr-setup-0.3.1.tar.gz && cd setup && make install && sed -i "s|-P'dvbapi'|& -P'setup'|" /usr/local/bin/vdrrun
-    fi || echo "$Remind7 Setup"
-        echo "                    Premere il tasto [Invio] per continuare. . .               "; read  enterKey;;
-b) echo "*** plugin Setup ***"; 
-    clear
-    echo "Il plugin Setup è già aggiornato."
-        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-c) cd $VDRSRC && if [ -f setup/Makefile ];
-   then rm -r setup && sed -i "s|-P'setup'||" /usr/local/bin/vdrrun
-   else echo "Setup $Remind5" 
-      fi
-    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-    esac
+#    clear
+#    dialog --title "   ** VDR-Plugin-Setup **   " --infobox "
+#   ----------------------------------------------------------------------------
+#                Che cosa vuoi fare ?
+#   ----------------------------------------------------------------------------
+#        [a]    Installare il plugin Setup (non installabile in questa versione)               
+#        [b]    Aggiornare il plugin Setup                  
+#        [c]    Rimuovere il plugin Setup               
+#        [d]    Skip             
+#                                       
+#   ---------------------------------------------- " 0 0
+#    echo -n "        Scegli  [a-d]:      "
+#    read yourch
+#    case $yourch in
+# a) cd $VDRSRC && if [ -f setup/Makefile ];
+#  then  echo "Setup $Remind"
+#else cp -r /home/`logname`/sifinstallrepo/vdr-setup-0.3.1.tar.gz  /$VDRSRC && tar -xzvf vdr-setup-0.3.1.tar.gz && mv setup-0.3.1 setup && rm -r vdr-setup-0.3.1.tar.gz && cd setup && make install && sed -i "s|-P'dvbapi'|& -P'setup'|" /usr/local/bin/vdrrun
+#    fi || echo "$Remind7 Setup"
+#        echo "                    Premere il tasto [Invio] per continuare. . .               "; read  enterKey;;
+# b) echo "*** plugin Setup ***"; 
+#    clear
+#    echo "Il plugin Setup è già aggiornato."
+#        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+# c) cd $VDRSRC && if [ -f setup/Makefile ];
+#   then rm -r setup && sed -i "s|-P'setup'||" /usr/local/bin/vdrrun
+#   else echo "Setup $Remind5" 
+#      fi
+#    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+#    esac
 #
 #
 #echo "*** Menuorg ***"; echo "";
@@ -3811,7 +3856,7 @@ c) cd $VDRSRC && if [ -f setup/Makefile ];
     case $yourch in
 a) cd $VDRSRC && if [ -f menuorg/Makefile ];
   then  echo "Menuorg $Remind"
-else apt-get -y install libxml++2.6-2 libglibmm-2.4-1c2a libxml++2.6-dev libglibmm-2.4-dev && cd $VDRSRC && cp -r /home/`logname`/sifinstallrepo/vdr-menuorg-0.5.1.tar.gz /$VDRSRC/ && tar -zxvf vdr-menuorg-0.5.1.tar.gz && mv menuorg-0.5.1 menuorg && rm -r vdr-menuorg-0.5.1.tar.gz && cd ../.. && make plugins && cd /etc/vdr/plugins && cp /home/`logname`/sifinstallrepo/menuorg.tar.gz /etc/vdr/plugins && tar xzvf menuorg.tar.gz && rm -r menuorg.tar.gz && sed -i "s|-P'dvbapi'|& -P'menuorg'|" /usr/local/bin/vdrrun
+else cp -r /home/`logname`/sifinstallrepo/vdr-menuorg-0.5.1.tar.gz /$VDRSRC/ && tar -zxvf vdr-menuorg-0.5.1.tar.gz && mv menuorg-0.5.1 menuorg && rm -r vdr-menuorg-0.5.1.tar.gz && cd ../.. && make plugins && cd /etc/vdr/plugins && cp /home/`logname`/sifinstallrepo/menuorg.tar.gz /etc/vdr/plugins && tar xzvf menuorg.tar.gz && rm -r menuorg.tar.gz && sed -i "s|-P'dvbapi'|& -P'menuorg'|" /usr/local/bin/vdrrun
 fi || echo "$Remind7 Menuorg"
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read  enterKey;;
 b) echo "*** plugin Menuorg ***"; 
@@ -3843,7 +3888,7 @@ c) cd $VDRSRC && if [ -f menuorg/Makefile ];
     case $yourch in
 a) cd $VDRSRC && if [ -f reelchannellist/Makefile ];
   then  echo "Reelchannellist $Remind"
-  else cp -r /home/`logname`/sifinstallrepo/reelchannellist.tar.xz /$VDRSRC && tar -xJf reelchannellist.tar.xz && rm -r reelchannellist.tar.xz && cd reelchannellist && sed -i "s|/root/openbricks/build/build.i386.eglibc/vdr-1.7.27|/usr/local/src/vdr-2.2.0|" *.c && sed -i "s|/root/openbricks/build/build.i386.eglibc/vdr-1.7.27|/usr/local/src/vdr-2.2.0|" *.h && rm -r Makefile && cp -r /home/`logname`/sifinstallrepo/ReelMakefile.tar.gz /$VDRSRC && tar -zxvf ReelMakefile.tar.gz && rm -r ReelMakefile.tar.gz && cp -r /home/`logname`/sifinstallrepo/01_Add_language_It.patch.tar.gz /$VDRSRC && tar -zxvf 01_Add_language_It.patch.tar.gz && rm -r 01_Add_language_It.patch.tar.gz && patch -p1 < 01_Add_language_It.patch && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'reelchannellist'|" /usr/local/bin/vdrrun 
+  else cp -r /home/`logname`/sifinstallrepo/reelchannellist.tar.xz /$VDRSRC && tar -xJf reelchannellist.tar.xz && rm -r reelchannellist.tar.xz && cd reelchannellist && sed -i "s|/root/openbricks/build/build.i386.eglibc/vdr-1.7.27|/usr/local/src/vdr-2.2.0|" *.c && sed -i "s|/root/openbricks/build/build.i386.eglibc/vdr-1.7.27|/usr/local/src/vdr-2.2.0|" *.h && rm -r Makefile && cp -r /home/`logname`/sifinstallrepo/ReelMakefile.tar.gz /$VDRSRC/reelchannellist && tar -zxvf ReelMakefile.tar.gz && rm -r ReelMakefile.tar.gz && cp -r /home/`logname`/sifinstallrepo/01_Add_language_It.patch.tar.gz /$VDRSRC/reelchannellist && tar -zxvf 01_Add_language_It.patch.tar.gz && rm -r 01_Add_language_It.patch.tar.gz && patch -p1 < 01_Add_language_It.patch && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'reelchannellist'|" /usr/local/bin/vdrrun 
 	fi || echo "$Remind7 Reelchannellist"
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read  enterKey;;
 b) echo "*** plugin Reelchannellist ***"; 
@@ -3901,7 +3946,7 @@ c) cd $VDRSRC && if [ -f zappilot/Makefile ];
     case $yourch in 
 a) cd $VDRSRC && if [ -f scraper2vdr/Makefile ];
   then  echo "Scraper2vdr $Remind"
-  else apt-get -y install uuid-dev libmysql++-dev libimlib2-dev libssl-dev && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-scraper2vdr /$VDRSRC && mv vdr-plugin-scraper2vdr scraper2vdr && cp -r /$SRC/traduzioni/scraper_it_IT.po /$VDRSRC/scraper2vdr/po/ && cd scraper2vdr/po/ && mv scraper_it_IT.po it_IT.po && cd .. && make && sed -i "s|-P'dvbapi'|& -P'scraper2vdr'|" /usr/local/bin/vdrrun
+  else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-scraper2vdr /$VDRSRC && mv vdr-plugin-scraper2vdr scraper2vdr && cp -r /$SRC/traduzioni/scraper_it_IT.po /$VDRSRC/scraper2vdr/po/ && cd scraper2vdr/po/ && mv scraper_it_IT.po it_IT.po && cd .. && make && sed -i "s|-P'dvbapi'|& -P'scraper2vdr'|" /usr/local/bin/vdrrun
 fi || echo "$Remind7 Scraper2vdr"
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 b) cd $VDRSRC && if [ -f scraper2vdr/Makefile ];
@@ -3967,7 +4012,7 @@ c) cd $VDRSRC && if [ -f ttxtsubs/Makefile ];
     case $yourch in 
 a) cd $VDRSRC && if [ -f satip/Makefile ];
 then  echo "Sat-Ip $Remind"
- else apt-get -y install libpugixml1 libpugixml-dev && cp -r /home/`logname`/sifinstallrepo/vdr-satip-2.2.1.tgz /$VDRSRC && tar xzvf vdr-satip-2.2.1.tgz && rm -r vdr-satip-2.2.1.tgz && mv satip-2.2.1 satip && cd satip && make && make install && sed -i "s|-P'dvbapi'|& -P 'satip'|" /usr/local/bin/vdrrun 
+ else cp -r /home/`logname`/sifinstallrepo/vdr-satip-2.2.1.tgz /$VDRSRC && tar xzvf vdr-satip-2.2.1.tgz && rm -r vdr-satip-2.2.1.tgz && mv satip-2.2.1 satip && cd satip && make && make install && sed -i "s|-P'dvbapi'|& -P 'satip'|" /usr/local/bin/vdrrun 
 fi || echo "$Remind7 Sat-Ip"
     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 b) echo "*** plugin Sat-Ip ***"; 
@@ -3997,7 +4042,7 @@ c) cd $VDRSRC && if [ -f satip/Makefile ];
     case $yourch in
 a) cd $VDRSRC && if [ -f mp3/Makefile ];
   then  echo "Mp3/Mplayer $Remind"
-  else sudo apt-get install -y libsndfile1 libsndfile-dev libid3tag0 libid3tag0-dev libmad0-dev mplayer2 && cp -r /home/`logname`/sifinstallrepo/vdr-mp3-0.10.2.tar.gz /$VDRSRC && tar -zxvf vdr-mp3-0.10.2.tar.gz && rm -r vdr-mp3-0.10.2.tar.gz && mv mp3-0.10.2 mp3 && cd mp3 && cp -r /home/`logname`/sifinstallrepo/patch_mp3.tar.gz /$VDRSRC/mp3 && tar -zxvf patch_mp3.tar.gz && rm -r patch_mp3.tar.gz && patch -p1 < 10_mplayer_vdr2.1.2.patch && cp mp3sources.conf /etc/vdr/plugins/mp3sources.conf && cp mplayersources.conf /etc/vdr/plugins/mplayersources.conf && cp mplayer.sh /usr/bin/ && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'mp3'|" /usr/local/bin/vdrrun && sed -i "s|-P'mp3'|& -P'mplayer'|" /usr/local/bin/vdrrun
+  else cp -r /home/`logname`/sifinstallrepo/vdr-mp3-0.10.2.tar.gz /$VDRSRC && tar -zxvf vdr-mp3-0.10.2.tar.gz && rm -r vdr-mp3-0.10.2.tar.gz && mv mp3-0.10.2 mp3 && cd mp3 && cp -r /home/`logname`/sifinstallrepo/patch_mp3.tar.gz /$VDRSRC/mp3 && tar -zxvf patch_mp3.tar.gz && rm -r patch_mp3.tar.gz && patch -p1 < 10_mplayer_vdr2.1.2.patch && cp mp3sources.conf /etc/vdr/plugins/mp3sources.conf && cp mplayersources.conf /etc/vdr/plugins/mplayersources.conf && cp mplayer.sh /usr/bin/ && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'mp3'|" /usr/local/bin/vdrrun && sed -i "s|-P'mp3'|& -P'mplayer'|" /usr/local/bin/vdrrun
     fi || echo "$Remind7 Mp3/Mplayer"
     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
 b) echo "*** plugin Mp3/Mplayer ***"; 
@@ -4028,7 +4073,7 @@ esac
     case $yourch in
 a) cd $VDRSRC && if [ -f mpv/Makefile ];
   then  echo "Mpv $Remind"
-  else sudo apt-get install -y libsndfile1 libsndfile-dev libid3tag0 libid3tag0-dev libmad0-dev mpv libmpv1 libmpv-dev && sudo add-apt-repository http://ppa.launchpad.net/mc3man/mpv-tests/ubuntu && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-mpv /$VDRSRC && mv vdr-plugin-mpv mpv && cp -r /$SRC/traduzioni/mpv_it_IT.po /$VDRSRC/mpv/po/ && cd mpv/po/ && mv mpv_it_IT.po it_IT.po && cd .. && make install && sed -i "s|-P'dvbapi'|& -P'mpv'|" /usr/local/bin/vdrrun 
+  else sudo add-apt-repository http://ppa.launchpad.net/mc3man/mpv-tests/ubuntu && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-mpv /$VDRSRC && mv vdr-plugin-mpv mpv && cp -r /$SRC/traduzioni/mpv_it_IT.po /$VDRSRC/mpv/po/ && cd mpv/po/ && mv mpv_it_IT.po it_IT.po && cd .. && make install && sed -i "s|-P'dvbapi'|& -P'mpv'|" /usr/local/bin/vdrrun 
     fi || echo "$Remind7 Mpv"
     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
 b) cd $VDRSRC; rm -r mpv; rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-mpv; git clone git://projects.vdr-developer.org/vdr-plugin-mpv.git; cp -r vdr-plugin-mpv /home/`logname`/sifinstallrepo/; mv vdr-plugin-mpv mpv; cp -r /$SRC/traduzioni/mpv_it_IT.po /$VDRSRC/mpv/po/ && cd mpv/po/; mv mpv_it_IT.po it_IT.po; cd .. ; make install;
@@ -4046,9 +4091,9 @@ esac
    ----------------------------------------------
                 Che cosa vuoi fare ?
    ----------------------------------------------
-          [a]  Installare il plugin Play         
-          [b]  Aggiornare il plugin Play         
-          [c]  Rimuovere il plugin Play          
+          [a]  Installare il plugin Play     NON va su ubuntu 16.04!!!    
+          [b]  Aggiornare il plugin Play     errore di libreria - manca    
+          [c]  Rimuovere il plugin Play      l'header delle xcb-utils    
           [d]  Skip                            
    ---------------------------------------------- " 0 0
     echo -n "        Scegli  [a-d]:      "
@@ -4056,7 +4101,7 @@ esac
     case $yourch in
 a) cd $VDRSRC && if [ -f play/Makefile ];
   then  echo "Play $Remind"
-  else sudo apt-get install -y mplayer2 && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-play /$VDRSRC &&  mv vdr-plugin-play play && cd play && cp -r /home/`logname`/sifinstallrepo/patch_play.tar.gz /$VDRSRC/play && tar -zxvf patch_play.tar.gz && rm -r patch_play.tar.gz && patch -p1 < 10_play_pixmap.patch && cd ../../.. && make && make plugins && sed -i "s|-P'dvbapi'|& -P'play -fs'|" /usr/local/bin/vdrrun
+  else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-play /$VDRSRC &&  mv vdr-plugin-play play && cd play && cp -r /home/`logname`/sifinstallrepo/patch_play.tar.gz /$VDRSRC/play && tar -zxvf patch_play.tar.gz && rm -r patch_play.tar.gz && patch -p1 < 10_play_pixmap.patch && cd ../../.. && make && make plugins && sed -i "s|-P'dvbapi'|& -P'play -fs'|" /usr/local/bin/vdrrun
 #&& make install 
     fi || echo "$Remind7 Play"
     echo "Premere il tasto [Invio] per continuare. . ."; read enterKey;;
@@ -4118,7 +4163,7 @@ c) cd $VDRSRC && if [ -f streamdev/Makefile ];
     echo -n "        Scegli  [a-c]:      "
     read yourch
     case $yourch in
-a) cd $VDRSRC;  apt-get -y install libssl-dev subversion libdvbcsa-dev
+a) cd $VDRSRC; 
  if [ -f $VDRSRC/sc/Makefile ];
   then  echo "sc $Remind"
  else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-sc/ /$VDRSRC && mv vdr-plugin-sc sc
@@ -4176,12 +4221,12 @@ esac
     case $yourch in 
 a) cd $VDRSRC && if [ -f vdrmanager/Makefile ];
 then  echo "VDR-Manager $Remind"
- else cp -r /home/`logname`/sifinstallrepo/vdr-manager/vdr-vdrmanager/ /$VDRSRC && mv vdr-vdrmanager vdrmanager && cd ../.. && make plugins && make install && echo "*** vdrmanager.conf setup ***" && cp $VDRSRC/vdrmanager/examples/*.conf /etc/vdr/plugins && sed -i "s|-P'femon'|& -P'vdrmanager -p 6420 -P change'|" /usr/local/bin/vdrrun
+ else cp -r /home/`logname`/sifinstallrepo/vdr-manager/vdr-vdrmanager/ /$VDRSRC && mv vdr-vdrmanager vdrmanager && cd ../.. && make plugins && make install && echo "*** vdrmanager.conf setup ***" && cp $VDRSRC/vdrmanager/examples/*.conf /etc/vdr/plugins && sed -i "s|-P'dvbapi'|& -P'vdrmanager -p 6420 -P change'|" /usr/local/bin/vdrrun
     fi || echo "$Remind7 VDR-Manager"
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 b) cd $VDRSRC && if [ -f vdrmanager/Makefile ];
   then rm -r vdrmanager && git clone git://projects.vdr-developer.org/vdr-manager.git && rm -rf /home/`logname`/sifinstallrepo/vdr-manager && cp -r vdr-manager /home/`logname`/sifinstallrepo && cp -r /home/`logname`/sifinstallrepo/vdr-manager/vdr-vdrmanager/ /$VDRSRC && mv vdr-vdrmanager vdrmanager && cd ../.. && make plugins && make install
-else echo "VDR-Manager $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-manager/vdr-vdrmanager/ /$VDRSRC && mv vdr-manager vdrmanager && cd ../.. && make plugins && echo "*** vdrmanager.conf setup ***" && cp $VDRSRC/vdrmanager/examples/*.conf /etc/vdr/plugins && sed -i "s|-P'femon'|& -P'vdrmanager -p 6420 -P change'|" /usr/local/bin/vdrrun 
+else echo "VDR-Manager $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-manager/vdr-vdrmanager/ /$VDRSRC && mv vdr-manager vdrmanager && cd ../.. && make plugins && echo "*** vdrmanager.conf setup ***" && cp $VDRSRC/vdrmanager/examples/*.conf /etc/vdr/plugins && sed -i "s|-P'dvbapi'|& -P'vdrmanager -p 6420 -P change'|" /usr/local/bin/vdrrun 
       fi
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;    
 c) cd $VDRSRC && if [ -f vdrmanager/Makefile ];
@@ -4265,7 +4310,7 @@ esac
     case $yourch in 
 a) cd $VDRSRC && if [ -f epg2vdr/Makefile ];
   then  echo "Epg2vdr $Remind"
-  else apt-get install -y libmysqlclient-dev libmysqlclient18 uuid-dev libimlib2 libimlib2-dev && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-epg2vdr /$VDRSRC && mv vdr-plugin-epg2vdr epg2vdr && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'epg2vdr'|" /usr/local/bin/vdrrun 
+  else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-epg2vdr /$VDRSRC && mv vdr-plugin-epg2vdr epg2vdr && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'epg2vdr'|" /usr/local/bin/vdrrun 
     fi || echo "$Remind7 Epg2vdr"
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 b) cd $VDRSRC && if [ -f neutrinoepg/Makefile ];
@@ -4281,38 +4326,38 @@ c) cd $VDRSRC && if [ -f epg2vdr/Makefile ];
 esac
 #
 #echo "*** Epg-Daemon ***"; echo ""; 
-    clear
-    dialog --title "   ** VDR-Epg-Daemon **   " --infobox "
-   ----------------------------------------------
-                Che cosa vuoi fare ?
-
-	   IN COSTRUZIONE NON INSTALLARE!!!
-   ----------------------------------------------
-        [a]    Installare il plugin Epg-Daemon                
-        [b]    Aggiornare il plugin Epg-Daemon                
-        [c]    Rimuovere il plugin Epg-Daemon            
-        [d]    Skip             
-                                       
-   ---------------------------------------------- " 0 0
-    echo -n "        Scegli  [a-d]:      "
-    read yourch
-    case $yourch in 
-a) cd $VDRSRC && if [ -f epg-daemon/Makefile ];
-  then  echo "Epg-Daemon $Remind"
-  else apt-get install -y libxslt1-dev libarchive-dev libmysqlclient-dev libmysqlclient18 uuid-dev libimlib2 libimlib2-dev && cp -r /home/`logname`/sifinstallrepo/vdr-epg-daemon /$VDRSRC && mv vdr-epg-daemon epg-daemon && cd ../.. && make && make plugins && make install && make plugins install && mkdir -p /etc/epgd && cp -r configs/* /etc/epgd && cat ./PLUGINS/*/configs/epgd.conf >>/etc/epgd/epgd.conf && cat ./PLUGINS/*/configs/channelmap.conf >>/etc/epgd/channelmap.conf 
-    fi || echo "$Remind7 Epg-Daemon"
-        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-b) cd $VDRSRC && if [ -f epg-daemon/Makefile ];
-  then rm -r epg-daemon && rm -rf /home/`logname`/sifinstallrepo/vdr-epg-daemon && git clone git://projects.vdr-developer.org/vdr-epg-daemon.git && cp -r vdr-epg-daemon /home/`logname`/sifinstallrepo/ && mv vdr-epg-daemon epg-daemon && cd ../.. && make plugins
-  else echo "Epg-Daemon $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-epg-daemon /$VDRSRC && cd $VDRSRC && mv vdr-epg-daemon epg-daemon && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'epg2vdr'|" /usr/local/bin/vdrrun 
-    fi
-    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-c) cd $VDRSRC && if [ -f epg-daemon/Makefile ];
-  then rm -r epg-daemon && rm -r $LIB/libvdr-epg-daemon.* && sed -i "s|-P'epg2vdr'||" /usr/local/bin/vdrrun
-  else echo "Epg-Daemon $Remind5" 
-      fi
-        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-esac
+#    clear
+#    dialog --title "   ** VDR-Epg-Daemon **   " --infobox "
+#   ----------------------------------------------
+#                Che cosa vuoi fare ?
+##
+#	   IN COSTRUZIONE NON INSTALLARE!!!
+#   ----------------------------------------------
+#        [a]    Installare il plugin Epg-Daemon                
+#        [b]    Aggiornare il plugin Epg-Daemon                
+#        [c]    Rimuovere il plugin Epg-Daemon            
+#        [d]    Skip             
+#                                       
+#   ---------------------------------------------- " 0 0
+#    echo -n "        Scegli  [a-d]:      "
+#    read yourch
+#    case $yourch in 
+# a) cd $VDRSRC && if [ -f epg-daemon/Makefile ];
+#  then  echo "Epg-Daemon $Remind"
+#  else cp -r /home/`logname`/sifinstallrepo/vdr-epg-daemon /$VDRSRC && mv vdr-epg-daemon epg-daemon && cd ../.. && make && make plugins && make install && make plugins install && mkdir -p /etc/epgd && cp -r configs/* /etc/epgd && cat ./PLUGINS/*/configs/epgd.conf >>/etc/epgd/epgd.conf && cat ./PLUGINS/*/configs/channelmap.conf >>/etc/epgd/channelmap.conf 
+#    fi || echo "$Remind7 Epg-Daemon"
+#        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+# b) cd $VDRSRC && if [ -f epg-daemon/Makefile ];
+#  then rm -r epg-daemon && rm -rf /home/`logname`/sifinstallrepo/vdr-epg-daemon && git clone git://projects.vdr-developer.org/vdr-epg-daemon.git && cp -r vdr-epg-daemon /home/`logname`/sifinstallrepo/ && mv vdr-epg-daemon epg-daemon && cd ../.. && make plugins
+#  else echo "Epg-Daemon $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-epg-daemon /$VDRSRC && cd $VDRSRC && mv vdr-epg-daemon epg-daemon && cd ../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'epg2vdr'|" /usr/local/bin/vdrrun 
+#    fi
+#    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+# c) cd $VDRSRC && if [ -f epg-daemon/Makefile ];
+#  then rm -r epg-daemon && rm -r $LIB/libvdr-epg-daemon.* && sed -i "s|-P'epg2vdr'||" /usr/local/bin/vdrrun
+#  else echo "Epg-Daemon $Remind5" 
+#    fi
+#        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+# esac
 #
 #
 #echo "*** Extrecmenu ***"; echo ""; 
@@ -4429,12 +4474,12 @@ esac
     case $yourch in 
 a) cd $VDRSRC && if [ -f upnp/Makefile ];
   then  echo "Upnp $Remind"
-  else sudo apt-get install -y libupnp6-dev libtntnet-dev libtntdb-dev libsqlite3-dev libboost1.55-dev && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-upnp /$VDRSRC && mv vdr-plugin-upnp upnp && cp -r /home/`logname`/sifinstallrepo/patch_upnp.tar.gz /$VDRSRC/upnp && cd upnp && tar -zxvf patch_upnp.tar.gz && rm -r patch_upnp.tar.gz && patch -p1 < 10_upnp_vdr2.1.2.patch && patch -p1 < 11_upnp_httptnt.patch && make &&
-make subplugins && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'upnp'|" /usr/local/bin/vdrrun 
+  else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-upnp /$VDRSRC && mv vdr-plugin-upnp upnp && cp -r /home/`logname`/sifinstallrepo/patch_upnp.tar.gz /$VDRSRC/upnp && cd upnp && tar -zxvf patch_upnp.tar.gz && rm -r patch_upnp.tar.gz && patch -p1 < 10_upnp_vdr2.1.2.patch && patch -p1 < 11_upnp_httptnt.patch && make && make subplugins && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'upnp'|" /usr/local/bin/vdrrun 
     fi || echo "$Remind7 Upnp"
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 b) cd $VDRSRC && if [ -f upnp/Makefile ];
-  then rm -r upnp && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-upnp && git clone git://projects.vdr-developer.org/vdr-plugin-upnp.git && cp -r vdr-plugin-upnp /home/`logname`/sifinstallrepo/  && mv vdr-plugin-upnp upnp && cp -r /home/`logname`/sifinstallrepo/patch_upnp.tar.gz /$VDRSRC/upnp && cd upnp && tar -zxvf patch_upnp.tar.gz && rm -r patch_upnp.tar.gz && patch -p1 < 10_upnp_vdr2.1.2.patch && patch -p1 < 11_upnp_httptnt.patch && make && make subplugins && cd ../../.. && make plugins
+  then rm -r upnp && rm -rf /home/`logname`/sifinstallrepo/vdr-plugin-upnp && git clone git://projects.vdr-developer.org/vdr-plugin-upnp.git && cp -r vdr-plugin-upnp /home/`logname`/sifinstallrepo/  && mv vdr-plugin-upnp upnp && cp -r /home/`logname`/sifinstallrepo/patch_upnp.tar.gz /$VDRSRC/upnp && cd upnp && tar -zxvf patch_upnp.tar.gz && rm -r patch_upnp.tar.gz && patch -p1 < 10_upnp_vdr2.1.2.patch && patch -p1 < 11_upnp_httptnt.patch && make &&
+make install && make subplugins && make install-subplugins && cd ../../.. && make plugins
   else echo "Upnp $Remind6" && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-upnp /$VDRSRC && mv vdr-plugin-upnp upnp && cp -r /home/`logname`/sifinstallrepo/patch_upnp.tar.gz /$VDRSRC/upnp && cd upnp && tar -zxvf patch_upnp.tar.gz && rm -r patch_upnp.tar.gz && patch -p1 < 10_upnp_vdr2.1.2.patch && patch -p1 < 11_upnp_httptnt.patch && make && make subplugins && cd ../../.. && make plugins && sed -i "s|-P'dvbapi'|& -P'upnp'|" /usr/local/bin/vdrrun 
     fi
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
@@ -4448,7 +4493,7 @@ esac
 #
 #echo "*** CecRemote (sperimentale) ***"; echo ""; 
     clear
-    dialog --title "   ** VDR-Plugin-CecRemote (sperimentale) **   " --infobox "
+    dialog --title "   ** VDR-Plugin-CecRemote **   " --infobox "
    ----------------------------------------------
                 Che cosa vuoi fare ?
    ----------------------------------------------
@@ -4463,7 +4508,7 @@ esac
     case $yourch in 
 a) cd $VDRSRC && if [ -f cecremote/Makefile ];
   then  echo "CecRemote $Remind"
-  else apt-get -y install libcec libcec-dev libplatform-dev libpugixml1 libpugixml-dev cec-utils && cp -r /home/`logname`/sifinstallrepo/vdr-plugin-cecremote /$VDRSRC && mv vdr-plugin-cecremote cecremote && cd ../.. && make plugins # && sed -i "s|-P'dvbapi'|& -P'cecremote'|" /usr/local/bin/vdrrun 
+  else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-cecremote /$VDRSRC && mv vdr-plugin-cecremote cecremote && cd $SRC && git clone https://github.com/Pulse-Eight/platform.git && mkdir platform/build  && cd platform/build && cmake .. && make && make install && cd $SRC && git clone https://github.com/Pulse-Eight/libcec.git && mkdir libcec/build && cd libcec/build && cmake .. && make -j4 && sudo make install && sudo ldconfig && cd $SRC/vdr && make plugins && sed -i "s|-P'dvbapi'|& -P'cecremote'|" /usr/local/bin/vdrrun 
     fi || echo "$Remind7 CecRemote"
         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
 b) cd $VDRSRC && if [ -f cecremote/Makefile ];
@@ -4499,7 +4544,7 @@ echo
 [[ $REPLY = [yY] ]] &&
 cd $VDRSRC && if [ -f remote/Makefile ];
   then  echo "Remote $Remind"
-  else wget http://content.wuala.com/contents/fiveten_59/Vdr/vdr-remote-0.5.0.tgz && tar -xzvf vdr-remote-0.5.0.tgz && mv remote-0.5.0 remote && rm -r vdr-remote-0.5.0.tgz && cd remote && sed -i Makefile -e 's/VDRVERSION/APIVERSION/g' && cd ../../../ && make plugins &&   echo "*** Remote setup ***" && clear &&  echo "        --------------------------------------" &&    echo "              Che numero ha l'input del tuo telecomando? " &&    echo "        --------------------------------------"&&    echo "        inserire qui sotto il numero dell'input corrispondente " && echo "        al telecomando che si ricava da: dmesg | grep -i input " &&     echo "        Esempio:                                               " &&     echo "        dmesg | grep -i input                                  " &&     echo "        ... input: cx88 IR (Hauppauge WinTV-HVR400 as /devices/" &&     echo "        pci0000:00/0000:00:0a.0/0000:01:06.2/rc/rc0/input/5    " &&     echo "        ---> inserire 5                            
+  else cp -r /home/`logname`/sifinstallrepo/vdr-remote-0.5.0.tgz /$VDRSRC/ && tar -xzvf vdr-remote-0.5.0.tgz && mv remote-0.5.0 remote && rm -r vdr-remote-0.5.0.tgz && cd remote && sed -i Makefile -e 's/VDRVERSION/APIVERSION/g' && cd ../../../ && make plugins &&   echo "*** Remote setup ***" && clear &&  echo "        --------------------------------------" &&    echo "              Che numero ha l'input del tuo telecomando? " &&    echo "        --------------------------------------"&&    echo "        inserire qui sotto il numero dell'input corrispondente " && echo "        al telecomando che si ricava da: dmesg | grep -i input " &&     echo "        Esempio:                                               " &&     echo "        dmesg | grep -i input                                  " &&     echo "        ... input: cx88 IR (Hauppauge WinTV-HVR400 as /devices/" &&     echo "        pci0000:00/0000:00:0a.0/0000:01:06.2/rc/rc0/input/5    " &&     echo "        ---> inserire 5                            
  " &&     
 echo "              --------------------------------------" &&     echo "              --------------------------------------" &&     echo -n "        Indicami il tuo input:                " &&    read key &&    echo    " -P'remote -i /dev/input/event$key'" >> /usr/local/bin/vdrrun_2 && mv /usr/local/bin/vdrrun /usr/local/bin/vdrrun_1 && cat /usr/local/bin/vdrrun_* | tr -d '\n' > /usr/local/bin/vdrrun && rm -rf /usr/local/bin/vdrrun_* && sed -i "s|--lirc||" /usr/local/bin/vdrrun && sed -i "s|bash|& \n|" /usr/local/bin/vdrrun 
     fi || echo "Avete scelto di non installare il plugin Remote.";;
