@@ -1,4 +1,4 @@
-## Rev. 5.6.7
+## Rev. 5.6.8
 - Inserito Zapcockpit (nuova caratteristica di skindesigner)
 - Aggiunto softhddevice-openglosd
 
