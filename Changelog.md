@@ -1,6 +1,9 @@
 ## Rev. 5.6.8
 - Inserito Zapcockpit (nuova caratteristica di skindesigner)
 - Aggiunto softhddevice-openglosd
+- ffmpeg versione 3.0
+- libpvx direttamente da git
+- Altre modifiche minori
 
 
 ## Rev. 5.6.7
