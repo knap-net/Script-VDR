@@ -389,7 +389,7 @@ S19.2E  99999 H 10600  t V W15 [E0 10 38 FF] W15 B W15 T
           |   =======================================================================================   |
           |   .............♦♦♦   Installazione Xine-lib - Xine-ui - VDR - Plugins  - Skin ♦♦♦.........  |
           |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
-          |   [4]    +[Submenu] ~~  Xine.lib ~ Xine-ui ~ VDR 2.2.0 ~ Plugins ~ Skin  ..................  |     
+          |   [4]    +[Submenu] ~~  Libass ~ MPV-Player ~ Xine.lib ~ Xine-ui ~ VDR 2.2.0 ~ Plugins ....  |     
           |   =======================================================================================   |
           |   ...♦♦♦  Lista Canali - Creazione - Conversione - Aggiornamento - Diversi Metodi  ♦♦♦...  |
           |   '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  |
@@ -564,9 +564,8 @@ if [ -d /home/`logname`/sifinstallrepo/libvpx ]; then
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
 else
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
-    #wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.4.0.tar.bz2;
-	git clone https://chromium.googlesource.com/webm/libvpx
-  fi
+    git clone https://chromium.googlesource.com/webm/libvpx
+fi
 
 if [ -s /home/`logname`/sifinstallrepo/nvidia_video_sdk_6.0.1.zip ]; then
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
@@ -1052,6 +1051,20 @@ else
     git clone git://projects.vdr-developer.org/vdr-plugin-mpv.git;
 fi
 
+if [ -s /home/`logname`/sifinstallrepo/libass ]; then
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+    git clone https://github.com/libass/libass.git;
+fi
+
+if [ -s /home/`logname`/sifinstallrepo/mpv ]; then
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+else
+  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+    git clone https://github.com/mpv-player/mpv.git;
+fi
+
 if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-epg2vdr ]; then
   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
 else
@@ -1387,7 +1400,6 @@ chmod -R 777 *;;
     wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.4.0.tar.bz2;
     wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.5.0.tar.bz2;
     git clone https://chromium.googlesource.com/webm/libvpx
-    wget https://www.ffmpeg.org/releases/ffmpeg-2.8.tar.bz2;
     wget https://github.com/FFmpeg/FFmpeg/releases/download/n2.8.6/ffmpeg-2.8.6.tar.bz2;
     wget https://github.com/FFmpeg/FFmpeg/releases/download/n3.0/ffmpeg-3.0.tar.bz2;
 
@@ -1461,6 +1473,8 @@ chmod -R 777 *;;
     wget https://www.dropbox.com/s/vhz1fz68159s0qg/externalplayer.conf.tar.gz;
     git clone http://projects.vdr-developer.org/git/vdr-plugin-play.git/;
     git clone git://projects.vdr-developer.org/vdr-plugin-mpv.git;
+    git clone https://github.com/libass/libass.git;
+    git clone https://github.com/mpv-player/mpv.git;
     git clone git://projects.vdr-developer.org/vdr-plugin-epg2vdr.git;
     git clone git://projects.vdr-developer.org/vdr-epg-daemon.git;
     git clone https://projects.vdr-developer.org/git/vdr-plugin-lcdproc.git;
@@ -1568,37 +1582,41 @@ chmod -R 777 *;;
    ---------------------------------------------------------------------------------------------
    
         ***** Installa  *****  .............................  *****  Rimuove  *****
-        [a]    YASM ......... 1.3.0  ........................  [a1]    YASM ......... 1.3.0
+        [a]    YASM ................ 1.3.0  ................  [a1]    YASM ................ 1.3.0
         
-        [b]    LIBDRM ....... 2.4.67  .......................  [b1]    LIBDRM ....... 2.4.67
+        [b]    LIBDRM .............. 2.4.67  ...............  [b1]    LIBDRM .............. 2.4.67
         
-        [c]    LIBVA ........ 1.7.0  ........................  [c1]    LIBVA ........ 1.7.0
-        [d]    LIBVA-INTEL-DRIVER .. 1.7.0  .................  [d1]    LIBVA-INTEL-DRIVER .. 1.7.0
-        [e]    LIBVA-VDPAU-DRIVER .. 0.7.4  .................  [e1]    LIBVA-VDPAU-DRIVER .. 0.7.4
+        [c]    LIBVA ............... 1.7.0  ................  [c1]    LIBVA ............... 1.7.0
+        [d]    LIBVA-INTEL-DRIVER .. 1.7.0  ................  [d1]    LIBVA-INTEL-DRIVER .. 1.7.0
+        [e]    LIBVA-VDPAU-DRIVER .. 0.7.4  ................  [e1]    LIBVA-VDPAU-DRIVER .. 0.7.4
         
-        [f]    LIB-VDPAU .... 1.1.1  ........................  [f1]    LIB-VDPAU .... 1.1.1
-        [g]    VDPAUINFO .... 1.0  ..........................  [g1]    VDPAUINFO .... 1.0
+        [f]    LIB-VDPAU ........... 1.1.1  ................  [f1]    LIB-VDPAU ........... 1.1.1
+        [g]    VDPAUINFO ........... 1.0  ..................  [g1]    VDPAUINFO ........... 1.0
         
         [z]    Skip
         
    ---------------------------------------------------------------------------------------------      
-        Note:  YASM ~ LIBDRM ~ LIBVA 1.7.0 - Vanno sempre installati come dipendenze.
+        - Note:  YASM ~ LIBDRM ~ LIBVA 1.7.0 - Vanno sempre installati come dipendenze.
         
-        Note:  LIBDRM ~ Mesa 3D and DRI [(Direct Rendering Infrastructure) by 3DFX, AMD (formerly ATI), Intel and Matrox]
+        - Note:  LIBDRM ~ Mesa 3D and DRI [(Direct Rendering Infrastructure) by 3DFX, AMD (formerly ATI), Intel and Matrox]
         
-        Note:  LIBVA ~ Fornisce l'accesso all'accelerazione grafica hardware (GPU) GMA (Graphics Media Accelerator).
+        - Note:  LIBVA ~ Fornisce l'accesso all'accelerazione grafica hardware (GPU) GMA (Graphics Media Accelerator).
         
-        Note:  LIBVA-INTEL-DRIVER 1.7.0 - is the VA-API implementation for Intel G45 chipsets
+        - Note:  LIBVA-INTEL-DRIVER 1.7.0 - is the VA-API implementation for Intel G45 chipsets
         and Intel HD Graphics for Intel Core processor family.
-
         Platform definitions:
         CTG: Cantiga, Intel GMA 4500MHD (GM45) - ILK: Ironlake, Intel HD Graphics for 2010 Intel Core processor family
         SNB: Sandybridge, Intel HD Graphics for 2011 Intel Core processor family - IVB: Ivybridge
         
-        Note:  LIBVA-VDPAU-DRIVER 0.7.4 - consists in a VDPAU-based backend for VA-API.
+        - Note:  LIBVA-VDPAU-DRIVER 0.7.4 - consists in a VDPAU-based backend for VA-API.
         
-        Note:  LIB-VDPAU 1.1.1 - (Nvidia GPU hardware) Assegna parte del processo della decodifica e della 
-        post-elaborazione video alla GPU della scheda video. 
+        - Note:  LIB-VDPAU 1.1.1 - (Nvidia GPU hardware) Assegna parte del processo della decodifica e della 
+        post-elaborazione video alla GPU della scheda video.
+        
+        - Note:
+        Per chi vuole utilizzare libvdpau1 (LIB-VDPAU) installato dai Repository Ufficiali Ubuntu ...
+        Non Deve Installare libvdpau1 (LIB-VDPAU) al Punto 2 / F - Nella Sezione dello Script-VDR 
+        il Pacchetto (LIB-VDPAU) libvdpau1 1.1.1 Viene Sviluppato e Distribuito da Repository Non Ufficiali
    --------------------------------------------------------------------------------------------- " 0 0
     echo -n "        Scegli = Installa [a-g] ~~ Rimuove [a1-g1] ~~ Esci [z]:      "
     read yourch
@@ -1956,28 +1974,35 @@ f) ;;
         [a]    X264 26.09.2015 Git  .......................  [a1]    X264 26.09.2015 Git
         [b]    X265 HG  ...................................  [b1]    X265 HG
         [c]    FDK-AAC Git  ...............................  [c1]    FDK-AAC Git
-        
         [d]    NVIDIA Video Codec 6.1 SDK .................  [d1]    NVIDIA Video Codec 6.1 SDK
-        
-        [e]    LIBVPX .....................................  [e1]    LIBVPX 
-        [f]    FFMPEG 3.0.0 ...............................  [f1]    FFMPEG 3.0.0 
+        [e]    LIBVPX 1.6.0 ...............................  [e1]    LIBVPX 1.6.0 
+        [f]    FFMPEG 2.8.6 ~ Stabile .....................  [f1]    FFMPEG 2.8.6 ~ Stabile
+        [g]    FFMPEG 3.0 ~ Testing .......................  [g1]    FFMPEG 3.0 ~ Testing
         
         [z]    Skip
         
    -------------------------------------------------------------------------------------------------------------------- 
+        Note:
+        Per chi vuole utilizzare libvdpau1 installato dai Repository Ufficiali Ubuntu
+        Non Deve Installare libvdpau1 al Punto 2 / F - Nella Sezione dello Script-VDR 
+        il Pacchetto libvdpau1 1.1.1 Viene Sviluppato e Distribuito da Repository Non Ufficiali
+        
         Note:
         Per reinstallare o aggiornare x264 e x265 si deve rimuovere 
         libx264-dev - x264 - ffmpeg - dal sistema con il comando:
         ~$ sudo apt-get purge x264 libx264-dev ffmpeg
         
         Note:
-        - FFMPEG 2.8.0 Stabile - Si puo' selezionare il supporto per X264 & X265 - Supporto per NVENC
-        - FFMPEG 2.8.6 Testing - Si puo' selezionare il supporto per X264 & X265 - Supporto per NVENC
+        - FFMPEG 2.8.6 Stabile - Si puo' selezionare il supporto per X264 & X265 - Supporto per NVENC
+        - FFMPEG 3.0 Testing - Si puo' selezionare il supporto per X264 & X265 - Supporto per NVENC
         
         Note:
-        - NVIDIA Video Codec 6.1 SDK --- NVENC Hardware Accelerated Video Encoding Decoding ~ H.264 and H.265 (HEVC) 
+        - NVIDIA Video Codec 6.1 SDK --- NVENC Hardware Accelerated Video Encoding Decoding ~ H.264 and H.265 (HEVC)
+        
+        Note:
+        - FFMPEG 2.8.6 Stabile ~ Inispensabile per risolvere errori di compatibilita con libswresample 2.0.101
    -------------------------------------------------------------------------------------------------------------------- " 0 0
-    echo -n "        Scegli = Installa [a-h] ~~ Rimuove [a1-h1] ~~ Esci [z]:      "
+    echo -n "        Scegli = Installa [a-g] ~~ Rimuove [a1-g1] ~~ Esci [z]:      "
     read yourch
     case $yourch in
     
@@ -1998,8 +2023,8 @@ a)                                        ######################################
     clear
     apt-get update;
     apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
-    apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
-    apt-get -y install libvdpau1 libvdpau-dev
+    #apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
+    #apt-get -y install libvdpau1 libvdpau-dev
     apt-get -y install libtheora-dev libva-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
     apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev libfaad-dev libx264-dev
     apt-get -y install cmake cmake-curses-gui 
@@ -2165,7 +2190,7 @@ d1)                                       ######################################
 ##                                                                                                                         ##
 #                                                                                                                           #
 e)                                        #########################################
-                                          #              LIBVPX                   #
+                                          #              LIBVPX 1.6.0             #
                                           #########################################
 
 
@@ -2174,8 +2199,8 @@ e)                                        ######################################
     apt-get update
     ### Aggiunto Supporto per Linux Mint 16 Mate ###
     apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
-    apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
-    apt-get -y install libvdpau1 libvdpau-dev
+    #apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
+    #apt-get -y install libvdpau1 libvdpau-dev
     apt-get -y install libtheora-dev libva-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
     apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
     clear
@@ -2208,6 +2233,8 @@ e1)                                       ######################################
 
 
 
+    
+    
 
 #############################################################################################################################  
 #############################################################################################################################
@@ -2215,144 +2242,6 @@ e1)                                       ######################################
 ##                                                                                                                         ##
 #                                                                                                                           # 
 f)                                        #########################################
-                                          #              FFmpeg 3.0.0             #
-                                          #########################################
-
-
-    apt-get -y remove ffmpeg
-    clear
-    apt-get update
-    ### Aggiunto Supporto per Linux Mint 16 Mate ###
-    apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
-    apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
-    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
-    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
-    clear
-    apt-get -y install libopus-dev libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
-    clear
-    apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
-    clear
-    dialog --title "   ** Installazione FFmpeg 3.0.0 Git **   " --infobox "
-   ----------------------------------------------------
-          Seleziona il Tipo di Configurazione ...            
-   ----------------------------------------------------
-   
-   [a]  Installa FFmpeg con supporto X264 MPEG-4 AVC Encoder
-   
-   [b]  Installa FFmpeg con supporto X264 & X265 HEVC Encoder
-   
-   
-    
-      
-   ----------------------------------------------------" 0 0
-    echo -n "        Scegli  [a-b]:      "
-    read yourch
-    case $yourch in
-    a) clear
-    echo "                    Attendere qualche secondo la configurazione ...";
-    cd /usr/local/src;
-    rm -R ffmpeg
-    cp /home/`logname`/sifinstallrepo/ffmpeg-3.0.tar.bz2 /usr/local/src/;
-    tar xjf ffmpeg-3.0.tar.bz2; mv ffmpeg-3.0 ffmpeg;
-    rm -r ffmpeg-3.0.tar.bz2; cd ffmpeg
-    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
-    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;
-    make -j4
-    checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
-    hash -r
-    ldconfig -v
-    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-    b) clear
-    echo "                    Attendere qualche secondo la configurazione ...";
-    cd /usr/local/src;
-    rm -R ffmpeg
-    cp /home/`logname`/sifinstallrepo/ffmpeg-3.0.tar.bz2 /usr/local/src/;
-    tar xjf ffmpeg-3.0.tar.bz2; mv ffmpeg-3.0 ffmpeg;
-    rm -r ffmpeg-3.0.tar.bz2; cd ffmpeg 
-    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
-    make -j4
-    checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
-    hash -r
-    ldconfig -v;;
-    esac
-    ;;
-
-
-
-
-#############################################################################################################################  
-#############################################################################################################################
-###                                                                                                                       ###
-##                                                                                                                         ##
-#                                                                                                                           #
-f1)                                       #########################################
-                                          #         Rimozione FFmpeg 3.0.0        #
-                                          #########################################
-
-
-    clear
-    echo "                    Adesso Rimuovo FFmpeg 3.0.0"; sleep 4
-    apt-get -y purge ffmpeg; rm -r /usr/local/src/ffmpeg; rm /usr/local/src/packages/ffmpeg*;; 
-    #esac
-    #echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
-
-
-
-
-#############################################################################################################################  
-#############################################################################################################################
-###                                                                                                                       ###
-##                                                                                                                         ##
-#                                                                                                                           #
-g)                                        #########################################
-                                          #              LIBVPX 1.5.0             #
-                                          #########################################
-
-
-    apt-get -y remove libvpx
-    clear
-    apt-get update
-    ### Aggiunto Supporto per Linux Mint 16 Mate ###
-    apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
-    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
-    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
-    clear
-    echo "                    Adesso Installo Libvpx 1.5.0"; sleep 4
-    cd /usr/local/src
-    rm -R libvpx
-    cp /home/`logname`/sifinstallrepo/libvpx-1.5.0.tar.bz2 /usr/local/src/;
-    tar xjf libvpx-1.5.0.tar.bz2; mv libvpx-1.5.0 libvpx;
-    rm -r libvpx-1.5.0.tar.bz2; cd libvpx
-    ./configure --enable-pic --enable-shared --enable-runtime_cpu_detect
-    make -j4
-    checkinstall --pkgname=libvpx --pkgversion="1.5.0-git-snapshot" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES;;
-
-
-
-
-#############################################################################################################################  
-#############################################################################################################################
-###                                                                                                                       ###
-##                                                                                                                         ##
-#                                                                                                                           #
-g1)                                       #########################################
-                                          #             Rimozione LIBVPX          #
-                                          #########################################
-
-
-    clear
-    echo "                    Adesso Rimuovo Libvpx 1.5.0"; sleep 4
-    apt-get -y purge libvpx; rm -r /usr/local/src/libvpx; rm /usr/local/src/packages/libvpx*;;
-
-
-
-
-#############################################################################################################################  
-#############################################################################################################################
-###                                                                                                                       ###
-##                                                                                                                         ##
-#                                                                                                                           # 
-h)                                        #########################################
                                           #               FFmpeg 2.8.6            #
                                           #########################################
 
@@ -2362,12 +2251,13 @@ h)                                        ######################################
     apt-get update
     ### Aggiunto Supporto per Linux Mint 16 Mate ###
     apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
-    apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
-    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
-    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
-    clear
-    apt-get -y install libopus-dev libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
-    clear
+    apt-get -y install libtheora-dev
+    apt-get -y install libva-dev libvdpau-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
+    #clear
+    apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev libiso9660-dev libvcdinfo-dev libjpeg-dev
+    apt-get -y install libvorbis-dev
+    #clear
     dialog --title "   ** Installazione FFmpeg 2.8.6 Git-Snapshot **   " --infobox "
    ----------------------------------------------------
           Seleziona il Tipo di Configurazione ...            
@@ -2393,7 +2283,6 @@ h)                                        ######################################
     rm -r ffmpeg-2.8.6.tar.bz2; cd ffmpeg 
     #./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
     ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
-    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;
     make -j4
     checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.6-git-snapshot" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
     hash -r
@@ -2408,7 +2297,6 @@ h)                                        ######################################
     rm -r ffmpeg-2.8.6.tar.bz2; cd ffmpeg 
     #./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libmp3lame --enable-libtheora --enable-libvorbis --disable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc;
     ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
-    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;
     make -j4
     checkinstall --pkgname=ffmpeg --pkgversion="7:2.8.6-git-snapshot" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
     hash -r;
@@ -2424,13 +2312,105 @@ h)                                        ######################################
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-h1)                                       #########################################
+f1)                                       #########################################
                                           #          Rimozione FFmpeg 2.8.6       #
                                           #########################################
 
 
     clear
     echo "                    Adesso Rimuovo FFmpeg 2.8.6"; sleep 4
+    apt-get -y purge ffmpeg; rm -r /usr/local/src/ffmpeg; rm /usr/local/src/packages/ffmpeg*;;
+    #esac
+    #echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+
+
+
+
+#############################################################################################################################  
+#############################################################################################################################
+###                                                                                                                       ###
+##                                                                                                                         ##
+#                                                                                                                           # 
+g)                                        #########################################
+                                          #               FFmpeg 3.0              #
+                                          #########################################
+
+
+    apt-get -y remove ffmpeg
+    clear
+    apt-get update
+    ### Aggiunto Supporto per Linux Mint 16 Mate ###
+    apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
+    apt-get -y install libtheora-dev
+    #apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
+    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
+    clear
+    apt-get -y install libopus-dev libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
+    clear
+    apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
+    apt-get -y install libvorbis-dev
+    clear
+    dialog --title "   ** Installazione FFmpeg 3.0 Git **   " --infobox "
+   ----------------------------------------------------
+          Seleziona il Tipo di Configurazione ...            
+   ----------------------------------------------------
+   
+   [a]  Installa FFmpeg con supporto X264 MPEG-4 AVC Encoder
+   
+   [b]  Installa FFmpeg con supporto X264 & X265 HEVC Encoder
+   
+   
+    
+      
+   ----------------------------------------------------" 0 0
+    echo -n "        Scegli  [a-b]:      "
+    read yourch
+    case $yourch in
+    a) clear
+    echo "                    Attendere qualche secondo la configurazione ...";
+    cd /usr/local/src;
+    rm -R ffmpeg
+    cp /home/`logname`/sifinstallrepo/ffmpeg-3.0.tar.bz2 /usr/local/src/;
+    tar xjf ffmpeg-3.0.tar.bz2; mv ffmpeg-3.0 ffmpeg;
+    rm -r ffmpeg-3.0.tar.bz2; cd ffmpeg
+    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
+    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;
+    make -j4
+    checkinstall --pkgname=ffmpeg --pkgversion="7:3.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+    hash -r
+    ldconfig -v
+    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+    b) clear
+    echo "                    Attendere qualche secondo la configurazione ...";
+    cd /usr/local/src;
+    rm -R ffmpeg
+    cp /home/`logname`/sifinstallrepo/ffmpeg-3.0.tar.bz2 /usr/local/src/;
+    tar xjf ffmpeg-3.0.tar.bz2; mv ffmpeg-3.0 ffmpeg;
+    rm -r ffmpeg-3.0.tar.bz2; cd ffmpeg 
+    ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
+    make -j4
+    checkinstall --pkgname=ffmpeg --pkgversion="7:3.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+    hash -r
+    ldconfig -v;;
+    esac
+    ;;
+
+
+
+
+#############################################################################################################################  
+#############################################################################################################################
+###                                                                                                                       ###
+##                                                                                                                         ##
+#                                                                                                                           #
+g1)                                       #########################################
+                                          #          Rimozione FFmpeg 3.0         #
+                                          #########################################
+
+
+    clear
+    echo "                    Adesso Rimuovo FFmpeg 3.0"; sleep 4
     apt-get -y purge ffmpeg; rm -r /usr/local/src/ffmpeg; rm /usr/local/src/packages/ffmpeg*;; 
     #esac
     #echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
@@ -2461,27 +2441,31 @@ z) ;;
                                           ##########################################################
                   
     clear        
-    dialog --title "   ** Installazione Xine-lib - Xine-ui - VDR - Plugins  - Skin **   " --infobox "
-   --------------------------------------------------------------
-              Installa o Rimuove Librerie di supporto
-   --------------------------------------------------------------
+    dialog --title "   ** Installazione Libass - MPV-Player - Xine-lib - Xine-ui - VDR - Plugins  - Skin **   " --infobox "
+   ---------------------------------------------------------------------------------------------
+                              Installa o Rimuove Librerie di supporto
+   ---------------------------------------------------------------------------------------------
         
-        *****  Installa  *****  .................  *****  Rimuove  *****
-        [a]    XINE-LIB 1.2.6  ....................  [a1]    XINE-LIB 1.2.6
-        [b]    XINE-UI  ...........................  [b1]    XINE-UI
-        [c]    VDR-2.2.0 & Plugins Base  ..........  [c1]    VDR-2.2.0 & Plugins Base
-        [d]    Prima Configurazione VDR  ..........  [d1]    Rimozione Configurazione VDR
-        [e]    Installa Altri Plugins .............  [e1]    
-        [f]    Installa Skin  .....................  [f1]    Disinstalla Skin
-        [g]    Aggiornamento dei Plugins  .........  [g1]    
+        *****  Installa  *****  .....................  *****  Rimuove  *****
+        [a]    LIBASS  GIT ............................  [a1]    LIBASS GIT
+        [b]    MPV-PLAYER GIT  ........................  [b1]    MPV-PLAYER GIT
+        [c]    XINE-LIB 1.2.6  ........................  [c1]    XINE-LIB 1.2.6
+        [d]    XINE-UI  ...............................  [d1]    XINE-UI
+        [e]    VDR-2.2.0 & Plugins Base  ..............  [e1]    VDR-2.2.0 & Plugins Base
+        [f]    Prima Configurazione VDR  ..............  [f1]    Rimozione Configurazione VDR
+        [g]    Installa Altri Plugins .................  [g1]    
+        [h]    Installa Skin  .........................  [h1]    Disinstalla Skin
+        [i]    Aggiornamento dei Plugins  .............  [i1]    
         
-        [h]    Skip
+        [z]    Skip
+   ---------------------------------------------------------------------------------------------      
+        Note:  LIBASS - Va sempre installata come dipendenza. 
+        Reinstallata se viene rimosso o aggiornato MPV-PLAYER.
         
-        
-
-           
-   -------------------------------------------------------------- " 0 0
-    echo -n "        Scegli = Installa [a-g] ~~ Rimuove [a1-g1] ~~ Esci [h]:      "
+        Note:  MPV-PLAYER Git apporta nuovi codec Audio/Video oltre che supporto con FFMPEG e VDPAU.
+   
+   --------------------------------------------------------------------------------------------- " 0 0
+    echo -n "        Scegli = Installa [a-i] ~~ Rimuove [a1-i1] ~~ Esci [z]:      "
     read yourch
     case $yourch in
     
@@ -2494,6 +2478,95 @@ z) ;;
 ##                                                                                                                         ##
 #                                                                                                                           #
 a)                                        #########################################
+                                          #              LIBASS GIT               #
+                                          #########################################
+    
+    
+    clear
+    apt-get -y purge libass4 gstreamer1.0-plugins-bad libass-dev;
+    #apt-get -y purge libass5 libass-dev;
+    apt-get -y install libparse-yapp-perl libluajit-5.1-2 luajit mingw32-binutils libparse-pidl-perl libpopt-dev samba-dev lua5.2 liblua5.2-dev libluajit-5.1-common libtalloc-dev libtevent-dev;
+    apt-get -y install mingw32-runtime mingw32;
+    apt-get -y install libuchardet-dev libdvdread-dev librubberband-dev libbluray-dev libuchardet0 libcdio-paranoia-dev librubberband2 libcdio-cdda-dev libbluray1 libmowgli-dev libmowgli2 libguess-dev libguess1 libaacs0 libdvdnav-dev;
+    cd /usr/local/src/;
+    rm -Rf $SRC/libass;
+    cp -r /home/`logname`/sifinstallrepo/libass /usr/local/src/;
+    cd libass;
+    sh ./autogen.sh;
+    ./configure --prefix=/usr --disable-static;
+    make;
+    checkinstall --pkgname=libass --pkgversion="0.13.2-git" --backup=no --deldoc=yes --fstrans=no --default;
+    #
+    ln -s /usr/lib/libass.so /usr/lib/libass.so.4;;
+
+
+
+
+#############################################################################################################################  
+#############################################################################################################################
+###                                                                                                                       ###
+##                                                                                                                         ##
+#                                                                                                                           #
+a1)                                       #########################################
+                                          #          Rimozione  LIBASS GIT        #
+                                          #########################################
+    
+    
+    clear
+    echo "                    Adesso Rimuovo Libass 0.13.2-git"; sleep 4
+    apt-get -y purge libass; rm -r /usr/local/src/libass*; rm /usr/local/src/packages/libass*;
+    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+
+    
+    
+
+#############################################################################################################################  
+#############################################################################################################################
+###                                                                                                                       ###
+##                                                                                                                         ##
+#                                                                                                                           #
+b)                                        #########################################
+                                          #             MPV-PLAYER GIT            #
+                                          #########################################
+    
+    
+    clear
+    cd /usr/local/src/;
+    rm -Rf $SRC/mpv;
+    cp -r /home/`logname`/sifinstallrepo/mpv /usr/local/src/;
+    cd mpv;
+    ./bootstrap.py;
+    ./waf configure --prefix=/usr/;
+    ./waf build -p --disable-debug-build --enable-libmpv-shared;
+    ./waf install;;
+    
+    
+
+
+#############################################################################################################################  
+#############################################################################################################################
+###                                                                                                                       ###
+##                                                                                                                         ##
+#                                                                                                                           #
+b1)                                       #########################################
+                                          #        Rimozione  MPV-PLAYER GIT      #
+                                          #########################################
+    
+    
+    clear
+    echo "                    Adesso Rimuovo MPV-PLAYER GIT"; sleep 4
+    apt-get -y purge libass; rm -r /usr/local/src/libass*; rm /usr/local/src/packages/libass*;
+    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+    
+    
+    
+    
+#############################################################################################################################  
+#############################################################################################################################
+###                                                                                                                       ###
+##                                                                                                                         ##
+#                                                                                                                           #
+c)                                        #########################################
                                           #              XINE-LIB 1.2.6           #
                                           #########################################
 
@@ -2541,7 +2614,7 @@ a)                                        ######################################
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-a1)                                       #########################################
+c1)                                       #########################################
                                           #           Rimozione XINE-LIB          #
                                           #########################################
 
@@ -2559,7 +2632,7 @@ a1)                                       ######################################
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-b)                                        #########################################
+d)                                        #########################################
                                           #                 XINE-UI               #
                                           #########################################
 
@@ -2590,7 +2663,7 @@ b)                                        ######################################
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-b1)                                       #########################################
+d1)                                       #########################################
                                           #            Rimozione XINE-UI          #
                                           #########################################
 
@@ -2608,7 +2681,7 @@ b1)                                       ######################################
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-c)                                        #########################################
+e)                                        #########################################
                                           #        VDR-2.2.0 & Plugins Base       #
                                           #########################################
 
@@ -2857,7 +2930,7 @@ cd /usr/local/src/vdr; make plugins install;
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-c1)                                       #########################################
+e1)                                       #########################################
                                           #           Rimozione VDR-2.2.0         #
                                           #########################################
 
@@ -2875,7 +2948,7 @@ c1)                                       ######################################
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-d)                                        #########################################
+f)                                        #########################################
                                           #        Configurazione VDR-2.2.0       #
                                           #########################################
 
@@ -3538,7 +3611,7 @@ sudo /usr/local/bin/start-softhddevice-vdr.sh
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-d1)                                       #########################################
+f1)                                       #########################################
                                           #      Rimozione Configurazione VDR     #
                                           #########################################
 
@@ -3574,7 +3647,7 @@ d1)                                       ######################################
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-e)                                #################################################################
+g)                                #################################################################
                                   #    Installazione/Aggiornamento/Rimozopne altri Vdr Plugins    #
                                   #################################################################
  
@@ -4598,7 +4671,7 @@ cd $SRC/vdr; make plugins install;
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-f)                                        ####################################################
+h)                                        ####################################################
                                           #         Installare traduzioni Skin di Vdr        #
                                           ####################################################
 #
@@ -4784,7 +4857,7 @@ cd $SRC/vdr; make plugins install
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-f1)                                       #########################################
+h1)                                       #########################################
                                           #         Rimozione Skin di Vdr         #
                                           #########################################
 
@@ -4825,7 +4898,7 @@ f1)                                       ######################################
 ###                                                                                                                       ###
 ##                                                                                                                         ##
 #                                                                                                                           #
-g)                                        #########################################
+i)                                        #########################################
                                           #   Agg. Plugins  caricati di default   #
                                           #########################################
 
