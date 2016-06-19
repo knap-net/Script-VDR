@@ -1,11 +1,11 @@
 ## Rev. 5.6.9
-- Aggiunto Librerie Libass da Repository Github - Dipendenze Utili Per Compilare MPV-Player
-- Aggiunto MPV-PLAYER da Repository Github - Progetto sulla base del vecchio Mplayer2
-- MPV-PLAYER apporta Nuovi Codec Audio/Video - Supporto con FFmpeg e VDPAU.
-- Aggiunto Doppio Supporto Con FFmpeg 2.8.6 e 3.0 - indispensabile per risolvere invompatibilità
+- Aggiunto Librerie Libass da Repository Github - Dipendenze Utili Per Compilare MPV-Player.
+- Aggiunto MPV-PLAYER da Repository Github - Progetto sulla base del vecchio Mplayer2.
+- MPV-PLAYER apporta Nuovi Codec Audio/Video - Supporto con FFmpeg e Librerie VDPAU.
+- Aggiunto Doppio Supporto Con FFmpeg 2.8.6 e 3.0 - indispensabile per risolvere incompatibilità.
 - Aggiunto supporto librerie in Distribuzione Ubuntu 14.04 ~ 16.04 Testato in VMware.
-- Modifica menù Principale e Sotto-Menù per integrazione nuove voci.
-- Aggiunto supporto e relative Note per libreria libvdpau1 in versione esterna.
+- Modifica menù Principale e Sotto-Menù per integrazione nuove voci selezionabili.
+- Aggiunto supporto e relative Note di installazione per libreria libvdpau1 in versione esterna.
 - Rimosso sezioni dello Script-VDR non più in utilizzo.
 - Eliminati Altri Bug minori.
 - Rieseguire il Punto 1, A, Creazione, Repository Locale.
