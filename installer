@@ -2484,7 +2484,7 @@ a)                                        ######################################
     
     clear
     apt-get -y purge libass4 gstreamer1.0-plugins-bad libass-dev;
-    #apt-get -y purge libass5 libass-dev;
+    apt-get -y purge libass5 libass-dev;
     apt-get -y install libparse-yapp-perl libluajit-5.1-2 luajit mingw32-binutils libparse-pidl-perl libpopt-dev samba-dev lua5.2 liblua5.2-dev libluajit-5.1-common libtalloc-dev libtevent-dev;
     apt-get -y install mingw32-runtime mingw32;
     apt-get -y install libuchardet-dev libdvdread-dev librubberband-dev libbluray-dev libuchardet0 libcdio-paranoia-dev librubberband2 libcdio-cdda-dev libbluray1 libmowgli-dev libmowgli2 libguess-dev libguess1 libaacs0 libdvdnav-dev;
