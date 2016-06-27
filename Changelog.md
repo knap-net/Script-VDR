@@ -1,3 +1,14 @@
+## Rev. 5.7.0
+- Aggiunto Yasm da Repository Github - Applica ultime patch.
+- Aggiunto libvdpau 1.1.x da Repository Github - Applica ultimi commit.
+- Aggiornato Librerie Libdrm 2.4.68
+- Aggiornato Librerie LIBVA 1.7.1
+- Aggiornato Librerie LIBVA-INTEL-DRIVER 1.7.1
+- Eliminati Altri Bug minori
+- Rieseguire il Punto 1, A, Creazione, Repository Locale
+
+
+
 ## Rev. 5.6.9
 - Aggiunto Librerie Libass da Repository Github - Dipendenze Utili Per Compilare MPV-Player.
 - Aggiunto MPV-PLAYER da Repository Github - Progetto sulla base del vecchio Mplayer2.
@@ -11,12 +22,14 @@
 - Rieseguire il Punto 1, A, Creazione, Repository Locale.
 
 
+
 ## Rev. 5.6.8
 - Inserito Zapcockpit (nuova caratteristica di skindesigner)
 - Aggiunto softhddevice-openglosd
 - ffmpeg versione 3.0
 - libpvx direttamente da git
 - Altre modifiche minori
+
 
 
 ## Rev. 5.6.7
@@ -27,15 +40,18 @@
 - Per la compilazione di ffmpeg nella versione di testing è obbligatorio caricare le NVIDIA Video Codec 6.1 SDK al punto 3-d
 
 
+
 ## Rev. 5.6.6
 - Sistemati plugin skindesigner, S*, live 
 - Rieseguire il Punto 1, B, Creazione, Repository Locale
 - Maggiore pulizia del S.O in caso eliminazione plugin 
 
 
+
 ## Rev. 5.6.5
 - Sistemato bug plugin skindesigner
 - Rieseguire il Punto 1, A, Creazione, Repository Locale
+
 
 
 ## Rev. 5.6.4
