@@ -17,6 +17,7 @@
                                     
 
 
+![IMG](https://raw.githubusercontent.com/knap-net/Script-VDR/master/img/Script-VDR_11.png)
 
     
 ####    Credit     
