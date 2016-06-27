@@ -15,15 +15,17 @@
     along with VCI. see the file VCI_License.GPL, If not see             
     <http://www.gnu.org/licenses/>.                                  
                                     
+
 .
 .
 .
-#### Read the Wiki
+#### Read the Wiki ...
 
 ![IMG](https://raw.githubusercontent.com/knap-net/Script-VDR/master/img/Script-VDR_11.png)
+.
+.
+.
 
-
-    
 ####    Credit     
 
     Questo script e' stato creato per installare VDR in ambiente grafico        
