@@ -5,4 +5,4 @@ Carica esclusivamente i seguenti plugin OSDTeletext
 Dvbapi - Softhddevice - Epgsearch - Skindesigner - TvGuideng - Weatherforecast 
 Skinflatplus - TvGuide - Iptv - ExternalPlayer - Femon
 pronto per l'uso file molto leggero
-Possibilià di insstallare Kodi
+Possibilià di installare Kodi
