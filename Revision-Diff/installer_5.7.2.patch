@@ -1,0 +1,447 @@
+--- installer_5.7.1	2017-02-11 09:36:26.000000000 +0100
++++ installer_5.7.2	2017-05-01 18:47:34.068612133 +0200
+@@ -581,11 +581,11 @@
+     wget https://www.ffmpeg.org/releases/ffmpeg-2.8.6.tar.bz2;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/ffmpeg-3.2.tar.bz2 ]; then
++if [ -s /home/`logname`/sifinstallrepo/ffmpeg-3.2.4.tar.bz2 ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    wget https://www.ffmpeg.org/releases/ffmpeg-3.2.tar.bz2;
++    wget https://www.ffmpeg.org/releases/ffmpeg-3.2.4.tar.bz2;
+   fi
+ 
+ 
+@@ -673,11 +673,11 @@
+     git clone http://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-dvbapi ]; then
++if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-dvbapi-2.2.3.tar.gz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    git clone git://github.com/manio/vdr-plugin-dvbapi.git; 
++    wget https://www.dropbox.com/s/td43voc8mtqnz6f/vdr-plugin-dvbapi-2.2.3.tar.gz;
+   fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-live ]; then
+@@ -827,11 +827,11 @@
+     wget https://www.dropbox.com/s/jrizzen5q8o07uv/01_Add_language_It.patch.tar.gz;
+   fi 
+ 
+- if [ -s /home/`logname`/sifinstallrepo/menuorg.tar.gz ]; then
++ if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-menuorg ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+-  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    wget https://www.dropbox.com/s/bx13km4g9ogvgb8/menuorg.tar.gz;
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░ ░░░░ ";
++  git clone https://projects.vdr-developer.org/git/vdr-plugin-menuorg.git;  
+   fi
+ 
+ if [ -s /home/`logname`/sifinstallrepo/vdr-patches.2.2.0.tar.gz ]; then
+@@ -932,13 +932,6 @@
+     wget https://www.dropbox.com/s/i0i0m7bqqs954nc/vdr-menuorg-0.5.1.tar.gz;
+   fi
+ 
+-if [ -s /home/`logname`/sifinstallrepo/vdr-radio-1.0.0.tgz ]; then
+-  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-else
+-  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+-    wget https://www.dropbox.com/s/mog7nwhd3ihliqx/vdr-radio-1.0.0.tgz;
+-  fi
+-
+ if [ -s /home/`logname`/sifinstallrepo/vdr-remote-0.5.0.tgz ]; then
+   echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
+ else
+@@ -1171,6 +1164,27 @@
+     git clone https://github.com/FernetMenta/vdr-plugin-vnsiserver;
+ fi
+ 
++if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-radio ]; then
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++else
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++    git clone https://projects.vdr-developer.org/git/vdr-plugin-radio.git;
++fi
++
++if [ -s /home/`logname`/sifinstallrepo/vdr-plugin-image ]; then
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++else
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++    git clone https://projects.vdr-developer.org/git/vdr-plugin-image.git;
++fi
++
++if [ -s /home/`logname`/sifinstallrepo/patch_image.tar.gz ]; then
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File Presente ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++else
++  echo "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░¦¦¦¦¦¦:::: ..... File non Presente ... Eseguo il Download ..... ::::¦¦¦¦¦¦░░░░░░░░░░░░░░░░░░░░░░░░░░░░░";
++    wget https://www.dropbox.com/s/d1rkhyg8t299l3t/patch_image.tar.gz;
++fi
++
+ ################################# caricamento skin ########################################
+ 
+ if [ -s /home/`logname`/sifinstallrepo/skin-narrowhd ]; then
+@@ -1472,7 +1486,7 @@
+     wget http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.5.0.tar.bz2;
+     git clone https://chromium.googlesource.com/webm/libvpx
+     wget https://www.ffmpeg.org/releases/ffmpeg-2.8.6.tar.bz2;
+-    wget https://www.ffmpeg.org/releases/ffmpeg-3.2.tar.bz2;
++    wget https://www.ffmpeg.org/releases/ffmpeg-3.2.4.tar.bz2;
+ 
+ ############################ caricamento xinelib - xine-ui -eventlircd ###########################
+ 
+@@ -1503,7 +1517,7 @@
+     wget https://www.dropbox.com/s/ba5njlguttwlvao/patch_softhddevice_4.tar.gz;
+     git clone git://projects.vdr-developer.org/vdr-plugin-epgfixer.git;
+     git clone http://projects.vdr-developer.org/git/vdr-plugin-epgsearch.git;
+-    git clone git://github.com/manio/vdr-plugin-dvbapi.git;
++    wget https://www.dropbox.com/s/td43voc8mtqnz6f/vdr-plugin-dvbapi-2.2.3.tar.gz;
+     wget https://www.dropbox.com/s/5tyvqkbhohbbju2/dvbapi.patch.tar.gz;
+     #wget https://www.dropbox.com/s/bu8wm0a6gpw0tzx/vdr-plugin-xine_0.9.4.orig.tar.gz;
+     git clone https://projects.vdr-developer.org/git/vdr-plugin-xine.git;
+@@ -1519,8 +1533,8 @@
+     wget https://www.dropbox.com/s/fg9xoi91gp6dxdo/vdr-channellists-0.0.4.gtar;
+     wget https://www.dropbox.com/s/0u0bnb7fq3ghpmj/vdr-cinebars-0.1.0.tgz;
+     wget http://lukkinosat.altervista.org/vdr-loadepg-0.2.6.tgz;
+-    wget https://www.dropbox.com/s/i0i0m7bqqs954nc/vdr-menuorg-0.5.1.tar.gz;
+-    wget https://www.dropbox.com/s/mog7nwhd3ihliqx/vdr-radio-1.0.0.tgz;
++    git clone https://projects.vdr-developer.org/git/vdr-plugin-menuorg.git;   
++    git clone https://projects.vdr-developer.org/git/vdr-plugin-radio.git
+     wget https://www.dropbox.com/s/e7qq71v5yjslao6/vdr-remote-0.5.0.tgz;
+     wget http://www.saunalahti.fi/~rahrenbe/vdr/iptv/files/vdr-iptv-2.2.1.tgz; 
+     wget http://www.saunalahti.fi/rahrenbe/vdr/femon/files/vdr-femon-2.2.1.tgz;
+@@ -1560,6 +1574,7 @@
+     wget https://www.dropbox.com/s/rqm9w3n85igu5p0/patch_scraper2vdr.tar.gz;
+     wget https://www.dropbox.com/s/v0ipkt6x3bfbbs8/patch_weatherforecast.tar.gz;
+     git clone https://github.com/FernetMenta/vdr-plugin-vnsiserver;
++    git clone https://projects.vdr-developer.org/git/vdr-plugin-image.git;
+ 
+ ############################ caricamento skin ########################################
+ 
+@@ -2057,7 +2072,7 @@
+         [d]    NVIDIA Video Codec 6.1 SDK .................  [d1]    NVIDIA Video Codec 6.1 SDK
+         [e]    LIBVPX 1.6.0 ...............................  [e1]    LIBVPX 1.6.0 
+         [f]    FFMPEG 2.8.6 ~ Stabile .....................  [f1]    FFMPEG 2.8.6 ~ Stabile
+-        [g]    FFMPEG 3.2.0 ~ Testing .....................  [g1]    FFMPEG 3.2.0 ~ Testing
++        [g]    FFMPEG 3.2.4 ...............................  [g1]    FFMPEG 3.2.4 
+         
+         [z]    Skip
+ 
+@@ -2074,7 +2089,7 @@
+         
+         Note:
+         - FFMPEG 2.8.6 Stabile - Si puo' selezionare il supporto per X264 & X265 - Supporto per NVENC
+-        - FFMPEG 3.2.0 Testing - Si puo' selezionare il supporto per X264 & X265 - Supporto per NVENC
++        - FFMPEG 3.2.4 Si puo' selezionare il supporto per X264 & X265 - Supporto per NVENC
+         
+         Note:
+         - NVIDIA Video Codec 6.1 SDK --- NVENC Hardware Accelerated Video Encoding Decoding ~ H.264 and H.265 (HEVC)
+@@ -2332,11 +2347,17 @@
+     ### Aggiunto Supporto per Linux Mint 16 Mate ###
+     apt-get -y install build-essential checkinstall git libfaac-dev libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev librtmp-dev libsdl1.2-dev
+     apt-get -y install libtheora-dev
+-    apt-get -y install libva-dev libvdpau-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
+-    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
+-    #clear
+-    apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev libiso9660-dev libvcdinfo-dev libjpeg-dev
++    #apt-get -y remove libvdpau1 libvdpau-dev;     apt-get -y auto-remove libvdpau1 libvdpau-dev;
++    apt-get -y install libtheora-dev libva-dev libvdpau-dev libvorbis-dev libx11-dev libxfixes-dev pkg-config texi2html yasm zlib1g-dev
++    apt-get -y install mercurial cvs subversion git-core libncurses-dev autoconf autopoint libtool automake  gettext nasm liba52-0.7.4-dev libpng12-dev libxt-dev libxv-dev libxvmc-dev libasound2-dev libmpcdec-dev libxvidcore-dev
++    clear
++    apt-get -y install libopus-dev libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev libiso9660-dev libvcdinfo-dev libjpeg-dev
++    clear
++    apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
+     apt-get -y install libvorbis-dev
++    clear
++
++
+     #clear
+     dialog --title "   ** Installazione FFmpeg 2.8.6 Git-Snapshot **   " --infobox "
+    ----------------------------------------------------
+@@ -2412,7 +2433,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           # 
+ g)                                        #########################################
+-                                          #               FFmpeg 3.2.0            #        
++                                          #               FFmpeg 3.2.4            #        
+                                           #########################################
+ 
+ 
+@@ -2431,7 +2452,9 @@
+     apt-get -y install libass-dev libspeex-dev libmp3lame-dev libfaac-dev librtmp-dev libopencore-amrnb-dev libopencore-amrwb-dev  libiso9660-dev libvcdinfo-dev libjpeg-dev
+     apt-get -y install libvorbis-dev
+     clear
+-    dialog --title "   ** Installazione FFmpeg 3.2.0 **   " --infobox "
++
++
++    dialog --title "   ** Installazione FFmpeg 3.2.4 **   " --infobox "
+    ----------------------------------------------------
+           Seleziona il Tipo di Configurazione ...            
+    ----------------------------------------------------
+@@ -2451,13 +2474,13 @@
+     echo "                    Attendere qualche secondo la configurazione ...";
+     cd /usr/local/src;
+     rm -R ffmpeg
+-    cp /home/`logname`/sifinstallrepo/ffmpeg-3.2.tar.bz2 /usr/local/src/;
+-    tar xjf ffmpeg-3.2.tar.bz2; mv ffmpeg-3.2 ffmpeg;
+-    rm -r ffmpeg-3.2.tar.bz2; cd ffmpeg
++    cp /home/`logname`/sifinstallrepo/ffmpeg-3.2.4.tar.bz2 /usr/local/src/;
++    tar xjf ffmpeg-3.2.4.tar.bz2; mv ffmpeg-3.2.4 ffmpeg;
++    rm -r ffmpeg-3.2.4.tar.bz2; cd ffmpeg
+     ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;
+     make -j4
+-    checkinstall --pkgname=ffmpeg --pkgversion="3.2.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=ffmpeg --pkgversion="3.2.4-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     hash -r
+     ldconfig -v
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+@@ -2466,12 +2489,12 @@
+     echo "                    Attendere qualche secondo la configurazione ...";
+     cd /usr/local/src;
+     rm -R ffmpeg
+-    cp /home/`logname`/sifinstallrepo/ffmpeg-3.2.tar.bz2 /usr/local/src/;
+-    tar xjf ffmpeg-3.2.tar.bz2; mv ffmpeg-3.2 ffmpeg;
+-    rm -r ffmpeg-3.2.tar.bz2; cd ffmpeg 
++    cp /home/`logname`/sifinstallrepo/ffmpeg-3.2.4.tar.bz2 /usr/local/src/;
++    tar xjf ffmpeg-3.2.4.tar.bz2; mv ffmpeg-3.2.4 ffmpeg;
++    rm -r ffmpeg-3.2.4.tar.bz2; cd ffmpeg 
+     ./configure  --extra-libs="-ldl" --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree --enable-nvenc --enable-libxvid --enable-x11grab --enable-vdpau --enable-vaapi --enable-pic --enable-shared --disable-doc
+     make -j4
+-    checkinstall --pkgname=ffmpeg --pkgversion="3.2.0-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
++    checkinstall --pkgname=ffmpeg --pkgversion="3.2.4-git" --backup=no --deldoc=yes --fstrans=no --default --pakdir=$PACKAGES
+     hash -r
+     ldconfig -v;;
+     esac
+@@ -2486,7 +2509,7 @@
+ ##                                                                                                                         ##
+ #                                                                                                                           #
+ g1)                                       #########################################
+-                                          #          Rimozione FFmpeg 3.2.0       #
++                                          #          Rimozione FFmpeg 3.2.4       #
+                                           #########################################
+ 
+ 
+@@ -2775,9 +2798,9 @@
+     clear
+     apt-get update
+     echo "                    Adesso Installo Eventlircd"; sleep 4
+-    apt-get install -y gawk libudev1 libudev-dev;
++    apt-get install -y gawk libudev1 libudev-dev evtest ir-keytable;
+ #   apt-get install libudev per ubu 14.04
+-    apt-get install -y lirc v4l-utils evtest;
++    apt-get install -y lirc v4l-utils ;
+     cd $SRC; 
+     cp -r /home/`logname`/sifinstallrepo/eventlircd $SRC;
+     cd eventlircd; 
+@@ -2799,10 +2822,15 @@
+     echo 'uinput
+ ir-kbd-i2c
+ # ite-cir
+-lirc_dev' >> /etc/modules;;
++lirc_dev' >> /etc/modules.d/eventlircd.conf; 
+ 
+ # aggiungere:
+-# sudo eventlircd --evmap=/usr/etc/eventlircd.d --socket=/var/run/lirc/lircd  -------> aggiungere il comando nel file /etc/init.d
++# echo 'eventlircd --evmap=/usr/etc/eventlircd.d --socket=/var/run/lirc/lircd' >> /etc/init.d/eventlircd;  chmod 755 /etc/init.d/eventlircd; chmod 755 /etc/init.d/eventlircd;;
++# oppure
++echo '/usr/sbin/eventlircd --evmap=/etc/eventlircd.d --socket=/var/run/lirc/lircd --repeat-filter --release=_UP -f' >> /etc/init.d/eventlircd;  chmod 755 /etc/init.d/eventlircd; chmod 755 /etc/init.d/eventlircd;;
++
++
++
+ 
+ #############################################################################################################################  
+ #############################################################################################################################
+@@ -2983,8 +3011,9 @@
+ clear
+ echo ""; echo "               *** Dvbapi ***"; echo ""; sleep 3
+ cd $VDRSRC; 
+-cp -r /home/`logname`/sifinstallrepo/vdr-plugin-dvbapi /$VDRSRC/;
+-mv vdr-plugin-dvbapi dvbapi; cd dvbapi;
++cp -r /home/`logname`/sifinstallrepo/vdr-plugin-dvbapi-2.2.3.tar.gz /$VDRSRC/;
++tar -zxvf vdr-plugin-dvbapi-2.2.3.tar.gz; mv vdr-plugin-dvbapi-2.2.3 dvbapi; 
++rm -r vdr-plugin-dvbapi-2.2.3.tar.gz; cd dvbapi;
+ cp /home/`logname`/sifinstallrepo/dvbapi.patch.tar.gz /$VDRSRC/dvbapi/
+ tar -zxvf dvbapi.patch.tar.gz; rm -r dvbapi.patch.tar.gz;
+ patch -p1 < vdr-plugin-dvbapi-01_crosscompiling.patch; sleep 1;
+@@ -2993,7 +3022,23 @@
+ #
+ clear
+ echo ""; echo "               *** Softhddevice ***"; echo ""; sleep 3
+-cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice /$VDRSRC/; mv vdr-plugin-softhddevice softhddevice; cd softhddevice; cp -r /home/`logname`/sifinstallrepo/patch_softhddevice_4.tar.gz /$VDRSRC/softhddevice; tar -zxvf patch_softhddevice_4.tar.gz; rm -r patch_softhddevice_4.tar.gz; patch -p1 < 03_LanguageIT.patch; patch -p1 < 10_softhddevice_trusty.patch; patch -p1 < 11_softhddevice_Makefile.patch; patch -p1 < 12_softhddevice_ffmpeg2.2.2.patch; patch -p1 < 13_softhddevice_vdpauqueue.patch; patch -p1 < 14_softhddevice_Combined.patch; patch -p1 < 15_fsigned_char.patch.bpi; patch -p1 < 16_softhddevice_AlsaOpenPCMDeleay.patch; patch -p1 < 17_softhddevice_ffmpeg3; patch -p1 < 18_softhddevice_HEVC.patch_ORIG; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1; make install; 
++
++    clear
++    dialog --title "   ** Softhddevice setup **   " --infobox "
++   ----------------------------------------------
++         Che versione FFMPEG hai installato?             
++   ----------------------------------------------          
++	[a]  FFMPEG 2.8.6	
++	[b]  FFMPEG 3.x  
++          
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-b]:      "
++    read yourch
++    case $yourch in
++    
++a) cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice /$VDRSRC/; mv vdr-plugin-softhddevice softhddevice; cd softhddevice; cp -r /home/`logname`/sifinstallrepo/patch_softhddevice_3.tar.gz /$VDRSRC/softhddevice; tar -zxvf patch_softhddevice_3.tar.gz; rm -r patch_softhddevice_3.tar.gz; sleep 1; patch -p1 < 11_softhddevice_Makefile.patch; sleep 1; patch -p1 < 12_softhddevice_ffmpeg2.2.2.patch; sleep 1; patch -p1 < 13_softhddevice_vdpauqueue.patch; sleep 1; patch -p1 < 20_ffmpeg_2.9.patch; sleep 1; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1; make install;;   
++b)  cd $VDRSRC; cp -r /home/`logname`/sifinstallrepo/vdr-plugin-softhddevice /$VDRSRC/; mv vdr-plugin-softhddevice softhddevice; cd softhddevice; cp -r /home/`logname`/sifinstallrepo/patch_softhddevice_4.tar.gz /$VDRSRC/softhddevice; tar -zxvf patch_softhddevice_4.tar.gz; rm -r patch_softhddevice_4.tar.gz; patch -p1 < 03_LanguageIT.patch; patch -p1 < 10_softhddevice_trusty.patch; patch -p1 < 11_softhddevice_Makefile.patch; patch -p1 < 12_softhddevice_ffmpeg2.2.2.patch; patch -p1 < 13_softhddevice_vdpauqueue.patch; patch -p1 < 14_softhddevice_Combined.patch; patch -p1 < 15_fsigned_char.patch.bpi; patch -p1 < 16_softhddevice_AlsaOpenPCMDeleay.patch; patch -p1 < 17_softhddevice_ffmpeg3.patch; make ALSA=1 OSS=0 VDPAU=1 VAAPI=0 SCREENSAVER=0 SWRESAMPLE=1; make install;;  
++esac
+ #
+ #
+ clear
+@@ -3065,7 +3110,7 @@
+ 
+     clear
+     echo "                    Adesso Rimuovo VDR 2.2.0"; sleep 4
+-    apt-get -y purge vdr; rm /usr/local/src/vdr; rm -r /usr/local/src/vdr-2.2.0; rm /usr/local/src/packages/vdr*; rm -r /usr/local/lib/vdr; rm /usr/share/locale/ca_ES/LC_MESSAGES;
++    apt-get -y purge vdr; rm /usr/local/src/vdr; rm -r /usr/local/src/vdr*; rm /usr/local/src/packages/vdr*; rm -r /usr/local/lib/vdr; rm -r /usr/share/locale/ca_ES/LC_MESSAGES;
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ 
+     
+@@ -3328,7 +3373,7 @@
+   then  echo "Oscam $Remind3"
+ else
+ echo "oscam ALL=(ALL) ALL" >> /etc/sudoers; 
+-apt-get install libssl0.9.8 ; rm -r /etc/init.d/oscam; touch /etc/init.d/oscam; 
++apt-get install libssl0.9.8 libcrypto++-dev; rm -r /etc/init.d/oscam; touch /etc/init.d/oscam; 
+ 
+ echo '
+ #!/bin/sh
+@@ -3795,8 +3840,9 @@
+ 		Live                                         
+ 		ZapPilot                                     
+ 		Scraper2vdr                                    
+-		Ttxtsubs                                     
++		Ttxtsubs
+ 		Mp3/Mplayer
++		Radio                                                                          
+ 		Mpv (Ok su sistemi > di 15.04 )
+ 		Play 
+ 		Sat-Ip                                       
+@@ -4125,12 +4171,10 @@
+     case $yourch in
+ a) cd $VDRSRC && if [ -f menuorg/Makefile ];
+   then  echo "Menuorg $Remind"
+-else cp -r /home/`logname`/sifinstallrepo/vdr-menuorg-0.5.1.tar.gz /$VDRSRC/ && tar -zxvf vdr-menuorg-0.5.1.tar.gz && mv menuorg-0.5.1 menuorg && rm -r vdr-menuorg-0.5.1.tar.gz && cd ../.. && make plugins && cd /etc/vdr/plugins && cp /home/`logname`/sifinstallrepo/menuorg.tar.gz /etc/vdr/plugins && tar xzvf menuorg.tar.gz && rm -r menuorg.tar.gz && sed -i "s|-P'dvbapi'|& -P'menuorg'|" /usr/local/bin/vdrrun
++else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-menuorg /$VDRSRC/ && mv vdr-plugin-menuorg menuorg && cd ../.. && make plugins && cd /etc/vdr/plugins && cp /home/`logname`/sifinstallrepo/menuorg.tar.gz /etc/vdr/plugins && tar xzvf menuorg.tar.gz && rm -r menuorg.tar.gz && sed -i "s|-P'dvbapi'|& -P'menuorg'|" /usr/local/bin/vdrrun
+ fi || echo "$Remind7 Menuorg"
+         echo "                    Premere il tasto [Invio] per continuare. . .               "; read  enterKey;;
+-b) echo "*** plugin Menuorg ***"; 
+-    clear
+-    echo "Il plugin Menuorg è già aggiornato."
++b)  cd $VDRSRC && rm -r menuorg && git clone http://projects.vdr-developer.org/git/vdr-plugin-menuorg && cp -r vdr-plugin-menuorg /home/`logname`/sifinstallrepo/ && mv vdr-plugin-menuorg menuorg && cd ../.. && make plugins && cd /etc/vdr/plugins && cp /home/`logname`/sifinstallrepo/menuorg.tar.gz /etc/vdr/plugins && tar xzvf menuorg.tar.gz && rm -r menuorg.tar.gz 
+         echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+ c) cd $VDRSRC && if [ -f menuorg/Makefile ];
+    then rm -r menuorg && rm -r $LIB/libvdr-menuorg.* && sed -i "s|-P'menuorg'||" /usr/local/bin/vdrrun
+@@ -4139,7 +4183,7 @@
+     echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
+     esac
+ #
+-#
++#     
+ #echo "*** Reelchannellist ***"; 
+     clear
+     dialog --title "   ** VDR-Plugins-Reelchannellist **   " --infobox "
+@@ -4264,6 +4308,36 @@
+     esac
+ #
+ #
++#echo "*** Radio ***"; echo "";
++    clear
++    dialog --title "   ** VDR-Plugin-Radio **   " --infobox "
++   ----------------------------------------------
++                Che cosa vuoi fare ?
++   ----------------------------------------------
++        [a]    Installare il plugin Radio                
++        [b]    Aggiornare il plugin Radio                  
++        [c]    Rimuovere il plugin Radio               
++        [d]    Skip             
++                                       
++   ---------------------------------------------- " 0 0
++    echo -n "        Scegli  [a-d]:      "
++    read yourch
++    case $yourch in
++a) cd $VDRSRC && if [ -f radio/Makefile ];
++  then  echo "Radio $Remind"
++else cp -r /home/`logname`/sifinstallrepo/vdr-plugin-radio /$VDRSRC/ && mv vdr-plugin-radio radio && cd ../.. && make && make plugins && cd /etc/vdr/plugins && mkdir -p radio && cp -r /$VDRSRC/radio/config/* /etc/vdr/plugins/radio/ && sed -i "s|-P'dvbapi'|& -P'radio'|" /usr/local/bin/vdrrun
++fi || echo "$Remind7 Radio"
++        echo "                    Premere il tasto [Invio] per continuare. . .               "; read  enterKey;;
++b)  cd $VDRSRC && rm -r radio && git clone https://projects.vdr-developer.org/git/vdr-plugin-radio && cp -r vdr-plugin-radio /home/`logname`/sifinstallrepo/ && mv vdr-plugin-radio radio && cd ../.. && make && make plugins && cp /$VDRSRC/radio/config/* /etc/vdr/plugins/radio/
++        echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++c) cd $VDRSRC && if [ -f radio/Makefile ];
++   then rm -r radio && rm -r $LIB/libvdr-radio.* && sed -i "s|-P'radio'||" /usr/local/bin/vdrrun
++   else echo "Radio $Remind5" 
++      fi
++    echo "                    Premere il tasto [Invio] per continuare. . .               "; read enterKey;;
++    esac
++#
++#
+ #echo "*** Sat-Ip ***";
+     clear
+     dialog --title "   ** VDR-Plugin-Sat-Ip **   " --infobox "
+@@ -5486,7 +5560,7 @@
+ 5)                                        #########################################
+                                           #         Creazione lista canali        #
+                                           #########################################
+-w_scan-20161022
++
+ 
+ #echo "               *** Caricamento W_scan ***"; sleep 3
+ cd /usr/local/src; 
+@@ -5494,7 +5568,7 @@
+ if [ -f /$SRC/w_scan/Makefile ];
+   then  echo "W_scan $Remind3"
+ else
+-cp /home/`logname`/sifinstallrepo/w_scan-20161022.tar.bz2 $SRC/; 
++cp -r /home/`logname`/sifinstallrepo/w_scan-20161022.tar.bz2 $SRC/; 
+ tar xivf w_scan-20161022.tar.bz2; mv w_scan-20161022 w_scan; rm -r w_scan-20161022.tar.bz2; 
+ cd w_scan; ./configure; make; make install;
+ fi
+@@ -5602,14 +5676,16 @@
+     c) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
+     cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
+     tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 9.0E -o $SRC/settings/channels_9.0E.conf;
+-    echo "" >> /etc/vdr/channels.conf;
+-    echo ":[ Lista Canali 9.0E ]" >> /etc/vdr/channels.conf; cat channels_9.0E.conf >> /etc/vdr/channels.conf;;
++    cp -r $SRC/settings/channels_9.0E.conf /etc/vdr/channels_9.0E.conf;;
++#    echo "" >> /etc/vdr/channels.conf;
++#    echo ":[ Lista Canali 9.0E ]" >> /etc/vdr/channels.conf; cat channels_9.0E.conf >> /etc/vdr/channels.conf;;
+     
+     d) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
+     cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
+     tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 13.0E -o $SRC/settings/channels_13.0E.conf;
+-    echo "" >> /etc/vdr/channels.conf;
+-    echo ":[ Lista Canali 13.0E ]" >> /etc/vdr/channels.conf; cat channels_13.0E.conf >> /etc/vdr/channels.conf;;
++    cp -r $SRC/settings/channels_13.0E.conf /etc/vdr/channels_13.0E.conf;;
++    #echo "" >> /etc/vdr/channels.conf;
++    #echo ":[ Lista Canali 13.0E ]" >> /etc/vdr/channels.conf; #cat channels_13.0E.conf >> /etc/vdr/channels.conf;;
+     
+     e) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
+     cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
+@@ -5620,8 +5696,9 @@
+     f) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
+     cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
+     tar -zxvf vdr-getchannels-0.7.2.tar.gz; python vdr-getchannels-0.7.2.pyc -l 19.2E -o $SRC/settings/channels_19.2E.conf;
+-    echo "" >> /etc/vdr/channels.conf;
+-    echo ":[ Lista Canali 19.2E ]" >> /etc/vdr/channels.conf; cat channels_19.2E.conf >> /etc/vdr/channels.conf;;
++    cp -r $SRC/settings/channels_19.2E.conf /etc/vdr/channels_19.2E.conf;;
++    #echo "" >> /etc/vdr/channels.conf;
++    #echo ":[ Lista Canali 19.2E ]" >> /etc/vdr/channels.conf; cat channels_19.2E.conf >> /etc/vdr/channels.conf;;
+     
+     g) cd $SRC; clear; rm -rf settings; mkdir settings; clear;
+     cd settings; cp -r /home/`logname`/sifinstallrepo/vdr-getchannels-0.7.2.tar.gz $SRC/settings; 
+@@ -5764,8 +5841,8 @@
+     ###
+     ##### Sezione W_Scan #####
+     b) rm -r /etc/vdr/channels-w_scan-9E0.conf; w_scan -fs -s S9E0 -D0c -o2 >> /etc/vdr/channels-w_scan-9E0.conf;; 
+-    c) rm -r /etc/vdr/channels-w_scan-13E0.conf; w_scan -fs -s S13E0 -D0c -o2 >> /etc/vdr/channels-w_scan-13E0.conf;;
+-    d) rm -r /etc/vdr/channels-w_scan-19E2.conf; w_scan -fs -s S19E2 -D1c -o2 >> /etc/vdr/channels-w_scan-19E2.conf;;
++    c) rm -r /etc/vdr/channels-w_scan-13E0.conf; w_scan -fs -s S13E0 -D1c -o2 >> /etc/vdr/channels-w_scan-13E0.conf;;
++    d) rm -r /etc/vdr/channels-w_scan-19E2.conf; w_scan -fs -s S19E2 -D2c -o2 >> /etc/vdr/channels-w_scan-19E2.conf;;
+     e) rm -r /etc/vdr/channels-dtt.conf; w_scan -ft -c IT >> /etc/vdr/channels-dtt.conf;;
+     
+     ###
